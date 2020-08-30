@@ -31,3 +31,28 @@ class Tweet(db.Model):
     userId = db.Column(db.Integer, nullable=False)
     content = db.Column(db.String(140), nullable=False)
     retweetedTweetId = db.Column(db.Integer)
+
+
+class Reply(db.Model):
+    __tablename__ = 'replies'
+
+    id = db.Column(db.Integer, primary_key=True)
+    userId = db.Column(db.Integer, nullable=False)
+    tweetId = db.Column(db.Integer, nullable=False)
+    content = db.Column(db.String(140), nullable=False)
+
+
+class Like(db.Model):
+    __tablename__ = 'likes'
+
+    id = db.Column(db.Integer, primary_key=True)
+    userId = db.Column(db.Integer, nullable=False)
+    tweetId = db.Column(db.Integer, nullable=False)
+
+
+class Follow(db.Model):
+    __tablename__ = 'follows'
+
+    id = db.Column(db.Integer, primary_key=True)
+    userFollowedId = db.Column(db.Integer, nullable=False)
+    followerId = db.Column(db.Integer, nullable=False)
