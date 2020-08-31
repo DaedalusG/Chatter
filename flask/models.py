@@ -39,6 +39,8 @@ class User(db.Model):
                                 lazy="dynamic")  # noqa
 
 
+
+
 class Tweet(db.Model):
     __tablename__ = 'tweets'
 
