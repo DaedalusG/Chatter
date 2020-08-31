@@ -20,12 +20,12 @@ class User(db.Model):
     first_name = db.Column(db.String(40), nullable=False, unique=True)
     last_name = db.Column(db.String(40), nullable=False, unique=True)
     zipcode = db.Column(db.Integer, nullable=False)
-    pinned_tweet = db.Column(db.Integer)
     about = db.Column(db.Text)
     profile_pic = db.Column(db.String)
+    pinned_tweet = db.Column(db.Integer)
 
     tweets = db.relationship("Tweet", backref="user")
-    retweets = db.relationship("Tweet", backref="user")
+    retweets = db.relationship("ReTweet", backref="user")
     likes = db.relationship("User", backref="user")
     replies = db.relationship("User", backref="user")
 
@@ -49,6 +49,7 @@ class Retweet(db.Model):
     __tablename__ = 'retweets'
 
     id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     tweet_id = db.Column(db.Integer, db.ForeignKey('tweets.id'))
 
     likes = db.relationship('Like', backref='retweet')
@@ -69,7 +70,7 @@ class Like(db.Model):
     __tablename__ = 'likes'
 
     id = db.Column(db.Integer, primary_key=True)
-    liker = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     liked_tweet = db.Column(db.Integer, db.ForeignKey("tweets.id"), nullable=True)  # noqa
     liked_retweet = db.Column(db.Integer, db.ForeignKey("retweets.id"), nullable=True)  # noqa
     liked_reply = db.Column(db.Integer, db.ForeignKey("replies.id"), nullable=True)  # noqa
