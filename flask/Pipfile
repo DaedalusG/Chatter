@@ -24,6 +24,9 @@ psycopg2-binary = "2.8.5"
 flask-jwt-extended = "3.24.1"
 requests = "2.24.0"
 faker = "==4.1.2"
+flask-login = "*"
+pycodestyle = "*"
+bcrypt = "*"
 
 [requires]
 python_version = "3.8"
