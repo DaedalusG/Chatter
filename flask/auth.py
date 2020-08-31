@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, redirect, url_for
 from flask_jwt_extended import (
     JWTManager, jwt_required, create_access_token, get_jwt_identity)
 import bcrypt
@@ -41,13 +41,13 @@ def login():
         passCheck = verify_password(password, user.hashedPassword)
         if not passCheck:
             # Error needs handling decision
-            return {'message': 'passCheck failed'}, 500
+            return {'message': 'passCheck failed'}, 403
         else:
-            auth_token = create_access_token(idenity={"email": user.email})
+            auth_token = create_access_token(idenity={"id": user.id})
             return {"auth_token"}
     except Exception as ex:
         # Error needs handling decision
-        return {'message': 'Login Failed'}
+        return {'message': 'Login Failed'}, 500
 
 
 @auth_routes.route('/signup', methods=['POST'])
@@ -55,5 +55,35 @@ def signup():
     try:
         # Request objects are currently pseudocode
         userName = request.userName
+        email = request.email
         password = request.password
+        firstName = request.firstName
+        lastName = request.lastName
+        zipCode = int(request.zipCode)
 
+        if not userName:
+            return {'message': 'Username Required'}, 400
+        elif not email:
+            return {'message': 'Email Required'}, 400
+        elif not password:
+            return {'message': 'Password Required'}, 400
+        elif not firstName:
+            return {'message': 'First Name Required'}, 400
+        elif not lastName:
+            return {'message': 'Last Name Required'}, 400
+        elif not zipCode:
+            return {'message': 'Zipcode Required'}, 400
+
+        hashedPassword = set_password(password)
+        user = User(
+            userName=userName,
+            email=email,
+            hashedPassword=hashedPassword,
+            firstName=firstName,
+            lastName=lastName,
+            zipCode=zipCode,
+        )
+        db.session.add(order)
+        db.session.commit()
+    except Exception:
+        return {'message': Exception}, 400

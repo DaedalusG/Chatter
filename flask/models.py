@@ -20,6 +20,10 @@ class User(db.Model):
     about = Column(String(240),)
     profilePic = Column(String(500),)
 
+    @password.setter
+    def password(self, hashedPassword):
+        self.hashedPassword = hashedPassword
+
     def to_safe_object(self):
         return {
             "id": self.id,
