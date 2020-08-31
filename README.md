@@ -1,3 +1,4 @@
+
 ## DB: 
 * PRODUCTION: db will be created using docker-compose. tables/seed will be created using SQL.
 * DEVELOPMENT: please make a database that fits the schema (see github wiki). Refer to models in flask folder.
@@ -15,3 +16,4 @@
 * React App will expose on local machine from a network containers.
 * Flask will not be expose and will serve react app and interact with database.
 * Database will not be expose and will interact with database.
+
