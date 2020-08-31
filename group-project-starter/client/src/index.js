@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/mainPage.css';
+import './styles/leftPanel.css';
+import './styles/rightPanel.css';
+import './styles/centerPanel.css';
 import App from './App';
 
 ReactDOM.render(

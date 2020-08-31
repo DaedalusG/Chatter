@@ -1,0 +1,11 @@
+#main-c__right{
+  width: 380px;
+  height: 100vh;
+  border: 1px solid green;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow-y: scroll;
+
+}

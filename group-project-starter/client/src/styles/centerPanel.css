@@ -1,0 +1,107 @@
+#center-panel{
+  width: 600px;
+  height: 100vh;
+  border: 1px solid pink;
+}
+#center-panel__nav{
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+#center-panel__nav span{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin-left: 15px;
+}
+.sparkles{
+  width: 25px;
+  height: 25px;
+  fill: rgba(29,161,242,1.00);
+  margin-right: 10px;
+}
+#center-panel__below-nav{
+  width: 100%;
+  height: 120px;
+  border-bottom: 10px solid rgb(229, 236, 238);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+#center-panel__below-nav__profile-bublle-c{
+  width: 90px;
+  height: 100px;
+}
+.profile-bubble-2{
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+  border: 1px solid black;
+  background-image: url(../images/4a1.png);
+  background-size: cover;
+  margin-left: 17px;
+}
+#center-panel__below-nav__content-c{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.below-nav-section{
+  height: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px solid lightgray;
+}
+#tweet-textarea{
+  /* height: 100%; */
+  width: 100%;
+  border: none;
+  font-size: 20px;
+  /* text-align: center; */
+  text-indent: 0px;
+}
+
+.textarea {
+  border: 1px solid #ccc;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 1px 6px;
+}
+
+.input-wrap {
+  position: relative;
+}
+.input-wrap .input {
+  position: absolute;
+  width: 100%;
+  left: 0;
+}
+.width-machine {
+  /*   Sort of a magic number to add extra space for number spinner */
+  padding: 0 1rem;
+}
+
+.textarea {
+  display: block;
+  /* width: 100%; */
+  width: 510px;
+  overflow: hidden;
+  resize: both;
+  min-height: 40px;
+  line-height: 20px;
+  margin-top: 10px;
+}
+
+.textarea[contenteditable]:empty::before {
+  content: "What's happening?";
+  color: gray;
+}
