@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+
+  flask:
+    build:
+      context: ./flask
+    ports:
+      - target: 8000
+        published: 3333
+    env_file: .env
+    networks:
+      twitter:
+    depends_on:
+      - "db"
+    
+  db:
+    image: postgres:12-alpine
+    env_file: .env
+    volumes:
+      - ./seed/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql
+      - ./seed/seed.sql:/docker-entrypoint-initdb.d/2-seed.sql
+    ports:
+      - target: 5432
+        published: 80
+    networks:
+      twitter:
+        aliases:
+          - "twitter"
+
+# volumes:
+#   postgres-db:
+
+networks:
+  twitter:
+    driver: bridge
