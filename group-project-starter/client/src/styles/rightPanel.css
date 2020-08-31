@@ -7,5 +7,84 @@
   justify-content: flex-start;
   align-items: flex-start;
   overflow-y: scroll;
+}
+#main-c__right__search-bar{
+  width: 350px;
+  height: 42px;
+  border-radius: 999px;
+  background-color: #E6ECF0;
+  margin: 5px 0px 0px 30px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 
+}
+.magnifying-glass{
+  height: 22px;
+  margin-left: 15px;
+  fill: rgb(116, 139, 153);
+}
+#search-input{
+  width: 100%;
+  height: 42px;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  margin-left: 15px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+  font-size: 15px;
+}
+#main-c__right__event-c{
+  width: 350px;
+  height: 500px;
+  margin: 15px 0px 0px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: #F5F8FA;
+  border-radius: 18px;
+  display: flex;
+}
+#main-c__right__event-c__top{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 48px;
+  border-bottom: 1px solid rgb(235, 233, 233);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+  font-weight: 800;
+  font-size: 19px;
+}
+#main-c__right__event-c__top span{
+  margin-left: 20px;
+}
+.main-c__right__event-c__news{
+  height: 90px;
+  width: 100%;
+  border-bottom: 1px solid rgb(235, 233, 233);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.news-feed{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+}
+.news-feed p{
+  margin: 5px 0px 0px 20px;
+  font-size: 15px;
+}
+.news-pic{
+  height: 70px;
+  width: 70px;
+  background-image: url("../images/hemanSpakly.png");
+  background-size: cover;
+  margin-right: 20px;
+  border-radius: 15px;
 }
