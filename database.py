@@ -1,4 +1,4 @@
-from starter_app.models import User
+from starter_app.models import User, Follow
 from starter_app import app, db
 from dotenv import load_dotenv
 load_dotenv()
@@ -8,19 +8,18 @@ with app.app_context():
     db.drop_all()
     db.create_all()
 
-    ian = User(username='Ian', email='ian@aa.io', hashedPassword='123', firstName='pump',
-               zipcode='23798478', pinnedtweet=3, about='i am', profilepicture='jfhskjdhfksjhf')
-    javier = User(username='Javier', email='javier@aa.io', hashedPassword='133', firstName='pump',
-                  zipcode='23798478', pinnedtweet=3, about='i am', profilepicture='jfhskjdhfksjhf')
-    dean = User(username='Dean', email='dean@aa.io', hashedPassword='143', firstName='pump',
-                zipcode='23798478', pinnedtweet=3, about='i am', profilepicture='jfhskjdhfksjhf')
-    angela = User(username='Angela', email='angela@aa.io', hashedPassword='153', firstName='pump',
-                  zipcode='23798478', pinnedtweet=3, about='i am', profilepicture='jfhskjdhfksjhf')
-    soonmi = User(username='Soon-Mi', email='soonmi@aa.io', hashedPassword='163', firstName='pump',
-                  zipcode='23798478', pinnedtweet=3, about='i am', profilepicture='jfhskjdhfksjhf')
-    alissa = User(username='Alissa', email='alissa@aa.io', hashedPassword='173', firstName='pump',
-                  zipcode='23798478', pinnedtweet=3, about='i am', profilepicture='jfhskjdhfksjhf')
-
+    ian = User(lastname="WarrenGa", username='Ian', email='ian@aa.io', hashed_password='123', firstname='pump',
+               zipcode='23798478',  about='i am', profile_pic='jfhskjdhfksjhf')
+    javier = User(lastname="WarrenGb", username='Javier', email='javier@aa.io', hashed_password='133', firstname='pump',
+                  zipcode='23798478',  about='i am', profile_pic='jfhskjdhfksjhf')
+    dean = User(lastname="WarrenGc", username='Dean', email='dean@aa.io', hashed_password='143', firstname='pump',
+                zipcode='23798478',  about='i am', profile_pic='jfhskjdhfksjhf')
+    angela = User(lastname="WarrenGd", username='Angela', email='angela@aa.io', hashed_password='153', firstname='pump',
+                  zipcode='23798478',  about='i am', profile_pic='jfhskjdhfksjhf')
+    soonmi = User(lastname="WarrenGe", username='Soon-Mi', email='soonmi@aa.io', hashed_password='163', firstname='pump',
+                  zipcode='23798478',  about='i am', profile_pic='jfhskjdhfksjhf')
+    alissa = User(lastname="WarrenGf", username='Alissa', email='alissa@aa.io', hashed_password='173', firstname='pump',
+                  zipcode='23798478',  about='i am', profile_pic='jfhskjdhfksjhf')
     db.session.add(ian)
     db.session.add(javier)
     db.session.add(dean)

@@ -1,13 +1,14 @@
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import relationship, backref
 
 db = SQLAlchemy()
 
-follows = db.Table(
-    "follows",
-    db.Model.metadata,
-    db.Column('following_id', db.Integer, db.ForeignKey("users.id"), primary_key=True),  # noqa
-    db.Column('follower_id', db.Integer, db.ForeignKey("users.id"), primary_key=True)  # noqa
-)
+# follows = db.Table(
+#     "follows",
+#     db.Model.metadata,
+#     db.Column('following_id', db.Integer, db.ForeignKey("users.id"), primary_key=True),  # noqa
+#     db.Column('follower_id', db.Integer, db.ForeignKey("users.id"), primary_key=True)  # noqa
+# )
 
 
 class User(db.Model):
@@ -16,9 +17,9 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
-    hashed_password = db.Column(db.Binary(100), nullable=False, unique=True)
-    first_name = db.Column(db.String(40), nullable=False, unique=True)
-    last_name = db.Column(db.String(40), nullable=False, unique=True)
+    hashed_password = db.Column(db.String(100), nullable=False)
+    firstname = db.Column(db.String(40), nullable=False)
+    lastname = db.Column(db.String(40), nullable=False)
     zipcode = db.Column(db.Integer, nullable=False)
     about = db.Column(db.Text)
     profile_pic = db.Column(db.String)
@@ -29,8 +30,8 @@ class User(db.Model):
     likes = db.relationship("Like", backref="user")
     replies = db.relationship("Reply", backref="user")
 
-    following = db.relationship("User", secondary=follows, backref="user")
-    followers = db.relationship("User", secondary=follows, backref="user")
+    # following = db.relationship("User", secondary=follows, backref="user", foreign_keys=['users.id'])  # noqa
+    # followers = db.relationship("User", secondary=follows, backref="user", foreign_keys=['users.id'])  # noqa
 
 
 class Tweet(db.Model):
@@ -82,3 +83,13 @@ class Like(db.Model):
 #     id = db.Column(db.Integer, primary_key=True)
 #     following_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)  # noqa
 #     follower_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)  # noqa
+
+
+# class Follow(db.Model):
+#     __tablename__ = 'follows'
+#     id = db.Column(db.Integer, primary_key=True)
+#     follower_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+#     follows_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+#     followers = relationship(User, backref=backref("users"))
+#     follows = relationship(User, backref=backref("users"))
