@@ -3,12 +3,21 @@ from sqlalchemy.orm import relationship, backref
 
 db = SQLAlchemy()
 
-# follows = db.Table(
-#     "follows",
-#     db.Model.metadata,
-#     db.Column('following_id', db.Integer, db.ForeignKey("users.id"), primary_key=True),  # noqa
-#     db.Column('follower_id', db.Integer, db.ForeignKey("users.id"), primary_key=True)  # noqa
-# )
+follows = db.Table(
+    "follows",
+    db.Model.metadata,
+    db.Column('follow_relations', db.Integer, primary_key=True),
+    db.Column('following_id', db.Integer, db.ForeignKey("users.id")),  # noqa
+    db.Column('follower_id', db.Integer, db.ForeignKey("users.id"))  # noqa
+)
+
+
+# class Follow(db.Model):
+#     __tablename__ = 'follows'
+
+#     id = db.Column(db.Integer, primary_key=True)
+#     following_id = db.Column(db.Integer, db.ForeignKey("users.id"))  # noqa
+#     follower_id = db.Column(db.Integer, db.ForeignKey("users.id"))  # noqa
 
 
 class User(db.Model):
@@ -30,8 +39,12 @@ class User(db.Model):
     likes = db.relationship("Like", backref="user")
     replies = db.relationship("Reply", backref="user")
 
-    # following = db.relationship("User", secondary=follows, backref="user", foreign_keys=['users.id'])  # noqa
-    # followers = db.relationship("User", secondary=follows, backref="user", foreign_keys=['users.id'])  # noqa
+    following = db.relationship("User",
+                                secondary=follows,
+                                primaryjoin=id == follows.c.following_id,
+                                secondaryjoin=id == follows.c.follower_id,
+                                backref="followed",
+                                lazy="dynamic")  # noqa
 
 
 class Tweet(db.Model):
@@ -75,14 +88,6 @@ class Like(db.Model):
     liked_tweet = db.Column(db.Integer, db.ForeignKey("tweets.id"), nullable=True)  # noqa
     liked_retweet = db.Column(db.Integer, db.ForeignKey("retweets.id"), nullable=True)  # noqa
     liked_reply = db.Column(db.Integer, db.ForeignKey("replies.id"), nullable=True)  # noqa
-
-
-# class Follow(db.Model):
-#     __tablename__ = 'follows'
-
-#     id = db.Column(db.Integer, primary_key=True)
-#     following_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)  # noqa
-#     follower_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)  # noqa
 
 
 # class Follow(db.Model):

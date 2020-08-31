@@ -1,4 +1,4 @@
-from starter_app.models import User, Follow
+from starter_app.models import User
 from starter_app import app, db
 from dotenv import load_dotenv
 load_dotenv()
@@ -20,6 +20,9 @@ with app.app_context():
                   zipcode='23798478',  about='i am', profile_pic='jfhskjdhfksjhf')
     alissa = User(lastname="WarrenGf", username='Alissa', email='alissa@aa.io', hashed_password='173', firstname='pump',
                   zipcode='23798478',  about='i am', profile_pic='jfhskjdhfksjhf')
+
+    alissa.following = [ian, javier]
+
     db.session.add(ian)
     db.session.add(javier)
     db.session.add(dean)
@@ -28,3 +31,7 @@ with app.app_context():
     db.session.add(alissa)
 
     db.session.commit()
+
+    u = User.query.filter_by(username='Ian')
+    print(u)
+    print(u[0].followed)
