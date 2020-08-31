@@ -25,9 +25,9 @@ class User(db.Model):
     pinned_tweet = db.Column(db.Integer)
 
     tweets = db.relationship("Tweet", backref="user")
-    retweets = db.relationship("ReTweet", backref="user")
-    likes = db.relationship("User", backref="user")
-    replies = db.relationship("User", backref="user")
+    retweets = db.relationship("Retweet", backref="user")
+    likes = db.relationship("Like", backref="user")
+    replies = db.relationship("Reply", backref="user")
 
     following = db.relationship("User", secondary=follows, backref="user")
     followers = db.relationship("User", secondary=follows, backref="user")
