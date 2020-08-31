@@ -42,7 +42,7 @@ def login():
             # Error needs handling decision
             return {'message': 'passCheck failed'}, 403
         else:
-            auth_token = create_access_token(idenity={"id": user.id})
+            auth_token = create_access_token(identity={"id": user.id})
             return jsonify(auth_token=auth_token), 200
     except Exception as ex:
         # Error needs handling decision
@@ -85,7 +85,7 @@ def signup():
         db.session.add(order)
         db.session.commit()
 
-        auth_token = create_access_token(idenity={"id": user.id})
+        auth_token = create_access_token(identity={"id": user.id})
         # This return will need to be refined
         return jsonify(auth_token=auth_token), 200
 

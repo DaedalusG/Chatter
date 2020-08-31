@@ -38,7 +38,22 @@ class User(db.Model):
                                 backref="followed",
                                 lazy="dynamic")  # noqa
 
+    @property
+    def hashedPassword(self):
+        return hashedPassword
 
+    def to_safe_object(self):
+        return {
+            "id": self.id,
+            "userName": self.userName,
+            "email": self.email,
+            "firstName": self.firstName,
+            "lastName": self.lastName,
+            "zipCode": self.zipCode,
+            "pinnedTweet": self.pinnedTweet,
+            "about": self.about,
+            "profilePic": self.profilePic
+        }
 
 
 class Tweet(db.Model):

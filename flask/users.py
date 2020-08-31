@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from flask_jwt_extended import jwt_required
+from flask_jwt_extended import jwt_required, get_jwt_identity
 
 
 from models import db, User
@@ -13,11 +13,12 @@ user_routes = Blueprint('users', __name__, url_prefix='/users')
 @jwt_required
 def all_users():
     res = User.query.all()
-    return {"users": [user.to_safe_object() for user in res]}
+    return jsonify({"users": [user.to_safe_object() for user in res]})
 
 
 @user_routes.route('/<int:id>')
 @jwt_required
 def user_by_id():
+    current_user = get_jwt_identity()
     user = User.query.get(int(id))
-    return {"user": user.to_safe_object}
+    return jsonify({"user": user.to_safe_object})
