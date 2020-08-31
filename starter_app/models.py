@@ -12,14 +12,6 @@ follows = db.Table(
 )
 
 
-# class Follow(db.Model):
-#     __tablename__ = 'follows'
-
-#     id = db.Column(db.Integer, primary_key=True)
-#     following_id = db.Column(db.Integer, db.ForeignKey("users.id"))  # noqa
-#     follower_id = db.Column(db.Integer, db.ForeignKey("users.id"))  # noqa
-
-
 class User(db.Model):
     __tablename__ = 'users'
 
@@ -88,13 +80,3 @@ class Like(db.Model):
     liked_tweet = db.Column(db.Integer, db.ForeignKey("tweets.id"), nullable=True)  # noqa
     liked_retweet = db.Column(db.Integer, db.ForeignKey("retweets.id"), nullable=True)  # noqa
     liked_reply = db.Column(db.Integer, db.ForeignKey("replies.id"), nullable=True)  # noqa
-
-
-# class Follow(db.Model):
-#     __tablename__ = 'follows'
-#     id = db.Column(db.Integer, primary_key=True)
-#     follower_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-#     follows_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-
-#     followers = relationship(User, backref=backref("users"))
-#     follows = relationship(User, backref=backref("users"))
