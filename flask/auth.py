@@ -1,6 +1,5 @@
-from flask import Blueprint, request, redirect, url_for
-from flask_jwt_extended import (
-    JWTManager, jwt_required, create_access_token, get_jwt_identity)
+from flask import Blueprint, request, jsonify
+from flask_jwt_extended import JWTManager, create_access_token
 import bcrypt
 
 from models import db, User
@@ -44,7 +43,7 @@ def login():
             return {'message': 'passCheck failed'}, 403
         else:
             auth_token = create_access_token(idenity={"id": user.id})
-            return {"auth_token"}
+            return jsonify(auth_token=auth_token), 200
     except Exception as ex:
         # Error needs handling decision
         return {'message': 'Login Failed'}, 500
@@ -85,5 +84,10 @@ def signup():
         )
         db.session.add(order)
         db.session.commit()
+
+        auth_token = create_access_token(idenity={"id": user.id})
+        # This return will need to be refined
+        return jsonify(auth_token=auth_token), 200
+
     except Exception:
         return {'message': Exception}, 400
