@@ -188,6 +188,9 @@
 #main-c__left__bottom-c{
   height: 400px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 #tweet-button{
   background-color:  rgba(29,161,242,1.00);
@@ -212,10 +215,13 @@
 #tweet-button:hover{
   background-color:  rgb(26, 145, 219);
 }
+
 #main-c__left__login{
   width: 260px;
   height: 50px;
   border-radius: 999px;
+  position: fixed;
+  bottom: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
