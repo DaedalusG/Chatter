@@ -1,0 +1,172 @@
+#center-panel{
+  width: 600px;
+  height: 100vh;
+  border: 1px solid pink;
+}
+#center-panel__nav{
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+#center-panel__nav span{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin-left: 15px;
+}
+.sparkles{
+  width: 25px;
+  height: 25px;
+  fill: rgba(29,161,242,1.00);
+  margin-right: 10px;
+}
+#center-panel__below-nav{
+  width: 100%;
+  height: 100%;
+  /* border-bottom: 10px solid rgb(229, 236, 238); */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  /* background-color: pink; */
+}
+#center-panel__below-nav__profile-bublle-c{
+  width: 90px;
+  height: 100px;
+  /* background-color: green; */
+  position: absolute;
+
+}
+.profile-bubble-2{
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+  border: 1px solid black;
+  background-image: url(../images/4a1.png);
+  background-size: cover;
+  margin: 13px 0px 0px 15px;
+}
+#center-panel__below-nav__content-c{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  /* border-bottom: 10px solid rgb(229, 236, 238); */
+}
+.below-nav-section{
+  /* height: 50%; */
+  min-height: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  /* background-color: yellowgreen; */
+}
+#tweet-textarea{
+  /* height: 100%; */
+  width: 100%;
+  border: none;
+  font-size: 20px;
+  /* text-align: center; */
+  text-indent: 0px;
+}
+.input-wrap {
+  position: relative;
+}
+.input-wrap .input {
+  position: absolute;
+  width: 100%;
+  left: 0;
+}
+.width-machine {
+  /*   Sort of a magic number to add extra space for number spinner */
+  padding: 0 1rem;
+}
+
+.textarea {
+  font-family: inherit;
+  font-size: 19px;
+  /* display: block; */
+  width: 490px;
+  /* overflow: hidden; */
+  resize: none;
+  min-height: 30px;
+  line-height: 20px;
+  border: none;
+  outline: none;
+  padding-bottom: 28px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+  position: relative;
+  margin: 30px 30px 0px 75px;
+}
+
+.textarea[contenteditable]:empty::before {
+  content: "  What's happening?";
+  color: gray;
+}
+
+.below-nav-section-2{
+  width: 100%;
+  display: flex;
+  border-bottom: 10px solid rgb(229, 236, 238);
+  z-index: 1;
+}
+.landscape{
+  height: 23px;
+  fill: rgba(29,161,242,1.00);
+  margin-left: 80px;
+}
+.gifbox{
+  height: 23px;
+  fill: rgba(29,161,242,1.00);
+  margin-left: 19px;
+}
+.pollbox{
+  height: 23px;
+  fill: rgba(29,161,242,1.00);
+  margin-left: 19px;
+}
+.pollbox{
+  height: 23px;
+  fill: rgba(29,161,242,1.00);
+  margin-left: 19px;
+}
+.smiley-face{
+  height: 23px;
+  fill: rgba(29,161,242,1.00);
+  margin-left: 19px;
+}
+.calendar{
+  height: 23px;
+  fill: rgba(29,161,242,1.00);
+  margin-left: 19px;
+}
+#tweet-button-2{
+  background-color:  rgba(29,161,242,1.00);
+  width: 75px;
+  height: 40px;
+  border-radius: 999px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition-property: background-color;
+  transition-duration: .2s;
+  position: relative;
+  top: -8px;
+  left: 240px;
+
+}
+#tweet-button-2 span{
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 1;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+  color: rgb(255, 255, 255);
+}
+
