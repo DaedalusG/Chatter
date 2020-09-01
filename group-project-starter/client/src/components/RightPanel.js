@@ -47,6 +47,44 @@ const RightPanel = ()=>{
           <div className={"news-pic"} ></div>
         </div>
       </div>
+
+
+      <div id={"main-c__right__suggestions-c"}>
+        <div id={"main-c__right__suggestions-c__top"} ><span>Who to follow</span></div>
+        <div className={"main-c__right__suggestions-c__feed"}>
+          <div id={"main-c__right__user-pic-bublle-c"}>
+            <div className={"profile-bubble-3"} ></div>
+          </div>
+          <div className={"suggestions-feed"}>
+            <p>Shera</p>
+            <p>@shera</p>
+          </div>
+          <div className={"follow-button-suggestions"} > <span>Follow</span> </div>
+        </div>
+        <div className={"main-c__right__suggestions-c__feed"}>
+          <div id={"main-c__right__user-pic-bublle-c"}>
+            <div className={"profile-bubble-3"} ></div>
+          </div>
+          <div className={"suggestions-feed"}>
+            <p>Shera</p>
+            <p>@shera</p>
+          </div>
+          <div className={"follow-button-suggestions"} > <span>Follow</span> </div>
+        </div>
+        <div className={"main-c__right__suggestions-c__feed"}>
+          <div id={"main-c__right__user-pic-bublle-c"}>
+            <div className={"profile-bubble-3"} ></div>
+          </div>
+          <div className={"suggestions-feed"}>
+            <p>Shera</p>
+            <p>@shera</p>
+          </div>
+          <div className={"follow-button-suggestions"} > <span>Follow</span> </div>
+        </div>
+        <div id={"main-c__right__suggestions-c__discaimer"} > <span>Terms Privacy policy Cookies Ads info More</span> </div>
+      </div>
+
+
     </div>
   )
 }

@@ -88,3 +88,85 @@
   margin-right: 20px;
   border-radius: 15px;
 }
+#main-c__right__suggestions-c{
+  width: 350px;
+  height: 300px;
+  margin: 15px 0px 0px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: #F5F8FA;
+  border-radius: 18px;
+  display: flex;
+}
+#main-c__right__suggestions-c__top{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 48px;
+  border-bottom: 1px solid rgb(235, 233, 233);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+  font-weight: 800;
+  font-size: 19px;
+}
+.main-c__right__suggestions-c__feed{
+  height: 90px;
+  width: 100%;
+  border-bottom: 1px solid rgb(235, 233, 233);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+#main-c__right__user-pic-bublle-c{
+  width: 45px;
+  height: 100px;
+  /* background-color: green; */
+  /* position: absolute; */
+  margin: 25px 0px auto 15px;
+
+}
+.profile-bubble-3{
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+  background-image: url(../images/SheraHeman.jpg);
+  background-size: cover;
+  
+}
+.suggestions-feed{
+  margin: 5px 0px 0px 20px;
+  font-size: 15px;
+}
+.follow-button-suggestions{
+  height: 30px;
+  width: 80px;
+  border-radius: 999px;
+  border: 1px solid rgba(29,161,242,1.00);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition-property: background-color;
+  transition-duration: .2s;
+  position: relative;
+  margin-left: 130px;
+}
+
+.follow-button-suggestions span{
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 1;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+  color: rgba(29,161,242,1.00);
+}
+#main-c__right__suggestions-c__disclaimer{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+#main-c__right__suggestions-c__disclaimer span{
+  margin: 10px 0px 0px 0px;
+}
