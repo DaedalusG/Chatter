@@ -25,12 +25,14 @@ class User(db.Model):
   zipcode = db.Column(db.String(20), nullable=False)
   about = db.Column(db.Text)
   profile_pic = db.Column(db.String)
-  pinned_tweet = db.Column(db.Integer)
+  # pinned_tweet = db.Column(db.Integer)
 
   tweets = db.relationship("Tweet", backref="user")
   retweets = db.relationship("Retweet", backref="user")
   likes = db.relationship("Like", backref="user")
   replies = db.relationship("Reply", backref="user")
+
+
 
   following = db.relationship("User",
                               secondary=follows,
@@ -51,7 +53,7 @@ class User(db.Model):
       "firstname": self.firstname,
       "lastname": self.lastname,
       "zipcode": self.zipcode,
-      "pinned_tweet": self.pinned_tweet,
+      # "pinned_tweet": self.pinned_tweet,
       "about": self.about,
       "profile_pic": self.profile_pic
     }
@@ -65,9 +67,18 @@ class Tweet(db.Model):
   content = db.Column(db.Text, nullable=False)
   media = db.Column(db.Text)
 
-  likes = db.relationship('Like', backref='tweet')
-  replies = db.relationship('Reply', backref='tweet')
-  retweets = db.relationship('Retweet', backref='tweet')
+  # likes = db.relationship('Like', backref='tweet')
+  # replies = db.relationship('Reply', backref='tweet')
+  # retweets = db.relationship('Retweet', backref='tweet')
+  # user = db.relationship('User', back_populates="tweets")
+
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "user_id": self.user_id,
+      "content": self.content,
+      "media": self.media,
+    }
 
 
 class Retweet(db.Model):
