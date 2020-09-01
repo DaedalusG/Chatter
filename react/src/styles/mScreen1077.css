@@ -1,0 +1,25 @@
+@media screen and (max-width: 1077px){
+  #main-c__right__search-bar{
+    margin: 5px 0px 0px 20px;
+
+  }
+  .main-c__right__event-c__news{
+    width: 320px;
+  }
+  #main-c__right__event-c{
+    width: 320px;
+    margin: 15px 0px 0px 20px;
+  }
+  #main-c__right__suggestions-c{
+    width: 320px;
+    margin: 15px 0px 0px 20px;
+  }
+  .main-c__right__suggestions-c__feed{
+    width: 320px;
+  }
+  #main-c__right__suggestions-c__disclaimer{
+    width: 320px;
+    
+  }
+
+}

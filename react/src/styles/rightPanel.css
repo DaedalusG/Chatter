@@ -7,6 +7,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   overflow-y: scroll;
+  border: 1px solid red;
 }
 #main-c__right__search-bar{
   width: 350px;
@@ -114,7 +115,10 @@
   border-bottom: 1px solid rgb(235, 233, 233);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
   font-weight: 800;
-  font-size: 19px;
+  font-size: 19px; 
+}
+#main-c__right__suggestions-c__top span{
+  margin-left: 20px;
 }
 .main-c__right__suggestions-c__feed{
   height: 90px;
@@ -160,7 +164,7 @@
   transition-property: background-color;
   transition-duration: .2s;
   position: relative;
-  margin-left: 130px;
+  margin-left: 100px;
   transition-property: background-color;
   transition-duration: .2s;
 }
