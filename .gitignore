@@ -5,6 +5,7 @@ node_modules/
 *.pem
 .commands
 *.pem:Zone.Identifier
+flask/.env
 
 # Environments
 .env
