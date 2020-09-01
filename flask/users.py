@@ -19,6 +19,8 @@ def all_users():
 @user_routes.route('/<int:id>')
 @jwt_required
 def user_by_id():
-    current_user = get_jwt_identity()
+    # -- Future use of JWT library
+    # current_user = get_jwt_identity()
+    # current_user = User.query.get(int(get_jwt_identity()))
     user = User.query.get(int(id))
     return jsonify({"user": user.to_safe_object})
