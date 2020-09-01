@@ -24,13 +24,13 @@ services:
       - target: 5432
         published: 80
     networks:
-      twitter:
+      chatter:
         aliases:
-          - "twitter"
+          - "chatter"
 
-# volumes:
-#   postgres-db:
+volumes:
+  postgres-db:
 
 networks:
-  twitter:
+  chatter:
     driver: bridge

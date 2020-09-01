@@ -1,16 +1,15 @@
-from flask import Blueprint, jsonify
-from starter_app.models import User
+from flask import Blueprint, jsonify, request
+from models import db
 import requests
 from faker import Faker
 
 fake = Faker()
-user_routes = Blueprint('seed', __name__)
+seed = Blueprint('seed', __name__)
 
-@app.route("/", methods=["GET"])
+@seed.route("/", methods=["GET"])
 def seeder():
-
-  num = int(request.args.get("num"))
-  seeds = num if num>=1 else 1
+  
+  seeds = int(request.args.get("num")) if request.args.get("num") else 1
 
   for seed in range(seeds):
     # try to get data

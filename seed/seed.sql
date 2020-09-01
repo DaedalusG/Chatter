@@ -1,13 +1,14 @@
-INSERT INTO users (email, hashedpassword, firstname, lastname, zipcode, about, profilepic) 
+INSERT INTO users (username, email, hashed_password, firstname, lastname, zipcode, about, profile_pic) 
 VALUES
-('demo@demo.com', 'password', 'demo', 'user', '33467', 'If youre sacred jump in my pocket', 'https://pbs.twimg.com/profile_images/1036730403514736650/PCRxFiEt_400x400.jpg'),
-('elon@spacex.com', 'password', 'Elon', 'Musk', '77562', 'I like to dream big!', 'https://pbs.twimg.com/profile_images/1295975423654977537/dHw9JcrK_400x400.jpg'),
-('mfdoom@life.com', 'password', 'MF', 'Doom', '65373', 'Daniel Dumile DOOM-ee-lay, better known by several stage names, most notably MF Doom, is a British rapper, songwriter, and record producer.', 'https://www.gstatic.com/tv/thumb/persons/1021025/1021025_v9_ba.jpg'),
-('reed@f4.com', 'password', 'Reed', 'Richards', '87323', 'Richards possesses a mastery of mechanical, aerospace and electrical engineering, chemistry, all levels of physics, and human and alien biology.', 'https://images-na.ssl-images-amazon.com/images/I/51tG%2BuOuXqL._AC_SX425_.jpg'),
-('pizzasupreme@green.com', 'password', 'Vermin', '11589', '99654', 'He currently serves as a member of the Libertarian Partys judicial committee.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Vermin_Supreme_August_2019.jpg/1200px-Vermin_Supreme_August_2019.jpg'),
-('isthereapoint@pushtherock.com', 'password', 'Albert', 'Camus', '14986', 'He won the Nobel Prize in Literature at the age of 44 in 1957, the second-youngest recipient in history.', 'https://miro.medium.com/max/900/1*9NfF1Q4cPyO7ZLpCFJh6OA.jpeg')
+('demouser', 'demo@demo.com', 'password', 'demo', 'user', '33467', 'If youre sacred jump in my pocket', 'https://pbs.twimg.com/profile_images/1036730403514736650/PCRxFiEt_400x400.jpg'),
+('elonmusk', 'elon@spacex.com', 'password', 'Elon', 'Musk', '77562', 'I like to dream big!', 'https://pbs.twimg.com/profile_images/1295975423654977537/dHw9JcrK_400x400.jpg'),
+('mfdoom', 'mfdoom@life.com', 'password', 'MF', 'Doom', '65373', 'Daniel Dumile DOOM-ee-lay, better known by several stage names, most notably MF Doom, is a British rapper, songwriter, and record producer.', 'https://www.gstatic.com/tv/thumb/persons/1021025/1021025_v9_ba.jpg'),
+('rrf4', 'reed@f4.com', 'password', 'Reed', 'Richards', '87323', 'Richards possesses a mastery of mechanical, aerospace and electrical engineering, chemistry, all levels of physics, and human and alien biology.', 'https://images-na.ssl-images-amazon.com/images/I/51tG%2BuOuXqL._AC_SX425_.jpg'),
+('supremepizza', 'pizzasupreme@green.com', 'password', 'Vermin', 'Supreme', '99654', 'He currently serves as a member of the Libertarian Partys judicial committee.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Vermin_Supreme_August_2019.jpg/1200px-Vermin_Supreme_August_2019.jpg'),
+('albercamus', 'isthereapoint@pushtherock.com', 'password', 'Albert', 'Camus', '14986', 'He won the Nobel Prize in Literature at the age of 44 in 1957, the second-youngest recipient in history.', 'https://miro.medium.com/max/900/1*9NfF1Q4cPyO7ZLpCFJh6OA.jpeg')
 ;
-INSERT INTO tweets (userid, content, media) 
+
+INSERT INTO tweets (user_id, content, media) 
 VALUES 
 (1, 'My sister is so embarrassing, and I want to dream bigger. For all funky fluff, in the end. #cheapbling #randomtweet', 'http://placeimg.com/640/480/any'),
 (1, 'My smile is fantastic, and I want to go to Mars. Here is to more cowards, strictly speaking. #sometrain #randomtweet', 'http://placeimg.com/640/480/any'),
