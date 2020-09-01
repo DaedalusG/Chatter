@@ -71,6 +71,7 @@
 }
 #hash-c{
   width:140px;
+  
 }
 .hash{
   height: 30px;
@@ -234,7 +235,7 @@
   width: 40px;
   height: 40px;
   border-radius: 100%;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   background-image: url(../images/4a1.png);
   background-size: cover;
 }

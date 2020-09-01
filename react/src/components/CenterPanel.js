@@ -8,6 +8,11 @@ import Calendar from '../images/Calendar'
 
 
 const CenterPanel = ()=>{
+
+  const postFunction = ()=>{
+      console.log("submit a tweet")
+  }
+
   return(
     <>
     <div id={"center-panel"}>
@@ -31,7 +36,7 @@ const CenterPanel = ()=>{
             <PollBox></PollBox>
             <SmileyFace></SmileyFace>
             <Calendar></Calendar>
-            <div id={"tweet-button-2"}>
+            <div onClick={postFunction}  id={"tweet-button-2"}>
               <span>Tweet</span>
             </div>
           </div>

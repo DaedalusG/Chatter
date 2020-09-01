@@ -9,7 +9,8 @@ import Bookmark from '../images/Bookmark';
 import Paper from '../images/Paper';
 import Person from '../images/Person';
 import CirclesMore from '../images/CirclesMore';
-import DownCarrot from '../images/DownCarrot'
+import DownCarrot from '../images/DownCarrot';
+import Feather from '../images/Feather';
 
 const LeftPanel = ()=>{
   return(
@@ -76,6 +77,7 @@ const LeftPanel = ()=>{
       <div id={"main-c__left__bottom-c"} >
         <div id={"tweet-button"}>
           <span>Tweet</span>
+          <Feather></Feather>
         </div>
         <div id={"main-c__left__login"}>
           <div className={"profile-bubble"} ></div>
