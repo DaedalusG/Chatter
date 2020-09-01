@@ -7,7 +7,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   overflow-y: scroll;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 #main-c__right__search-bar{
   width: 350px;

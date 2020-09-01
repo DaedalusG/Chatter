@@ -1,7 +1,11 @@
 @media screen and (max-width: 1077px){
+  #main-c__right{
+    width: 350px;
+    
+  }
   #main-c__right__search-bar{
     margin: 5px 0px 0px 20px;
-
+    width: 320px;
   }
   .main-c__right__event-c__news{
     width: 320px;

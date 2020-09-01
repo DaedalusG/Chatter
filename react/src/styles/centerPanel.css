@@ -33,13 +33,23 @@
 }
 #center-panel__below-nav{
   width: 100%;
-  height: 100%;
+  /* height: auto; */
   /* border-bottom: 10px solid rgb(229, 236, 238); */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+
+  /* position: fixed; */
+  overflow-y: auto;
   /* background-color: pink; */
+  position: relative;
+}
+.center-panel__below-nav__scroll{
+  height: 2000px;
+  width: 100%;
+  overflow: auto;
+  position: relative;
 }
 #center-panel__below-nav__profile-bublle-c{
   width: 90px;
@@ -207,4 +217,56 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
   color: rgb(255, 255, 255);
 }
+.tweet-c{
+  width: 100%;
+  height: auto;
+  border: 1px solid rgb(233, 232, 232);
+}
+.tweet-c__top{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.user__profile-pic{
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  margin: 15px 0px 0px 15px;
+}
+
+.tweet-c__user-name{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+  font-weight: 700;
+  margin-left: 10px;
+}
+.tweet-c__comment{
+  margin-left: 75px !important;
+  width: 505px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+  margin: 0px;
+  position: relative;
+  top: -20px;
+  /* border: 1px solid blue; */
+  
+}
+.tweet-c__comment p{
+  padding: 0px;
+  margin: 0px;
+}
+.tweet-pic{
+  width: 85%;
+  border-radius: 20px;
+  margin: 0px 0px 0px 75px;
+  position: relative;
+  top: -10px;
+}
+/* .all-tweets-c{
+  position: absolute;
+} */
+
+
+
 
