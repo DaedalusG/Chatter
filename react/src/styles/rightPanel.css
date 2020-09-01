@@ -67,6 +67,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition-property: background-color;
+  transition-duration: .2s;
+}
+.main-c__right__event-c__news:hover{
+  background-color: rgb(233, 232, 232);
 }
 .news-feed{
   height: 100%;
@@ -118,6 +123,11 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  transition-property: background-color;
+  transition-duration: .2s;
+}
+.main-c__right__suggestions-c__feed:hover{
+  background-color: rgb(233, 232, 232);
 }
 #main-c__right__user-pic-bublle-c{
   width: 45px;
@@ -151,6 +161,11 @@
   transition-duration: .2s;
   position: relative;
   margin-left: 130px;
+  transition-property: background-color;
+  transition-duration: .2s;
+}
+.follow-button-suggestions:hover{
+  background-color: rgb(213, 231, 238);
 }
 
 .follow-button-suggestions span{
