@@ -1,7 +1,10 @@
-
+# Project Specefic
 .env
 node_modules/
 .vscode/
+*.pem
+.commands
+*.pem:Zone.Identifier
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
