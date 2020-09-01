@@ -17,3 +17,4 @@ flask-jwt-extended==3.24.1
 flask-migrate==2.5.3
 requests==2.24.0
 Faker==4.1.2
+flask-jwt-extended==3.24.1
