@@ -13,7 +13,7 @@
 #main-c{
   width: 1240px;
   height: 100vw;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
