@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './index.css';
 import './styles/mainPage.css';
 import './styles/leftPanel.css';
 import './styles/rightPanel.css';
