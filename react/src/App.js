@@ -1,16 +1,16 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
-import MainPage from './components/MainPage'
+import React from "react";
+import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
+import MainPage from "./components/MainPage";
 
-import UserList from './components/UsersList';
-
+import UserList from "./components/UsersList";
 
 function App() {
+  const needLogin = () => true;
 
   return (
     <BrowserRouter>
-        <MainPage></MainPage>
-        {/* <Switch>
+      {needLogin() ? <Login /> : <MainPage />}
+      {/* <Switch>
             <Route path="/users">
                 <UserList />
             </Route>
