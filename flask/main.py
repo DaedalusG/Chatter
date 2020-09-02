@@ -9,11 +9,14 @@ from models import db, Tweet, User
 from seed import seed
 # from tweets import tweets
 
+
 app = Flask(__name__)
 CORS(app)
 app.config.from_object(Config)
 app.register_blueprint(seed, url_prefix='/api/seed')
 # app.register_blueprint(tweets, url_prefix='/api/tweets/')
+
+
 db.init_app(app)
 jwt = JWTManager(app)
 

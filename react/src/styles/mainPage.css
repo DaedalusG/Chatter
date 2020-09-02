@@ -13,9 +13,9 @@
 #main-c{
   width: 1240px;
   height: 100vw;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
  
 }
