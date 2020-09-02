@@ -21,7 +21,7 @@ def verify_password(password, hashed_password):
         return False
 
 
-@auth_routes.route('/login/', methods=['GET'])
+@auth.route('/login/', methods=['GET'])
 def login():
     print('test')
     users = db.session.query(User).all()
@@ -53,7 +53,7 @@ def login():
         return {'message': 'Login Failed'}, 500
 
 
-@auth_routes.route('/signup', methods=['POST'])
+@auth.route('/signup', methods=['POST'])
 def signup():
     try:
         # Request objects are currently pseudocode
