@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from "react";
-import { apiUrl } from "../config";
+import { imageUrl } from "../config";
 import SignUp from "./SignUp";
 import Bird from '../images/Bird';
 
@@ -12,19 +11,21 @@ import Bird from '../images/Bird';
 
 
 
-const tryLogin = (email, password) => async () => {
-    const response = await fetch(`${apiUrl}/auth/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-    });
+// const tryLogin = (email, password) => async () => {
+//     console.log('hit the tryLogin block')
+//     const response = await fetch(`${imageUrl}/auth/login`, {
+//         method: "POST",
+//         mode: "cors",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify({ email: `${email}`, password: `${password}` }),
+//     });
 
-    if (response.ok) {
-        console.log("inside tryLogin: Success");
-    } else {
-        console.log("inside tryLogin: Response failure");
-    }
-};
+//     if (response.ok) {
+//         console.log("inside tryLogin: Success");
+//     } else {
+//         console.log("inside tryLogin: Response failure");
+//     }
+// };
 
 const Login = (props) => {
     const [signUpModal, setSignUpModal] = useState(false);
@@ -36,17 +37,24 @@ const Login = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Login.js handleSubmit fired");
-        tryLogin(email, password);
+        console.log(`Login.js handleSubmit fired ${email}, ${password}`);
+        // tryLogin(email, password);
+        const response = await fetch(`${imageUrl}/auth/login/`, {
+            method: "POST",
+            mode: "cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: `${email}`, password: `${password}` }),
+        });
+
+        if (response.ok) {
+            console.log("inside tryLogin: Success");
+        } else {
+            console.log("inside tryLogin: Response failure");
+        }
     };
 
     const updateEmail = (e) => setEmail(e.target.value);
     const updatePassword = (e) => setPassword(e.target.value);
-
-    useEffect(() => {
-        fetch('http://localhost:5000/auth/login/')
-        //tryLogin()
-    }, [email])
 
     return (
         <div className='login-container'>
@@ -69,12 +77,19 @@ const Login = (props) => {
                             placeholder="Password"
                             value={password}
                             onChange={updatePassword} />
-                        <button className="login-button" type="submit">Log in</button>
+                        <button
+                            className="login-button"
+                            type="submit"
+                        >Log in</button>
                         {/* <a className="login-footer" href="/sign_up">Sign up for Chatter</a> */}
                         <div className="signup--container">
-                            <SignUpModal show={signUpModal} handleClose={hideSignUpModal} />
+                            <SignUpModal
+                                show={signUpModal}
+                                handleClose={hideSignUpModal} />
                             <div className="signup__controls--container">
-                                <button className="button" onClick={showSignUpModal}>
+                                <button
+                                    className="button"
+                                    onClick={showSignUpModal}>
                                     Sign Up
                                 </button>
                             </div>
