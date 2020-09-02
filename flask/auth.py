@@ -50,8 +50,9 @@ def login():
         return {'message': 'Login Failed'}, 500
 
 
-@auth.route('/signup', methods=['POST'])
+@auth.route('/signup/', methods=['POST'])
 def signup():
+    print("Reached inside auth/signup")
     try:
         # Request objects are currently pseudocode
         username = request.username
