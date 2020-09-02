@@ -14,88 +14,88 @@ follows = db.Table(
 
 
 class User(db.Model):
-  __tablename__ = 'users'
+    __tablename__ = 'users'
 
-  id = db.Column(db.Integer, primary_key=True)
-  username = db.Column(db.String(40), nullable=False, unique=True)
-  email = db.Column(db.String(255), nullable=False, unique=True)
-  hashed_password = db.Column(db.String(100), nullable=False)
-  firstname = db.Column(db.String(40), nullable=False)
-  lastname = db.Column(db.String(40), nullable=False)
-  zipcode = db.Column(db.String(20), nullable=False)
-  about = db.Column(db.Text)
-  profile_pic = db.Column(db.String)
-  pinned_tweet = db.Column(db.Integer)
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(40), nullable=False, unique=True)
+    email = db.Column(db.String(255), nullable=False, unique=True)
+    hashed_password = db.Column(db.String(100), nullable=False)
+    firstname = db.Column(db.String(40), nullable=False)
+    lastname = db.Column(db.String(40), nullable=False)
+    zipcode = db.Column(db.String(20), nullable=False)
+    about = db.Column(db.Text)
+    profile_pic = db.Column(db.String)
+    pinned_tweet = db.Column(db.Integer)
 
-  tweets = db.relationship("Tweet", backref="user")
-  retweets = db.relationship("Retweet", backref="user")
-  likes = db.relationship("Like", backref="user")
-  replies = db.relationship("Reply", backref="user")
+    tweets = db.relationship("Tweet", backref="user")
+    retweets = db.relationship("Retweet", backref="user")
+    likes = db.relationship("Like", backref="user")
+    replies = db.relationship("Reply", backref="user")
 
-  following = db.relationship("User",
-                              secondary=follows,
-                              primaryjoin=id == follows.c.following_id,
-                              secondaryjoin=id == follows.c.followed_by_id,
-                              backref="followed_by",
-                              lazy="dynamic")  # noqa
+    following = db.relationship("User",
+                                secondary=follows,
+                                primaryjoin=id == follows.c.following_id,
+                                secondaryjoin=id == follows.c.followed_by_id,
+                                backref="followed_by",
+                                lazy="dynamic")  # noqa
 
-  @property
-  def hashed_password(self):
-    return hashed_password
+    @property
+    def hashed_password(self):
+        return hashed_password
 
-  def to_safe_object(self):
-    return {
-      "id": self.id,
-      "username": self.username,
-      "email": self.email,
-      "firstname": self.firstname,
-      "lastname": self.lastname,
-      "zipcode": self.zipcode,
-      "pinned_tweet": self.pinned_tweet,
-      "about": self.about,
-      "profile_pic": self.profile_pic
-    }
+    def to_safe_object(self):
+        return {
+            "id": self.id,
+            "username": self.username,
+            "email": self.email,
+            "firstname": self.firstname,
+            "lastname": self.lastname,
+            "zipcode": self.zipcode,
+            "pinned_tweet": self.pinned_tweet,
+            "about": self.about,
+            "profile_pic": self.profile_pic
+        }
 
 
 class Tweet(db.Model):
-  __tablename__ = 'tweets'
+    __tablename__ = 'tweets'
 
-  id = db.Column(db.Integer, primary_key=True)
-  user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)  # noqa
-  content = db.Column(db.Text, nullable=False)
-  media = db.Column(db.Text)
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)  # noqa
+    content = db.Column(db.Text, nullable=False)
+    media = db.Column(db.Text)
 
-  likes = db.relationship('Like', backref='tweet')
-  replies = db.relationship('Reply', backref='tweet')
-  retweets = db.relationship('Retweet', backref='tweet')
+    likes = db.relationship('Like', backref='tweet')
+    replies = db.relationship('Reply', backref='tweet')
+    retweets = db.relationship('Retweet', backref='tweet')
 
 
 class Retweet(db.Model):
-  __tablename__ = 'retweets'
+    __tablename__ = 'retweets'
 
-  id = db.Column(db.Integer, primary_key=True)
-  user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-  tweet_id = db.Column(db.Integer, db.ForeignKey('tweets.id'))
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    tweet_id = db.Column(db.Integer, db.ForeignKey('tweets.id'))
 
-  likes = db.relationship('Like', backref='retweet')
+    likes = db.relationship('Like', backref='retweet')
 
 
 class Reply(db.Model):
-  __tablename__ = 'replies'
+    __tablename__ = 'replies'
 
-  id = db.Column(db.Integer, primary_key=True)
-  user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)  # noqa
-  tweet_id = db.Column(db.Integer, db.ForeignKey("tweets.id"), nullable=False)  # noqa
-  content = db.Column(db.Text, nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)  # noqa
+    tweet_id = db.Column(db.Integer, db.ForeignKey("tweets.id"), nullable=False)  # noqa
+    content = db.Column(db.Text, nullable=False)
 
-  likes = db.relationship('Like', backref='reply')
+    likes = db.relationship('Like', backref='reply')
 
 
 class Like(db.Model):
-  __tablename__ = 'likes'
+    __tablename__ = 'likes'
 
-  id = db.Column(db.Integer, primary_key=True)
-  user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-  liked_tweet = db.Column(db.Integer, db.ForeignKey("tweets.id"), nullable=True)  # noqa
-  liked_retweet = db.Column(db.Integer, db.ForeignKey("retweets.id"), nullable=True)  # noqa
-  liked_reply = db.Column(db.Integer, db.ForeignKey("replies.id"), nullable=True)  # noqa
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    liked_tweet = db.Column(db.Integer, db.ForeignKey("tweets.id"), nullable=True)  # noqa
+    liked_retweet = db.Column(db.Integer, db.ForeignKey("retweets.id"), nullable=True)  # noqa
+    liked_reply = db.Column(db.Integer, db.ForeignKey("replies.id"), nullable=True)  # noqa
