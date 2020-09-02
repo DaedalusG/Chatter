@@ -6,12 +6,12 @@ import Login from "./components/Login";
 
 function App() {
 
-  const needLogin = () => false; // change to false for dev if need to login
+  const loggedIn = window.localStorage.getItem('auth_token');
 
   return (
     <BrowserRouter>
 
-      {needLogin() ? <Login /> : <MainPage />}
+      {loggedIn ? <MainPage /> : <Login /> }
 
       {/* <Switch>
             <Route path="/users">

@@ -1,7 +1,37 @@
 import React from "react";
 import "../styles/signup.css";
+import { imageUrl } from '../config';
 
 const SignUp = () => {
+
+  const testSignUp = async () => {
+    const testUser = {
+      username:"Tester",
+      email:"test@test.com",
+      password:"password",
+      firstname:"Testi",
+      lastname:"Person",
+      zipcode:"37409"
+    }
+
+    const response = await fetch(`${imageUrl}/auth/signup`, {
+      method: 'POST',
+      mode: 'cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(testUser)
+    });
+    if (response.ok) {
+      console.log("Response Success");
+    } else {
+      console.log("Response Failure")
+    }
+
+    const res = await response.json()
+    console.log(res)
+
+    window.localStorage.setItem('auth_token', res.auth_token)
+
+  }
 
   const monthOptions = [
     "January",
@@ -77,6 +107,11 @@ const SignUp = () => {
                 <option value="1813">1813</option>
               </select>
             </div>
+            <button
+              className="signup-form__testButton"
+              onClick={testSignUp}>
+              Sign Up Test Func
+            </button>
           </div>
         </div>
       </div>

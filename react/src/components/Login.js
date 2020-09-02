@@ -14,7 +14,7 @@ import Bird from '../images/Bird';
 
 const tryLogin = (email, password) => async () => {
     const response = await fetch(`${apiUrl}/auth/login`, {
-        method: "put",
+        method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
     });
@@ -36,7 +36,7 @@ const Login = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("reached HandleSubmit: ", email, password);
+        console.log("Login.js handleSubmit fired");
         tryLogin(email, password);
     };
 

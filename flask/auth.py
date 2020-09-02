@@ -50,32 +50,32 @@ def login():
         return {'message': 'Login Failed'}, 500
 
 
-@auth.route('/signup/', methods=['POST'])
+@auth.route('/signup', methods=['POST'])
 def signup():
-    print("Reached inside auth/signup")
+    data = request.get_json()
     try:
-        # Request objects are currently pseudocode
-        username = request.username
-        email = request.email
-        password = request.password
-        firstname = request.firstname
-        lastname = request.lastname
-        zipcode = int(request.zipcode)
+        username = data['username']
+        email = data['email']
+        firstname = data['firstname']
+        lastname = data['lastname']
+        zipcode = int(data['zipcode'])
 
         if not username:
-            return {'message': 'Username Required'}, 400
+            return jsonify(message="Username Required"), 400
         elif not email:
-            return {'message': 'Email Required'}, 400
-        elif not password:
-            return {'message': 'Password Required'}, 400
+            return jsonify(message= 'Email Required'), 400
         elif not firstname:
-            return {'message': 'First Name Required'}, 400
+            return jsonify(message= 'First Name Required'), 400
         elif not lastname:
-            return {'message': 'Last Name Required'}, 400
+            return jsonify(message= 'Last Name Required'), 400
         elif not zipcode:
-            return {'message': 'Zipcode Required'}, 400
+            return jsonify(message='Zipcode Required'), 400
 
-        hashed_password = set_password(password)
+        try:
+            hashed_password = set_password(data['password'])
+        except:
+            return jsonify(message= 'Password Required'), 400
+
         user = User(
             username=username,
             email=email,
@@ -84,12 +84,12 @@ def signup():
             lastname=lastname,
             zipcode=zipcode,
         )
-        db.session.add(order)
-        db.session.commit()
+        db.session.add(user)
+        # USER DOES NOT PUSH TO DATABASE YET -
+        # db.session.commit()
 
-        auth_token = create_access_token(identity={"id": user.id})
-        # This return will need to be refined
+        auth_token = create_access_token(identity={"email": user.email})
         return jsonify(auth_token=auth_token), 200
 
     except Exception:
-        return {'message': Exception}, 400
+        return jsonify({'message': "try failed"}), 409
