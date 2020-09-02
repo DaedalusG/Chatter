@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { apiUrl } from '../config';
+import { baseUrl, imageUrl } from '../config';
+
+// const test = () => async () => {
+//     const res = await fetch(`localhost:5000/auth/login/`)
+//     console.log(res)
+// }
 
 const tryLogin = (email, password) => async () => {
-    const response = await fetch(`${apiUrl}/auth/login`, {
-        method: 'put',
+    const response = await fetch(`${imageUrl}/auth/login/`, {
+        method: 'GET',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
     });
@@ -27,9 +33,13 @@ const Login = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log("reached HandleSubmit: ", email, password)
-        tryLogin(email, password);
-        //dispatch(login(email, password));
     };
+
+    useEffect(() => {
+        fetch('http://localhost:5000/auth/login/')
+        //tryLogin()
+    }, [email])
+
 
     const updateEmail = e => setEmail(e.target.value);
     const updatePassword = e => setPassword(e.target.value);

@@ -36,7 +36,7 @@ def seeder():
                 )
                 db.session.add(tweet)
 
-        except:
+        except:  # noqa
             return jsonify(Failure='Unable to get seed data :(')  # noqa
 
     # try to post to db
@@ -44,5 +44,5 @@ def seeder():
         db.session.commit()
         return jsonify(Success=f"Added {seeds} user and {seeds*10} tweets to database")  # noqa
 
-    except:
-        return jsonify(Failure='Unable to seed to database :(')  # noqa
+    except:  # noqa
+        return jsonify(Failure='Unable to seed to database :(')
