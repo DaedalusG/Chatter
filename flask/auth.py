@@ -44,8 +44,9 @@ def login():
         else:
             auth_token = create_access_token(identity={"id": user.id})
             return jsonify(auth_token=auth_token), 200
-    except Exception as ex:
+    except Exception:
         # Error needs handling decision
+        print(f'Entered except with: {Exception}')
         return {'message': 'Login Failed'}, 500
 
 
