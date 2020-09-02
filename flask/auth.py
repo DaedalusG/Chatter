@@ -42,7 +42,7 @@ def login():
             # Error needs handling decision
             return {'message': 'passCheck failed'}, 403
         else:
-            auth_token = create_access_token(identity={"id": user.id})
+            auth_token = create_access_token(identity={"email": user.email})
             return jsonify(auth_token=auth_token), 200
     except Exception:
         # Error needs handling decision
