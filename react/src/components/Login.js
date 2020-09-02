@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { apiUrl } from '../config';
 import { baseUrl, imageUrl } from '../config';
 
+import Bird from '../images/Bird';
+
 // const test = () => async () => {
 //     const res = await fetch(`localhost:5000/auth/login/`)
 //     console.log(res)
@@ -45,31 +47,32 @@ const Login = (props) => {
     const updatePassword = e => setPassword(e.target.value);
 
     return (
-        <div className='login-root'>
-            <div className='login-container'>
-                <div className='left-block'>
-                    <p>Left Info Block</p>
-                </div>
-                <div className='right-block'>
-                    <p>Right Block with Form Functions</p>
-                    <div className="">
-                        <form onSubmit={handleSubmit}>
-                            <input
-                                type="text"
-                                placeholder="Email"
-                                value={email}
-                                onChange={updateEmail} />
-                            <input
-                                type="password"
-                                placeholder="Password"
-                                value={password}
-                                onChange={updatePassword} />
-                            <button type="submit">Login</button>
-                        </form>
-                    </div>
+        <div className='login-container'>
+            <div className='login-block'>
+                <div><Bird></Bird></div>
+                <div className="login-block-header">Log in to Chatter</div>
+                <div className="login">
+                    <form className="login-form" onSubmit={handleSubmit}>
+                        <input
+                            className="login-input-field"
+                            type="text"
+                            placeholder="Email"
+                            value={email}
+                            onChange={updateEmail} />
+
+
+                        <input
+                            className="login-input-field"
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={updatePassword} />
+                        <button className="login-button" type="submit">Log in</button>
+                        <a className="login-footer" href="/sign_up">Sign Up</a>
+                    </form>
                 </div>
             </div>
-        </div >
+        </div>
     )
 }
 
