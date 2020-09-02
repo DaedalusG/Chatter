@@ -1,10 +1,19 @@
-import React, { useState } from "react";
-import { apiUrl } from "../config";
-import SignUp from "./SignUp";
 
+import React, { useState, useEffect } from "react";
+import { apiUrl, baseUrl, imageUrl } from "../config";
+import SignUp from "./SignUp";
+import Bird from '../images/Bird';
+
+// const test = () => async () => {
+//     const res = await fetch(`localhost:5000/auth/login/`)
+//     console.log(res)
+// }
+
+
+  
 const SignUpModal = ({ handleClose, show }) => {
   const showHideClassName = show ? "modal is-active" : "modal";
-
+  
   return (
     <>
       <div className={showHideClassName}>
@@ -34,9 +43,6 @@ const tryLogin = (email, password) => async () => {
 
   if (response.ok) {
     console.log("inside tryLogin: Success");
-    // const { token } = await response.json();
-    // window.localStorage.setItem(TOKEN_KEY, token);
-    // dispatch(setToken(token));
   } else {
     console.log("inside tryLogin: Response failure");
   }
@@ -54,38 +60,40 @@ const Login = (props) => {
     e.preventDefault();
     console.log("reached HandleSubmit: ", email, password);
     tryLogin(email, password);
-    //dispatch(login(email, password));
   };
 
   const updateEmail = (e) => setEmail(e.target.value);
   const updatePassword = (e) => setPassword(e.target.value);
 
-  return (
-    <div className="login-root">
-      <div className="login-container">
-        <div className="left-block">
-          <p>Left Info Block</p>
-        </div>
-        <div className="right-block">
-          <p>Right Block with Form Functions</p>
-          <div className="login--container">
-            <form onSubmit={handleSubmit}>
-              <input
-                type="text"
-                placeholder="Email"
-                value={email}
-                onChange={updateEmail}
-              />
-              <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={updatePassword}
-              />
-              <button type="submit">Login</button>
-            </form>
-          </div>
-          <div className="signup--container">
+    useEffect(() => {
+        fetch('http://localhost:5000/auth/login/')
+        //tryLogin()
+    }, [email])
+
+    return (
+        <div className='login-container'>
+            <div className='login-block'>
+                <div><Bird></Bird></div>
+                <div className="login-block-header">Log in to Chatter</div>
+                <div className="login">
+                    <form className="login-form" onSubmit={handleSubmit}>
+                        <input
+                            className="login-input-field"
+                            type="text"
+                            placeholder="Email"
+                            value={email}
+                            onChange={updateEmail} />
+
+
+                        <input
+                            className="login-input-field"
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={updatePassword} />
+                        <button className="login-button" type="submit">Log in</button>
+                        <a className="login-footer" href="/sign_up">Sign up for Chatter</a>
+                        <div className="signup--container">
             <SignUpModal show={signUpModal} handleClose={hideSignUpModal} />
             <div className="signup__controls--container">
               <button className="button" onClick={showSignUpModal}>
@@ -93,10 +101,12 @@ const Login = (props) => {
               </button>
             </div>
           </div>
+                    </form>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
-};
+    )
+}
+
 
 export default Login;
