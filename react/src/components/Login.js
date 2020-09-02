@@ -68,7 +68,7 @@ const Login = (props) => {
                             value={password}
                             onChange={updatePassword} />
                         <button className="login-button" type="submit">Log in</button>
-                        <a className="login-footer" href="/sign_up">Sign Up</a>
+                        <a className="login-footer" href="/sign_up">Sign up for Chatter</a>
                     </form>
                 </div>
             </div>
