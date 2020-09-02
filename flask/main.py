@@ -25,13 +25,11 @@ jwt = JWTManager(app)
 
 @app.route('/')
 def slash():
-    print("Inside the '/' route")
-    return jsonify(Notice='Please use /api route to access the api'), 201
+    return jsonify(Notice='Please use /api route to access the api')
 
 
 @app.route('/api/')
 def api():
-    print("Inside the '/api' route")
     return jsonify(Welcome='To The Chatter API')
 
 
