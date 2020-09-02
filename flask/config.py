@@ -9,7 +9,7 @@ class Config:
     #     if 'postgres://chatter_user:password@3.133.142.3:80/chatter_db'
     #     else os.environ.get('DATABASE_URL')  # container network
     # )
-
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ECHO = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+

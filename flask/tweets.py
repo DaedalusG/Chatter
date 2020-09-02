@@ -3,7 +3,8 @@ from sqlalchemy.orm import subqueryload, joinedload
 from models import db, Tweet
 import requests
 
-tweets= Blueprint('tweets', __name__)
+tweets = Blueprint('tweets', __name__)
+
 
 @tweets.route("/", methods=["GET"])
 def tweeter():
