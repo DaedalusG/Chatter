@@ -4,7 +4,7 @@ import MainPage from "./components/MainPage";
 import Login from "./components/Login";
 
 function App() {
-  const needLogin = () => true;
+  const needLogin = () => false;
 
   return (
     <BrowserRouter>
