@@ -4,7 +4,7 @@ import bcrypt
 
 from models import db, User
 
-auth_routes = Blueprint('auth', __name__, url_prefix='/auth')
+auth = Blueprint('auth', __name__)
 
 
 def set_password(password):
@@ -19,6 +19,7 @@ def verify_password(password, hashed_password):
         return True
     else:
         return False
+
 
 
 @auth_routes.route('/login/', methods=['GET'])

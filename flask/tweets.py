@@ -1,11 +1,12 @@
 from flask import Blueprint, jsonify, request
-from models import db
+from sqlalchemy.orm import subqueryload, joinedload
+from models import db, Tweet
 import requests
 
-tweets = Blueprint('tweets', __name__)
+tweets= Blueprint('tweets', __name__)
 
 @tweets.route("/", methods=["GET"])
-def tweets():
+def tweeter():
   tweets = db.session.query(Tweet).options(joinedload("user")).all()
 
   new_tweets = []

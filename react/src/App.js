@@ -1,16 +1,18 @@
-import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import MainPage from './components/MainPage'
-import Login from './components/Login'
+import React from "react";
+import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
+import MainPage from "./components/MainPage";
+import Login from "./components/Login";
 
 
 function App() {
 
-  const needLogin = () => true;
+  const needLogin = () => true; // change to false for dev if need to login
 
   return (
     <BrowserRouter>
-      {(needLogin() ? <Login /> : <MainPage />)}
+
+      {needLogin() ? <Login /> : <MainPage />}
+
       {/* <Switch>
             <Route path="/users">
                 <UserList />
