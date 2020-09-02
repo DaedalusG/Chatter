@@ -14,47 +14,49 @@ follows = db.Table(
 
 
 class User(db.Model):
-    __tablename__ = 'users'
+  __tablename__ = 'users'
 
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(40), nullable=False, unique=True)
-    email = db.Column(db.String(255), nullable=False, unique=True)
-    hashed_password = db.Column(db.String(100), nullable=False)
-    firstname = db.Column(db.String(40), nullable=False)
-    lastname = db.Column(db.String(40), nullable=False)
-    zipcode = db.Column(db.String(20), nullable=False)
-    about = db.Column(db.Text)
-    profile_pic = db.Column(db.String)
-    pinned_tweet = db.Column(db.Integer)
+  id = db.Column(db.Integer, primary_key=True)
+  username = db.Column(db.String(40), nullable=False, unique=True)
+  email = db.Column(db.String(255), nullable=False, unique=True)
+  hashed_password = db.Column(db.String(100), nullable=False)
+  firstname = db.Column(db.String(40), nullable=False)
+  lastname = db.Column(db.String(40), nullable=False)
+  zipcode = db.Column(db.String(20), nullable=False)
+  about = db.Column(db.Text)
+  profile_pic = db.Column(db.String)
+  # pinned_tweet = db.Column(db.Integer)
 
-    tweets = db.relationship("Tweet", backref="user")
-    retweets = db.relationship("Retweet", backref="user")
-    likes = db.relationship("Like", backref="user")
-    replies = db.relationship("Reply", backref="user")
+  tweets = db.relationship("Tweet", backref="user")
+  retweets = db.relationship("Retweet", backref="user")
+  likes = db.relationship("Like", backref="user")
+  replies = db.relationship("Reply", backref="user")
 
-    following = db.relationship("User",
-                                secondary=follows,
-                                primaryjoin=id == follows.c.following_id,
-                                secondaryjoin=id == follows.c.followed_by_id,
-                                backref="followed_by",
-                                lazy="dynamic")  # noqa
 
-    @property
-    def hashed_password(self):
-        return hashed_password
 
-    def to_safe_object(self):
-        return {
-            "id": self.id,
-            "username": self.username,
-            "email": self.email,
-            "firstname": self.firstname,
-            "lastname": self.lastname,
-            "zipcode": self.zipcode,
-            "pinned_tweet": self.pinned_tweet,
-            "about": self.about,
-            "profile_pic": self.profile_pic
-        }
+  following = db.relationship("User",
+                              secondary=follows,
+                              primaryjoin=id == follows.c.following_id,
+                              secondaryjoin=id == follows.c.followed_by_id,
+                              backref="followed_by",
+                              lazy="dynamic")  # noqa
+
+  @property
+  def hashed_password(self):
+    return hashed_password
+
+  def to_safe_object(self):
+    return {
+      "id": self.id,
+      "username": self.username,
+      "email": self.email,
+      "firstname": self.firstname,
+      "lastname": self.lastname,
+      "zipcode": self.zipcode,
+      # "pinned_tweet": self.pinned_tweet,
+      "about": self.about,
+      "profile_pic": self.profile_pic
+    }
 
 
 class Tweet(db.Model):
@@ -65,9 +67,18 @@ class Tweet(db.Model):
     content = db.Column(db.Text, nullable=False)
     media = db.Column(db.Text)
 
-    likes = db.relationship('Like', backref='tweet')
-    replies = db.relationship('Reply', backref='tweet')
-    retweets = db.relationship('Retweet', backref='tweet')
+  # likes = db.relationship('Like', backref='tweet')
+  # replies = db.relationship('Reply', backref='tweet')
+  # retweets = db.relationship('Retweet', backref='tweet')
+  # user = db.relationship('User', back_populates="tweets")
+
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "user_id": self.user_id,
+      "content": self.content,
+      "media": self.media,
+    }
 
 
 class Retweet(db.Model):
