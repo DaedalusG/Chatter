@@ -6,8 +6,8 @@ const SignUp = () => {
 
   const testSignUp = async () => {
     const testUser = {
-      username:"Tester",
-      email:"test@test.com",
+      username:"TesterThree",
+      email:"testThree@test.com",
       password:"password",
       firstname:"Testi",
       lastname:"Person",
@@ -28,8 +28,9 @@ const SignUp = () => {
 
     const res = await response.json()
     console.log(res)
-
-    window.localStorage.setItem('auth_token', res.auth_token)
+    if (res.auth_token != undefined) {
+      window.localStorage.setItem('auth_token', res.auth_token)
+    }
 
   }
 

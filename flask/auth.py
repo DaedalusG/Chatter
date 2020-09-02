@@ -10,7 +10,7 @@ auth = Blueprint('auth', __name__)
 def set_password(password):
     hashed_password = bcrypt.hashpw(
         password.encode('utf-8'), bcrypt.gensalt())
-    return hashed_password
+    return hashed_password.decode('utf-8')
 
 
 def verify_password(password, hashed_password):
@@ -86,7 +86,7 @@ def signup():
         )
         db.session.add(user)
         # USER DOES NOT PUSH TO DATABASE YET -
-        # db.session.commit()
+        db.session.commit()
 
         auth_token = create_access_token(identity={"email": user.email})
         return jsonify(auth_token=auth_token), 200
