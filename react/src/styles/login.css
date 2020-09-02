@@ -13,7 +13,8 @@
 }
 
 .login-block-header {
-    margin: 30px 0px 10px
+    margin: 30px 0px 10px;
+    cursor: default;
 }
 
 .login-block {
@@ -59,7 +60,7 @@
     padding:5px 76px;
     background-color: #20608E;
     color: #8A8F94;
-    font-size: 10px;
+    font-size: 14px;
     font-weight: bold;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
 }
@@ -75,4 +76,10 @@
 
 .login-footer {
     color: #8A8F94;
+    font-size: 8px;
+}
+
+.login-footer:hover {
+    color: white;
+    cursor: default;
 }
