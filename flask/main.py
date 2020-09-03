@@ -39,6 +39,8 @@ def slash():
 @app.route('/api', methods=['GET'])
 @jwt_required
 def api():
+    # verify_jwt_in_request()
+    # raw = get_raw_jwt()
     user = get_jwt_identity()
     current_user = User.query.filter_by(email=user['email']).first()
     safe_user = current_user.to_safe_object()
