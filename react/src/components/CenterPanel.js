@@ -8,7 +8,8 @@ import Calendar from '../images/Calendar'
 import Tweet from './Tweet';
 
 
-const CenterPanel = ()=>{
+
+const CenterPanel = (props)=>{
 
   const [tweetState, setTweetState] = useState([])
 
@@ -21,9 +22,43 @@ const CenterPanel = ()=>{
   },[])
 
 
-  const postFunction = ()=>{
-      console.log("submit a tweet")
+  const postFunction = async () => {
+
+      const tweetContent = document.getElementsByName("tweet-textarea")[0].innerText
+      const tweetData = { content: tweetContent, user_id: 1 }
+    
+      const options = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(tweetData),
+        redirect: 'follow'
+      }
+      
+      fetch("http://localhost:5000/api/tweets/post", options)
+        .then(res => res.text())
+        .then(data=> console.log(data))
+        .catch(e => console.log('error posting your tweet', e))
+      // let list = []
+      // for( let x = 0 ; x<=60; x++){
+
+      //   const  res = await fetch('https://loremflickr.com/json/g/640/480/all', {method: "GET", mode: "no-cors"})
+      //   const data = await res.json()  
+      //   list.push(data.file)
+
+      // }
+
+      // debugger
+
+
+
+
+
+
+
   }
+
+
+  // const pageChangeProfilePage = () =>
 
   return(
     <>
@@ -37,7 +72,9 @@ const CenterPanel = ()=>{
         {/* <div id={"center-panel__below-nav__content-c"}> */}
           <div className={"below-nav-section"} >
             {/* <textarea id={"tweet-textarea"} name={"tweet-textarea"} rows={1} cols={33} wrap={"soft"} resize={"none"} placeholder={"What's happening?"} ></textarea> */}
-            <div id={"center-panel__below-nav__profile-bublle-c"}>
+              <div id={"center-panel__below-nav__profile-bublle-c"}
+                onClick={props.centerPanelProfile} 
+               >
               <div className={"profile-bubble-2"} ></div>
             </div>
             <span name="tweet-textarea" className="textarea" role="textbox" resize="none"  contentEditable=""></span>
@@ -54,7 +91,7 @@ const CenterPanel = ()=>{
           </div>
           <div className="all-tweets-c">
             { tweetState[0] ?
-              tweetState.map( (tweet) => <Tweet props={tweet}/>)                
+                tweetState.map((tweet) => <Tweet props={tweet} centerPanelTweetPanel={props.centerPanelTweetPanel}/>)           
               : null 
             } 
           </div>
