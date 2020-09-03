@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, jsonify, request
 from flask_login import LoginManager
-from flask_jwt_extended import JWTManager
+from flask_jwt_extended import JWTManager, jwt_required
 from flask_cors import CORS
 
 
@@ -32,10 +32,10 @@ def slash():
 
 
 @app.route('/api/')
+@jwt_required
 def api():
-
-
-    return jsonify(Welcome='To The Chatter API')
+    current_user = User.query.filter_by(email=email).first()
+    return jsonify(user=current_user)
 
 
 @app.route('/test/')
