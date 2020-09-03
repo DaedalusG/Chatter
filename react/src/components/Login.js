@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { imageUrl } from "../config";
 import SignUp from "./SignUp";
 import Bird from '../images/Bird';
+import '../styles/login.css'
 
 
 const Login = (props) => {

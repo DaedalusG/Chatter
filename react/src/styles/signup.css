@@ -18,13 +18,14 @@
   display: flex;
   justify-items: center;
   align-content: center;
-  width: 60px;
+  width: 100%;
   margin: 10px;
 }
 
 .signup-head__logo {
   width: 45px;
   height: 45px;
+  margin: auto;
 }
 
 .signup-head__text p {
