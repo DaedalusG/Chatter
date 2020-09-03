@@ -3,13 +3,6 @@ import { imageUrl } from "../config";
 import SignUp from "./SignUp";
 import Bird from '../images/Bird';
 
-// const test = () => async () => {
-//     const res = await fetch(`localhost:5000/auth/login/`)
-//     console.log(res)
-// }
-
-
-
 
 // const tryLogin = (email, password) => async () => {
 //     console.log('hit the tryLogin block')
@@ -45,12 +38,10 @@ const Login = (props) => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email: `${email}`, password: `${password}` }),
         });
-        // const data = response
 
         if (response.ok) {
             console.log("inside tryLogin: Success");
             console.log("RES----", response);
-            console.log("RES----", response.auth_token);
 
         } else {
             console.log("inside tryLogin: Response failure");

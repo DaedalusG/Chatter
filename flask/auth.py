@@ -8,80 +8,66 @@ auth = Blueprint('auth', __name__)
 
 
 def set_password(password):
-    # hashed_password = bcrypt.hashpw(
-    #     password.encode('utf-8'), bcrypt.gensalt())
-    # return hashed_password.decode('utf-8')
-    password = b"password"
-    hashed = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
-    return hashed
+    hashed_password = bcrypt.hashpw(
+        password.encode('utf-8'), bcrypt.gensalt())
+    return hashed_password
 
 
 def verify_password(password, hashed_password):
     # Return value could be made more sophisticated
     if bcrypt.checkpw(password.encode('utf-8'), hashed_password):
-        print("It Matches!")
         return True
     else:
-        print("It Does not Match :(")
         return False
-
-    # if bcrypt.checkpw(password.encode('utf-8'), hashed_password):
-    #     return True
-    # else:
-    #     return False
 
 
 @auth.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
 
-    email = data['email']
-    password = data['password']
-    user = User.query.filter_by(email=email).first()
-    verify_password(password, user.hashed_password)
+    try:
+        email = data['email']
+        password = data['password']
+        if not email:
+            return jsonify(message='Username Required'), 400
+        elif not password:
+            return jsonify(message='Password Required'), 400
 
-    # print("USER------>", user)
-    # print("hashed------>", user.hashed_password)
-    # print("password----->", password)
-    # print("IS IT GOOD????", )
-    return jsonify(Welcome='To The Chatter API')
+        user = User.query.filter_by(email=email).first()
+        if not user:
+            return jsonify(message='Password Required'), 400
 
-    # try:
-    #     username = data['username']
-    #     password = data['password']
+        print("user------>", user.firstname)
+        print("info------>", user.about)
+        print("password------>", password)
 
-    #     if not username:
-    #         return jsonify(message='Username Required'), 400
-    #     elif not password:
-    #         return jsonify(message='Password Required'), 400
+        # passCheck = verify_password(password, user.hashed_password)
+        # print("PASSCHECK--->", user)
+        # if not passCheck:
+        #     # Error needs handling decision
+        #     return jsonify(message='passCheck failed'), 403
+        # else:
+        #     auth_token = create_access_token(identity={"email": user.email})
+        #     return jsonify(auth_token=auth_token), 200
 
-    #     user = User.query.filter_by(username=username).first()
-    #     if not user:
-    #         return jsonify(message='Username incorrect'), 400
+        return jsonify(Welcome='To The Chatter API')
 
-    #     print("USER--->", user)
-
-    #     passCheck = verify_password(password, user.hashed_password)
-    #     print("PASSCHECK--->", user)
-    #     if not passCheck:
-    #         # Error needs handling decision
-    #         return jsonify(message='passCheck failed'), 403
-    #     else:
-    #         auth_token = create_access_token(identity={"email": user.email})
-    #         return jsonify(auth_token=auth_token), 200
-    # except Exception:
-    #     return jsonify(message='Login Failed'), 408
+    except Exception:
+        return jsonify(message='Login Failed'), 408
 
 
 @auth.route('/signup', methods=['POST'])
 def signup():
     data = request.get_json()
+
     try:
         username = data['username']
         email = data['email']
         firstname = data['firstname']
         lastname = data['lastname']
         zipcode = int(data['zipcode'])
+
+        print(username, email, firstname, lastname, zipcode)
 
         if not username:
             return jsonify(message="Username Required"), 400
@@ -115,15 +101,3 @@ def signup():
 
     except Exception:
         return jsonify({'message': "try failed"}), 409
-
-
-# import bcrypt
-# password = b"super secret password"
-# # Hash a password for the first time, with a randomly-generated salt
-# hashed = bcrypt.hashpw(password, bcrypt.gensalt())
-# Check that an unhashed password matches one that has previously been
-# # hashed
-# if bcrypt.checkpw(password, hashed):
-#     print("It Matches!")
-# else:
-#     print("It Does not Match :(")
