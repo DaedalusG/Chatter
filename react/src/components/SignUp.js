@@ -1,38 +1,39 @@
 import React from "react";
 import "../styles/signup.css";
-import { imageUrl } from '../config';
+import { imageUrl } from "../config";
 
 const SignUp = () => {
-
   const testSignUp = async () => {
     const testUser = {
-      username:"TesterThree",
-      email:"testThree@test.com",
-      password:"password",
-      firstname:"Testi",
-      lastname:"Person",
-      zipcode:"37409"
-    }
+      username: "TesterThree",
+      email: "testThree@test.com",
+      password: "password",
+      firstname: "Testi",
+      lastname: "Person",
+      zipcode: "37409",
+    };
 
     const response = await fetch(`${imageUrl}/auth/signup`, {
-      method: 'POST',
-      mode: 'cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(testUser)
+      method: "POST",
+      mode: "cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(testUser),
     });
     if (response.ok) {
       console.log("Response Success");
+      const res = await response.json();
+      if (res.auth_token === undefined) {
+        // Need to handle this error with browser message to user
+        console.log("Bad Auth Token Generated");
+        return;
+      } else {
+        window.localStorage.setItem("auth_token", res.auth_token);
+        // Add redirect here
+      }
     } else {
-      console.log("Response Failure")
+      console.log("Response Failure");
     }
-
-    const res = await response.json()
-    console.log(res)
-    if (res.auth_token != undefined) {
-      window.localStorage.setItem('auth_token', res.auth_token)
-    }
-
-  }
+  };
 
   const monthOptions = [
     "January",
@@ -46,8 +47,8 @@ const SignUp = () => {
     "September",
     "October",
     "November",
-    "December"
-  ]
+    "December",
+  ];
 
   // const dateOptions = () => {
   //   for (i=1; i<=31; i++) {
@@ -76,20 +77,25 @@ const SignUp = () => {
         <input
           className="signup-form__username"
           name="username"
-          placeholder="Name" />
+          placeholder="Name"
+        />
         <input
           className="signup-form__email"
           name="email"
-          placeholder="Email" />
+          placeholder="Email"
+        />
         <div className="signup-form__dob--container">
           <h6>Date of birth</h6>
-          <p>This will not be shown publicly. Confirm your own age, even if this account is for a business, a pet, or something else.</p>
+          <p>
+            This will not be shown publicly. Confirm your own age, even if this
+            account is for a business, a pet, or something else.
+          </p>
           <div className="signup-form__dob">
             <div className="signup-form__dob--month">
               <select>
-                {monthOptions.map((month) =>
+                {monthOptions.map((month) => (
                   <option value={month}>{month}</option>
-                  )}
+                ))}
               </select>
             </div>
             <div className="signup-form__dob--date">
@@ -108,9 +114,7 @@ const SignUp = () => {
                 <option value="1813">1813</option>
               </select>
             </div>
-            <button
-              className="signup-form__testButton"
-              onClick={testSignUp}>
+            <button className="signup-form__testButton" onClick={testSignUp}>
               Sign Up Test Func
             </button>
           </div>

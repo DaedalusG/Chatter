@@ -1,0 +1,19 @@
+.signup-pop--container {
+  display: flex;
+  justify-items: center;
+  flex-direction: column;
+  margin: 10px;
+  background-color: aqua;
+}
+
+.signup-pop--head {
+}
+
+.signup-form--container {
+  display: flex;
+  justify-items: center;
+  margin: 10px;
+}
+
+.signup-form--container input {
+}
