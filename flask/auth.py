@@ -48,7 +48,7 @@ def login():
             return jsonify(message='passCheck failed'), 403
         else:
             auth_token = create_access_token(identity={"email": user.email})
-            return jsonify(auth_token=auth_token), 200
+        return jsonify(auth_token=auth_token), 200
 
         return jsonify(Welcome='To The Chatter API')
 

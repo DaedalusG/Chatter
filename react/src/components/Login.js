@@ -42,9 +42,15 @@ const Login = (props) => {
         if (response.ok) {
             console.log("inside tryLogin: Success");
             console.log("RES----", response);
-
+            console.log("Auth---->", response.auth_token)
         } else {
             console.log("inside tryLogin: Response failure");
+        }
+
+        const res = await response.json()
+        console.log(res)
+        if (res.auth_token != undefined) {
+            window.localStorage.setItem('auth_token', res.auth_token)
         }
     };
 
