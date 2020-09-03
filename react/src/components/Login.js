@@ -39,15 +39,19 @@ const Login = (props) => {
         e.preventDefault();
         console.log(`Login.js handleSubmit fired ${email}, ${password}`);
         // tryLogin(email, password);
-        const response = await fetch(`${imageUrl}/auth/login/`, {
+        const response = await fetch(`${imageUrl}/auth/login`, {
             method: "POST",
             mode: "cors",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email: `${email}`, password: `${password}` }),
         });
+        // const data = response
 
         if (response.ok) {
             console.log("inside tryLogin: Success");
+            console.log("RES----", response);
+            console.log("RES----", response.auth_token);
+
         } else {
             console.log("inside tryLogin: Response failure");
         }

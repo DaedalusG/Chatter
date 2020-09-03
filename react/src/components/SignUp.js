@@ -6,12 +6,12 @@ const SignUp = () => {
 
   const testSignUp = async () => {
     const testUser = {
-      username:"TesterThree",
-      email:"testThree@test.com",
-      password:"password",
-      firstname:"Testi",
-      lastname:"Person",
-      zipcode:"37409"
+      username: "bbb",
+      email: "bbb",
+      password: "password",
+      firstname: "abc",
+      lastname: "abc",
+      zipcode: "37409"
     }
 
     const response = await fetch(`${imageUrl}/auth/signup`, {
@@ -89,7 +89,7 @@ const SignUp = () => {
               <select>
                 {monthOptions.map((month) =>
                   <option value={month}>{month}</option>
-                  )}
+                )}
               </select>
             </div>
             <div className="signup-form__dob--date">
