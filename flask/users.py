@@ -16,7 +16,6 @@ def all_users():
 
 
 @user.route('/<int:id>')
-@jwt_required
 def user_by_id():
     # -- Future use of JWT library
     # current_user = get_jwt_identity()

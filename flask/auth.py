@@ -29,31 +29,26 @@ def login():
         email = data['email']
         password = data['password']
         if not email:
-            return jsonify(message='Username Required'), 400
+            return jsonify(message='Email Required'), 400
         elif not password:
             return jsonify(message='Password Required'), 400
 
         user = User.query.filter_by(email=email).first()
         if not user:
-            return jsonify(message='Password Required'), 400
-
-        print("user-->", user.firstname)
-        print("info-->", user.about)
-        print("password-->", password)
+            return jsonify(message='Email Required'), 400
 
         verified = verify_password(password, user.hashed_password)
-        print("PASSCHECK--->", user)
+
         if not verified:
             # Error needs handling decision
-            return jsonify(message='passCheck failed'), 403
+            return jsonify(message='Password verify failed'), 403
         else:
             auth_token = create_access_token(identity={"email": user.email})
         return jsonify(auth_token=auth_token), 200
 
-        return jsonify(Welcome='To The Chatter API')
-
     except Exception:
         return jsonify(message='Login Failed'), 408
+
 
 
 @auth.route('/signup', methods=['POST'])
@@ -100,4 +95,4 @@ def signup():
         return jsonify(auth_token=auth_token), 200
 
     except Exception:
-        return jsonify({'message': "try failed"}), 409
+        return jsonify(message="try failed"), 409
