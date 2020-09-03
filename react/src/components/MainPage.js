@@ -1,14 +1,14 @@
 import React from 'react';
 import LeftPanel from './LeftPanel';
 import RightPanel from './RightPanel';
-import CenterPanel from './CenterPanel';
+import CenterPanelSwitch from './CenterPanelSwitch';
 
 const MainPage = () => {
 
     return (
       <div id={"main-c"}>
         <LeftPanel></LeftPanel>
-        <CenterPanel></CenterPanel>
+        <CenterPanelSwitch/>
         <RightPanel></RightPanel>
       </div>
     )

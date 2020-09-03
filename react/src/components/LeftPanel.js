@@ -51,12 +51,6 @@ const LeftPanel = ()=>{
         </div>
       </div>
       <div className={"main-c__left-c"}>
-        <div id={"bookmark-c"} className={"main-c__left-c__link-black"}>
-          <Bookmark></Bookmark>
-          <span>Bookmarks</span>
-        </div>
-      </div>
-      <div className={"main-c__left-c"}>
         <div id={"paper-c"} className={"main-c__left-c__link-black"}>
           <Paper></Paper>
           <span>Lists</span>
