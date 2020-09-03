@@ -11,8 +11,10 @@ from tweets import tweets
 
 
 app = Flask(__name__)
-CORS(app)
 app.config.from_object(Config)
+app.config['CORS_HEADERS'] = 'Content-Type'
+# CORS(app, resources = r'/api/*' )
+CORS(app)
 app.register_blueprint(seed, url_prefix='/api/seed')
 app.register_blueprint(tweets, url_prefix='/api/tweets')
 db.init_app(app)
@@ -24,6 +26,8 @@ def slash():
 
 @app.route('/api/')
 def api():
+
+
     return jsonify(Welcome='To The Chatter API')
 
 
