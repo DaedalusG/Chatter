@@ -12,8 +12,8 @@ import CirclesMore from '../images/CirclesMore';
 import DownCarrot from '../images/DownCarrot';
 import Feather from '../images/Feather';
 
-const LeftPanel = ()=>{
-  return(
+const LeftPanel = () => {
+  return (
     <div id={"main-c__left"} >
       <div>
         <div className={"main-c__left__bird"}>

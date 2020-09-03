@@ -2,8 +2,8 @@ import React from 'react';
 import MagnifyingGlass from '../images/MagnifyingGlass';
 
 
-const RightPanel = ()=>{
-  return(
+const RightPanel = () => {
+  return (
     <div id={"main-c__right"} >
       <div id={"main-c__right__search-bar"} >
         <MagnifyingGlass></MagnifyingGlass>

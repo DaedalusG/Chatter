@@ -7,7 +7,7 @@ import ProfileFullScreen from './ProfileFullScreen';
 const ProfilePage = (props) => {
 
   const [tweetState, setTweetState] = useState([])
-  const user = 1; 
+  const user = 1;
   useEffect(() => {
     fetch(`http://localhost:5000/api/tweets/user`)
       .then(res => res.json())
@@ -17,17 +17,17 @@ const ProfilePage = (props) => {
   }, [])
 
   const [profileFullScreenState, setProfileFullScreenState] = useState(false);
-  const fullscreenPic =()=>{
+  const fullscreenPic = () => {
     let toggleFullScreen = !profileFullScreenState
     setProfileFullScreenState(toggleFullScreen)
   }
 
   return (
     <>
-      <ProfileFullScreen fullscreenPic={fullscreenPic}  profileFullScreenState={profileFullScreenState} />
+      <ProfileFullScreen fullscreenPic={fullscreenPic} profileFullScreenState={profileFullScreenState} />
       <div id={"center-panel"}>
         <div id={"center-panel-tweet__nav"}>
-          <div onClick={props.centerPanelHome} > 
+          <div onClick={props.centerPanelHome} >
             <LeftArrow></LeftArrow>
           </div>
           <span>ProfilePage</span>
@@ -49,7 +49,7 @@ const ProfilePage = (props) => {
               <span className={"profile-chatter-name"} >@skeletor7</span>
               <span className={"profile-bio"} >Rightfull king of Eternia. Owner of Panthor. Laughs like no ones watching.</span>
             </div>
-            
+
             <div className="all-tweets-c">
               {tweetState[0] ?
                 tweetState.map((tweet) => <Tweet props={tweet} />)
