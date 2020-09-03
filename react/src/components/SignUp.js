@@ -80,12 +80,14 @@ const SignUp = () => {
             className="signup-form__username"
             name="username"
             value={username}
+            onChange={updateUsername}
             placeholder="User Name"
           />
           <input
             className="signup-form__email"
             name="email"
             value={email}
+            onChange={updateEmail}
             placeholder="Email"
             type="email"
           />
@@ -98,6 +100,7 @@ const SignUp = () => {
             className="signup-form__password"
             name="password"
             value={password}
+            onChange={updatePassword}
             placeholder="Password"
             type="password"
           />
@@ -105,6 +108,7 @@ const SignUp = () => {
             className="signup-from__password-confirm"
             name="password-confirm"
             value={passwordConfirm}
+            onChange={updatePasswordConfirm}
             placeholder="Confirm Password"
             type="password"
           />
@@ -117,18 +121,21 @@ const SignUp = () => {
             className="signup-form__firstname"
             name="firstname"
             value={firstname}
+            onChange={updateFirstname}
             placeholder="First Name"
           />
           <input
             className="signup-form__lastname"
             name="lastname"
             value={lastname}
+            onChange={updateLastname}
             placeholder="Last Name"
           />
           <input
             className="signup-form__zipcode"
             name="zipcode"
             value={zipcode}
+            onChange={updateZipcode}
             placeholder="Zip Code"
           />
         </div>
