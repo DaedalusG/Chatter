@@ -8,8 +8,7 @@ import Calendar from '../images/Calendar'
 import Tweet from './Tweet';
 
 
-
-const CenterPanel = (props) => {
+const TweetPanel = (props) => {
 
   const [tweetState, setTweetState] = useState([])
 
@@ -20,26 +19,6 @@ const CenterPanel = (props) => {
         setTweetState(data)
       })
   }, [])
-
-
-  const postFunction = async () => {
-
-    const tweetContent = document.getElementsByName("tweet-textarea")[0].innerText
-    const tweetData = { content: tweetContent, user_id: 1 }
-
-    const options = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(tweetData),
-      redirect: 'follow'
-    }
-
-    fetch("http://localhost:5000/api/tweets/post", options)
-      .then(res => res.text())
-      .then(data => console.log(data))
-      .catch(e => console.log('error posting your tweet', e))
-
-  }
 
 
   return (
@@ -53,6 +32,7 @@ const CenterPanel = (props) => {
           <div className="center-panel__below-nav__scroll" >
             {/* <div id={"center-panel__below-nav__content-c"}> */}
             <div className={"below-nav-section"} >
+              {/* <textarea id={"tweet-textarea"} name={"tweet-textarea"} rows={1} cols={33} wrap={"soft"} resize={"none"} placeholder={"What's happening?"} ></textarea> */}
               <div id={"center-panel__below-nav__profile-bublle-c"}
                 onClick={props.centerPanelProfile}
               >
@@ -66,15 +46,15 @@ const CenterPanel = (props) => {
               <PollBox></PollBox>
               <SmileyFace></SmileyFace>
               <Calendar></Calendar>
-              <div onClick={postFunction} id={"tweet-button-2"}>
+              <div >
                 <span>Tweet</span>
               </div>
             </div>
             <div className="all-tweets-c">
-              {tweetState[0] ?
-                tweetState.map((tweet) => <Tweet props={tweet} centerPanelTweetPanel={props.centerPanelTweetPanel} />)
-                : null
-              }
+              {/* <Tweet 
+              // props={tweetState[0]}
+              /> */}
+              <p>HELLO</p>
             </div>
           </div>
         </div>
@@ -83,4 +63,4 @@ const CenterPanel = (props) => {
     </>
   )
 }
-export default CenterPanel;
+export default TweetPanel;

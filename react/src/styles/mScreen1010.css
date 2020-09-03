@@ -1,6 +1,6 @@
 @media screen and (max-width: 1010px){
   #main-c__left{
-    width: 80px;
+    width: 60px;
   height: 100vh;
   /* border-right: 1px solid rgb(233, 232, 232); */
   display: flex;
@@ -8,58 +8,60 @@
   justify-content: flex-start;
   align-items: flex-start;
   overflow-y: scroll;
+  overflow-x: auto;
    
     margin-left: 20px;
 
   }
   .main-c__left__bird{
   position: relative;
-  left: 17px;
+  left: 0px;
   
 }
   .birdhouse{
-  margin-left: 21px;
+  margin-left: 0px;
 
 }
   #hash-c{
     width:40px;
     position: relative;
-    left: 20px;
+    left: 0px;
   }
   #bell-c{
     width: 40px;
     position: relative;
-    left: 13px;
+    left: -7px;
   }
   #envelope-c{
     width: 40px;
     position: relative;
-    left: 13px;
+    left: -7px;
   }
   #bookmark-c{
     width: 40px;
     position: relative;
-    left: 13px;
+    left: -7px;
   }
   #paper-c{
     width: 40px;
     position: relative;
-    left: 13px;
+    left: -7px;
   }
   #person-c{
     width: 40px;
     position: relative;
-    left: 13px;
+    left: -7px;
   }
   #circles-more-c{
     width: 40px;
     position: relative;
-    left: 13px;
+    left: -7px;
   }
   #tweet-button{
-    width: 50px;
+    width: 40px;
+    height: 40px;
     position: relative;
-    left: 14px;
+    left: 1px;
     z-index: 1;
   }
   

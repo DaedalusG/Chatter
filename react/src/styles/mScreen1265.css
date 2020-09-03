@@ -56,11 +56,13 @@
     fill: white;
   }
   #main-c__left__login{
-    width: 50px;
-    border: 1px solid blue;
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin-left: -10px;
   }
   .profile-bubble{
-    margin-left: 5px;
+    margin: 10px 10px 10px 10px;
   }
   .user-names, .user-names__span1, .user-names__span2{
     display: none;
