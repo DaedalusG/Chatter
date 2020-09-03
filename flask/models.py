@@ -41,9 +41,6 @@ class User(db.Model):
                               backref="followed_by",
                               lazy="dynamic")  # noqa
 
-  # @property
-  # def hashed_password(self):
-  #   return hashed_password
 
   def to_safe_object(self):
     return {
