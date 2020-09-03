@@ -3,20 +3,19 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 
 
 from models import db, User
-from auth import set_password, verify_password
 
 
-user_routes = Blueprint('users', __name__, url_prefix='/users')
+user = Blueprint('users', __name__,)
 
 
-@user_routes.route('/')
+@user.route('/')
 @jwt_required
 def all_users():
     res = User.query.all()
     return jsonify({"users": [user.to_safe_object() for user in res]})
 
 
-@user_routes.route('/<int:id>')
+@user.route('/<int:id>')
 @jwt_required
 def user_by_id():
     # -- Future use of JWT library

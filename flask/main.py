@@ -6,39 +6,41 @@ from flask_cors import CORS
 
 from config import Config
 from models import db
+from users import user
 from seed import seed
 from tweets import tweets
+from auth import auth
 
 
 app = Flask(__name__)
 app.config.from_object(Config)
 app.config['CORS_HEADERS'] = 'Content-Type'
-# CORS(app, resources = r'/api/*' )
 CORS(app)
+app.register_blueprint(user, url_prefix='/api/users')
 app.register_blueprint(seed, url_prefix='/api/seed')
 app.register_blueprint(tweets, url_prefix='/api/tweets')
+app.register_blueprint(auth, url_prefix='/auth')
+
 db.init_app(app)
 jwt = JWTManager(app)
+
 
 @app.route('/')
 def slash():
     return jsonify(Notice='Please use /api route to access the api')
 
+  
 @app.route('/api/')
 def api():
 
 
     return jsonify(Welcome='To The Chatter API')
 
+  
+@app.route('/test/')
+def test():
+    print('test')
+    users = db.session.query(User).all()
+    print(users)
+    return jsonify({'test1': 1, 'test2': 2})
 
-# @app.route("/api/tweets/", methods=["GET"])
-# def tweets():
-#   tweets = db.session.query(Tweet).options(joinedload("user")).all()
-
-#   new_tweets = []
-#   for tweet in tweets:
-#     new_tweet = tweet.to_dict()
-#     new_tweet["user"] = tweet.user.to_safe_object()
-#     new_tweets.append(new_tweet)
-
-#   return jsonify(new_tweets)
