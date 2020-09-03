@@ -37,18 +37,18 @@ def login():
         if not user:
             return jsonify(message='Password Required'), 400
 
-        print("user------>", user.firstname)
-        print("info------>", user.about)
-        print("password------>", password)
+        print("user-->", user.firstname)
+        print("info-->", user.about)
+        print("password-->", password)
 
-        # passCheck = verify_password(password, user.hashed_password)
-        # print("PASSCHECK--->", user)
-        # if not passCheck:
-        #     # Error needs handling decision
-        #     return jsonify(message='passCheck failed'), 403
-        # else:
-        #     auth_token = create_access_token(identity={"email": user.email})
-        #     return jsonify(auth_token=auth_token), 200
+        verified = verify_password(password, user.hashed_password)
+        print("PASSCHECK--->", user)
+        if not verified:
+            # Error needs handling decision
+            return jsonify(message='passCheck failed'), 403
+        else:
+            auth_token = create_access_token(identity={"email": user.email})
+            return jsonify(auth_token=auth_token), 200
 
         return jsonify(Welcome='To The Chatter API')
 

@@ -22,7 +22,7 @@ import Bird from '../images/Bird';
 
 const Login = (props) => {
     const [signUpModal, setSignUpModal] = useState(false);
-    const [email, setEmail] = useState("demo@example.com");
+    const [email, setEmail] = useState("Batman@BatSignal.com");
     const [password, setPassword] = useState("password");
 
     const showSignUpModal = () => setSignUpModal(true);

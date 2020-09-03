@@ -6,12 +6,12 @@ const SignUp = () => {
 
   const testSignUp = async () => {
     const testUser = {
-      username: "bbb",
-      email: "bbb",
+      username: "Batman",
+      email: "Batman@BatSignal.com",
       password: "password",
-      firstname: "abc",
-      lastname: "abc",
-      zipcode: "37409"
+      firstname: "Bruce",
+      lastname: "Wayne",
+      zipcode: "97214"
     }
 
     const response = await fetch(`${imageUrl}/auth/signup`, {
