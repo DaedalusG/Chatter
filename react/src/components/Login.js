@@ -10,8 +10,14 @@ const Login = (props) => {
     const [email, setEmail] = useState("Batman@BatSignal.com");
     const [password, setPassword] = useState("password");
 
-    const showSignUpModal = () => setSignUpModal(true);
-    const hideSignUpModal = () => setSignUpModal(false);
+    const showSignUpModal = e => {
+        e.preventDefault();
+        setSignUpModal(true)
+    };
+    const hideSignUpModal = e => {
+        e.preventDefault();
+        setSignUpModal(false)
+    };
 
     const updateEmail = (e) => setEmail(e.target.value);
     const updatePassword = (e) => setPassword(e.target.value);

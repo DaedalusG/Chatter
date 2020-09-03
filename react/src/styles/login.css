@@ -59,20 +59,22 @@
 	border-radius:25px;
     margin: 7px;
     padding:5px 76px;
+    width: 237px;
+    height: 30px;
     background-color: #20608E;
-    color: #8A8F94;
-    font-size: 10px;
+    color: #c9d2db;
+    font-size: 14px;
     font-weight: bold;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
 }
 
 .login-button:hover {
     color: white;
-	background-color:#1C92DA;
+    background-color:#1C92DA;
 }
 .login-button:active {
 	position:relative;
-	top:1px;
+    top:1px;
 }
 
 .login-footer {

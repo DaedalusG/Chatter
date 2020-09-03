@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import "../styles/signup.css";
 import { imageUrl } from "../config";
+import Bird from '../images/Bird';
+import "../styles/signup.css";
 
 const SignUp = () => {
   const [username, setUsername] = useState();
@@ -59,7 +60,7 @@ const SignUp = () => {
       <div className="signup-head--container">
         <div className="signup-head--topElements">
           <div className="signup-head__logo">
-            <p>Logo</p>
+            <Bird/>
           </div>
         </div>
         <div className="signup-head__text">
@@ -124,14 +125,10 @@ const SignUp = () => {
             placeholder="Zip Code"
           />
         </div>
-        <div className="signup-form__submit">
+        <div className="signup-form__submit--container">
           <button
             className="signup-form__submit">
           Submit</button>
-          <button
-            className="signup-form__testButton"
-            onClick={testSignUp}>
-          Sign Up Test Func</button>
         </div>
       </div>
     </div>
