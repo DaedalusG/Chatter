@@ -25,6 +25,7 @@ class User(db.Model):
     zipcode = db.Column(db.String(20), nullable=False)
     about = db.Column(db.Text)
     profile_pic = db.Column(db.String)
+    bannder_pic = db.Column(db.String)
     # pinned_tweet = db.Column(db.Integer)
 
     tweets = db.relationship("Tweet", backref="user")

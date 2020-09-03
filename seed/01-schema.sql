@@ -7,7 +7,8 @@ CREATE TABLE users (
   lastname VARCHAR(40) NOT NULL,
   zipcode VARCHAR(20),
   about VARCHAR(240),
-  profile_pic VARCHAR(240),
+  profile_pic VARCHAR(500),
+  banner_pic VARCHAR(500),
   created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

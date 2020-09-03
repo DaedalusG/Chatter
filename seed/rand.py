@@ -3,4 +3,4 @@ import random
 
 
 for i in range(60):
-  print(random.choice(range(1,7)))
+  print(i+1)
