@@ -22,13 +22,14 @@ const SignUp = () => {
 
   const testSignUp = async () => {
     const testUser = {
-      username: "TesterThree",
-      email: "testThree@test.com",
+      username: "Batman",
+      email: "Batman@BatSignal.com",
       password: "password",
-      firstname: "Testi",
-      lastname: "Person",
-      zipcode: "37409",
-    };
+      firstname: "Bruce",
+      lastname: "Wayne",
+      zipcode: "97214"
+    }
+
 
     const response = await fetch(`${imageUrl}/auth/signup`, {
       method: "POST",
@@ -132,7 +133,6 @@ const SignUp = () => {
             onClick={testSignUp}>
           Sign Up Test Func</button>
         </div>
-
       </div>
     </div>
   );

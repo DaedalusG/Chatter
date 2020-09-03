@@ -10,7 +10,7 @@ auth = Blueprint('auth', __name__)
 def set_password(password):
     hashed_password = bcrypt.hashpw(
         password.encode('utf-8'), bcrypt.gensalt())
-    return hashed_password.decode('utf-8')
+    return hashed_password
 
 
 def verify_password(password, hashed_password):
@@ -24,40 +24,45 @@ def verify_password(password, hashed_password):
 @auth.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
-    try:
-        # Request objects are currently pseudocode
-        username = data['username']
-        password = data['password']
 
-        if not username:
-            return jsonify(message='Username Required'), 400
+    try:
+        email = data['email']
+        password = data['password']
+        if not email:
+            return jsonify(message='Email Required'), 400
         elif not password:
             return jsonify(message='Password Required'), 400
 
-        user = User.query.filter_by(username=username).first()
+        user = User.query.filter_by(email=email).first()
         if not user:
-            return jsonify(message='Username incorrect'), 400
+            return jsonify(message='Email Required'), 400
 
-        passCheck = verify_password(password, user.hashed_password)
-        if not passCheck:
+        verified = verify_password(password, user.hashed_password)
+
+        if not verified:
             # Error needs handling decision
-            return jsonify(message='passCheck failed'), 403
+            return jsonify(message='Password verify failed'), 403
         else:
             auth_token = create_access_token(identity={"email": user.email})
-            return jsonify(auth_token=auth_token), 200
+        return jsonify(auth_token=auth_token), 200
+
     except Exception:
-        return jsonify(message='Login Fnailed'), 500
+        return jsonify(message='Login Failed'), 408
+
 
 
 @auth.route('/signup', methods=['POST'])
 def signup():
     data = request.get_json()
+
     try:
         username = data['username']
         email = data['email']
         firstname = data['firstname']
         lastname = data['lastname']
         zipcode = int(data['zipcode'])
+
+        print(username, email, firstname, lastname, zipcode)
 
         if not username:
             return jsonify(message="Username Required"), 400

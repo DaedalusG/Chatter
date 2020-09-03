@@ -1,28 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { apiUrl } from "../config";
+import { imageUrl } from "../config";
 import SignUp from "./SignUp";
 import Bird from '../images/Bird';
-import "../styles/signup.css";
 
-
-
-const tryLogin = (email, password) => async () => {
-    const response = await fetch(`${apiUrl}/auth/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-    });
-
-    if (response.ok) {
-        console.log("inside tryLogin: Success");
-    } else {
-        console.log("inside tryLogin: Response failure");
-    }
-};
 
 const Login = (props) => {
     const [signUpModal, setSignUpModal] = useState(false);
-    const [email, setEmail] = useState("demo@example.com");
+    const [email, setEmail] = useState("Batman@BatSignal.com");
     const [password, setPassword] = useState("password");
 
     const showSignUpModal = () => setSignUpModal(true);
@@ -33,15 +17,27 @@ const Login = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Login.js handleSubmit fired");
-        // tryLogin(email, password);
+        const response = await fetch(`${imageUrl}/auth/login`, {
+            method: "POST",
+            mode: "cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: `${email}`, password: `${password}` }),
+        });
+
+        if (response.ok) {
+            console.log("inside tryLogin: Success");
+        } else {
+            console.log("inside tryLogin: Response failure");
+        }
+        const res = await response.json()
+        console.log(res)
+        if (res.auth_token != undefined) {
+            window.localStorage.setItem('auth_token', res.auth_token)
+            window.location.reload()
+        }
+
     };
 
-
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/auth/login/')
-    //     //tryLogin()
-    // }, [email])
 
     return (
         <div className='login-container'>
@@ -64,6 +60,7 @@ const Login = (props) => {
                             onChange={updatePassword} />
                         <button
                             className="login-button"
+
                             type="submit">
                         Log in</button>
                         <div className="signup--container">
@@ -75,6 +72,7 @@ const Login = (props) => {
                                     className="login-button"
                                     onClick={showSignUpModal}>
                                 Sign Up</button>
+
                             </div>
                         </div>
                     </form>
