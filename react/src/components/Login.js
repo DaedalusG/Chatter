@@ -1,14 +1,8 @@
-
 import React, { useState, useEffect } from "react";
 import { apiUrl } from "../config";
 import SignUp from "./SignUp";
 import Bird from '../images/Bird';
-
-// const test = () => async () => {
-//     const res = await fetch(`localhost:5000/auth/login/`)
-//     console.log(res)
-// }
-
+import "../styles/signup.css";
 
 
 
@@ -34,19 +28,20 @@ const Login = (props) => {
     const showSignUpModal = () => setSignUpModal(true);
     const hideSignUpModal = () => setSignUpModal(false);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        console.log("Login.js handleSubmit fired");
-        tryLogin(email, password);
-    };
-
     const updateEmail = (e) => setEmail(e.target.value);
     const updatePassword = (e) => setPassword(e.target.value);
 
-    useEffect(() => {
-        fetch('http://localhost:5000/auth/login/')
-        //tryLogin()
-    }, [email])
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log("Login.js handleSubmit fired");
+        // tryLogin(email, password);
+    };
+
+
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/auth/login/')
+    //     //tryLogin()
+    // }, [email])
 
     return (
         <div className='login-container'>
@@ -61,22 +56,25 @@ const Login = (props) => {
                             placeholder="Email"
                             value={email}
                             onChange={updateEmail} />
-
-
                         <input
                             className="login-input-field"
                             type="password"
                             placeholder="Password"
                             value={password}
                             onChange={updatePassword} />
-                        <button className="login-button" type="submit">Log in</button>
-                        {/* <a className="login-footer" href="/sign_up">Sign up for Chatter</a> */}
+                        <button
+                            className="login-button"
+                            type="submit">
+                        Log in</button>
                         <div className="signup--container">
-                            <SignUpModal show={signUpModal} handleClose={hideSignUpModal} />
+                            <SignUpModal
+                                show={signUpModal}
+                                handleClose={hideSignUpModal} />
                             <div className="signup__controls--container">
-                                <button className="button" onClick={showSignUpModal}>
-                                    Sign Up
-                                </button>
+                                <button
+                                    className="login-button"
+                                    onClick={showSignUpModal}>
+                                Sign Up</button>
                             </div>
                         </div>
                     </form>
@@ -92,11 +90,14 @@ const SignUpModal = ({ handleClose, show }) => {
     return (
         <>
             <div className={showHideClassName}>
-                <div className="signup-background">
+                <div className="modal-background"></div>
+                <div className="modal-content">
+
                     <div className="signup__closeButton--container">
-                        <button onClick={handleClose} className="signup__closeButton">
-                            Close
-            </button>
+                        <button
+                            onClick={handleClose}
+                            className="modal-close">
+                        Close</button>
                     </div>
                     <div className="signup-content--container">
                         <div className="signup-content">
