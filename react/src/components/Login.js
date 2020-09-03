@@ -7,7 +7,7 @@ import '../styles/login.css'
 
 const Login = (props) => {
     const [signUpModal, setSignUpModal] = useState(false);
-    const [email, setEmail] = useState("Batman@BatSignal.com");
+    const [email, setEmail] = useState("lisa@aa.com");
     const [password, setPassword] = useState("password");
 
     const showSignUpModal = e => {
@@ -69,7 +69,7 @@ const Login = (props) => {
                             className="login-button"
 
                             type="submit">
-                        Log in</button>
+                            Log in</button>
                         <div className="signup--container">
                             <SignUpModal
                                 show={signUpModal}
@@ -78,7 +78,7 @@ const Login = (props) => {
                                 <button
                                     className="login-button"
                                     onClick={showSignUpModal}>
-                                Sign Up</button>
+                                    Sign Up</button>
 
                             </div>
                         </div>
@@ -102,7 +102,7 @@ const SignUpModal = ({ handleClose, show }) => {
                         <button
                             onClick={handleClose}
                             className="modal-close">
-                        Close</button>
+                            Close</button>
                     </div>
                     <div className="signup-content--container">
                         <div className="signup-content">

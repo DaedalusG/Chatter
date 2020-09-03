@@ -21,14 +21,20 @@ const SignUp = () => {
   const updateZipcode = e => setZipcode(e.target.value);
 
 
-  const testSignUp = async () => {
-    const testUser = {
-      username: "Batman",
-      email: "Batman@BatSignal.com",
-      password: "password",
-      firstname: "Bruce",
-      lastname: "Wayne",
-      zipcode: "97214"
+  const createUser = async (e) => {
+    e.preventDefault();
+    if (password !== passwordConfirm) {
+      console.log('Passwords must match')
+      return
+    }
+
+    const user = {
+      username: username,
+      email: email,
+      password: password,
+      firstname: firstname,
+      lastname: lastname,
+      zipcode: zipcode
     }
 
 
@@ -36,7 +42,7 @@ const SignUp = () => {
       method: "POST",
       mode: "cors",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(testUser),
+      body: JSON.stringify(user),
     });
     if (response.ok) {
       console.log("Response Success");
@@ -47,6 +53,7 @@ const SignUp = () => {
         return;
       } else {
         window.localStorage.setItem("auth_token", res.auth_token);
+        window.location.reload();
         // Add redirect here
       }
     } else {
@@ -60,7 +67,7 @@ const SignUp = () => {
       <div className="signup-head--container">
         <div className="signup-head--topElements">
           <div className="signup-head__logo">
-            <Bird/>
+            <Bird />
           </div>
         </div>
         <div className="signup-head__text">
@@ -127,8 +134,9 @@ const SignUp = () => {
         </div>
         <div className="signup-form__submit--container">
           <button
-            className="signup-form__submit">
-          Submit</button>
+            className="signup-form__submit"
+            onClick={createUser}>
+            Submit</button>
         </div>
       </div>
     </div>
