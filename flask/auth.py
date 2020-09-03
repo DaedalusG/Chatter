@@ -21,78 +21,83 @@ def verify_password(password, hashed_password):
         return False
 
 
-
-@auth_routes.route('/login/', methods=['GET'])
+@auth.route('/login', methods=['POST'])
 def login():
-    # print('test')
-    # users = db.session.query(User).all()
-    # print(users)
-    return jsonify({'test1': 1, 'test2': 2}),
-#   try:
-#     # Request objects are currently pseudocode
-#     username = request.username
-#     password = request.password
+    data = request.get_json()
 
-#     if not username:
-#       return {'message': 'Username Required'}, 400
-#     elif not password:
-#       return {'message': 'Password Required'}, 400
+    try:
+        email = data['email']
+        password = data['password']
+        if not email:
+            return jsonify(message='Username Required'), 400
+        elif not password:
+            return jsonify(message='Password Required'), 400
 
-#     user = User.query.filter_by(username=username).first()
-#     if not user:
-#       return {'message': 'Username incorrect'}, 400
+        user = User.query.filter_by(email=email).first()
+        if not user:
+            return jsonify(message='Password Required'), 400
 
-#     passCheck = verify_password(password, user.hashed_password)
-#     if not passCheck:
-#       # Error needs handling decision
-#       return {'message': 'passCheck failed'}, 403
-#     else:
-#       auth_token = create_access_token(identity={"id": user.id})
-#       return jsonify(auth_token=auth_token), 200
-#   except Exception as ex:
-#     # Error needs handling decision
-#     return {'message': 'Login Failed'}, 500
+        print("user-->", user.firstname)
+        print("info-->", user.about)
+        print("password-->", password)
+
+        verified = verify_password(password, user.hashed_password)
+        print("PASSCHECK--->", user)
+        if not verified:
+            # Error needs handling decision
+            return jsonify(message='passCheck failed'), 403
+        else:
+            auth_token = create_access_token(identity={"email": user.email})
+        return jsonify(auth_token=auth_token), 200
+
+        return jsonify(Welcome='To The Chatter API')
+
+    except Exception:
+        return jsonify(message='Login Failed'), 408
 
 
-# @auth_routes.route('/signup', methods=['POST'])
-# def signup():
-#   try:
-#     # Request objects are currently pseudocode
-#     username = request.username
-#     email = request.email
-#     password = request.password
-#     firstname = request.firstname
-#     lastname = request.lastname
-#     zipcode = int(request.zipcode)
+@auth.route('/signup', methods=['POST'])
+def signup():
+    data = request.get_json()
 
-#     if not username:
-#       return {'message': 'Username Required'}, 400
-#     elif not email:
-#       return {'message': 'Email Required'}, 400
-#     elif not password:
-#       return {'message': 'Password Required'}, 400
-#     elif not firstname:
-#       return {'message': 'First Name Required'}, 400
-#     elif not lastname:
-#       return {'message': 'Last Name Required'}, 400
-#     elif not zipcode:
-#       return {'message': 'Zipcode Required'}, 400
+    try:
+        username = data['username']
+        email = data['email']
+        firstname = data['firstname']
+        lastname = data['lastname']
+        zipcode = int(data['zipcode'])
 
-#     hashed_password = set_password(password)
-#     user = User(
-#       username=username,
-#       email=email,
-#       hashed_password=hashed_password,
-#       firstname=firstname,
-#       lastname=lastname,
-#       zipcode=zipcode,
-#     )
-#     db.session.add(order)
-#     db.session.commit()
+        print(username, email, firstname, lastname, zipcode)
 
-#     auth_token = create_access_token(identity={"id": user.id})
-#     # This return will need to be refined
-#     return jsonify(auth_token=auth_token), 200
+        if not username:
+            return jsonify(message="Username Required"), 400
+        elif not email:
+            return jsonify(message='Email Required'), 400
+        elif not firstname:
+            return jsonify(message='First Name Required'), 400
+        elif not lastname:
+            return jsonify(message='Last Name Required'), 400
+        elif not zipcode:
+            return jsonify(message='Zipcode Required'), 400
 
-#   except Exception:
-#       return {'message': Exception}, 400
+        try:
+            hashed_password = set_password(data['password'])
+        except:
+            return jsonify(message='Password Required'), 400
+
+        user = User(
+            username=username,
+            email=email,
+            hashed_password=hashed_password,
+            firstname=firstname,
+            lastname=lastname,
+            zipcode=zipcode,
+        )
+        db.session.add(user)
+        db.session.commit()
+
+        auth_token = create_access_token(identity={"email": user.email})
+        return jsonify(auth_token=auth_token), 200
+
+    except Exception:
+        return jsonify({'message': "try failed"}), 409

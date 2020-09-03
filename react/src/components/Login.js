@@ -1,50 +1,45 @@
-import React, { useState, useEffect } from 'react';
-import { apiUrl } from '../config';
-import { baseUrl, imageUrl } from '../config';
-
+import React, { useState, useEffect } from "react";
+import { imageUrl } from "../config";
+import SignUp from "./SignUp";
 import Bird from '../images/Bird';
 
-// const test = () => async () => {
-//     const res = await fetch(`localhost:5000/auth/login/`)
-//     console.log(res)
-// }
-
-const tryLogin = (email, password) => async () => {
-    const response = await fetch(`${imageUrl}/auth/login/`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-    });
-
-    if (response.ok) {
-        console.log("inside tryLogin: Success")
-        // const { token } = await response.json();
-        // window.localStorage.setItem(TOKEN_KEY, token);
-        // dispatch(setToken(token));
-    } else {
-        console.log("inside tryLogin: Response failure")
-    }
-};
-
-
 const Login = (props) => {
-    const [email, setEmail] = useState('demo@example.com');
-    const [password, setPassword] = useState('password');
-    //const dispatch = useDispatch();
+    const [signUpModal, setSignUpModal] = useState(false);
+    const [email, setEmail] = useState("Batman@BatSignal.com");
+    const [password, setPassword] = useState("password");
+
+    const showSignUpModal = () => setSignUpModal(true);
+    const hideSignUpModal = () => setSignUpModal(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("reached HandleSubmit: ", email, password)
+
+        console.log(`Login.js handleSubmit fired ${email}, ${password}`);
+
+        const response = await fetch(`${imageUrl}/auth/login`, {
+            method: "POST",
+            mode: "cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: `${email}`, password: `${password}` }),
+        });
+
+        if (response.ok) {
+            console.log("inside tryLogin: Success");
+        } else {
+            console.log("inside tryLogin: Response failure");
+        }
+
+        const res = await response.json()
+        console.log(res)
+        if (res.auth_token != undefined) {
+            window.localStorage.setItem('auth_token', res.auth_token)
+            window.location.reload()
+        }
+
     };
 
-    useEffect(() => {
-        fetch('http://localhost:5000/auth/login/')
-        //tryLogin()
-    }, [email])
-
-
-    const updateEmail = e => setEmail(e.target.value);
-    const updatePassword = e => setPassword(e.target.value);
+    const updateEmail = (e) => setEmail(e.target.value);
+    const updatePassword = (e) => setPassword(e.target.value);
 
     return (
         <div className='login-container'>
@@ -67,8 +62,23 @@ const Login = (props) => {
                             placeholder="Password"
                             value={password}
                             onChange={updatePassword} />
-                        <button className="login-button" type="submit">Log in</button>
-                        <a className="login-footer" href="/sign_up">Sign up for Chatter</a>
+                        <button
+                            className="login-button"
+                            type="submit"
+                        >Log in</button>
+                        {/* <a className="login-footer" href="/sign_up">Sign up for Chatter</a> */}
+                        <div className="signup--container">
+                            <SignUpModal
+                                show={signUpModal}
+                                handleClose={hideSignUpModal} />
+                            <div className="signup__controls--container">
+                                <button
+                                    className="button"
+                                    onClick={showSignUpModal}>
+                                    Sign Up
+                                </button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -76,5 +86,27 @@ const Login = (props) => {
     )
 }
 
-export default Login
+const SignUpModal = ({ handleClose, show }) => {
+    const showHideClassName = show ? "modal is-active" : "modal";
 
+    return (
+        <>
+            <div className={showHideClassName}>
+                <div className="signup-background">
+                    <div className="signup__closeButton--container">
+                        <button onClick={handleClose} className="signup__closeButton">
+                            Close
+            </button>
+                    </div>
+                    <div className="signup-content--container">
+                        <div className="signup-content">
+                            <SignUp />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+};
+
+export default Login;

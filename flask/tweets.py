@@ -26,7 +26,6 @@ def get_user_tweets():
 @tweets.route("/", methods=["GET"])
 def get_all_tweets():
   tweets = db.session.query(Tweet).options(joinedload("user")).all()
-
   new_tweets = []
   for tweet in tweets:
     new_tweet = tweet.to_dict()
@@ -34,6 +33,7 @@ def get_all_tweets():
     new_tweets.append(new_tweet)
 
   return jsonify(new_tweets)
+
 
 
 @tweets.route("/post", methods=["POST"])
@@ -52,7 +52,6 @@ def post_tweet():
   db.session.commit()
 
   return jsonify(Goodjob='you posted to db')
-
 
 
 

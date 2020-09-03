@@ -14,7 +14,8 @@ from auth import auth
 
 app = Flask(__name__)
 app.config.from_object(Config)
-app.config['CORS_HEADERS'] = 'Content-Type'
+app.config["CORS_HEADER"] = "Content-Type"
+
 CORS(app)
 app.register_blueprint(user, url_prefix='/api/users')
 app.register_blueprint(seed, url_prefix='/api/seed')
@@ -29,18 +30,17 @@ jwt = JWTManager(app)
 def slash():
     return jsonify(Notice='Please use /api route to access the api')
 
-  
+
 @app.route('/api/')
 def api():
 
 
     return jsonify(Welcome='To The Chatter API')
 
-  
+
 @app.route('/test/')
 def test():
     print('test')
     users = db.session.query(User).all()
     print(users)
     return jsonify({'test1': 1, 'test2': 2})
-
