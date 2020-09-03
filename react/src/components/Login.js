@@ -3,23 +3,6 @@ import { imageUrl } from "../config";
 import SignUp from "./SignUp";
 import Bird from '../images/Bird';
 
-
-// const tryLogin = (email, password) => async () => {
-//     console.log('hit the tryLogin block')
-//     const response = await fetch(`${imageUrl}/auth/login`, {
-//         method: "POST",
-//         mode: "cors",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify({ email: `${email}`, password: `${password}` }),
-//     });
-
-//     if (response.ok) {
-//         console.log("inside tryLogin: Success");
-//     } else {
-//         console.log("inside tryLogin: Response failure");
-//     }
-// };
-
 const Login = (props) => {
     const [signUpModal, setSignUpModal] = useState(false);
     const [email, setEmail] = useState("Batman@BatSignal.com");
@@ -30,8 +13,9 @@ const Login = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         console.log(`Login.js handleSubmit fired ${email}, ${password}`);
-        // tryLogin(email, password);
+
         const response = await fetch(`${imageUrl}/auth/login`, {
             method: "POST",
             mode: "cors",
@@ -41,8 +25,6 @@ const Login = (props) => {
 
         if (response.ok) {
             console.log("inside tryLogin: Success");
-            console.log("RES----", response);
-            console.log("Auth---->", response.auth_token)
         } else {
             console.log("inside tryLogin: Response failure");
         }
@@ -51,7 +33,9 @@ const Login = (props) => {
         console.log(res)
         if (res.auth_token != undefined) {
             window.localStorage.setItem('auth_token', res.auth_token)
+            window.location.reload()
         }
+
     };
 
     const updateEmail = (e) => setEmail(e.target.value);
