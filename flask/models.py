@@ -50,7 +50,8 @@ class User(db.Model):
             "zipcode": self.zipcode,
             # "pinned_tweet": self.pinned_tweet,
             "about": self.about,
-            "profile_pic": self.profile_pic
+            "profile_pic": self.profile_pic,
+            "banner_pic": self.banner_pic,
         }
 
 

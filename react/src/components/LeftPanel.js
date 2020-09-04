@@ -12,7 +12,7 @@ import CirclesMore from '../images/CirclesMore';
 import DownCarrot from '../images/DownCarrot';
 import Feather from '../images/Feather';
 
-const LeftPanel = () => {
+const LeftPanel = (props) => {
   return (
     <div id={"main-c__left"} >
       <div>
@@ -22,7 +22,7 @@ const LeftPanel = () => {
       </div>
       <div>
         <div className={"main-c__left__link"}>
-          <BirdHouse></BirdHouse>
+          <BirdHouse centerPanelHome={props.centerPanelHome} ></BirdHouse>
           <span>HOME</span>
         </div>
       </div>

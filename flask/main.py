@@ -47,9 +47,4 @@ def api():
     return jsonify(safe_user), 200
 
 
-@app.route('/test/')
-def test():
-    print('test')
-    users = db.session.query(User).all()
-    print(users)
-    return jsonify({'test1': 1, 'test2': 2})
+
