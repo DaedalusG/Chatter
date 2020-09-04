@@ -21,5 +21,5 @@ def user_by_id(id):
     # -- Future use of JWT library
     # current_user = get_jwt_identity()
     # current_user = User.query.get(int(get_jwt_identity()))
-    user = User.query.get(id)
+    user = User.query.get(int(id))
     return jsonify(user.to_safe_object())
