@@ -1,24 +1,33 @@
-import React, {useState, useEffect} from 'react';
+
+import React, { useState, useEffect } from 'react';
 import LeftPanel from './LeftPanel';
 import RightPanel from './RightPanel';
 import CenterPanelSwitch from './CenterPanelSwitch';
+import { apiUrl } from '../config.js'
 
 const MainPage = () => {
   const [centerPanelState, setPanelState] = useState("Home");
-  const [userState, setUserState] = useState({})
+
+  const [user, setUser] = useState({})
 
   useEffect(() => {
-
-    //TODO get user from localStorage
-    fetch(`http://localhost:5000/api/users/2`)
-      .then(res => res.json())
-      .then(data => {
-        setUserState(data)
+    const getCurrentUser = async () => {
+      const token = window.localStorage.getItem('auth_token')
+      const response = await fetch(apiUrl, {
+        method: "GET",
+        mode: "cors",
+        headers: { "Authorization": `Bearer ${token}` },
       })
-      .catch( e => console.log("NO GOOD---->", e) )
-
+      if (!response.ok) {
+        console.log("this will never happen. you can quote me")
+      } else {
+        const json = await response.json();
+        setUser(json);
+      }
+    }
+    getCurrentUser();
   }, [])
-
+  
   const centerPanelHome = () => {
     setPanelState("Home")
   }
@@ -29,11 +38,10 @@ const MainPage = () => {
     setPanelState("TweetPanel");
   }
 
-
     return (
       <div id={"main-c"}>
-        <LeftPanel centerPanelHome={centerPanelHome} user={userState} ></LeftPanel>
-        <CenterPanelSwitch centerPanelState={centerPanelState} setPanelState={setPanelState} centerPanelHome={centerPanelHome} centerPanelProfile={centerPanelProfile} centerPanelTweetPanel={centerPanelTweetPanel} user={userState}/>
+        <LeftPanel centerPanelHome={centerPanelHome} user={user} ></LeftPanel>
+        <CenterPanelSwitch centerPanelState={centerPanelState} setPanelState={setPanelState} centerPanelHome={centerPanelHome} centerPanelProfile={centerPanelProfile} centerPanelTweetPanel={centerPanelTweetPanel} user={user}/>
         <RightPanel></RightPanel>
       </div>
     )

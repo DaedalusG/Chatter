@@ -50,7 +50,6 @@ def login():
         return jsonify(message='Login Failed'), 408
 
 
-
 @auth.route('/signup', methods=['POST'])
 def signup():
     data = request.get_json()
@@ -77,7 +76,7 @@ def signup():
 
         try:
             hashed_password = set_password(data['password'])
-        except:
+        except Exception:
             return jsonify(message='Password Required'), 400
 
         user = User(

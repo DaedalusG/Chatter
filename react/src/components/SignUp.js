@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import "../styles/signup.css";
 import { imageUrl } from "../config";
+import Bird from '../images/Bird';
+import "../styles/signup.css";
 
 const SignUp = () => {
   const [username, setUsername] = useState();
@@ -20,14 +21,20 @@ const SignUp = () => {
   const updateZipcode = e => setZipcode(e.target.value);
 
 
-  const testSignUp = async () => {
-    const testUser = {
-      username: "Batman",
-      email: "Batman@BatSignal.com",
-      password: "password",
-      firstname: "Bruce",
-      lastname: "Wayne",
-      zipcode: "97214"
+  const createUser = async (e) => {
+    e.preventDefault();
+    if (password !== passwordConfirm) {
+      console.log('Passwords must match')
+      return
+    }
+
+    const user = {
+      username: username,
+      email: email,
+      password: password,
+      firstname: firstname,
+      lastname: lastname,
+      zipcode: zipcode
     }
 
 
@@ -35,7 +42,7 @@ const SignUp = () => {
       method: "POST",
       mode: "cors",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(testUser),
+      body: JSON.stringify(user),
     });
     if (response.ok) {
       console.log("Response Success");
@@ -46,6 +53,7 @@ const SignUp = () => {
         return;
       } else {
         window.localStorage.setItem("auth_token", res.auth_token);
+        window.location.reload();
         // Add redirect here
       }
     } else {
@@ -59,7 +67,7 @@ const SignUp = () => {
       <div className="signup-head--container">
         <div className="signup-head--topElements">
           <div className="signup-head__logo">
-            <p>Logo</p>
+            <Bird />
           </div>
         </div>
         <div className="signup-head__text">
@@ -72,12 +80,14 @@ const SignUp = () => {
             className="signup-form__username"
             name="username"
             value={username}
+            onChange={updateUsername}
             placeholder="User Name"
           />
           <input
             className="signup-form__email"
             name="email"
             value={email}
+            onChange={updateEmail}
             placeholder="Email"
             type="email"
           />
@@ -90,6 +100,7 @@ const SignUp = () => {
             className="signup-form__password"
             name="password"
             value={password}
+            onChange={updatePassword}
             placeholder="Password"
             type="password"
           />
@@ -97,6 +108,7 @@ const SignUp = () => {
             className="signup-from__password-confirm"
             name="password-confirm"
             value={passwordConfirm}
+            onChange={updatePasswordConfirm}
             placeholder="Confirm Password"
             type="password"
           />
@@ -109,29 +121,29 @@ const SignUp = () => {
             className="signup-form__firstname"
             name="firstname"
             value={firstname}
+            onChange={updateFirstname}
             placeholder="First Name"
           />
           <input
             className="signup-form__lastname"
             name="lastname"
             value={lastname}
+            onChange={updateLastname}
             placeholder="Last Name"
           />
           <input
             className="signup-form__zipcode"
             name="zipcode"
             value={zipcode}
+            onChange={updateZipcode}
             placeholder="Zip Code"
           />
         </div>
-        <div className="signup-form__submit">
+        <div className="signup-form__submit--container">
           <button
-            className="signup-form__submit">
-          Submit</button>
-          <button
-            className="signup-form__testButton"
-            onClick={testSignUp}>
-          Sign Up Test Func</button>
+            className="signup-form__submit"
+            onClick={createUser}>
+            Submit</button>
         </div>
       </div>
     </div>
