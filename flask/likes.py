@@ -43,3 +43,10 @@ def likes_by_id(id):
     return jsonify(count=likes)
 
 
+# get tweets like by one user
+@likes.route('/user/<id>')
+@jwt_required
+def likes_of_user(id):
+    likes = Like.querty.filter(Like.user_id==id).all()
+    return jsonify(likes=likes)
+
