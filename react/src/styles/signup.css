@@ -4,7 +4,11 @@
   flex-direction: column;
   margin: 10px;
   background-color: #073c5f;
-  width: 600px
+  border-radius: 20px;
+  width: 600px;
+  position: fixed;
+  top: 0px;
+  left: 25vw;
 }
 
 .signup-head--container {
@@ -45,7 +49,18 @@
 }
 
 .signup-form--container input {
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   color: black;
   height: 40px;
+}
+
+.modal-close {
+  position: fixed;
+  top: 5vh;
+  left: 70vw;
+  z-index: 1;
+}
+
+.modal-hiding {
+  display: none;
 }
