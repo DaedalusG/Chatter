@@ -22,7 +22,7 @@
 #profile-banner{
   width: 100%;
   height: 200px;
-  background-image: url(../images/skeletorBattle.jpg);
+  /* background-image: url(../images/skeletorBattle.jpg); */
 }
 #profile-panel__below-nav__profile-bublle-c{
   width: 90px;
@@ -34,8 +34,8 @@
   width: 125px;
   height: 125px;
   border-radius: 100%;
-  background-image: url(../images/4a1.png);
-  background-size: cover;
+  /* background-image: url(../images/4a1.png); */
+  /* background-size: cover; */
   margin: 13px 0px 0px 15px;
   border: 4px solid white;
 }

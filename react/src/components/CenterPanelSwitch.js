@@ -4,34 +4,32 @@ import ProfilePage from './ProfilePage';
 import TweetPanel from './TweetPanel'
 
 
-const CenterPanelSwitch = () => {
+const CenterPanelSwitch = (props) => {
 
-  const [centerPanelState, setPanelState] = useState("Home");
 
-  const centerPanelHome = () => {
-    setPanelState("Home")
+  const  [tweetIdsState, setTweetIdState] = useState();
+  const tweetInfoFunc = (id)=>{
+    setTweetIdState(id);
   }
-  const centerPanelProfile = () => {
-    setPanelState("Profile");
-  }
-  const centerPanelTweetPanel = () => {
-    setPanelState("TweetPanel");
-  }
+
+
+
+  
 
   return (
     <>
 
       {(() => {
 
-        switch (centerPanelState) {
+        switch (props.centerPanelState) {
           case 'Home':
-            return <CenterPanel centerPanelProfile={centerPanelProfile} centerPanelTweetPanel={centerPanelTweetPanel} />
+            return <CenterPanel user={props.user} tweetInfoFunc={props.tweetInfoFunc} centerPanelProfile={props.centerPanelProfile} centerPanelTweetPanel={props.centerPanelTweetPanel} />
           case 'Profile':
-            return <ProfilePage centerPanelProfile={centerPanelProfile} centerPanelTweetPanel={centerPanelTweetPanel} centerPanelHome={centerPanelHome} />
+            return <ProfilePage user={props.user} centerPanelProfile={props.centerPanelProfile} centerPanelTweetPanel={props.centerPanelTweetPanel} centerPanelHome={props.centerPanelHome} />
           case 'TweetPanel':
-            return <TweetPanel />
+            return <TweetPanel tweetIdsState={props.ReacttweetIdsState} />
           default:
-            return <CenterPanel centerPanelProfile={centerPanelProfile} />
+            return <CenterPanel centerPanelProfile={props.centerPanelProfile} />
         }
 
       })()}

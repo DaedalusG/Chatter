@@ -7,9 +7,7 @@ import DownCarrot from '../images/DownCarrot';
 
 const Tweet = (props) => {
 
-  const tweetContent = document.getElementsByName("tweet-textarea")[0].innerText
-
-
+  // const tweetContent = document.getElementsByName("tweet-textarea")[0].innerText
 
   return (
     <div className={"tweet-c"}>
@@ -24,7 +22,11 @@ const Tweet = (props) => {
           </div>
         </div>
       </div>
-      <div className="tweet-c__comment" onClick={props.centerPanelTweetPanel}  >
+      <div className="tweet-c__comment" onClick={ () => {
+        props.tweetInfoFunc(props.props.id)
+        props.centerPanelTweetPanel()
+      }}
+      >
         <p>{props.props.content}</p>
       </div>
       <img className={"tweet-pic"} alt={""} src={props.props.media} ></img>

@@ -33,14 +33,4 @@ def slash():
 
 @app.route('/api/')
 def api():
-
-
     return jsonify(Welcome='To The Chatter API')
-
-
-@app.route('/test/')
-def test():
-    print('test')
-    users = db.session.query(User).all()
-    print(users)
-    return jsonify({'test1': 1, 'test2': 2})

@@ -6,22 +6,25 @@ import PollBox from '../images/PollBox';
 import SmileyFace from '../images/SileyFace';
 import Calendar from '../images/Calendar'
 import Tweet from './Tweet';
+import skelator from '../images/skelator.png';
 
 
 
 const CenterPanel = (props) => {
 
-  const [tweetState, setTweetState] = useState([])
 
+  const [tweetState, setTweetState] = useState([])
   useEffect(() => {
-    fetch('http://localhost:5000/api/tweets/')
+
+    //TODO fix backend route to get tweets from following
+    fetch(`http://localhost:5000/api/tweets/`)
       .then(res => res.json())
       .then(data => {
         setTweetState(data)
       })
-  }, [])
+    },[])
 
-
+ 
   const postFunction = async () => {
 
     const tweetContent = document.getElementsByName("tweet-textarea")[0].innerText
@@ -40,7 +43,7 @@ const CenterPanel = (props) => {
       .catch(e => console.log('error posting your tweet', e))
 
   }
-
+  const profileBubbleAlt = skelator;
 
   return (
     <>
@@ -53,11 +56,12 @@ const CenterPanel = (props) => {
           <div className="center-panel__below-nav__scroll" >
             {/* <div id={"center-panel__below-nav__content-c"}> */}
             <div className={"below-nav-section"} >
-              <div id={"center-panel__below-nav__profile-bublle-c"}
-                onClick={props.centerPanelProfile}
-              >
+              <img id={"profile-bubble-2"} alt={profileBubbleAlt} src={props.user.profile_pic} onClick={props.centerPanelProfile}></img>
+              {/* <div id={"center-panel__below-nav__profile-bublle-c"} */}
+                {/* onClick={props.centerPanelProfile} */}
+              {/* > */}
                 <div className={"profile-bubble-2"} ></div>
-              </div>
+              {/* </div> */}
               <span name="tweet-textarea" className="textarea" role="textbox" resize="none" contentEditable=""></span>
             </div>
             <div className={"below-nav-section-2"} >
@@ -72,7 +76,7 @@ const CenterPanel = (props) => {
             </div>
             <div className="all-tweets-c">
               {tweetState[0] ?
-                tweetState.map((tweet) => <Tweet props={tweet} centerPanelTweetPanel={props.centerPanelTweetPanel} />)
+                tweetState.map((tweet) => <Tweet props={tweet} tweetInfoFunc={props.tweetInfoFunc}  setTweetIdsState={props.setTweetIdsState} centerPanelTweetPanel={props.centerPanelTweetPanel} />)
                 : null
               }
             </div>

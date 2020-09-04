@@ -9,7 +9,7 @@ const ProfilePage = (props) => {
   const [tweetState, setTweetState] = useState([])
   const user = 1;
   useEffect(() => {
-    fetch(`http://localhost:5000/api/tweets/user`)
+    fetch(`http://localhost:5000/api/tweets/user?kiwi=${user}`)
       .then(res => res.json())
       .then(data => {
         setTweetState(data)
@@ -35,9 +35,11 @@ const ProfilePage = (props) => {
         <div id={"center-panel__below-nav"} >
           <div className="center-panel__below-nav__scroll" >
             <div className={"below-nav-section"} >
-              <div id={"profile-banner"} ></div>
+              <img id={"profile-banner"} alt={""} src={props.user.banner_pic} ></img>
+              {/* <div id={"profile-banner"} ></div> */}
               <div id={"profile-panel__below-nav__profile-bublle-c"} onClick={fullscreenPic}>
-                <div className={"profile-bubble-4"} ></div>
+                <img className={"profile-bubble-4"} alt={""} src={props.user.profile_pic} ></img>
+                {/* <div className={"profile-bubble-4"} ></div> */}
               </div>
               <span name="tweet-textarea" className="textarea-hide" role="textbox" resize="none" contentEditable=""></span>
             </div>

@@ -9,11 +9,11 @@ import Tweet from './Tweet';
 
 
 const TweetPanel = (props) => {
-
+  // console.log(props)
   const [tweetState, setTweetState] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/tweets/')
+    fetch(`http://localhost:5000/api/tweet/${props.tweetIdsState}`)
       .then(res => res.json())
       .then(data => {
         setTweetState(data)
@@ -54,7 +54,7 @@ const TweetPanel = (props) => {
               {/* <Tweet 
               // props={tweetState[0]}
               /> */}
-              <p>HELLO</p>
+              <p>{props.tweetIdsState}</p>
             </div>
           </div>
         </div>
