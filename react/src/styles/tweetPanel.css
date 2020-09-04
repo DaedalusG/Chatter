@@ -1,0 +1,10 @@
+.tweet-left-arrow-c{
+  display: flex;
+  align-items: center;
+  width: 200px;
+}
+.tweet-left-arrow-c span{
+  position: relative;
+  left: 10px;
+
+}

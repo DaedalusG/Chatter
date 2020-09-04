@@ -2,9 +2,7 @@
 name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
-
 [dev-packages]
-
 [packages]
 click = "7.1.2"
 Flask = "1.1.2"
@@ -27,7 +25,5 @@ faker = "==4.1.2"
 flask-login = "*"
 pycodestyle = "*"
 bcrypt = "*"
-
-
 [requires]
 python_version = "3.8"

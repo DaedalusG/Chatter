@@ -24,13 +24,13 @@ const ProfilePage = (props) => {
 
   return (
     <>
-      <ProfileFullScreen fullscreenPic={fullscreenPic} profileFullScreenState={profileFullScreenState} />
+      <ProfileFullScreen user={props.user} fullscreenPic={fullscreenPic} profileFullScreenState={profileFullScreenState} />
       <div id={"center-panel"}>
         <div id={"center-panel-tweet__nav"}>
           <div onClick={props.centerPanelHome} >
             <LeftArrow></LeftArrow>
           </div>
-          <span>ProfilePage</span>
+            <span>{props.user.firstname}</span><span>{props.user.lastname}</span>
         </div>
         <div id={"center-panel__below-nav"} >
           <div className="center-panel__below-nav__scroll" >
@@ -47,9 +47,9 @@ const ProfilePage = (props) => {
               <div id={"edit-profile-button"}>
                 <span>Edit Profile</span>
               </div>
-              <span className={"profile-user-name"} >Skeletor</span>
-              <span className={"profile-chatter-name"} >@skeletor7</span>
-              <span className={"profile-bio"} >Rightfull king of Eternia. Owner of Panthor. Laughs like no ones watching.</span>
+              <span className={"profile-user-name"} >{props.user.firstname}</span><span className={"profile-user-name"}>{props.user.lastname}</span>
+              <span className={"profile-chatter-name"} >@</span><span className={"profile-chatter-name"} > {props.user.username}</span>
+              <span className={"profile-bio"} >{props.user.about}</span>
             </div>
 
             <div className="all-tweets-c">

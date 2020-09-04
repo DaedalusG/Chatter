@@ -1,8 +1,13 @@
 import React from 'react';
 import MagnifyingGlass from '../images/MagnifyingGlass';
+import NewsArray from './NewsArray';
 
 
-const RightPanel = () => {
+
+
+ 
+const RightPanel = ()=>{
+
   return (
     <div id={"main-c__right"} >
       <div id={"main-c__right__search-bar"} >
@@ -16,35 +21,35 @@ const RightPanel = () => {
             <p>Heman Again</p>
             <p>And battle cat!</p>
           </div>
-          <div className={"news-pic"} ></div>
+          <NewsArray></NewsArray>
         </div>
         <div className={"main-c__right__event-c__news"}>
           <div className={"news-feed"}>
             <p>Heman Again</p>
             <p>And battle cat!</p>
           </div>
-          <div className={"news-pic"} ></div>
+          <NewsArray></NewsArray>
         </div>
         <div className={"main-c__right__event-c__news"}>
           <div className={"news-feed"}>
             <p>Heman Again</p>
             <p>And battle cat!</p>
           </div>
-          <div className={"news-pic"} ></div>
+          <NewsArray></NewsArray>
         </div>
         <div className={"main-c__right__event-c__news"}>
           <div className={"news-feed"}>
             <p>Heman Again</p>
             <p>And battle cat!</p>
           </div>
-          <div className={"news-pic"} ></div>
+          <NewsArray></NewsArray>
         </div>
         <div className={"main-c__right__event-c__news"}>
           <div className={"news-feed"}>
             <p>Heman Again</p>
             <p>And battle cat!</p>
           </div>
-          <div className={"news-pic"} ></div>
+          <NewsArray></NewsArray>
         </div>
       </div>
 

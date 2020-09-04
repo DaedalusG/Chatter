@@ -7,7 +7,8 @@ import './styles/rightPanel.css';
 import './styles/centerPanel.css';
 import './styles/tweet.css';
 import './styles/profilePage.css';
-import './styles/profileFullScreen.css'
+import './styles/profileFullScreen.css';
+import './styles/tweetPanel.css';
 import './styles/mScreenheight640.css';
 import './styles/mScreen1265.css';
 import './styles/mScreen1077.css';
