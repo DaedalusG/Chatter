@@ -6,11 +6,11 @@ import PollBox from '../images/PollBox';
 import SmileyFace from '../images/SileyFace';
 import Calendar from '../images/Calendar'
 import Tweet from './Tweet';
+import { apiUrl } from '../config';
 
 
 
 const CenterPanel = (props) => {
-
   const [tweetState, setTweetState] = useState([])
 
   useEffect(() => {

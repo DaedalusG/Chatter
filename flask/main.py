@@ -1,11 +1,16 @@
 from flask import Flask, render_template, redirect, jsonify, request
 from flask_login import LoginManager
-from flask_jwt_extended import JWTManager
+from flask_jwt_extended import (
+    JWTManager,
+    jwt_required,
+    get_jwt_identity,
+    get_raw_jwt,
+    verify_jwt_in_request)  # noqa
 from flask_cors import CORS
 
 
 from config import Config
-from models import db
+from models import db, User
 from users import user
 from seed import seed
 from tweets import tweets
@@ -31,11 +36,15 @@ def slash():
     return jsonify(Notice='Please use /api route to access the api')
 
 
-@app.route('/api/')
+@app.route('/api', methods=['GET'])
+@jwt_required
 def api():
-
-
-    return jsonify(Welcome='To The Chatter API')
+    # verify_jwt_in_request()
+    # raw = get_raw_jwt()
+    user = get_jwt_identity()
+    current_user = User.query.filter_by(email=user['email']).first()
+    safe_user = current_user.to_safe_object()
+    return jsonify(safe_user), 200
 
 
 @app.route('/test/')
