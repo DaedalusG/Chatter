@@ -1,6 +1,8 @@
 import React from 'react';
 import MagnifyingGlass from '../images/MagnifyingGlass';
 import NewsArray from './NewsArray';
+import NewsBlurb from './NewsBlurb';
+import NewsBlurb2 from './NewsBlurb2';
 
 
 
@@ -18,36 +20,36 @@ const RightPanel = ()=>{
         <div id={"main-c__right__event-c__top"} ><span>What's happening</span></div>
         <div className={"main-c__right__event-c__news"}>
           <div className={"news-feed"}>
-            <p>Heman Again</p>
-            <p>And battle cat!</p>
+            <NewsBlurb></NewsBlurb>
+            <NewsBlurb2/>
           </div>
           <NewsArray></NewsArray>
         </div>
         <div className={"main-c__right__event-c__news"}>
           <div className={"news-feed"}>
-            <p>Heman Again</p>
-            <p>And battle cat!</p>
+            <NewsBlurb></NewsBlurb>
+            <NewsBlurb2 />
           </div>
           <NewsArray></NewsArray>
         </div>
         <div className={"main-c__right__event-c__news"}>
           <div className={"news-feed"}>
-            <p>Heman Again</p>
-            <p>And battle cat!</p>
+            <NewsBlurb></NewsBlurb>
+            <NewsBlurb2 />
           </div>
           <NewsArray></NewsArray>
         </div>
         <div className={"main-c__right__event-c__news"}>
           <div className={"news-feed"}>
-            <p>Heman Again</p>
-            <p>And battle cat!</p>
+            <NewsBlurb></NewsBlurb>
+            <NewsBlurb2 />
           </div>
           <NewsArray></NewsArray>
         </div>
         <div className={"main-c__right__event-c__news"}>
           <div className={"news-feed"}>
-            <p>Heman Again</p>
-            <p>And battle cat!</p>
+            <NewsBlurb></NewsBlurb>
+            <NewsBlurb2 />
           </div>
           <NewsArray></NewsArray>
         </div>

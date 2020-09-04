@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import Bird from '../images/Bird';
 import BirdHouse from '../images/BirdHouse';
@@ -11,10 +11,30 @@ import Person from '../images/Person';
 import CirclesMore from '../images/CirclesMore';
 import DownCarrot from '../images/DownCarrot';
 import Feather from '../images/Feather';
+import CheckMark from '../images/CheckMark';
 
 const LeftPanel = (props) => {
+  const [logoutModalState, setLogoutModalState] = useState(false);
+  const toggleLogoutModal = ()=>{
+    let changeModal = !logoutModalState;
+    setLogoutModalState(changeModal)
+  }
+
   return (
     <div id={"main-c__left"} >
+      <div id={"logout-modal"} className={`${logoutModalState ? "logout-modal-visible": "logout-modal-invisible"}`}>
+        <div id={"logout-modal__top"}>
+          <img className={"profile-bubble"} alt={""} src={props.user.profile_pic} ></img>
+          <div className={"logout-modal__user-names"} >
+            <span className={"logout-modal__user-names__span1"}>Skeletor</span>
+            <span className={"logout-modal__user-names__span2"} >@Skeletor1</span>
+          </div>
+          <CheckMark></CheckMark>
+        </div  >
+        <div id={"logout-modal__bottom"} >
+          <span onClick={ () => {localStorage.removeItem("auth_token"); window.location.href = 'http://localhost:3000'}} className={"logout-modal__logout-span"}>Log out</span>
+        </div>
+      </div>
       <div>
         <div className={"main-c__left__bird"} centerPanelHome={props.centerPanelHome}>
           <Bird></Bird>
@@ -73,9 +93,8 @@ const LeftPanel = (props) => {
           <span>Tweet</span>
           <Feather></Feather>
         </div>
-        <div id={"main-c__left__login"}>
-          <div id={"logout-modal"} ></div>
-          <img className={"profile-bubble"} alt={""} src={props.user.profile_pic} ></img>
+        <div id={"main-c__left__login"} onClick={toggleLogoutModal}>   
+            <img className={"profile-bubble"} alt={""} src={props.user.profile_pic} ></img>
           <div className={"user-names"} >
             <span className={"user-names__span1"}>Skeletor</span>
             <span className={"user-names__span2"} >@Skeletor1</span>

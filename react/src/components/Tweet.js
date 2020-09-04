@@ -69,6 +69,7 @@ const Tweet = (props) => {
     retweeted === "retweet" ? setRetweeted("retweetOn") : setRetweeted("retweet")
   }
 
+
   useEffect(() => {
     const getHeartedCount = async () => {
       if (props.props.id === undefined) return
@@ -111,6 +112,7 @@ const Tweet = (props) => {
     getHeartedCount();
     // getUserHearted(); -- commented out for dev
   }, [])
+
 
   return (
     <div className={"tweet-c"}>
