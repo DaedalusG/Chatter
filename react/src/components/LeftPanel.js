@@ -16,7 +16,7 @@ const LeftPanel = (props) => {
   return (
     <div id={"main-c__left"} >
       <div>
-        <div className={"main-c__left__bird"}>
+        <div className={"main-c__left__bird"} centerPanelHome={props.centerPanelHome}>
           <Bird></Bird>
         </div>
       </div>
@@ -74,7 +74,8 @@ const LeftPanel = (props) => {
           <Feather></Feather>
         </div>
         <div id={"main-c__left__login"}>
-          <div className={"profile-bubble"} ></div>
+          <div id={"logout-modal"} ></div>
+          <img className={"profile-bubble"} alt={""} src={props.user.profile_pic} ></img>
           <div className={"user-names"} >
             <span className={"user-names__span1"}>Skeletor</span>
             <span className={"user-names__span2"} >@Skeletor1</span>
