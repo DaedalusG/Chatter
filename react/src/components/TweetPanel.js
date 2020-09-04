@@ -14,13 +14,11 @@ const TweetPanel = (props) => {
   const [tweetState, setTweetState] = useState([])
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/tweet/${props.tweetIdsState}`)
+    fetch(`http://localhost:5000/api/tweets/tweet/${props.tweetIdsState}`)
       .then(res => res.json())
-      .then(data => {
-        setTweetState(data)
-      })
+      .then(data =>  setTweetState(data))
+      .catch( e => console.log(e) )
   }, [])
-
 
   return (
     <>
@@ -34,10 +32,14 @@ const TweetPanel = (props) => {
         <div id={"center-panel__below-nav"} >
           <div className="center-panel__below-nav__scroll" >
             <div className="all-tweets-c">
-              {/* <Tweet 
-              // props={tweetState[0]}
-              /> */}
-              <p>{props.tweetIdsState}</p>
+              {/* <Tweet props={tweetState}/> */}
+              <p>{tweetState.content}</p>
+
+              {tweetState.replies ?
+                tweetState.replies.map( reply => (<p>{reply.content}</p>) )
+                : null
+              }
+
             </div>
           </div>
         </div>

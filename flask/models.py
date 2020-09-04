@@ -64,7 +64,7 @@ class Tweet(db.Model):
     media = db.Column(db.Text)
 
     # likes = db.relationship('Like', backref='tweet')
-    # replies = db.relationship('Reply', backref='tweet')
+    replies = db.relationship('Reply', backref='tweet')
     # retweets = db.relationship('Retweet', backref='tweet')
     # user = db.relationship('User', back_populates="tweets")
 
@@ -96,6 +96,14 @@ class Reply(db.Model):
     content = db.Column(db.Text, nullable=False)
 
     likes = db.relationship('Like', backref='reply')
+
+    def to_dict(self):
+      return {
+          "id": self.id,
+          "user_id": self.user_id,
+          "tweet_id": self.tweet_id,
+          "content": self.content,
+      }
 
 
 class Like(db.Model):

@@ -7,8 +7,6 @@ import DownCarrot from '../images/DownCarrot';
 
 const Tweet = (props) => {
 
-  // const tweetContent = document.getElementsByName("tweet-textarea")[0].innerText
-
   return (
     <div className={"tweet-c"}>
       {/* <span className={"tweet-c__name"}>{props.props.name}</span> */}

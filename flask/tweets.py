@@ -7,35 +7,49 @@ from flask_cors import CORS
 
 tweets = Blueprint('tweets', __name__)
 
-#Get all tweets for one user
-@tweets.route("/user", methods=["GET"])
-def get_user_tweets():
+# Get one tweet with its replies
+@tweets.route("/tweet/<id>", methods=["GET"])
+def get_a_tweet(id):
 
-  user = request.args.get("kiwi")
-  print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", user)
+  model_tweet = Tweet.query.filter(Tweet.id==id).first()
+  tweet = model_tweet.to_dict()
+  tweet["user"] = model_tweet.user.to_safe_object()
 
-  # tweets = Tweet.query.filter_by(user_id=1).all()
+  replies = []
+  for reply in model_tweet.replies:
+    # reply.user_id.to_safe_object()
+    replies.append(reply.to_dict())
+  tweet["replies"] = replies
 
-  # new_tweets = []
-  # for tweet in tweets:
-  #   new_tweet = tweet.to_dict()
-  #   new_tweet["user"] = tweet.user.to_safe_object()
-  #   new_tweets.append(new_tweet)
+  return jsonify(tweet)
 
-  return jsonify(tweetswithcommentszzzzz=user)
+
+# Get all tweets for one user
+@tweets.route("/user/<id>", methods=["GET"])
+def get_user_tweets(id):
+
+  model_tweets = Tweet.query.filter(Tweet.user_id==id).all()
+  tweets = []
+  for model_tweet in model_tweets:
+    tweet = model_tweet.to_dict()
+    tweet["user"] = model_tweet.user.to_safe_object()
+    tweets.append(tweet)
+
+  return jsonify(tweets)
 
 
 # Get all all tweets joined with user data
 @tweets.route("/", methods=["GET"])
 def get_all_tweets():
-  tweets = db.session.query(Tweet).options(joinedload("user")).all()
-  new_tweets = []
-  for tweet in tweets:
-    new_tweet = tweet.to_dict()
-    new_tweet["user"] = tweet.user.to_safe_object()
-    new_tweets.append(new_tweet)
 
-  return jsonify(new_tweets)
+  model_tweets = db.session.query(Tweet).options(joinedload("user")).all()
+  tweets = []
+  for model_tweet in model_tweets:
+    tweet = model_tweet.to_dict()
+    tweet["user"] = model_tweet.user.to_safe_object()
+    tweets.append(tweet)
+
+  return jsonify(tweets)
 
 
 # Create a tweet

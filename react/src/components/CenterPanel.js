@@ -77,8 +77,14 @@ const CenterPanel = (props) => {
               </div>
             </div>
             <div className="all-tweets-c">
-              {tweetState[0] ?
-                tweetState.map((tweet) => <Tweet props={tweet} tweetInfoFunc={props.tweetInfoFunc}  setTweetIdsState={props.setTweetIdsState} centerPanelTweetPanel={props.centerPanelTweetPanel} />)
+              {tweetState ?
+                tweetState.map((tweet) => (
+                  <Tweet props={tweet} 
+                    tweetInfoFunc={props.tweetInfoFunc}  
+                    setTweetIdsState={props.setTweetIdsState} 
+                    centerPanelTweetPanel={props.centerPanelTweetPanel} 
+                  />)
+                )
                 : null
               }
             </div>
