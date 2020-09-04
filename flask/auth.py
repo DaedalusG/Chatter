@@ -61,8 +61,6 @@ def signup():
         lastname = data['lastname']
         zipcode = int(data['zipcode'])
 
-        print(username, email, firstname, lastname, zipcode)
-
         if not username:
             return jsonify(message="Username Required"), 400
         elif not email:

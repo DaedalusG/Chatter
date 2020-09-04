@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { apiUrl } from '../config';
 import Sparkles from '../images/Sparkles';
 import Landcape from '../images/Landscape';
 import GifBox from '../images/GifBox';
@@ -39,6 +40,8 @@ const TweetPanel = (props) => {
                 tweetState.replies.map( reply => (<p>{reply.content}</p>) )
                 : null
               }
+
+              <p>{props.tweetIdsState}</p>
 
             </div>
           </div>

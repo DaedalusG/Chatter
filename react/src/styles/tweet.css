@@ -53,7 +53,7 @@
   position: relative;
   top: -20px;
   /* border: 1px solid blue; */
-  
+
 }
 .tweet-c__comment p{
   padding: 0px;
@@ -87,6 +87,15 @@
   padding: 7px;
   border-radius: 100%;
 }
+.retweetOn{
+  height: 18px;
+  width: 18px;
+  margin-bottom: 10px;
+  margin-left: 120px;
+  padding: 7px;
+  border-radius: 100%;
+  fill: rgba(29,161,242,1.00);
+}
 .heart{
   height: 18px;
   width: 18px;
@@ -98,6 +107,16 @@
 .heart:hover{
   background-color: rgb(250, 209, 216);
   fill: red;
+}
+.heartOn{
+  height: 18px;
+  width: 18px;
+  margin-bottom: 10px;
+  margin-left: 120px;
+  padding: 7px;
+  border-radius: 100%;
+  fill: red;
+  color: red;
 }
 .link-tweet{
   height: 18px;

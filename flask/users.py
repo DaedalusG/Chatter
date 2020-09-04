@@ -23,3 +23,12 @@ def user_by_id(id):
     # current_user = User.query.get(int(get_jwt_identity()))
     user = User.query.get(int(id))
     return jsonify(user.to_safe_object())
+
+# get current user from access token
+@user.route('/token', methods=['GET'])
+@jwt_required
+def api():
+    user = get_jwt_identity()
+    current_user = User.query.filter_by(email=user['email']).first()
+    safe_user = current_user.to_safe_object()
+    return jsonify(safe_user), 200

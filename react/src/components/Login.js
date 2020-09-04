@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { imageUrl } from "../config";
 import SignUp from "./SignUp";
+import CloseButton from '../images/CloseButton';
 import Bird from '../images/Bird';
 import '../styles/login.css'
 
@@ -90,7 +91,7 @@ const Login = (props) => {
 }
 
 const SignUpModal = ({ handleClose, show }) => {
-    const showHideClassName = show ? "modal is-active" : "modal";
+    const showHideClassName = show ? "modal-showing" : "modal-hiding";
 
     return (
         <>
@@ -102,7 +103,7 @@ const SignUpModal = ({ handleClose, show }) => {
                         <button
                             onClick={handleClose}
                             className="modal-close">
-                            Close</button>
+                            close</button>
                     </div>
                     <div className="signup-content--container">
                         <div className="signup-content">

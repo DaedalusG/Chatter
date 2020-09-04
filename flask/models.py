@@ -59,9 +59,10 @@ class Tweet(db.Model):
     __tablename__ = 'tweets'
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)  # noqa
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     content = db.Column(db.Text, nullable=False)
     media = db.Column(db.Text)
+    retweet_id = db.Column(db.Integer, db.ForeignKey('tweets.id'))
 
     # likes = db.relationship('Like', backref='tweet')
     replies = db.relationship('Reply', backref='tweet')
@@ -111,6 +112,6 @@ class Like(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    liked_tweet = db.Column(db.Integer, db.ForeignKey("tweets.id"), nullable=True)  # noqa
-    liked_retweet = db.Column(db.Integer, db.ForeignKey("retweets.id"), nullable=True)  # noqa
-    liked_reply = db.Column(db.Integer, db.ForeignKey("replies.id"), nullable=True)  # noqa
+    tweet_id = db.Column(db.Integer, db.ForeignKey("tweets.id"), nullable=True)  # noqa
+    retweet_id = db.Column(db.Integer, db.ForeignKey("retweets.id"), nullable=True)  # noqa
+    reply_id = db.Column(db.Integer, db.ForeignKey("replies.id"), nullable=True)  # noqa

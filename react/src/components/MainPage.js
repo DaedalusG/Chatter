@@ -13,7 +13,7 @@ const MainPage = () => {
   useEffect(() => {
     const getCurrentUser = async () => {
       const token = window.localStorage.getItem('auth_token')
-      const response = await fetch(apiUrl, {
+      const response = await fetch(`${apiUrl}/users/token`, {
         method: "GET",
         mode: "cors",
         headers: { "Authorization": `Bearer ${token}` },
@@ -27,7 +27,7 @@ const MainPage = () => {
     }
     getCurrentUser();
   }, [])
-  
+
   const centerPanelHome = () => {
     setPanelState("Home")
   }
