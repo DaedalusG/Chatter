@@ -10,21 +10,23 @@ from flask_cors import CORS
 
 
 from config import Config
-from models import db, User
+from models import db
 from users import user
 from seed import seed
 from tweets import tweets
+from likes import likes
 from auth import auth
 
 
 app = Flask(__name__)
 app.config.from_object(Config)
 app.config["CORS_HEADER"] = "Content-Type"
-
 CORS(app)
+
 app.register_blueprint(user, url_prefix='/api/users')
 app.register_blueprint(seed, url_prefix='/api/seed')
 app.register_blueprint(tweets, url_prefix='/api/tweets')
+app.register_blueprint(likes, url_prefix='/api/likes')
 app.register_blueprint(auth, url_prefix='/auth')
 
 db.init_app(app)
@@ -33,18 +35,12 @@ jwt = JWTManager(app)
 
 @app.route('/')
 def slash():
-    return jsonify(Notice='Please use /api route to access the api')
+    return jsonify(Notice='Please use /api route to access the api'), 200
 
 
 @app.route('/api', methods=['GET'])
-@jwt_required
 def api():
-    # verify_jwt_in_request()
-    # raw = get_raw_jwt()
-    user = get_jwt_identity()
-    current_user = User.query.filter_by(email=user['email']).first()
-    safe_user = current_user.to_safe_object()
-    return jsonify(safe_user), 200
+    return jsonify(message='Successful API ping'), 200
 
 
 

@@ -11,10 +11,9 @@ import { apiUrl } from '../config';
 
 
 
-
 const CenterPanel = (props) => {
 
-  const [tweetState, setTweetState] = useState([])
+  const [tweetState, setTweetState] = useState([]);
 
   useEffect(() => {
 
@@ -23,10 +22,11 @@ const CenterPanel = (props) => {
       .then(res => res.json())
       .then(data => {
         setTweetState(data)
-      })
-    },[])
+      }
+    )
+  },[])
 
- 
+
   const postFunction = async () => {
 
     const tweetContent = document.getElementsByName("tweet-textarea")[0].innerText
@@ -78,7 +78,7 @@ const CenterPanel = (props) => {
             </div>
             <div className="all-tweets-c">
               {tweetState[0] ?
-                tweetState.map((tweet) => <Tweet props={tweet} tweetInfoFunc={props.tweetInfoFunc}  setTweetIdsState={props.setTweetIdsState} centerPanelTweetPanel={props.centerPanelTweetPanel} />)
+                tweetState.map((tweet) => <Tweet props={tweet} user={props.user} tweetInfoFunc={props.tweetInfoFunc}  setTweetIdsState={props.setTweetIdsState} centerPanelTweetPanel={props.centerPanelTweetPanel} />)
                 : null
               }
             </div>

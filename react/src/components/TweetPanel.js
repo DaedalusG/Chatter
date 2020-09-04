@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { apiUrl } from '../config';
 import Sparkles from '../images/Sparkles';
 import Landcape from '../images/Landscape';
 import GifBox from '../images/GifBox';
@@ -34,7 +35,7 @@ const TweetPanel = (props) => {
         <div id={"center-panel__below-nav"} >
           <div className="center-panel__below-nav__scroll" >
             <div className="all-tweets-c">
-              {/* <Tweet 
+              {/* <Tweet
               // props={tweetState[0]}
               /> */}
               <p>{props.tweetIdsState}</p>
