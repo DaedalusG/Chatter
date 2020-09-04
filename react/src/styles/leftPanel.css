@@ -263,3 +263,12 @@
   width: 20px;
   margin-left: 30px;
 }
+#logout-modal{
+  height: 150px;
+  width: 200px;
+  position: absolute;
+  background-color: blue;
+  top: -150px;
+  z-index: 100;
+  display: none;
+}

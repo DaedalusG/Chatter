@@ -74,6 +74,7 @@ const LeftPanel = (props) => {
           <Feather></Feather>
         </div>
         <div id={"main-c__left__login"}>
+          <div id={"logout-modal"} ></div>
           <img className={"profile-bubble"} alt={""} src={props.user.profile_pic} ></img>
           <div className={"user-names"} >
             <span className={"user-names__span1"}>Skeletor</span>
