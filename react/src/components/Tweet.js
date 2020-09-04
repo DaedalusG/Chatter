@@ -86,7 +86,30 @@ const Tweet = (props) => {
         setHeartCount(json.count)
       }
     }
-    getHeartedCount()
+    const getUserHearted = async () => {
+      if (props.props.id === undefined) return
+      const response = await fetch(
+        `${apiUrl}/likes/${props.user.id}/${props.props.id}`, {
+          method: "GET",
+          mode: "cors",
+          headers: {
+            "Authorization": `Bearer ${token}`,
+          },
+        }
+      )
+      if (!response.ok) {
+        console.log("getUserHearted response failed")
+      } else {
+        const json = await response.json();
+        console.log("Here's Jason --> ", json)
+        if (json.like !== null) {
+          console.log("JASON! --> ", json.like)
+          setHearted("heartOn")
+        }
+      }
+    }
+    getHeartedCount();
+    // getUserHearted(); -- commented out for dev
   }, [])
 
   return (
@@ -115,7 +138,9 @@ const Tweet = (props) => {
         <div onClick={handleRetweetClick}>
           <Retweet retweeted={retweeted}/>
         </div>
-        <div onClick={handleHeartClick}>
+        <div
+          onClick={handleHeartClick}
+          className="tweet-like--container">
           <Heart hearted={hearted}/>
           <div>
             { heartCount > 0 ? <span>{heartCount}</span> : <span></span> }

@@ -11,10 +11,9 @@ import { apiUrl } from '../config';
 
 
 
-
 const CenterPanel = (props) => {
 
-  const [tweetState, setTweetState] = useState([])
+  const [tweetState, setTweetState] = useState([]);
 
   useEffect(() => {
 
@@ -23,8 +22,9 @@ const CenterPanel = (props) => {
       .then(res => res.json())
       .then(data => {
         setTweetState(data)
-      })
-    },[])
+      }
+    )
+  },[])
 
 
   const postFunction = async () => {
