@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import CommentBubble from '../images/CommentBubble';
 import Retweet from '../images/Retweet';
 import Heart from '../images/Heart';
@@ -6,6 +6,27 @@ import LinkTweet from '../images/LinkTweet';
 import DownCarrot from '../images/DownCarrot';
 
 const Tweet = (props) => {
+  const [hearted, setHearted] = useState(false);
+  const [heartCount, setHeartCount] = useState(0);
+  const [retweeted, setRetweeted] = useState(false);
+  const [retweetCount, setRetweetCount] = useState(0);
+
+  const handleHeartClick = e => {
+    console.log("Heart Click Fired")
+    if (!hearted) {
+      setHearted(true)
+    } else {
+      setHearted(false)
+    }
+  }
+
+  const handleRetweetClick = e => {
+    if (!retweeted) {
+      setRetweeted(true)
+    } else {
+      setRetweeted(false)
+    }
+  }
 
   // const tweetContent = document.getElementsByName("tweet-textarea")[0].innerText
 
@@ -18,7 +39,7 @@ const Tweet = (props) => {
           <p>{`${props.props.user.firstname} ${props.props.user.lastname}`}</p>
           <p>{props.props.user.username}</p>
           <div className={"down-carrot-c"}>
-            <DownCarrot></DownCarrot>
+            <DownCarrot/>
           </div>
         </div>
       </div>
@@ -31,10 +52,14 @@ const Tweet = (props) => {
       </div>
       <img className={"tweet-pic"} alt={""} src={props.props.media} ></img>
       <div className={"tweet-c__svg-c"} >
-        <CommentBubble></CommentBubble>
-        <Retweet></Retweet>
-        <Heart></Heart>
-        <LinkTweet></LinkTweet>
+        <CommentBubble/>
+        <div onClick={handleRetweetClick}>
+          { retweeted ? <Heart/> : <Retweet/> }
+        </div>
+        <div onClick={handleHeartClick}>
+          { hearted ? <Retweet/> : <Heart/> }
+        </div>
+        <LinkTweet/>
 
 
       </div>
