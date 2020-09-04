@@ -8,7 +8,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      {true? <MainPage /> : <Login />}
+      {loggedIn ? <MainPage /> : <Login />}
     </BrowserRouter>
   );
 
