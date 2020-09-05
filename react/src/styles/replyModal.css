@@ -12,10 +12,6 @@
     background-color: lightgreen;
 }
 
-div {
-  border: 10px solid lightgreen;
-}
-
 .test {
     position: fixed;
     top: 50%;
