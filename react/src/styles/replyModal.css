@@ -1,0 +1,46 @@
+.reply-screen-c {
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    background-color: cornflowerblue;
+}
+
+.reply-form-background {
+    height: 600px;
+    width: 600px;
+    background-color: lightgreen;
+}
+
+div {
+  border: 10px solid lightgreen;
+}
+
+.test {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    color: black;
+    font-size: 15px;
+    z-index: 15;
+    outline: none;
+    border: none;
+}
+
+.reply-modal-background {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: #3A2928;
+  z-index: 10;
+  opacity: 80%;
+}
+
+.visible{
+  display: block;
+}
+.hidden{
+  display: none;
+}
