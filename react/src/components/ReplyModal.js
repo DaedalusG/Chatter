@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CloseButton from '../images/CloseButton.js'
 import GifBox from '../images/GifBox.js'
 import LandscapeReply from '../images/LandscapeReply.js'
@@ -6,7 +6,16 @@ import PollBox from '../images/PollBox.js'
 import Calendar from '../images/Calendar.js'
 import Smiley from '../images/Smiley.js'
 
+const handleReplySubmit = (e) => {
+    // const reply = document.getElementById()
+    // console.log(reply)
+}
+
+
 const ReplyModal = (props) => {
+    const [replyInput, setReplyInput] = useState("");
+    const updateReplyInput = (e) => setReplyInput(e.target.value)
+
     return (
         <div className={`reply-modal-c ${props.replyModal ? "visible" : "hidden"}`}>
             <div className={"reply-modal-background"} ></div>
@@ -39,10 +48,10 @@ const ReplyModal = (props) => {
                         <div className={"reply-form-response__side-spacer"}></div>
                     </div>
                     <div className="reply-form-response__content">
-                        <textarea className={"reply-form-textarea"} placeholder={"Tweet your reply"}></textarea>
+                        <textarea value={replyInput} className={"reply-form-textarea"} placeholder={"Tweet your reply"} onChange={updateReplyInput}></textarea>
                         <div className="reply-form-response__footer">
                             <div><GifBox /><LandscapeReply /><PollBox /><Calendar />< Smiley /></div>
-                            <button className={"reply-form-submit"} onClick={""}>Reply</button>
+                            <button className={"reply-form-submit"} >Reply</button>
                         </div>
                     </div>
                 </div>
