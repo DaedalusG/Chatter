@@ -22,6 +22,8 @@
 
 .reply-form-background {
     display: flex;
+    flex-flow: column;
+    justify-content: space-between;
     position: relative;
     margin: auto;
     top: 50px;
@@ -32,16 +34,34 @@
     z-index: 1;
 }
 
+.reply-form-header {
+  position: relative;
+  display: flex;
+  flex-flow: row;
+  justify-content: left;
+  width:100%;
+  min-height: 50px;
+  z-index: 1;
+  border-bottom: 2px solid lightgrey;
+}
+
+.close-button{
+  width: 25px;
+  height: 25px;
+  fill:  rgba(29,161,242,1.00);
+  margin-left: 25px;
+}
+
 .reply-form-textarea {
     position: relative;
-    left: 25px;
-    top: 50px;
-    background-color: darkgray;
+    font-weight: 400;
+    background-color: lightgrey;
     color: black;
-    font-size: 15px;
+    font: 14px "Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif;
     z-index: 1;
-    outline: none;
     border: none;
+    outline: none;
+    resize: none;
 }
 
 
