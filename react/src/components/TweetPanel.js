@@ -17,10 +17,18 @@ const TweetPanel = (props) => {
   const [tweetState, setTweetState] = useState([])
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/tweets/tweet/${props.tweetIdsState}`)
-      .then(res => res.json())
-      .then(data =>  setTweetState(data))
-      .catch( e => console.log(e) )
+
+    const token = window.localStorage.getItem('auth_token')
+    console.log("CASSSSSSSSSSSSSSSSSSSSEY---->",token)
+    const response =  fetch(`http://localhost:5000/api/tweets/tweet/${props.tweetIdsState}`, {
+      method: "GET",
+      mode: "cors",
+      headers: { "Authorization": `Bearer ${token}` },
+    })
+        .then(res => res.json())
+        .then(data =>  setTweetState(data))
+        .catch( e => console.log(e) )
+
   }, [])
 
   return (

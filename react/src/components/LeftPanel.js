@@ -23,19 +23,19 @@ const LeftPanel = (props) => {
 
   return (
     <div id={"main-c__left"} >
-      <div id={"logout-modal"} className={`${logoutModalState ? "logout-modal-visible": "logout-modal-invisible"}`}>
-        <div id={"logout-modal__top"}>
+      <div id={"left-logout-modal"} className={`${logoutModalState ? "left-logout-modal-visible": "left-logout-modal-invisible"}`}>
+        <div id={"left-logout-modal__top"}>
           <img className={"profile-bubble"} alt={""} src={props.user.profile_pic} ></img>
-          <div className={"logout-modal__user-names"} >
-            <div className={"logout-modal__user-names__first-last"}>
-            <span className={"logout-modal__user-names__span1"}>{`${props.user.firstname}  ${props.user.lastname}`}</span>
+          <div className={"left-logout-modal__user-names"} >
+            <div className={"left-logout-modal__user-names__first-last"}>
+            <span className={"left-logout-modal__user-names__span1"}>{`${props.user.firstname}  ${props.user.lastname}`}</span>
             </div>
-            <span className={"logout-modal__user-names__span2"} >@{props.user.username}</span>
+            <span className={"left-logout-modal__user-names__span2"} >@{props.user.username}</span>
           </div>
           <CheckMark></CheckMark>
         </div  >
-        <div id={"logout-modal__bottom"} >
-          <span onClick={ () => {localStorage.removeItem("auth_token"); window.location.href = 'http://localhost:3000'}} className={"logout-modal__logout-span"}>Log out</span>
+        <div id={"left-logout-modal__bottom"} >
+          <span onClick={ () => {localStorage.removeItem("auth_token"); window.location.href = 'http://localhost:3000'}} className={"left-logout-modal__logout-span"}>Log out</span>
         </div>
       </div>
       <div>
