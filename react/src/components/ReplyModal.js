@@ -1,7 +1,8 @@
 import React from 'react';
 import CloseButton from '../images/CloseButton.js'
 import GifBox from '../images/GifBox.js'
-import Landscape from '../images/Landscape.js'
+import LandscapeReply from '../images/LandscapeReply.js'
+import PollBox from '../images/PollBox.js'
 
 const ReplyModal = (props) => {
     return (
@@ -38,7 +39,7 @@ const ReplyModal = (props) => {
                     <div className="reply-form-response__content">
                         <textarea className={"reply-form-textarea"} placeholder={"Tweet your reply"}></textarea>
                         <div className="reply-form-response__footer">
-                            <div><GifBox /><Landscape /></div>
+                            <div><GifBox /><LandscapeReply /><PollBox /></div>
                             <button className={"reply-form-submit"} onClick={""}>Reply</button>
                         </div>
                     </div>

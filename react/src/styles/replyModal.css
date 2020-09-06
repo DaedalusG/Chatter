@@ -201,3 +201,16 @@
 .hidden{
   display: none;
 }
+
+.landscape-reply{
+  height: 23px;
+  fill: rgba(29,161,242,1.00);
+  margin: -10px 0px 0px 4px;
+  padding: 7px;
+  border-radius: 999px;
+  transition: background-color;
+  transition-duration: .2s;
+}
+.landscape-reply:hover{
+  background-color: rgb(226, 242, 253);
+}
