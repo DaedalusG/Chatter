@@ -8,6 +8,14 @@ const ProfilePage = (props) => {
 
   const [tweetState, setTweetState] = useState([])
 
+  useEffect(() => {
+
+    fetch(`http://localhost:5000/api/tweets/user/1`)
+      .then(res => res.json())
+      .then(data => {
+        setTweetState(data)
+      })
+  }, [])
   const [profileFullScreenState, setProfileFullScreenState] = useState(false);
   const fullscreenPic = () => {
     let toggleFullScreen = !profileFullScreenState
