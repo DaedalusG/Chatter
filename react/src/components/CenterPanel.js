@@ -7,7 +7,7 @@ import SmileyFace from '../images/SileyFace';
 import Calendar from '../images/Calendar'
 import Tweet from './Tweet';
 import skelator from '../images/skelator.png';
-import { apiUrl } from '../config';
+import { API_URL } from '../config';
 
 
 
@@ -18,7 +18,8 @@ const CenterPanel = (props) => {
   useEffect(() => {
 
     //TODO fix backend route to get tweets from following
-    fetch(`http://localhost:5000/api/tweets/`)
+
+    fetch(`${API_URL}/tweets/`)
       .then(res => res.json())
       .then(data => {
         setTweetState(data)
@@ -39,7 +40,7 @@ const CenterPanel = (props) => {
       redirect: 'follow'
     }
 
-    fetch("http://localhost:5000/api/tweets/post", options)
+    fetch(`${API_URL}/tweets/post`, options)
       .then(res => res.text())
       .then(data => console.log(data))
       .catch(e => console.log('error posting your tweet', e))

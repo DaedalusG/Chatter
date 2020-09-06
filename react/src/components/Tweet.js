@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { apiUrl } from '../config'
+import { API_URL } from '../config'
 import CommentBubble from '../images/CommentBubble';
 import Retweet from '../images/Retweet';
 import Heart from '../images/Heart';
@@ -19,7 +19,7 @@ const Tweet = (props) => {
   const handleHeartClick = () => {
     if (hearted === "heart") {
       const createLike = async () => {
-        const response = await fetch(`${apiUrl}/likes/`, {
+        const response = await fetch(`${API_URL}/likes/`, {
           method: "POST",
           mode: "cors",
           headers: {
@@ -43,7 +43,7 @@ const Tweet = (props) => {
     }
     else {
       const destroyLike = async () => {
-        const response = await fetch(`${apiUrl}/likes/`, {
+        const response = await fetch(`${API_URL}/likes/`, {
           method: "DELETE",
           mode: "cors",
           headers: {
@@ -75,7 +75,7 @@ const Tweet = (props) => {
   useEffect(() => {
     const getHeartedCount = async () => {
       if (props.props.id === undefined) return
-      const response = await fetch(`${apiUrl}/likes/${props.props.id}`, {
+      const response = await fetch(`${API_URL}/likes/${props.props.id}`, {
         method: "GET",
         mode: "cors",
         headers: {
@@ -92,13 +92,14 @@ const Tweet = (props) => {
     const getUserHearted = async () => {
       if (props.props.id === undefined) return
       const response = await fetch(
-        `${apiUrl}/likes/${props.user.id}/${props.props.id}`, {
-        method: "GET",
-        mode: "cors",
-        headers: {
-          "Authorization": `Bearer ${token}`,
-        },
-      }
+
+        `${API_URL}/likes/${props.user.id}/${props.props.id}`, {
+          method: "GET",
+          mode: "cors",
+          headers: {
+            "Authorization": `Bearer ${token}`,
+          },
+        }
       )
       if (!response.ok) {
         console.log("getUserHearted response failed")
