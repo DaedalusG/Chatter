@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Tweet from './Tweet';
 import LeftArrow from '../images/LeftArrow';
 import ProfileFullScreen from './ProfileFullScreen';
-import {apiUrl} from '../config';
+import {API_URL} from '../config';
 
 const token = window.localStorage.getItem("auth_token");
 
@@ -10,12 +10,12 @@ const ProfilePage = (props) => {
 
 
   const [tweetState, setTweetState] = useState([])
-  const user = 1;
+
   const [profileUser, setProfileUser] = useState(1);
   useEffect(() => {
     if (props.user.id === profileUser){
       const getUserTweets = async()=>{
-        const response = await fetch(`${apiUrl}/tweets/user/${profileUser}`,{
+        const response = await fetch(`${API_URL}/tweets/user/${profileUser}`,{
           method: "GET", 
           mode: "cors",
           headers: {"Authorizaion": `Bearer ${token}`}
@@ -24,7 +24,6 @@ const ProfilePage = (props) => {
         else{
           const json = await response.json();
           setTweetState(json);
-          console.log('json',json)
         }
         
       }
@@ -32,14 +31,7 @@ const ProfilePage = (props) => {
       getUserTweets();
     }
     setProfileUser(props.user.id);
-
-
-    // fetch(`http://localhost:5000/api/tweets/user/`)
-    // fetch(`http://localhost:5000/api/tweets/user/1`)
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     setTweetState(data)
-    //   })
+    
   }, [props])
 
   const [profileFullScreenState, setProfileFullScreenState] = useState(false);
@@ -56,7 +48,7 @@ const ProfilePage = (props) => {
           <div onClick={props.centerPanelHome} >
             <LeftArrow></LeftArrow>
           </div>
-            <span>{props.user.firstname}</span><span>{props.user.lastname}</span>
+          <span>{props.user.firstname}</span><span>{props.user.lastname}</span>
         </div>
         <div id={"center-panel__below-nav"} >
           <div className="center-panel__below-nav__scroll" >
@@ -79,8 +71,10 @@ const ProfilePage = (props) => {
             </div>
 
             <div className="all-tweets-c">
+
               {tweetState[0] ?
-                tweetState.map((tweet) => <Tweet centerPanelProfile={props.centerPanelProfile} props={tweet} />)
+                tweetState.map((tweet) => <Tweet centerPanelProfile={props.centerPanelProfile} props={tweet} user={props.user} />)
+
                 : null
               }
             </div>

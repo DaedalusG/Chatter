@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import LeftPanel from './LeftPanel';
 import RightPanel from './RightPanel';
 import CenterPanelSwitch from './CenterPanelSwitch';
-import { apiUrl } from '../config.js'
+import { API_URL } from '../config.js'
 
 const MainPage = () => {
   const [centerPanelState, setPanelState] = useState("Home");
@@ -15,7 +15,7 @@ const MainPage = () => {
   useEffect(() => {
     const getCurrentUser = async () => {
       const token = window.localStorage.getItem('auth_token')
-      const response = await fetch(`${apiUrl}/users/token`, {
+      const response = await fetch(`${API_URL}/users/token`, {
         method: "GET",
         mode: "cors",
         headers: { "Authorization": `Bearer ${token}` },

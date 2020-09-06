@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { apiUrl } from '../config';
+import { API_URL } from '../config';
 import Sparkles from '../images/Sparkles';
 import Landcape from '../images/Landscape';
 import GifBox from '../images/GifBox';
@@ -18,9 +18,9 @@ const TweetPanel = (props) => {
 
   useEffect(() => {
 
+
     const token = window.localStorage.getItem('auth_token')
-    console.log("CASSSSSSSSSSSSSSSSSSSSEY---->",token)
-    const response =  fetch(`http://localhost:5000/api/tweets/tweet/${props.tweetIdsState}`, {
+    const response =  fetch(`${API_URL}/tweets/tweet/${props.tweetIdsState}`, {
       method: "GET",
       mode: "cors",
       headers: { "Authorization": `Bearer ${token}` },

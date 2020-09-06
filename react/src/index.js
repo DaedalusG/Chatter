@@ -10,6 +10,7 @@ import './styles/profilePage.css';
 import './styles/profileFullScreen.css';
 import './styles/tweetPanel.css';
 import './styles/tweetPanelTweet.css';
+import './styles/replyModal.css'
 import './styles/mScreenheight640.css';
 import './styles/mScreen1265.css';
 import './styles/mScreen1077.css';

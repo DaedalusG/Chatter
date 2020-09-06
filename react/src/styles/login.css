@@ -2,8 +2,8 @@
     width: 100vw;
     height: 100vh;
     display: flex;
-    flex-flow: column;
-    align-items: center;
+    flex-direction: row;
+    /* align-items: center; */
     font-size: 15px;
     font-weight: bold;
     line-height: 1;
@@ -11,50 +11,147 @@
     color: rgb(255, 255, 255);
     background-color: #15212B;
 }
+.login-main--container {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: row;
+}
+.login-main__left {
+    width: 50%;
+    height: 100%;
+    background-color: #75c0f7;
+    overflow: hidden;
+}
+.login-birdSVG--background {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.login-birdSVG--background svg{
+    fill: #0383df;
+    height: 1050px;
+    width: 1050px;
+    position: absolute;
+    top: -200px;
+    left: -100px;
+}
+.login-main__right {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+.login-bar {
+    position: relative;
+    top: 15px;
 
+}
+.login-bar__form {
+    height: 56px;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+}
+.login-bar__button--container {
+    width: 77px;
+    height: 39px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #0383df;
+    border-radius: 90px;
+}
+.login-bar__button {
+    width: 44px;
+    height: 37px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-bar__button span {
+    color: #0383df;
+}
 .login-block-header {
-    margin: 30px 0px 10px;
     cursor: default;
 }
-
+.login-subBar__span--container {
+    position: relative;
+    top: 28px;
+    left: 20px;
+}
+.login-subBar__span--container span {
+    font-size: 12px;
+    color:#0383df;
+    font-weight: 500;
+}
 .login-block {
+    width: 380px;
+    height: 342px;
+    position: relative;
+    top: 70px;
     display: flex;
     flex-flow: column;
-    height: 100vh;
-    width: 100%;
     background-color: #15212B;
-    align-items: center;
-    margin: 20px 86px 0px;
-    padding: 0 15px;
 }
-
 .bird{
-  height: 30px;
-  margin-top: 10px;
-  fill: white;
-  position: relative;
-  top: -5px;
+    width: 42px;
+    height: 42px;
+    margin-top: 10px;
+    fill: white;
 }
-
-.login {
-
+.login-block__h2 {
+    width: 340px;
+    height: 62px;
+    position: relative;
+    top: 10px;
 }
-
-.login-form {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    /* width: 50px; */
+.login-block__h2 span {
+    font-size: 28px;
+    /* padding: 5px; */
 }
-
+.login-block__h5 {
+    position: relative;
+    top: 80px;
+    font-size: 16px;
+}
 .login-input-field {
-    margin: 5px;
-    padding: 10px 15px;
-    color: #20A2F1;
+    width: 210px;
+    height: 56px;
+    margin-right: 15px;
+    color: gray;
+    font-weight: 700;
+    font-size: 14px;
     background-color: #192834;
     outline: none;
 }
-
+.login-block__signup--container {
+    width: 100%;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #0383df;
+    border-radius: 90px;
+    background-color: #0383df;
+    position: relative;
+    top: 100px;
+}
+.login-block__demo--container {
+    width: 100%;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #0383df;
+    border-radius: 90px;
+    position: relative;
+    top: 115px;
+}
 .login-button {
     border: 0px;
 	border-radius:25px;
@@ -62,14 +159,13 @@
     padding:5px 76px;
     width: 237px;
     height: 30px;
-    background-color: #20608E;
+    background-color: #0383df;
     color: #c9d2db;
     font-size: 14px;
     font-weight: bold;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
     outline: none;
 }
-
 .login-button:hover {
     color: white;
     background-color:#1C92DA;
@@ -78,13 +174,11 @@
 	position:relative;
     top:1px;
 }
-
 .login-footer {
     color: #8A8F94;
     font-size: 8px;
     font-style: none;
 }
-
 .login-footer:hover {
     color: white;
     cursor: default;

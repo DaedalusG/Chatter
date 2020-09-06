@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { imageUrl } from "../config";
+import { API_URL } from "../config";
 import Bird from '../images/Bird';
 import "../styles/signup.css";
 
@@ -38,7 +38,7 @@ const SignUp = () => {
     }
 
 
-    const response = await fetch(`${imageUrl}/auth/signup`, {
+    const response = await fetch(`${API_URL}/auth/signup`, {
       method: "POST",
       mode: "cors",
       headers: { "Content-Type": "application/json" },
