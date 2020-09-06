@@ -3,6 +3,8 @@ import CloseButton from '../images/CloseButton.js'
 import GifBox from '../images/GifBox.js'
 import LandscapeReply from '../images/LandscapeReply.js'
 import PollBox from '../images/PollBox.js'
+import Calendar from '../images/Calendar.js'
+import Smiley from '../images/Smiley.js'
 
 const ReplyModal = (props) => {
     return (
@@ -39,7 +41,7 @@ const ReplyModal = (props) => {
                     <div className="reply-form-response__content">
                         <textarea className={"reply-form-textarea"} placeholder={"Tweet your reply"}></textarea>
                         <div className="reply-form-response__footer">
-                            <div><GifBox /><LandscapeReply /><PollBox /></div>
+                            <div><GifBox /><LandscapeReply /><PollBox /><Calendar />< Smiley /></div>
                             <button className={"reply-form-submit"} onClick={""}>Reply</button>
                         </div>
                     </div>
