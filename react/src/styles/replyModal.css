@@ -122,19 +122,70 @@
   background-color:  rgb(226, 242, 253);
 }
 
+
+.reply-form-response {
+  display: flex;
+  flex-flow: row;
+}
+
+.reply-form-response__side {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding-right: 7px;
+  padding-left: 7px;
+}
+
+.reply-form-response__content {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  width: 85%;
+  min-height: 100%;
+}
+
+.reply-form-response__side-spacer {
+  min-height: 240px;
+}
+
 .reply-form-textarea {
     position: relative;
     font-weight: 400;
-    background-color: lightgrey;
+    background-color: white;
     color: black;
-    font: 14px "Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif;
+    font: 18px "Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif;
     width: 100%;
+    height: 100%;
+    padding: 7px;
     z-index: 1;
     border: none;
     outline: none;
     resize: none;
 }
 
+.reply-form-response__footer {
+  display:flex;
+  flex-flow: row;
+  justify-content: space-between;
+  width: 100%;
+  padding: 5px;
+}
+
+.reply-form-submit {
+  border-radius:25px;
+  border: 0;
+  width: 80px;
+  height: 40px;
+  background-color: rgb(27, 155, 235);
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+}
+
+.reply-form-submit:hover {
+  background-color: rgb(101, 192, 248)
+}
 
 .tweet-pic {
   z-index: -1;
