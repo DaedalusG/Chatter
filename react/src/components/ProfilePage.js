@@ -7,15 +7,16 @@ import ProfileFullScreen from './ProfileFullScreen';
 const ProfilePage = (props) => {
 
   const [tweetState, setTweetState] = useState([])
-  const user = 1;
-  useEffect(() => {
-    // fetch(`http://localhost:5000/api/tweets/user/`)
-    fetch(`http://localhost:5000/api/tweets/user/1`)
-      .then(res => res.json())
-      .then(data => {
-        setTweetState(data)
-      })
-  }, [])
+  // CHECK AND DELETE ON NEXT MERGE--> WAS USED TO GET USER STATE
+  // const user = 1;
+  // useEffect(() => {
+  //   // fetch(`http://localhost:5000/api/tweets/user/`)
+  //   fetch(`http://localhost:5000/api/tweets/user/1`)
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setTweetState(data)
+  //     })
+  // }, [])
 
   const [profileFullScreenState, setProfileFullScreenState] = useState(false);
   const fullscreenPic = () => {

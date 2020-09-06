@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { imageUrl } from "../config";
+import { API_URL } from "../config";
 import SignUp from "./SignUp";
 import CloseButton from '../images/CloseButton';
 import Bird from '../images/Bird';
@@ -25,7 +25,7 @@ const Login = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch(`${imageUrl}/auth/login`, {
+        const response = await fetch(`${API_URL}/auth/login`, {
             method: "POST",
             mode: "cors",
             headers: { "Content-Type": "application/json" },

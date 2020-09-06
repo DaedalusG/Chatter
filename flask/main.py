@@ -27,7 +27,7 @@ app.register_blueprint(user, url_prefix='/api/users')
 app.register_blueprint(seed, url_prefix='/api/seed')
 app.register_blueprint(tweets, url_prefix='/api/tweets')
 app.register_blueprint(likes, url_prefix='/api/likes')
-app.register_blueprint(auth, url_prefix='/auth')
+app.register_blueprint(auth, url_prefix='/api/auth')
 
 db.init_app(app)
 jwt = JWTManager(app)
