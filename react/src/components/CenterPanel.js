@@ -13,6 +13,7 @@ import { API_URL } from '../config';
 
 const CenterPanel = (props) => {
 
+
   const [tweetState, setTweetState] = useState([]);
 
   useEffect(() => {
@@ -59,7 +60,7 @@ const CenterPanel = (props) => {
           <div className="center-panel__below-nav__scroll" >
             {/* <div id={"center-panel__below-nav__content-c"}> */}
             <div className={"below-nav-section"} >
-              <img id={"profile-bubble-2"} alt={profileBubbleAlt} src={props.user.profile_pic} onClick={props.centerPanelProfile}></img>
+              <img id={"profile-bubble-2"} alt={""} src={props.user.profile_pic} onClick={()=> props.centerPanelProfile(props.user)}></img>
               {/* <div id={"center-panel__below-nav__profile-bublle-c"} */}
                 {/* onClick={props.centerPanelProfile} */}
               {/* > */}
@@ -82,6 +83,7 @@ const CenterPanel = (props) => {
               {tweetState ?
                 tweetState.map((tweet) => (
                   <Tweet props={tweet} 
+                    centerPanelProfile={props.centerPanelProfile}
                     tweetInfoFunc={props.tweetInfoFunc}  
                     user={props.user}
                     setTweetIdsState={props.setTweetIdsState} 

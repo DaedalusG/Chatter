@@ -2,20 +2,38 @@ import React, { useEffect, useState } from 'react';
 import Tweet from './Tweet';
 import LeftArrow from '../images/LeftArrow';
 import ProfileFullScreen from './ProfileFullScreen';
+import {API_URL} from '../config';
 
+const token = window.localStorage.getItem("auth_token");
 
 const ProfilePage = (props) => {
 
+
   const [tweetState, setTweetState] = useState([])
 
+  const [profileUser, setProfileUser] = useState(1);
   useEffect(() => {
+    if (props.user.id === profileUser){
+      const getUserTweets = async()=>{
+        const response = await fetch(`${API_URL}/tweets/user/${profileUser}`,{
+          method: "GET", 
+          mode: "cors",
+          headers: {"Authorizaion": `Bearer ${token}`}
+        })
+        if (!response.ok) {console.log("error in getUserTweets")}
+        else{
+          const json = await response.json();
+          setTweetState(json);
+        }
+        
+      }
+    
+      getUserTweets();
+    }
+    setProfileUser(props.user.id);
+    
+  }, [props])
 
-    fetch(`http://localhost:5000/api/tweets/user/${props.user.id}`)
-      .then(res => res.json())
-      .then(data => {
-        setTweetState(data)
-      })
-  }, [])
   const [profileFullScreenState, setProfileFullScreenState] = useState(false);
   const fullscreenPic = () => {
     let toggleFullScreen = !profileFullScreenState
@@ -53,8 +71,10 @@ const ProfilePage = (props) => {
             </div>
 
             <div className="all-tweets-c">
-              {tweetState ?
-                tweetState.map((tweet) => <Tweet props={tweet} user={props.user} />)
+
+              {tweetState[0] ?
+                tweetState.map((tweet) => <Tweet centerPanelProfile={props.centerPanelProfile} props={tweet} user={props.user} />)
+
                 : null
               }
             </div>

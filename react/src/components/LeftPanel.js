@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import Bird from '../images/Bird';
+import BirdLeftPanel from '../images/BirdLeftPanel';
 import BirdHouse from '../images/BirdHouse';
 import Hash from '../images/Hash';
 import Bell from '../images/Bell';
@@ -12,6 +12,7 @@ import CirclesMore from '../images/CirclesMore';
 import DownCarrot from '../images/DownCarrot';
 import Feather from '../images/Feather';
 import CheckMark from '../images/CheckMark';
+import DownCarrotLeftPanel from '../images/DownCarrotLeftPanel'
 
 const LeftPanel = (props) => {
   const [logoutModalState, setLogoutModalState] = useState(false);
@@ -22,25 +23,27 @@ const LeftPanel = (props) => {
 
   return (
     <div id={"main-c__left"} >
-      <div id={"logout-modal"} className={`${logoutModalState ? "logout-modal-visible": "logout-modal-invisible"}`}>
-        <div id={"logout-modal__top"}>
+      <div id={"left-logout-modal"} className={`${logoutModalState ? "left-logout-modal-visible": "left-logout-modal-invisible"}`}>
+        <div id={"left-logout-modal__top"}>
           <img className={"profile-bubble"} alt={""} src={props.user.profile_pic} ></img>
-          <div className={"logout-modal__user-names"} >
-            <span className={"logout-modal__user-names__span1"}>Skeletor</span>
-            <span className={"logout-modal__user-names__span2"} >@Skeletor1</span>
+          <div className={"left-logout-modal__user-names"} >
+            <div className={"left-logout-modal__user-names__first-last"}>
+            <span className={"left-logout-modal__user-names__span1"}>{`${props.user.firstname}  ${props.user.lastname}`}</span>
+            </div>
+            <span className={"left-logout-modal__user-names__span2"} >@{props.user.username}</span>
           </div>
           <CheckMark></CheckMark>
         </div  >
-        <div id={"logout-modal__bottom"} >
-          <span onClick={ () => {localStorage.removeItem("auth_token"); window.location.href = 'http://localhost:3000'}} className={"logout-modal__logout-span"}>Log out</span>
+        <div id={"left-logout-modal__bottom"} >
+          <span onClick={ () => {localStorage.removeItem("auth_token"); window.location.href = 'http://localhost:3000'}} className={"left-logout-modal__logout-span"}>Log out</span>
         </div>
       </div>
       <div>
-        <div className={"main-c__left__bird"} centerPanelHome={props.centerPanelHome}>
-          <Bird></Bird>
+        <div className={"main-c__left__bird"} onClick={props.centerPanelHome}>
+          <BirdLeftPanel/>
         </div>
       </div>
-      <div>
+      <div onClick={props.centerPanelHome}>
         <div className={"main-c__left__link"}>
           <BirdHouse centerPanelHome={props.centerPanelHome} ></BirdHouse>
           <span>HOME</span>
@@ -96,10 +99,12 @@ const LeftPanel = (props) => {
         <div id={"main-c__left__login"} onClick={toggleLogoutModal}>   
             <img className={"profile-bubble"} alt={""} src={props.user.profile_pic} ></img>
           <div className={"user-names"} >
-            <span className={"user-names__span1"}>Skeletor</span>
-            <span className={"user-names__span2"} >@Skeletor1</span>
+            <div className={"logout-modal__user-names__first-last"}>
+              <span className={"logout-modal__user-names__span1"}>{`${props.user.firstname}  ${props.user.lastname}`}</span>
+            </div>
+            <span className={"user-names__span2"} >@{props.user.username}</span>
           </div>
-          <DownCarrot></DownCarrot>
+          <DownCarrotLeftPanel/>
         </div>
       </div>
     </div>

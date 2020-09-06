@@ -1,25 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { API_URL } from '../config'
+import { apiUrl } from '../config'
 import CommentBubble from '../images/CommentBubble';
 import Retweet from '../images/Retweet';
 import Heart from '../images/Heart';
 import LinkTweet from '../images/LinkTweet';
 import DownCarrot from '../images/DownCarrot';
-import ReplyModal from './ReplyModal';
 
 const token = window.localStorage.getItem('auth_token')
 
-const Tweet = (props) => {
+const TweetPanelComment = (props) => {
   const [hearted, setHearted] = useState("heart");
   const [heartCount, setHeartCount] = useState(0);
   const [retweeted, setRetweeted] = useState("retweet");
   const [retweetCount, setRetweetCount] = useState(0);
-  const [replyModal, setReplyModal] = useState(false)
 
+  console.log('tpcomment', props)
   const handleHeartClick = () => {
     if (hearted === "heart") {
       const createLike = async () => {
-        const response = await fetch(`${API_URL}/likes/`, {
+        const response = await fetch(`${apiUrl}/likes/`, {
           method: "POST",
           mode: "cors",
           headers: {
@@ -43,7 +42,7 @@ const Tweet = (props) => {
     }
     else {
       const destroyLike = async () => {
-        const response = await fetch(`${API_URL}/likes/`, {
+        const response = await fetch(`${apiUrl}/likes/`, {
           method: "DELETE",
           mode: "cors",
           headers: {
@@ -75,7 +74,7 @@ const Tweet = (props) => {
   useEffect(() => {
     const getHeartedCount = async () => {
       if (props.props.id === undefined) return
-      const response = await fetch(`${API_URL}/likes/${props.props.id}`, {
+      const response = await fetch(`${apiUrl}/likes/${props.props.id}`, {
         method: "GET",
         mode: "cors",
         headers: {
@@ -92,14 +91,13 @@ const Tweet = (props) => {
     const getUserHearted = async () => {
       if (props.props.id === undefined) return
       const response = await fetch(
-
-        `${API_URL}/likes/${props.user.id}/${props.props.id}`, {
-          method: "GET",
-          mode: "cors",
-          headers: {
-            "Authorization": `Bearer ${token}`,
-          },
-        }
+        `${apiUrl}/likes/${props.user.id}/${props.props.id}`, {
+        method: "GET",
+        mode: "cors",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
+      }
       )
       if (!response.ok) {
         console.log("getUserHearted response failed")
@@ -116,58 +114,45 @@ const Tweet = (props) => {
     // getUserHearted(); -- commented out for dev
   }, [])
 
-  const handleReplyClick = () => {
-    let toggleReply = !replyModal;
-    setReplyModal(toggleReply)
-  }
-
 
   return (
     <div className={"tweet-c"}>
-      <ReplyModal replyModal={replyModal} user={props.user} tweet={props.props} handleReplyClick={handleReplyClick} />
-      {/* <span className={"tweet-c__name"}>{props.props.name}</span> */}
-      <div className={"tweet-c__top"} >
-        <img className={"user__profile-pic"} alt={""} src={props.props.user.profile_pic} onClick={()=>props.centerPanelProfile(props.props.user)}></img>
+      <div className={"tweet-c__top"}>
+        {/* <img className={"user__profile-pic"} alt={""} src={props.props.user.profile_pic} ></img> */}
         <div className={"tweet-c__user-name"} >
-        
-            <p className={"tweet-c__user-name__names__top"}>{`${props.props.user ? props.props.user.firstname : ""} ${props.props.user ? props.props.user.lastname : ""}`}</p>
-            <p className={"tweet-c__user-name__names__bottom"}>@{props.props.user ? props.props.user.username : ""}</p>
-         
+          {/* <p>{`${props.props.user.firstname} ${props.props.user.lastname}`}</p>
+          <p>{props.props.user.username}</p> */}
           <div className={"down-carrot-c"}>
             <DownCarrot />
           </div>
         </div>
       </div>
       <div className="tweet-c__comment" onClick={() => {
-        props.tweetInfoFunc(props.props.id)
-        props.centerPanelTweetPanel()
+        // props.tweetInfoFunc(props.props.id)
+        // props.centerPanelTweetPanel()
       }}
       >
         <p>{props.props.content}</p>
       </div>
-      <img className={"tweet-pic"} alt={""} src={props.props.media} ></img>
+      {/* <img className={"tweet-pic"} alt={""} src={props.props.media} ></img> */}
       <div className={"tweet-c__svg-c"} >
-        <div onClick={handleReplyClick}>
-          <CommentBubble />
-        </div>
+        <CommentBubble />
         <div onClick={handleRetweetClick}>
           <Retweet retweeted={retweeted} />
         </div>
-
-        <div onClick={handleHeartClick} className="tweet-like--container">
-          <Heart hearted={hearted}/>
-            { heartCount > 0 ? <span>{heartCount}</span> : <span></span> }
+        <div
+          onClick={handleHeartClick}
+          className="tweet-like--container">
+          <Heart hearted={hearted} />
+          <div>
+            {heartCount > 0 ? <span>{heartCount}</span> : <span></span>}
+          </div>
         </div>
-        <LinkTweet/>
+        <LinkTweet />
+
 
       </div>
     </div>
   )
 }
-export default Tweet;
-
-
-
-
-
-
+export default TweetPanelComment;

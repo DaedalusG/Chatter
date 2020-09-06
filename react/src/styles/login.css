@@ -127,6 +127,7 @@
     font-weight: 700;
     font-size: 14px;
     background-color: #192834;
+    outline: none;
 }
 .login-block__signup--container {
     width: 100%;
@@ -163,6 +164,7 @@
     font-size: 14px;
     font-weight: bold;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    outline: none;
 }
 .login-button:hover {
     color: white;
