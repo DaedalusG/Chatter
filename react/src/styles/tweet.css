@@ -112,6 +112,7 @@
 .heart{
   height: 18px;
   width: 18px;
+  margin-top: 17px;
   margin-bottom: 10px;
   margin-left: 120px;
   padding: 7px;
@@ -124,10 +125,12 @@
 .heartOn{
   height: 18px;
   width: 18px;
+  margin-top: 17px;
   margin-bottom: 10px;
   margin-left: 120px;
   padding: 7px;
   border-radius: 100%;
+ 
   fill: red;
   color: red;
 }
