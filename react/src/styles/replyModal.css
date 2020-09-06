@@ -1,26 +1,12 @@
-.reply-screen-c {
+.reply-modal-c {
     display: flex;
     position: fixed;
     justify-content: center;
     align-items: center;
-    background-color: cornflowerblue;
-}
-
-.reply-form-background {
-    height: 600px;
-    width: 600px;
-    background-color: lightgreen;
-}
-
-.test {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    color: black;
-    font-size: 15px;
-    z-index: 15;
-    outline: none;
-    border: none;
+    height: 100vh;
+    width: 100vw;
+    top: 0px;
+    left: 0px;
 }
 
 .reply-modal-background {
@@ -30,8 +16,41 @@
   top: 0px;
   left: 0px;
   background-color: #3A2928;
-  z-index: 10;
+  z-index: 0;
   opacity: 80%;
+}
+
+.reply-form-background {
+    display: flex;
+    position: relative;
+    margin: auto;
+    top: 50px;
+    height: 50vh;
+    width: 50vw;
+    border-radius: 20px;
+    background-color: white;
+    z-index: 1;
+}
+
+.reply-form-textarea {
+    position: relative;
+    left: 25px;
+    top: 50px;
+    background-color: darkgray;
+    color: black;
+    font-size: 15px;
+    z-index: 1;
+    outline: none;
+    border: none;
+}
+
+
+.tweet-pic {
+  z-index: -1;
+}
+
+.tweet-c__comment {
+  z-index: -1;
 }
 
 .visible{

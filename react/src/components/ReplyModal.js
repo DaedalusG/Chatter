@@ -2,10 +2,13 @@ import React from 'react';
 
 const ReplyModal = (props) => {
     return (
-        <div className={`reply-screen-c ${props.replyModal ? "visible" : "hidden"}`}>
+        <div className={`reply-modal-c ${props.replyModal ? "visible" : "hidden"}`}>
+            <div className={"reply-modal-background"} ></div>
             <div className={"reply-form-background"}>
-                <textarea className={"test"}>Comment submission box</textarea>
-                <div className={"reply-modal-background"} ></div>
+                <div className={"reply-form-header"}>
+
+                </div>
+                <textarea className={"reply-form-textarea"}>Comment submission box</textarea>
             </div>
         </div>
     )
