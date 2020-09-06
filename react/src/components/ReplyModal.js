@@ -7,6 +7,8 @@ import Calendar from '../images/Calendar.js'
 import Smiley from '../images/Smiley.js'
 import { API_URL } from '../config.js'
 
+const token = window.localStorage.getItem('auth_token')
+
 
 
 const ReplyModal = (props) => {
@@ -14,13 +16,26 @@ const ReplyModal = (props) => {
     const updateReplyInput = (e) => setReplyInput(e.target.value)
 
     const handleReplySubmit = async (e) => {
+        console.log('----------------> Test Reply Button')
+        console.log('props.user.id------->', props.user.id)
+        console.log('props.tweet_id------->', props.tweet_id)
+        console.log('replyInput------->', replyInput)
         e.preventDefault();
-        const response = await fetch(`${API_URL}/reply`, {
+        const response = await fetch(`${API_URL}/replies/`, {
             method: "POST",
-            mode: "cors",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ reply: `${replyInput}` })
+            // mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
+            },
+            body: JSON.stringify({ user_id: props.user.id, tweet_id: props.tweet_id, reply: replyInput })
         })
+        if (response.ok) {
+            console.log("-------Reply Submitted--------");
+            window.location.reload()
+        } else {
+            console.log("-------Reply Failed---------");
+        }
     }
 
     return (
