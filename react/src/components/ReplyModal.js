@@ -16,10 +16,6 @@ const ReplyModal = (props) => {
     const updateReplyInput = (e) => setReplyInput(e.target.value)
 
     const handleReplySubmit = async (e) => {
-        console.log('----------------> Test Reply Button')
-        console.log('props.user.id------->', props.user.id)
-        console.log('props.tweet_id------->', props.tweet_id)
-        console.log('replyInput------->', replyInput)
         e.preventDefault();
         const response = await fetch(`${API_URL}/replies/`, {
             method: "POST",
@@ -31,7 +27,6 @@ const ReplyModal = (props) => {
             body: JSON.stringify({ user_id: props.user.id, tweet_id: props.tweet_id, reply: replyInput })
         })
         if (response.ok) {
-            console.log("-------Reply Submitted--------");
             window.location.reload()
         } else {
             console.log("-------Reply Failed---------");

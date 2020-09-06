@@ -10,7 +10,6 @@ replies = Blueprint('replies', __name__)
 @replies.route('/', methods=["POST"])
 @jwt_required
 def post_reply():
-    print('--------> Did a route hit')
 
     data = request.get_json()
     reply = Reply(
