@@ -23,12 +23,12 @@
 .reply-form-background {
     display: flex;
     flex-flow: column;
-    justify-content: space-between;
+    justify-content: start;
     position: relative;
     margin: auto;
     top: 50px;
-    height: 50vh;
-    width: 50vw;
+    height: 60vh;
+    width: 60vw;
     border-radius: 20px;
     background-color: white;
     z-index: 1;
@@ -45,11 +45,81 @@
   border-bottom: 2px solid lightgrey;
 }
 
+.reply-form-tweet-info {
+  display: flex;
+  flex-flow: row;
+}
+
+.reply-form-tweet-info__side-panel {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  padding: 7px;
+}
+
+.user__profile-pic-reply {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  margin: auto;
+  padding: 3px;
+}
+
+.reply-form-tweet-info__side-border {
+  min-height: 50px;
+  border: 1px solid lightgrey;
+}
+
+.reply-form-tweet-content {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  padding-top: 7px;
+  padding-bottom: 12px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+}
+
+.reply-form-tweet-content__header {
+  padding-bottom: 2px;
+}
+
+.reply-form-tweet-content__footer {
+  padding-top: 10px;
+  padding-bottom: 15px;
+}
+
+.tweet-content__username {
+  font-weight: bold;
+}
+
+.tweet-content__email {
+  color: rgb(155, 155, 155);
+}
+
+.reply-close-c {
+  min-width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .close-button{
   width: 25px;
   height: 25px;
   fill:  rgba(29,161,242,1.00);
-  margin-left: 25px;
+  padding: 7px;
+  border-radius: 999px;
+}
+
+.reply-form-userlink{
+  color: rgba(29,161,242,1.00);
+  text-decoration: none;
+}
+
+
+.close-button:hover {
+  background-color:  rgb(226, 242, 253);
 }
 
 .reply-form-textarea {
@@ -58,6 +128,7 @@
     background-color: lightgrey;
     color: black;
     font: 14px "Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif;
+    width: 100%;
     z-index: 1;
     border: none;
     outline: none;
