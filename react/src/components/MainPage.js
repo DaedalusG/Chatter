@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import LeftPanel from './LeftPanel';
 import RightPanel from './RightPanel';
@@ -9,6 +8,9 @@ const MainPage = () => {
   const [centerPanelState, setPanelState] = useState("Home");
 
   const [user, setUser] = useState({})
+
+  const [targetUser, setTargetUser] = useState(1);
+
 
   useEffect(() => {
     const getCurrentUser = async () => {
@@ -26,12 +28,13 @@ const MainPage = () => {
       }
     }
     getCurrentUser();
-  }, [])
+  }, [targetUser])
 
   const centerPanelHome = () => {
     setPanelState("Home")
   }
-  const centerPanelProfile = () => {
+  const centerPanelProfile = (id) => {
+    setTargetUser(id);
     setPanelState("Profile");
   }
   const centerPanelTweetPanel = () => {
@@ -42,7 +45,7 @@ const MainPage = () => {
       <div id={"main-c"}>
         
         <LeftPanel centerPanelHome={centerPanelHome} user={user} ></LeftPanel>
-        <CenterPanelSwitch centerPanelState={centerPanelState} setPanelState={setPanelState} centerPanelHome={centerPanelHome} centerPanelProfile={centerPanelProfile} centerPanelTweetPanel={centerPanelTweetPanel} user={user}/>
+        <CenterPanelSwitch targetUser={targetUser} centerPanelState={centerPanelState} setPanelState={setPanelState} centerPanelHome={centerPanelHome} centerPanelProfile={centerPanelProfile} centerPanelTweetPanel={centerPanelTweetPanel} user={user}/>
         <RightPanel></RightPanel>
       </div>
     )

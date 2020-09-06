@@ -117,8 +117,8 @@ const Tweet = (props) => {
   return (
     <div className={"tweet-c"}>
       {/* <span className={"tweet-c__name"}>{props.props.name}</span> */}
-      <div className={"tweet-c__top"}>
-        <img className={"user__profile-pic"} alt={""} src={props.props.user.profile_pic} ></img>
+      <div className={"tweet-c__top"} >
+        <img className={"user__profile-pic"} alt={""} src={props.props.user.profile_pic} onClick={()=>props.centerPanelProfile(props.props.user)}></img>
         <div className={"tweet-c__user-name"} >
         
             <p className={"tweet-c__user-name__names__top"}>{`${props.props.user ? props.props.user.firstname : ""} ${props.props.user ? props.props.user.lastname : ""}`}</p>

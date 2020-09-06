@@ -3,12 +3,15 @@ from sqlalchemy.orm import subqueryload, joinedload
 from models import db, Tweet
 import requests
 import json
+from flask_jwt_extended  import jwt_required
+
 from flask_cors import CORS
 
 tweets = Blueprint('tweets', __name__)
 
 # Get one tweet with its replies
 @tweets.route("/tweet/<id>", methods=["GET"])
+@jwt_required
 def get_a_tweet(id):
 
   model_tweet = Tweet.query.filter(Tweet.id==id).first()
