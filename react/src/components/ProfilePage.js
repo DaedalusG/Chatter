@@ -10,7 +10,7 @@ const ProfilePage = (props) => {
 
   useEffect(() => {
 
-    fetch(`http://localhost:5000/api/tweets/user/1`)
+    fetch(`http://localhost:5000/api/tweets/user/${props.user.id}`)
       .then(res => res.json())
       .then(data => {
         setTweetState(data)
