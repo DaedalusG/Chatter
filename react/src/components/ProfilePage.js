@@ -7,16 +7,6 @@ import ProfileFullScreen from './ProfileFullScreen';
 const ProfilePage = (props) => {
 
   const [tweetState, setTweetState] = useState([])
-  // CHECK AND DELETE ON NEXT MERGE--> WAS USED TO GET USER STATE
-  // const user = 1;
-  // useEffect(() => {
-  //   // fetch(`http://localhost:5000/api/tweets/user/`)
-  //   fetch(`http://localhost:5000/api/tweets/user/1`)
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setTweetState(data)
-  //     })
-  // }, [])
 
   const [profileFullScreenState, setProfileFullScreenState] = useState(false);
   const fullscreenPic = () => {
@@ -55,8 +45,8 @@ const ProfilePage = (props) => {
             </div>
 
             <div className="all-tweets-c">
-              {tweetState[0] ?
-                tweetState.map((tweet) => <Tweet props={tweet} user={user} />)
+              {tweetState ?
+                tweetState.map((tweet) => <Tweet props={tweet} user={props.user} />)
                 : null
               }
             </div>
