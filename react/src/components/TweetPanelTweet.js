@@ -98,17 +98,9 @@ const TweetPanelTweet = (props) => {
         <div onClick={handleRetweetClick}>
           <RetweetTweet retweeted={retweeted} />
         </div>
-        <div
-          onClick={handleHeartClick}
-          className="tweet-like--container">
-          <HeartTweet hearted={hearted} />
-          <div>
+          <HeartTweet handleHeartClick={handleHeartClick}  hearted={hearted} />
             {heartCount > 0 ? <span>{heartCount}</span> : <span></span>}
-          </div>
-        </div>
-        <LinkTweetTweet />
-
-
+          <LinkTweetTweet />
       </div>
     </div>
   )

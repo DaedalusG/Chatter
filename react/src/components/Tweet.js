@@ -142,17 +142,11 @@ const Tweet = (props) => {
         <div onClick={handleRetweetClick}>
           <Retweet retweeted={retweeted}/>
         </div>
-        <div
-          onClick={handleHeartClick}
-          className="tweet-like--container">
+        <div onClick={handleHeartClick} className="tweet-like--container">
           <Heart hearted={hearted}/>
-          <div>
             { heartCount > 0 ? <span>{heartCount}</span> : <span></span> }
-          </div>
         </div>
         <LinkTweet/>
-
-
       </div>
     </div>
   )

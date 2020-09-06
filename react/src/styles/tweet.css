@@ -80,6 +80,7 @@
   top: 10px;
 }
 .tweet-c__svg-c{
+  margin-top: 17px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -91,6 +92,7 @@
   margin-left: 75px;
   padding: 7px;
   border-radius: 100%;
+  fill: rgb(101, 119, 134);
 }
 .retweet{
   height: 18px;
@@ -99,6 +101,7 @@
   margin-left: 120px;
   padding: 7px;
   border-radius: 100%;
+  fill: rgb(101, 119, 134);
 }
 .retweetOn{
   height: 18px;
@@ -112,11 +115,13 @@
 .heart{
   height: 18px;
   width: 18px;
-  margin-top: 17px;
+  margin-top: 1px;
   margin-bottom: 10px;
   margin-left: 120px;
   padding: 7px;
   border-radius: 100%;
+  fill: rgb(101, 119, 134);
+ 
 }
 .heart:hover{
   background-color: rgb(250, 209, 216);
@@ -125,7 +130,7 @@
 .heartOn{
   height: 18px;
   width: 18px;
-  margin-top: 17px;
+  margin-top: 1px;
   margin-bottom: 10px;
   margin-left: 120px;
   padding: 7px;
@@ -134,6 +139,17 @@
   fill: red;
   color: red;
 }
+.tweet-like--container{
+  position: relative;
+}
+.tweet-like--container span{
+  position: absolute;
+  top: 9px;
+  font-size: 13px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+  color: rgb(101, 119, 134);
+}
+
 .link-tweet{
   height: 18px;
   width: 18px;
@@ -141,6 +157,7 @@
   margin-left: 120px;
   padding: 7px;
   border-radius: 100%;
+  fill: rgb(101, 119, 134);
 }
 .comment-bubble:hover,
 .retweet:hover,
