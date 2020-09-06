@@ -31,7 +31,7 @@ const ProfilePage = (props) => {
           <div onClick={props.centerPanelHome} >
             <LeftArrow></LeftArrow>
           </div>
-            <span>{props.user.firstname}</span><span>{props.user.lastname}</span>
+          <span>{props.user.firstname}</span><span>{props.user.lastname}</span>
         </div>
         <div id={"center-panel__below-nav"} >
           <div className="center-panel__below-nav__scroll" >
@@ -55,7 +55,7 @@ const ProfilePage = (props) => {
 
             <div className="all-tweets-c">
               {tweetState[0] ?
-                tweetState.map((tweet) => <Tweet props={tweet} />)
+                tweetState.map((tweet) => <Tweet props={tweet} user={user} />)
                 : null
               }
             </div>
