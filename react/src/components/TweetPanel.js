@@ -27,7 +27,7 @@ const TweetPanel = (props) => {
     <>
       <div id={"center-panel"}>
         <div id={"center-panel__nav"}>
-          <div className={"tweet-left-arrow-c"} onClick={props.centerPanelHome} >
+          <div className={"tweet-left-arrow-c"} onClick={props.centerPanelProfile} >
             <LeftArrow ></LeftArrow>
             <span>Tweet</span>
           </div>
