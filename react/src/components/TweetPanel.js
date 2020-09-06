@@ -8,10 +8,12 @@ import SmileyFace from '../images/SileyFace';
 import Calendar from '../images/Calendar'
 import Tweet from './Tweet';
 import LeftArrow from '../images/LeftArrow';
+import TweetPanelTweet from './TweetPanelTweet';
+import TweetPanelComment from './TweetPanelComment';
 
 
 const TweetPanel = (props) => {
-  // console.log(props)
+  // console.log("tp",props)
   const [tweetState, setTweetState] = useState([])
 
   useEffect(() => {
@@ -26,24 +28,26 @@ const TweetPanel = (props) => {
       <div id={"center-panel"}>
         <div id={"center-panel__nav"}>
           <div className={"tweet-left-arrow-c"} onClick={props.centerPanelHome} >
-            <LeftArrow></LeftArrow>
+            <LeftArrow ></LeftArrow>
             <span>Tweet</span>
           </div>
         </div>
-        <div id={"center-panel__below-nav"} >
-          <div className="center-panel__below-nav__scroll" >
+        <div id={"tweet-panel__below-nav"} >
+          <div className="tweet-panel__below-nav__scroll" >
+          
             <div className="all-tweets-c">
-              {/* <Tweet props={tweetState}/> */}
-              <p>{tweetState.content}</p>
-
+          
+              <TweetPanelTweet props={tweetState} centerPanelHome={props.centerPanelHome} ></TweetPanelTweet>
+    
               {tweetState.replies ?
-                tweetState.replies.map( reply => (<p>{reply.content}</p>) )
+                // tweetState.replies.map( reply => (<p>{reply.content}</p>) )
+                tweetState.replies.map( reply => ( <TweetPanelComment props={reply} /> ) )
                 : null
               }
-
-              <p>{props.tweetIdsState}</p>
-
+  
+              {/* <p>{props.tweetIdsState}</p> */}
             </div>
+
           </div>
         </div>
       </div>

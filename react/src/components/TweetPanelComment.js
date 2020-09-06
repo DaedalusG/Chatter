@@ -8,12 +8,13 @@ import DownCarrot from '../images/DownCarrot';
 
 const token = window.localStorage.getItem('auth_token')
 
-const Tweet = (props) => {
+const TweetPanelComment = (props) => {
   const [hearted, setHearted] = useState("heart");
   const [heartCount, setHeartCount] = useState(0);
   const [retweeted, setRetweeted] = useState("retweet");
   const [retweetCount, setRetweetCount] = useState(0);
 
+  console.log('tpcomment', props)
   const handleHeartClick = () => {
     if (hearted === "heart") {
       const createLike = async () => {
@@ -91,12 +92,12 @@ const Tweet = (props) => {
       if (props.props.id === undefined) return
       const response = await fetch(
         `${apiUrl}/likes/${props.user.id}/${props.props.id}`, {
-          method: "GET",
-          mode: "cors",
-          headers: {
-            "Authorization": `Bearer ${token}`,
-          },
-        }
+        method: "GET",
+        mode: "cors",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
+      }
       )
       if (!response.ok) {
         console.log("getUserHearted response failed")
@@ -116,51 +117,42 @@ const Tweet = (props) => {
 
   return (
     <div className={"tweet-c"}>
-      {/* <span className={"tweet-c__name"}>{props.props.name}</span> */}
       <div className={"tweet-c__top"}>
-        <img className={"user__profile-pic"} alt={""} src={props.props.user.profile_pic} ></img>
+        {/* <img className={"user__profile-pic"} alt={""} src={props.props.user.profile_pic} ></img> */}
         <div className={"tweet-c__user-name"} >
-        
-            <p className={"tweet-c__user-name__names__top"}>{`${props.props.user ? props.props.user.firstname : ""} ${props.props.user ? props.props.user.lastname : ""}`}</p>
-            <p className={"tweet-c__user-name__names__bottom"}>@{props.props.user ? props.props.user.username : ""}</p>
-         
+          {/* <p>{`${props.props.user.firstname} ${props.props.user.lastname}`}</p>
+          <p>{props.props.user.username}</p> */}
           <div className={"down-carrot-c"}>
-            <DownCarrot/>
+            <DownCarrot />
           </div>
         </div>
       </div>
-      <div className="tweet-c__comment" onClick={ () => {
-        props.tweetInfoFunc(props.props.id)
-        props.centerPanelTweetPanel()
+      <div className="tweet-c__comment" onClick={() => {
+        // props.tweetInfoFunc(props.props.id)
+        // props.centerPanelTweetPanel()
       }}
       >
         <p>{props.props.content}</p>
       </div>
-      <img className={"tweet-pic"} alt={""} src={props.props.media} ></img>
+      {/* <img className={"tweet-pic"} alt={""} src={props.props.media} ></img> */}
       <div className={"tweet-c__svg-c"} >
-        <CommentBubble/>
+        <CommentBubble />
         <div onClick={handleRetweetClick}>
-          <Retweet retweeted={retweeted}/>
+          <Retweet retweeted={retweeted} />
         </div>
         <div
           onClick={handleHeartClick}
           className="tweet-like--container">
-          <Heart hearted={hearted}/>
+          <Heart hearted={hearted} />
           <div>
-            { heartCount > 0 ? <span>{heartCount}</span> : <span></span> }
+            {heartCount > 0 ? <span>{heartCount}</span> : <span></span>}
           </div>
         </div>
-        <LinkTweet/>
+        <LinkTweet />
 
 
       </div>
     </div>
   )
 }
-export default Tweet;
-
-
-
-
-
-
+export default TweetPanelComment;

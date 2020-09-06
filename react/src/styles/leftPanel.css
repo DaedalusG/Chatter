@@ -9,7 +9,7 @@
   overflow-y: scroll;
 
 }
-.bird{
+.bird-left-panel{
   height: 30px;
   margin-top: 10px;
   fill: rgba(29,161,242,1.00);
@@ -257,7 +257,7 @@
   font-size: 15px;
   color: slategray;
 }
-.down-carrot{
+.down-carrot-left-panel{
   height: 20px;
   width: 20px;
   margin-left: 30px;
@@ -289,6 +289,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+}
+.logout-modal__user-names__first-last{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 200px;
 }
 .logout-modal__user-names__span1{
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
