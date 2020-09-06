@@ -5,16 +5,23 @@ import LandscapeReply from '../images/LandscapeReply.js'
 import PollBox from '../images/PollBox.js'
 import Calendar from '../images/Calendar.js'
 import Smiley from '../images/Smiley.js'
+import { API_URL } from '../config.js'
 
-const handleReplySubmit = (e) => {
-    // const reply = document.getElementById()
-    // console.log(reply)
-}
 
 
 const ReplyModal = (props) => {
     const [replyInput, setReplyInput] = useState("");
     const updateReplyInput = (e) => setReplyInput(e.target.value)
+
+    const handleReplySubmit = async (e) => {
+        e.preventDefault();
+        const response = await fetch(`${API_URL}/reply`, {
+            method: "POST",
+            mode: "cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ reply: `${replyInput}` })
+        })
+    }
 
     return (
         <div className={`reply-modal-c ${props.replyModal ? "visible" : "hidden"}`}>
@@ -51,7 +58,7 @@ const ReplyModal = (props) => {
                         <textarea value={replyInput} className={"reply-form-textarea"} placeholder={"Tweet your reply"} onChange={updateReplyInput}></textarea>
                         <div className="reply-form-response__footer">
                             <div><GifBox /><LandscapeReply /><PollBox /><Calendar />< Smiley /></div>
-                            <button className={"reply-form-submit"} >Reply</button>
+                            <button className={"reply-form-submit"} onClick={handleReplySubmit} >Reply</button>
                         </div>
                     </div>
                 </div>

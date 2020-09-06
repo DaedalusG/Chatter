@@ -124,7 +124,7 @@ const Tweet = (props) => {
 
   return (
     <div className={"tweet-c"}>
-      <ReplyModal id={props.props.id} replyModal={replyModal} user={props.user} tweet={props.props} handleReplyClick={handleReplyClick} />
+      <ReplyModal tweet_id={props.props.id} replyModal={replyModal} user={props.user} tweet={props.props} handleReplyClick={handleReplyClick} />
       {/* <span className={"tweet-c__name"}>{props.props.name}</span> */}
       <div className={"tweet-c__top"}>
         <img className={"user__profile-pic"} alt={""} src={props.props.user.profile_pic} ></img>
