@@ -8,15 +8,18 @@ import '../styles/login.css'
 
 const Login = (props) => {
     const [signUpModal, setSignUpModal] = useState(false);
-    const [email, setEmail] = useState("lisa@aa.com");
-    const [password, setPassword] = useState("password");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [antiModal, setAntiModal] = useState("login-block")
 
     const showSignUpModal = e => {
         e.preventDefault();
+        setAntiModal("hide-div login-block")
         setSignUpModal(true)
     };
     const hideSignUpModal = e => {
         e.preventDefault();
+        setAntiModal("login-block")
         setSignUpModal(false)
     };
 
@@ -90,9 +93,10 @@ const Login = (props) => {
                         </div>
                     </div>
                     <div className="login-subBar__span--container">
-                        <span>Forgot password?</span>
+                        {/* <span>Forgot password?</span> */}
                     </div>
-                    <div className='login-block'>
+                    <div
+                        className={antiModal}>
                         <div className="login-block__logo">
                             <Bird/>
                         </div>
@@ -135,16 +139,9 @@ const SignUpModal = ({ handleClose, show }) => {
             <div className={showHideClassName}>
                 <div className="modal-background"></div>
                 <div className="modal-content">
-
-                    <div className="signup__closeButton--container">
-                        <button
-                            onClick={handleClose}
-                            className="modal-close">
-                            close</button>
-                    </div>
                     <div className="signup-content--container">
                         <div className="signup-content">
-                            <SignUp />
+                            <SignUp handleClose={handleClose} />
                         </div>
                     </div>
                 </div>
