@@ -47,6 +47,9 @@ const Login = (props) => {
     };
 
     const loginDemoUser = async (e) => {
+        setEmail("demoUser@demo.com")
+        setPassword("demoUser")
+        window.location.reload()
         return
     }
 
@@ -99,17 +102,18 @@ const Login = (props) => {
                         <div className="login-block__h5">
                             <span>Join Chatter today.</span>
                         </div>
-                        <div className="login-block__signup--container">
+                        <div
+                            className="login-block__signup--container"
+                            onClick={showSignUpModal}>
                             <div
-                                className="login-block__signup--button"
-                                onClick={showSignUpModal}>
+                                className="login-block__signup--button">
                                 <span>Sign up</span>
                             </div>
                         </div>
-                        <div className="login-block__demo--container">
-                            <div
-                                className="login-block__demo--button"
-                                onClick={loginDemoUser}>
+                        <div
+                            className="login-block__demo--container"
+                            onClick={loginDemoUser}>
+                            <div className="login-block__demo--button">
                                 <span>Log in as Demo User</span>
                             </div>
                         </div>
