@@ -28,6 +28,7 @@ def login():
     try:
         email = data['email']
         password = data['password']
+        print("++++++++++++++++++++", email, password)
         if not email:
             return jsonify(message='Email Required'), 400
         elif not password:
@@ -37,6 +38,7 @@ def login():
         if not user:
             return jsonify(message='Email Required'), 400
 
+        print('+++++++++++++++++', user, user.hashed_password)
         verified = verify_password(password, user.hashed_password)
 
         if not verified:

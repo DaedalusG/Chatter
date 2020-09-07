@@ -99,12 +99,12 @@ class Reply(db.Model):
     likes = db.relationship('Like', backref='reply')
 
     def to_dict(self):
-      return {
-          "id": self.id,
-          "user_id": self.user_id,
-          "tweet_id": self.tweet_id,
-          "content": self.content,
-      }
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "tweet_id": self.tweet_id,
+            "content": self.content,
+        }
 
 
 class Like(db.Model):

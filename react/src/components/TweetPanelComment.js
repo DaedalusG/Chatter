@@ -43,7 +43,7 @@ const TweetPanelComment = (props) => {
     else {
       const destroyLike = async () => {
 
-        const response = await fetch(`${ API_URL}/likes/`, {
+        const response = await fetch(`${API_URL}/likes/`, {
 
           method: "DELETE",
           mode: "cors",
@@ -77,7 +77,7 @@ const TweetPanelComment = (props) => {
     const getHeartedCount = async () => {
       if (props.props.id === undefined) return
 
-      const response = await fetch(`${ API_URL}/likes/${props.props.id}`, {
+      const response = await fetch(`${API_URL}/likes/${props.props.id}`, {
 
         method: "GET",
         mode: "cors",
@@ -96,7 +96,7 @@ const TweetPanelComment = (props) => {
       if (props.props.id === undefined) return
       const response = await fetch(
 
-        `${ API_URL}/likes/${props.user.id}/${props.props.id}`, {
+        `${API_URL}/likes/${props.user.id}/${props.props.id}`, {
 
         method: "GET",
         mode: "cors",
