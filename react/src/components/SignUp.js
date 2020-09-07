@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { API_URL } from "../config";
 import Bird from '../images/Bird';
+import CloseButton from '../images/CloseButton';
 import "../styles/signup.css";
 
-const SignUp = () => {
+const SignUp = props => {
   const [username, setUsername] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -68,6 +69,13 @@ const SignUp = () => {
         <div className="signup-head--topElements">
           <div className="signup-head__logo">
             <Bird />
+          </div>
+          <div
+            className="signup__closeButton--container"
+            onClick={props.handleClose}>
+            <div className="signup__closeButton">
+              <CloseButton/>
+            </div>
           </div>
         </div>
         <div className="signup-head__text">
@@ -139,11 +147,12 @@ const SignUp = () => {
             placeholder="Zip Code"
           />
         </div>
-        <div className="signup-form__submit--container">
-          <button
-            className="signup-form__submit"
-            onClick={createUser}>
-            Submit</button>
+        <div
+          className="signup-form__submitButton--container"
+          onClick={createUser}>
+          <div className="signup-form__submitButton">
+            <span>Submit</span>
+          </div>
         </div>
       </div>
     </div>

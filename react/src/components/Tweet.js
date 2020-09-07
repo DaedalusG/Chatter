@@ -13,8 +13,8 @@ const Tweet = (props) => {
   const [hearted, setHearted] = useState("heart");
   const [heartCount, setHeartCount] = useState(0);
   const [retweeted, setRetweeted] = useState("retweet");
-  const [retweetCount, setRetweetCount] = useState(0);
   const [replyModal, setReplyModal] = useState(false)
+  // const [retweetCount, setRetweetCount] = useState(0);
 
   const handleHeartClick = () => {
     if (hearted === "heart") {
@@ -129,10 +129,10 @@ const Tweet = (props) => {
       <div className={"tweet-c__top"} >
         <img className={"user__profile-pic"} alt={""} src={props.props.user.profile_pic} onClick={()=>props.centerPanelProfile(props.props.user)}></img>
         <div className={"tweet-c__user-name"} >
-        
+
             <p className={"tweet-c__user-name__names__top"}>{`${props.props.user ? props.props.user.firstname : ""} ${props.props.user ? props.props.user.lastname : ""}`}</p>
             <p className={"tweet-c__user-name__names__bottom"}>@{props.props.user ? props.props.user.username : ""}</p>
-         
+
           <div className={"down-carrot-c"}>
             <DownCarrot />
           </div>
@@ -154,7 +154,9 @@ const Tweet = (props) => {
           <Retweet retweeted={retweeted} />
         </div>
 
-        <div onClick={handleHeartClick} className="tweet-like--container">
+        <div
+          className="tweet-like--container"
+          onClick={handleHeartClick}>
           <Heart hearted={hearted}/>
             { heartCount > 0 ? <span>{heartCount}</span> : <span></span> }
         </div>
