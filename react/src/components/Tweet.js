@@ -139,6 +139,7 @@ const Tweet = (props) => {
         </div>
       </div>
       <div className="tweet-c__comment" onClick={() => {
+        console.log("clicked")
         props.tweetInfoFunc(props.props.id)
         props.centerPanelTweetPanel()
       }}
