@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { apiUrl } from '../config'
+import { API_URL } from '../config'
 import CommentBubbleTweet from '../images/CommentBubbleTweet';
 import RetweetTweet from '../images/RetweetTweet';
 import HeartTweet from '../images/HeartTweet';
@@ -17,7 +17,7 @@ const TweetPanelTweet = (props) => {
   const handleHeartClick = () => {
     if (hearted === "heart") {
       const createLike = async () => {
-        const response = await fetch(`${apiUrl}/likes/`, {
+        const response = await fetch(`${API_URL}/likes/`, {
           method: "POST",
           mode: "cors",
           headers: {
@@ -41,7 +41,7 @@ const TweetPanelTweet = (props) => {
     }
     else {
       const destroyLike = async () => {
-        const response = await fetch(`${apiUrl}/likes/`, {
+        const response = await fetch(`${API_URL}/likes/`, {
           method: "DELETE",
           mode: "cors",
           headers: {
@@ -74,7 +74,7 @@ const TweetPanelTweet = (props) => {
     <div className={"tweet-c"}>
       {/* <span className={"tweet-c__name"}>{props}</span> */}
       <div className={"tweet-c__top"}>
-        <img className={"user__profile-pic"} alt={""} src={props.props.user ? props.props.user.profile_pic : ""} ></img>  
+        <img className={"user__profile-pic"} alt={""} src={props.props.user ? props.props.user.profile_pic : ""} ></img>
         <div className={"tweet-c__user-name"} >
           <div className={"tweet-p-t-c__user-name__names"} >
             <p className={"tweet-p-t-c__user-name__names__top"}>{`${props.props.user ? props.props.user.firstname : ""} ${props.props.user ? props.props.user.lastname : ""}`}</p>
