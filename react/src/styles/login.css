@@ -64,6 +64,11 @@
     justify-content: center;
     align-items: center;
 }
+.login-bar__form input {
+    font-size: 20px;
+    font-weight: 200;
+    position: relative;
+}
 .login-bar__button--container {
     width: 77px;
     height: 39px;
@@ -108,7 +113,6 @@
     display: flex;
     flex-flow: column;
     background-color: #15212B;
-    z-index: 1;
 }
 .bird{
     width: 42px;
@@ -166,34 +170,8 @@
     top: 115px;
     cursor: pointer;
 }
-.login-button {
-    border: 0px;
-	border-radius:25px;
-    margin: 7px;
-    padding:5px 76px;
-    width: 237px;
-    height: 30px;
-    background-color: #0383df;
-    color: #c9d2db;
-    font-size: 14px;
-    font-weight: bold;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
-    outline: none;
+.hide-div {
+    visibility: hidden;
 }
-.login-button:hover {
-    color: white;
-    background-color:#1C92DA;
-}
-.login-button:active {
-	position:relative;
-    top:1px;
-}
-.login-footer {
-    color: #8A8F94;
-    font-size: 8px;
-    font-style: none;
-}
-.login-footer:hover {
-    color: white;
-    cursor: default;
+.modal-content {
 }
