@@ -57,11 +57,11 @@ const TweetPanel = (props) => {
           
             <div className="all-tweets-c">
           
-              <TweetPanelTweet props={tweetState} centerPanelHome={props.centerPanelHome} ></TweetPanelTweet>
+              <TweetPanelTweet user={props.user} props={tweetState} centerPanelHome={props.centerPanelHome} ></TweetPanelTweet>
     
               {tweetState.replies ?
                 // tweetState.replies.map( reply => (<p>{reply.content}</p>) )
-                tweetState.replies.map(reply => (<TweetPanelComment  reply={reply} /> ) )
+                tweetState.replies.map(reply => (<TweetPanelComment user={props.user}  reply={reply} /> ) )
                 : null
               }
   

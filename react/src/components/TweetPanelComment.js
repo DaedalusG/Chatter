@@ -153,9 +153,9 @@ const TweetPanelComment = (props) => {
         </div>
         <div
           onClick={handleHeartClick}
-          className="tweet-like--container">
+          className="tweet-panel-comment-like--container">
           <Heart hearted={hearted} />
-          <div>
+          <div >
             {heartCount > 0 ? <span>{heartCount}</span> : <span></span>}
           </div>
         </div>

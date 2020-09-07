@@ -35,3 +35,18 @@
   top: 10px;
   margin-bottom: 12px;
 }
+.tweet-panel-tweet-like--container div{
+  position: absolute;
+  left: 410px;
+  /* margin-top: -45px; */
+  font-size: 13px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+  color: rgb(101, 119, 134);
+}
+.tweet-panel-tweet-like--container span{
+  position: relative;
+  top: -10px;
+  font-size: 15px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+  color: rgb(101, 119, 134);
+}
