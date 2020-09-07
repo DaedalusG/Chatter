@@ -6,9 +6,7 @@ import { API_URL } from '../config.js'
 
 const MainPage = () => {
   const [centerPanelState, setPanelState] = useState("Home");
-
   const [user, setUser] = useState({})
-
   const [targetUser, setTargetUser] = useState(1);
 
 
@@ -43,10 +41,19 @@ const MainPage = () => {
 
     return (
       <div id={"main-c"}>
-        
-        <LeftPanel centerPanelHome={centerPanelHome} user={user} ></LeftPanel>
-        <CenterPanelSwitch targetUser={targetUser} centerPanelState={centerPanelState} setPanelState={setPanelState} centerPanelHome={centerPanelHome} centerPanelProfile={centerPanelProfile} centerPanelTweetPanel={centerPanelTweetPanel} user={user}/>
-        <RightPanel></RightPanel>
+
+        <LeftPanel
+          centerPanelHome={centerPanelHome}
+          user={user} />
+        <CenterPanelSwitch
+          targetUser={targetUser}
+          centerPanelState={centerPanelState}
+          setPanelState={setPanelState}
+          centerPanelHome={centerPanelHome}
+          centerPanelProfile={centerPanelProfile}
+          centerPanelTweetPanel={centerPanelTweetPanel}
+          user={user}/>
+        <RightPanel/>
       </div>
     )
 

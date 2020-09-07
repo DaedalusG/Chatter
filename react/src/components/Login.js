@@ -1,24 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { API_URL } from "../config";
 import SignUp from "./SignUp";
-import CloseButton from '../images/CloseButton';
 import Bird from '../images/Bird';
+import MagnifyingGlass from '../images/MagnifyingGlass';
+import People from '../images/People';
+import LoginBubble from '../images/LoginBubble';
+import GithubIcon from '../images/GithubIcon';
 import '../styles/login.css'
 
 
-const Login = (props) => {
+const Login = () => {
     const [signUpModal, setSignUpModal] = useState(false);
+    const [antiModal, setAntiModal] = useState("login-block")
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [antiModal, setAntiModal] = useState("login-block")
 
-    const showSignUpModal = e => {
-        e.preventDefault();
+    const showSignUpModal = () => {
         setAntiModal("hide-div login-block")
         setSignUpModal(true)
     };
-    const hideSignUpModal = e => {
-        e.preventDefault();
+    const hideSignUpModal = () => {
         setAntiModal("login-block")
         setSignUpModal(false)
     };
@@ -26,8 +27,7 @@ const Login = (props) => {
     const updateEmail = (e) => setEmail(e.target.value);
     const updatePassword = (e) => setPassword(e.target.value);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handleSubmit = async () => {
         const response = await fetch(`${API_URL}/auth/login`, {
             method: "POST",
             mode: "cors",
@@ -41,7 +41,6 @@ const Login = (props) => {
             console.log("inside tryLogin: Response failure");
         }
         const res = await response.json()
-        console.log(res)
         if (res.auth_token != undefined) {
             window.localStorage.setItem('auth_token', res.auth_token)
             window.location.reload()
@@ -49,11 +48,43 @@ const Login = (props) => {
 
     };
 
-    const loginDemoUser = async (e) => {
-        setEmail("demoUser@demo.com")
-        setPassword("demoUser")
-        window.location.reload()
-        return
+    const loginDemoUser = async () => {
+        const demoEmail = "lisa@aa.com";
+        const demoPassword = "password"
+        let speed=70, i=1, k=0;
+
+        const ghostWriteEmail = () => {
+            if (i <= demoEmail.length) {
+                let text = demoEmail.slice(0,i);
+                setEmail(text);
+                i++;
+                setTimeout(ghostWriteEmail, speed);
+            }
+        }
+        const ghostWritePassword = () => {
+            if (k <= demoPassword.length) {
+                let text = demoPassword.slice(0,k);
+                setPassword(text);
+                k++;
+                setTimeout(ghostWritePassword, speed);
+            }
+        }
+        ghostWriteEmail();
+        setTimeout(ghostWritePassword, speed*demoEmail.length);
+        const demoLogin = async () => {
+            const response = await fetch(`${API_URL}/auth/login`, {
+                method: "POST",
+                mode: "cors",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email: `${demoEmail}`, password: `${demoPassword}` }),
+            });
+            const res = await response.json()
+            if (res.auth_token != undefined) {
+                window.localStorage.setItem('auth_token', res.auth_token)
+                window.location.reload()
+            }
+        }
+        setTimeout(demoLogin, 1500);
     }
 
 
@@ -63,6 +94,20 @@ const Login = (props) => {
                 <div className="login-main__left">
                     <div className="login-birdSVG--background">
                         <Bird/>
+                    </div>
+                    <div className="login-main__left--text">
+                        <div>
+                            <MagnifyingGlass/>
+                            <span>Follow your interests.</span>
+                        </div>
+                        <div>
+                            <People/>
+                            <span>Hear what people are talking about.</span>
+                        </div>
+                        <div>
+                            <LoginBubble/>
+                            <span>Join the conversation.</span>
+                        </div>
                     </div>
                 </div>
                 <div className="login-main__right">
@@ -83,10 +128,10 @@ const Login = (props) => {
                                 <SignUpModal
                                     show={signUpModal}
                                     handleClose={hideSignUpModal} />
-                            <div className="login-bar__button--container">
-                                <div
-                                    className="login-bar__button"
-                                    onClick={handleSubmit}>
+                            <div
+                                className="login-bar__button--container"
+                                onClick={handleSubmit}>
+                                <div className="login-bar__button">
                                     <span>Log in</span>
                                 </div>
                             </div>
@@ -125,7 +170,75 @@ const Login = (props) => {
                 </div>
             </div>
             <div className="login-footer">
+                <div className="login-footer__text">
+                    <span>This Twitter Clone was made by the development team:</span>
+                    <span></span>
+                </div>
+                <div className="login-footer__creditBox">
+                    <span>Casey Riley</span>
+                    <div className="login-footer__creditBox--links">
+                        <a href="mailto:innerforest7@gmail.com">
+                            <img src="https://img.icons8.com/doodle/48/000000/new-post.png"/>
+                        </a>
+                        <a href="https://github.com/caseyriley">
+                            <GithubIcon/>
+                        </a>
+                        {/* <img src="https://img.icons8.com/fluent/48/000000/linkedin.png"/>
+                        <img src="https://img.icons8.com/color/48/000000/angelist.png"/> */}
+                    </div>
+                </div>
+                <div className="login-footer__creditBox">
+                    <span>Warren Gifford</span>
+                    <div className="login-footer__creditBox--links">
+                        <a href="mailto:warrenbruceg@gmail.com">
+                            <img src="https://img.icons8.com/doodle/48/000000/new-post.png"/>
+                        </a>
+                        <a href="https://github.com/DaedalusG">
+                            <GithubIcon/>
+                        </a>
+                        <a href="https://www.linkedin.com/in/warren-gifford-b1141a1b4/">
+                            <img src="https://img.icons8.com/fluent/48/000000/linkedin.png"/>
+                        </a>
+                        <a href="https://angel.co/u/warren-gifford">
+                            <img src="https://img.icons8.com/color/48/000000/angelist.png"/>
+                        </a>
+                    </div>
+                </div>
+                <div className="login-footer__creditBox">
 
+                    <span>Deepak Ponnuswamy</span>
+                    <div className="login-footer__creditBox--links">
+                        <a href="mailto:deepak.ponnuswamy@gmail.com">
+                            <img src="https://img.icons8.com/doodle/48/000000/new-post.png"/>
+                        </a>
+                        <a href="https://github.com/deepak-po?tab=overview&from=2020-05-01&to=2020-05-10">
+                            <GithubIcon/>
+                        </a>
+                        <a href="https://www.linkedin.com/in/deepak-ponnuswamy-b0067a146/">
+                            <img src="https://img.icons8.com/fluent/48/000000/linkedin.png"/>
+                        </a>
+                        <a href="https://angel.co/u/deepak-po">
+                            <img src="https://img.icons8.com/color/48/000000/angelist.png"/>
+                        </a>
+                    </div>
+                </div>
+                <div className="login-footer__creditBox">
+                    <span>Nolan Crenshaw</span>
+                    <div className="login-footer__creditBox--links">
+                        <a href="mailto:nolan.crenshaw@gmail.com">
+                            <img src="https://img.icons8.com/doodle/48/000000/new-post.png"/>
+                        </a>
+                        <a href="https://github.com/NolanCrenshaw">
+                            <GithubIcon/>
+                        </a>
+                        <a href="https://www.linkedin.com/in/nolan-crenshaw-a10b381a0/">
+                            <img src="https://img.icons8.com/fluent/48/000000/linkedin.png"/>
+                        </a>
+                        <a href="https://angel.co/u/nolan-crenshaw">
+                            <img src="https://img.icons8.com/color/48/000000/angelist.png"/>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     )
@@ -151,3 +264,7 @@ const SignUpModal = ({ handleClose, show }) => {
 };
 
 export default Login;
+
+
+
+
