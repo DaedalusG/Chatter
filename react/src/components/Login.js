@@ -11,13 +11,11 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const showSignUpModal = e => {
-        e.preventDefault();
+    const showSignUpModal = () => {
         setAntiModal("hide-div login-block")
         setSignUpModal(true)
     };
-    const hideSignUpModal = e => {
-        e.preventDefault();
+    const hideSignUpModal = () => {
         setAntiModal("login-block")
         setSignUpModal(false)
     };
