@@ -42,20 +42,22 @@ const ReplyModal = (props) => {
                         <CloseButton />
                     </div>
                 </div>
-                <div className={"reply-form-tweet-info"}>
-                    <div className={"reply-form-tweet-info__side-panel"}>
-                        <img className={'user__profile-pic-reply-top'} src={props.tweet.user.profile_pic}></img>
-                        <div className={"reply-form-tweet-info__side-border"}></div>
-                    </div>
-                    <div className={"reply-form-tweet-content"}>
-                        <div className={"reply-form-tweet-content__header"}>
-                            <span className={"tweet-content__username"}>{props.tweet.user.username}</span> <span className="tweet-content__email">{props.tweet.user.email}</span>
+                <div style={{ overflow: "scroll" }}>
+                    <div className={"reply-form-tweet-info"}>
+                        <div className={"reply-form-tweet-info__side-panel"}>
+                            <img className={'user__profile-pic-reply-top'} src={props.tweet.user.profile_pic}></img>
+                            <div className={"reply-form-tweet-info__side-border"}></div>
                         </div>
-                        <div>
-                            {props.tweet.content}
-                        </div>
-                        <div className={"reply-form-tweet-content__footer"}>
-                            <span className={"tweet-content__email"}>Replying to</span> <a className="reply-form-userlink" href="">{props.tweet.user.email}</a>
+                        <div className={"reply-form-tweet-content"}>
+                            <div className={"reply-form-tweet-content__header"}>
+                                <span className={"tweet-content__username"}>{props.tweet.user.username}</span> <span className="tweet-content__email">{props.tweet.user.email}</span>
+                            </div>
+                            <div>
+                                {props.tweet.content}
+                            </div>
+                            <div className={"reply-form-tweet-content__footer"}>
+                                <span className={"tweet-content__email"}>Replying to</span> <a className="reply-form-userlink" href="">{props.tweet.user.email}</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -67,9 +69,8 @@ const ReplyModal = (props) => {
                     <div className="reply-form-response__content">
                         <textarea value={replyInput} className={"reply-form-textarea"} placeholder={"Tweet your reply"} onChange={updateReplyInput}></textarea>
                         <div className="reply-form-response__footer">
-
-                            <div><GifBox /><LandscapeReply /><PollBox /><Calendar />< Smiley /><button className={"reply-form-submit"} onClick={handleReplySubmit}>Reply</button></div>
-
+                            <div><GifBox /><LandscapeReply /><PollBox /><Calendar />< Smiley /></div>
+                            <button className={"reply-form-submit"} onClick={handleReplySubmit}>Reply</button>
                         </div>
                     </div>
                 </div>
@@ -77,5 +78,4 @@ const ReplyModal = (props) => {
         </div >
     )
 }
-
 export default ReplyModal

@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    min-width: 600px;
     width: 100vw;
     top: 0px;
     left: 0px;
@@ -143,6 +144,7 @@
 
 .reply-form-response {
   display: flex;
+  flex: 1;
   flex-flow: row;
 }
 
@@ -187,7 +189,7 @@
   justify-content: space-between;
   width: 100%;
   padding: 5px;
-  position: fixed;
+  /* position: fixed; */
   /* top: 20px; */
   bottom: 30vh;
 }
@@ -203,18 +205,25 @@
   font-weight: bold;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
   position: relative;
-  top: -12px;
-  left: 20px;
   z-index: 1;
   outline: none;
   /* right: 30vw; */
-
-  
- 
 }
 
 .reply-form-submit:hover {
   background-color: rgb(101, 192, 248)
+}
+
+.tweet-c__user-name__names__top {
+  z-index: -1;
+}
+
+.tweet-c__user-name__names__bottom {
+  z-index: -1;
+}
+
+.down-carrot-c {
+  z-index: -1;
 }
 
 .tweet-pic {
