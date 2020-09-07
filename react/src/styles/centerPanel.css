@@ -42,7 +42,7 @@
   position: relative;
 }
 .center-panel__below-nav__scroll{
-  height: 2000px;
+  height: 750px;
   width: 100%;
   overflow: auto;
   position: relative;
@@ -200,7 +200,14 @@
 .tweet-c{
   pointer-events: none;
 } */
-
+.sparkles:hover,
+.smiley-face:hover,
+.landscape:hover,
+.gifbox:hover,
+.pollbox:hover,
+.calendar:hover{
+  cursor: not-allowed;
+}
 
 
 

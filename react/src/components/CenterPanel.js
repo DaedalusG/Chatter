@@ -58,12 +58,8 @@ const CenterPanel = (props) => {
         </div>
         <div id={"center-panel__below-nav"} >
           <div className="center-panel__below-nav__scroll" >
-            {/* <div id={"center-panel__below-nav__content-c"}> */}
             <div className={"below-nav-section"} >
               <img id={"profile-bubble-2"} alt={""} src={props.user.profile_pic} onClick={()=> props.centerPanelProfile(props.user)}></img>
-              {/* <div id={"center-panel__below-nav__profile-bublle-c"} */}
-                {/* onClick={props.centerPanelProfile} */}
-              {/* > */}
                 <div className={"profile-bubble-2"} ></div>
               {/* </div> */}
               <span name="tweet-textarea" className="textarea" role="textbox" resize="none" contentEditable=""></span>

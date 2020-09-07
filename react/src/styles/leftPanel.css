@@ -134,6 +134,7 @@
 #envelope-c{
   width: 160px;
 }
+
 .envelope{
   height: 30px;
   margin-top: 10px;
@@ -326,4 +327,14 @@
 }
 .left-logout-modal-invisible{
   display: none;
+}
+#envelope-c:hover,
+#tweet-button:hover,
+#circles-more-c:hover,
+#person-c:hover,
+#paper-c:hover,
+#bookmark-c:hover,
+#bell-c:hover,
+#hash-c:hover{
+  cursor: not-allowed;
 }

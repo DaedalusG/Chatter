@@ -22,7 +22,7 @@ import p19 from '../images/ProfileImages/p19.jpg';
 
 const Suggested =()=>{
 
-  const atNameArray = ["chosentwo","goldentree","opulentpearl","knownothing","beyondtime","heartspace","colorfullhere","somethingthatcantbe","withoutu","dreamsofu","desertflower","unitynow","whispersofthis","columnoffire","dropsofbass","coolanyway","sweetsassymollassy","wiggleit","letmecuagain","forgetit","laughsalot","thelast","fatalkiss"]
+  const atNameArray = ["chosentwo","goldentree","opulentpearl","knownothing","beyondtime","heartspace","colorfullhere","somethingiam","withoutu","dreamsofu","desertflower","unitynow","whispersofthis","columnoffire","dropsofbass","coolanyway","sweetsassy","wiggleit","letmecuagain","forgetit","laughsalot","thelast","fatalkiss"]
   function getRandomAtName(max){
     return atNameArray[Math.floor(Math.random() * Math.floor(max))];
   }
@@ -43,15 +43,14 @@ const Suggested =()=>{
   return(
     <>
       <div className={"main-c__right__suggestions-c__feed"}>
-      <div id={"main-c__right__user-pic-bublle-c"}>
-        {/* <div className={"profile-bubble-3"} ></div> */}
+        <div id={"main-c__right__user-pic-bublle-c"}>
           <img className={"profile-bubble-3"} alt={""} src={`${randomPic}`}></img>
-      </div>
-      <div className={"suggestions-feed"}>
-        <p className={"suggestions-feed__name"} >{`${randomName}`}</p>
-        <p className={"suggestions-feed__atname"} >@{`${randomAtName}`}</p>
-      </div>
-      <div className={"follow-button-suggestions"} > <span>Follow</span> </div>
+        </div>
+        <div className={"suggestions-feed"}>
+          <p className={"suggestions-feed__name"} >{`${randomName}`}</p>
+          <p className={"suggestions-feed__atname"} >@{`${randomAtName}`}</p>
+        </div> 
+        <div className={"follow-button-suggestions"} > <span>Follow</span> </div>
       </div>
     </>
   )
