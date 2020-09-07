@@ -1,12 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CloseButton from '../images/CloseButton.js'
 import GifBox from '../images/GifBox.js'
 import LandscapeReply from '../images/LandscapeReply.js'
 import PollBox from '../images/PollBox.js'
 import Calendar from '../images/Calendar.js'
 import Smiley from '../images/Smiley.js'
+import { API_URL } from '../config.js'
+
+const token = window.localStorage.getItem('auth_token')
+
+
 
 const ReplyModal = (props) => {
+    const [replyInput, setReplyInput] = useState("");
+    const updateReplyInput = (e) => setReplyInput(e.target.value)
+
+    const handleReplySubmit = async (e) => {
+        e.preventDefault();
+        const response = await fetch(`${API_URL}/replies/`, {
+            method: "POST",
+            // mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
+            },
+            body: JSON.stringify({ user_id: props.user.id, tweet_id: props.tweet_id, reply: replyInput })
+        })
+        if (response.ok) {
+            window.location.reload()
+        } else {
+            console.log("-------Reply Failed---------");
+        }
+    }
+
     return (
         <div className={`reply-modal-c ${props.replyModal ? "visible" : "hidden"}`}>
             <div className={"reply-modal-background"} ></div>
@@ -39,10 +65,10 @@ const ReplyModal = (props) => {
                         <div className={"reply-form-response__side-spacer"}></div>
                     </div>
                     <div className="reply-form-response__content">
-                        <textarea className={"reply-form-textarea"} placeholder={"Tweet your reply"}></textarea>
+                        <textarea value={replyInput} className={"reply-form-textarea"} placeholder={"Tweet your reply"} onChange={updateReplyInput}></textarea>
                         <div className="reply-form-response__footer">
                             <div><GifBox /><LandscapeReply /><PollBox /><Calendar />< Smiley /></div>
-                            <button className={"reply-form-submit"} onClick={""}>Reply</button>
+                            <button className={"reply-form-submit"} onClick={handleReplySubmit} >Reply</button>
                         </div>
                     </div>
                 </div>

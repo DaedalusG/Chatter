@@ -63,8 +63,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid #0383df;
+    border: 2px solid #68aae9;
     border-radius: 90px;
+}
+.login-bar__button--container:hover {
+    background-color: #2a4357;
 }
 .login-bar__button {
     width: 44px;
