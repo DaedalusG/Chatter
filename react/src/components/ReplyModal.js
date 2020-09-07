@@ -18,7 +18,7 @@ const ReplyModal = (props) => {
                 </div>
                 <div className={"reply-form-tweet-info"}>
                     <div className={"reply-form-tweet-info__side-panel"}>
-                        <img className={'user__profile-pic-reply'} src={props.tweet.user.profile_pic}></img>
+                        <img className={'user__profile-pic-reply-top'} src={props.tweet.user.profile_pic}></img>
                         <div className={"reply-form-tweet-info__side-border"}></div>
                     </div>
                     <div className={"reply-form-tweet-content"}>
@@ -41,8 +41,10 @@ const ReplyModal = (props) => {
                     <div className="reply-form-response__content">
                         <textarea className={"reply-form-textarea"} placeholder={"Tweet your reply"}></textarea>
                         <div className="reply-form-response__footer">
-                            <div><GifBox /><LandscapeReply /><PollBox /><Calendar />< Smiley /></div>
-                            <button className={"reply-form-submit"} onClick={""}>Reply</button>
+                            <div><GifBox /><LandscapeReply /><PollBox /><Calendar />< Smiley /><button className={"reply-form-submit"}>Reply</button></div>
+                            {/* <button className={"reply-form-submit"} 
+                            // onClick={""}
+                            >Reply</button> */}
                         </div>
                     </div>
                 </div>

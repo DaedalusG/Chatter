@@ -82,7 +82,8 @@ const CenterPanel = (props) => {
 
               {tweetState ?
                 tweetState.map((tweet) => (
-                  <Tweet props={tweet} 
+                  <Tweet 
+                    props={tweet} 
                     centerPanelProfile={props.centerPanelProfile}
                     tweetInfoFunc={props.tweetInfoFunc}  
                     user={props.user}

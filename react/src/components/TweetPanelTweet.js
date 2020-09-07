@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { apiUrl } from '../config'
+import { API_URL } from '../config'
 import CommentBubbleTweet from '../images/CommentBubbleTweet';
 import RetweetTweet from '../images/RetweetTweet';
 import HeartTweet from '../images/HeartTweet';
@@ -17,7 +17,7 @@ const TweetPanelTweet = (props) => {
   const handleHeartClick = () => {
     if (hearted === "heart") {
       const createLike = async () => {
-        const response = await fetch(`${apiUrl}/likes/`, {
+        const response = await fetch(`${API_URL}/likes/`, {
           method: "POST",
           mode: "cors",
           headers: {
@@ -41,7 +41,7 @@ const TweetPanelTweet = (props) => {
     }
     else {
       const destroyLike = async () => {
-        const response = await fetch(`${apiUrl}/likes/`, {
+        const response = await fetch(`${API_URL}/likes/`, {
           method: "DELETE",
           mode: "cors",
           headers: {

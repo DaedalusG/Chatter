@@ -194,6 +194,12 @@
 .calendar:hover{
   background-color: rgb(226, 242, 253);
 }
+/* .all-tweets-c{
+  pointer-events: none;
+}
+.tweet-c{
+  pointer-events: none;
+} */
 
 
 
