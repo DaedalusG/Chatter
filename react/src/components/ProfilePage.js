@@ -11,10 +11,12 @@ const ProfilePage = (props) => {
 
   const [tweetState, setTweetState] = useState([])
 
-  const [profileUser, setProfileUser] = useState(1);
+  const [profileUser, setProfileUser] = useState(2);
   useEffect(() => {
-    if (props.user.id === profileUser){
+    // if (props.user.id === profileUser){
+    setProfileUser(props.targetUser.id);
       const getUserTweets = async()=>{
+
         const response = await fetch(`${API_URL}/tweets/user/${profileUser}`,{
           method: "GET", 
           mode: "cors",
@@ -29,8 +31,8 @@ const ProfilePage = (props) => {
       }
     
       getUserTweets();
-    }
-    setProfileUser(props.user.id);
+    // }
+    
     
   }, [props])
 
@@ -76,6 +78,7 @@ const ProfilePage = (props) => {
                 tweetState.map((tweet) => (
                   <Tweet
                     props={tweet}
+                    targetUser={props.targetUser}
                     centerPanelProfile={props.centerPanelProfile}
                     tweetInfoFunc={props.tweetInfoFunc}
                     user={props.user}

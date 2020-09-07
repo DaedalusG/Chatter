@@ -11,14 +11,6 @@ const MainPage = () => {
 
   const [targetUser, setTargetUser] = useState(1);
 
-
-
-   
-  
-
-
-
-
   useEffect(() => {
     const getCurrentUser = async () => {
       const token = window.localStorage.getItem('auth_token')
