@@ -42,9 +42,18 @@ const MainPage = () => {
     return (
       <div id={"main-c"}>
 
-        <LeftPanel centerPanelHome={centerPanelHome} user={user} ></LeftPanel>
-        <CenterPanelSwitch targetUser={targetUser} centerPanelState={centerPanelState} setPanelState={setPanelState} centerPanelHome={centerPanelHome} centerPanelProfile={centerPanelProfile} centerPanelTweetPanel={centerPanelTweetPanel} user={user}/>
-        <RightPanel></RightPanel>
+        <LeftPanel
+          centerPanelHome={centerPanelHome}
+          user={user} />
+        <CenterPanelSwitch
+          targetUser={targetUser}
+          centerPanelState={centerPanelState}
+          setPanelState={setPanelState}
+          centerPanelHome={centerPanelHome}
+          centerPanelProfile={centerPanelProfile}
+          centerPanelTweetPanel={centerPanelTweetPanel}
+          user={user}/>
+        <RightPanel/>
       </div>
     )
 

@@ -13,7 +13,6 @@ import TweetPanelComment from './TweetPanelComment';
 
 
 const TweetPanel = (props) => {
-  // console.log("tp",props)
   const [tweetState, setTweetState] = useState([])
 
   useEffect(() => {
@@ -42,17 +41,17 @@ const TweetPanel = (props) => {
         </div>
         <div id={"tweet-panel__below-nav"} >
           <div className="tweet-panel__below-nav__scroll" >
-          
+
             <div className="all-tweets-c">
-          
+
               <TweetPanelTweet props={tweetState} centerPanelHome={props.centerPanelHome} ></TweetPanelTweet>
-    
+
               {tweetState.replies ?
                 // tweetState.replies.map( reply => (<p>{reply.content}</p>) )
                 tweetState.replies.map( reply => ( <TweetPanelComment props={reply} /> ) )
                 : null
               }
-  
+
               {/* <p>{props.tweetIdsState}</p> */}
             </div>
 

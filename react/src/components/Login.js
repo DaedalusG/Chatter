@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { API_URL } from "../config";
 import SignUp from "./SignUp";
 import Bird from '../images/Bird';
@@ -6,8 +6,6 @@ import MagnifyingGlass from '../images/MagnifyingGlass';
 import People from '../images/People';
 import LoginBubble from '../images/LoginBubble';
 import GithubIcon from '../images/GithubIcon';
-import LinkedinIcon from '../images/LinkedinIcon';
-
 import '../styles/login.css'
 
 
@@ -71,8 +69,8 @@ const Login = () => {
                 setTimeout(ghostWritePassword, speed);
             }
         }
-        await ghostWriteEmail();
-        await setTimeout(ghostWritePassword, speed*demoEmail.length);
+        ghostWriteEmail();
+        setTimeout(ghostWritePassword, speed*demoEmail.length);
         const demoLogin = async () => {
             const response = await fetch(`${API_URL}/auth/login`, {
                 method: "POST",
@@ -86,7 +84,7 @@ const Login = () => {
                 window.location.reload()
             }
         }
-        await setTimeout(demoLogin, 1500);
+        setTimeout(demoLogin, 1500);
     }
 
 
@@ -198,8 +196,12 @@ const Login = () => {
                         <a href="https://github.com/DaedalusG">
                             <GithubIcon/>
                         </a>
-                        {/* <img src="https://img.icons8.com/fluent/48/000000/linkedin.png"/>
-                        <img src="https://img.icons8.com/color/48/000000/angelist.png"/> */}
+                        <a href="https://www.linkedin.com/in/warren-gifford-b1141a1b4/">
+                            <img src="https://img.icons8.com/fluent/48/000000/linkedin.png"/>
+                        </a>
+                        <a href="https://angel.co/u/warren-gifford">
+                            <img src="https://img.icons8.com/color/48/000000/angelist.png"/>
+                        </a>
                     </div>
                 </div>
                 <div className="login-footer__creditBox">

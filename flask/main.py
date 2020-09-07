@@ -22,7 +22,6 @@ from replies import replies
 app = Flask(__name__)
 app.config.from_object(Config)
 CORS(app)
-# app.config["CORS_HEADER"] = "Content-Type"
 
 app.register_blueprint(user, url_prefix='/api/users')
 app.register_blueprint(seed, url_prefix='/api/seed')
