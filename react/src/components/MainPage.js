@@ -12,6 +12,13 @@ const MainPage = () => {
   const [targetUser, setTargetUser] = useState(1);
 
 
+
+   
+  
+
+
+
+
   useEffect(() => {
     const getCurrentUser = async () => {
       const token = window.localStorage.getItem('auth_token')
@@ -45,7 +52,7 @@ const MainPage = () => {
       <div id={"main-c"}>
         
         <LeftPanel centerPanelHome={centerPanelHome} user={user} ></LeftPanel>
-        <CenterPanelSwitch targetUser={targetUser} centerPanelState={centerPanelState} setPanelState={setPanelState} centerPanelHome={centerPanelHome} centerPanelProfile={centerPanelProfile} centerPanelTweetPanel={centerPanelTweetPanel} user={user}/>
+        <CenterPanelSwitch  targetUser={targetUser} centerPanelState={centerPanelState} setPanelState={setPanelState} centerPanelHome={centerPanelHome} centerPanelProfile={centerPanelProfile} centerPanelTweetPanel={centerPanelTweetPanel} user={user}/>
         <RightPanel></RightPanel>
       </div>
     )

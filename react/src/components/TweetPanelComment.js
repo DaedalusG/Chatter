@@ -14,7 +14,12 @@ const TweetPanelComment = (props) => {
   const [retweeted, setRetweeted] = useState("retweet");
   const [retweetCount, setRetweetCount] = useState(0);
 
-  console.log('tpcomment', props)
+  console.log('TweeetDaaata', props.reply[1])
+
+
+
+
+
   const handleHeartClick = () => {
     if (hearted === "heart") {
       const createLike = async () => {
@@ -27,7 +32,7 @@ const TweetPanelComment = (props) => {
           },
           body: JSON.stringify({
             userId: `${props.user.id}`,
-            tweetId: `${props.props.id}`
+            tweetId: `${props.reply.id}`
           }),
         });
         if (!response.ok) {
@@ -53,7 +58,7 @@ const TweetPanelComment = (props) => {
           },
           body: JSON.stringify({
             userId: `${props.user.id}`,
-            tweetId: `${props.props.id}`
+            tweetId: `${props.reply.id}`
           }),
         });
         if (!response.ok) {
@@ -75,9 +80,9 @@ const TweetPanelComment = (props) => {
 
   useEffect(() => {
     const getHeartedCount = async () => {
-      if (props.props.id === undefined) return
+      if (props.reply.id === undefined) return
 
-      const response = await fetch(`${ API_URL}/likes/${props.props.id}`, {
+      const response = await fetch(`${ API_URL}/likes/${props.reply.id}`, {
 
         method: "GET",
         mode: "cors",
@@ -93,10 +98,10 @@ const TweetPanelComment = (props) => {
       }
     }
     const getUserHearted = async () => {
-      if (props.props.id === undefined) return
+      if (props.reply.id === undefined) return
       const response = await fetch(
 
-        `${ API_URL}/likes/${props.user.id}/${props.props.id}`, {
+        `${ API_URL}/likes/${props.user.id}/${props.reply.id}`, {
 
         method: "GET",
         mode: "cors",
@@ -124,23 +129,23 @@ const TweetPanelComment = (props) => {
   return (
     <div className={"tweet-c"}>
       <div className={"tweet-c__top"}>
-        {/* <img className={"user__profile-pic"} alt={""} src={props.props.user.profile_pic} ></img> */}
+        <img className={"user__profile-pic"} alt={""} src={props.reply[1].profile_pic} ></img>
         <div className={"tweet-c__user-name"} >
-          {/* <p>{`${props.props.user.firstname} ${props.props.user.lastname}`}</p>
-          <p>{props.props.user.username}</p> */}
+          <p className={"tweet-c__user-name__names__top"}>{`${props.reply[1].firstname} ${props.reply[1].lastname}`}</p>
+          <p className={"tweet-c__user-name__names__bottom"}>@{props.reply[1].username}</p>
           <div className={"down-carrot-c"}>
             <DownCarrot />
           </div>
         </div>
       </div>
       <div className="tweet-c__comment" onClick={() => {
-        // props.tweetInfoFunc(props.props.id)
+        // props.tweetInfoFunc(props.reply.id)
         // props.centerPanelTweetPanel()
       }}
       >
-        <p>{props.props.content}</p>
+        <p>{props.reply[0].content}</p>
       </div>
-      {/* <img className={"tweet-pic"} alt={""} src={props.props.media} ></img> */}
+      <img className={"tweet-pic"} alt={""} src={props.reply[0].media} ></img>
       <div className={"tweet-c__svg-c"} >
         <CommentBubble />
         <div onClick={handleRetweetClick}>
