@@ -1,9 +1,16 @@
+@media screen and (max-width: 1120px;) {
+    .login-main__left {
+        visibility: hidden;
+    }
+    .login-main__right {
+        width: 100%;
+    }
+}
 .login-container {
     width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: row;
-    /* align-items: center; */
     font-size: 15px;
     font-weight: bold;
     line-height: 1;
@@ -65,6 +72,7 @@
     align-items: center;
     border: 2px solid #68aae9;
     border-radius: 90px;
+    cursor: pointer;
 }
 .login-bar__button--container:hover {
     background-color: #2a4357;
@@ -100,6 +108,7 @@
     display: flex;
     flex-flow: column;
     background-color: #15212B;
+    z-index: 1;
 }
 .bird{
     width: 42px;
@@ -143,6 +152,7 @@
     background-color: #0383df;
     position: relative;
     top: 100px;
+    cursor: pointer;
 }
 .login-block__demo--container {
     width: 100%;
@@ -154,6 +164,7 @@
     border-radius: 90px;
     position: relative;
     top: 115px;
+    cursor: pointer;
 }
 .login-button {
     border: 0px;
