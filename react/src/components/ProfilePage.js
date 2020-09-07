@@ -73,7 +73,16 @@ const ProfilePage = (props) => {
             <div className="all-tweets-c">
 
               {tweetState[0] ?
-                tweetState.map((tweet) => <Tweet centerPanelProfile={props.centerPanelProfile} props={tweet} user={props.user} />)
+                tweetState.map((tweet) => (
+                  <Tweet
+                    props={tweet}
+                    centerPanelProfile={props.centerPanelProfile}
+                    tweetInfoFunc={props.tweetInfoFunc}
+                    user={props.user}
+                    setTweetIdsState={props.setTweetIdsState}
+                    centerPanelTweetPanel={props.centerPanelTweetPanel}
+                  />)
+                )
 
                 : null
               }
