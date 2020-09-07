@@ -2,6 +2,12 @@ import React, { useState, useEffect } from "react";
 import { API_URL } from "../config";
 import SignUp from "./SignUp";
 import Bird from '../images/Bird';
+import MagnifyingGlass from '../images/MagnifyingGlass';
+import People from '../images/People';
+import LoginBubble from '../images/LoginBubble';
+import GithubIcon from '../images/GithubIcon';
+import LinkedinIcon from '../images/LinkedinIcon';
+
 import '../styles/login.css'
 
 
@@ -91,6 +97,20 @@ const Login = () => {
                     <div className="login-birdSVG--background">
                         <Bird/>
                     </div>
+                    <div className="login-main__left--text">
+                        <div>
+                            <MagnifyingGlass/>
+                            <span>Follow your interests.</span>
+                        </div>
+                        <div>
+                            <People/>
+                            <span>Hear what people are talking about.</span>
+                        </div>
+                        <div>
+                            <LoginBubble/>
+                            <span>Join the conversation.</span>
+                        </div>
+                    </div>
                 </div>
                 <div className="login-main__right">
                     <div className="login-bar">
@@ -152,7 +172,14 @@ const Login = () => {
                 </div>
             </div>
             <div className="login-footer">
-
+                <span>This Twitter Clone was made by:</span>
+                <div className="login-footer__creditBox">
+                    <span>Nolan Crenshaw</span>
+                    <div className="login-footer__creditBox--links">
+                        <GithubIcon/>
+                        <LinkedinIcon/>
+                    </div>
+                </div>
             </div>
         </div>
     )
