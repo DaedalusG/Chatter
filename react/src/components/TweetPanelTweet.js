@@ -3,6 +3,7 @@ import { API_URL } from '../config'
 import CommentBubbleTweet from '../images/CommentBubbleTweet';
 import RetweetTweet from '../images/RetweetTweet';
 import HeartTweet from '../images/HeartTweet';
+import Heart from '../images/Heart';
 import LinkTweetTweet from '../images/LinkTweetTweet';
 import DownCarrot from '../images/DownCarrot';
 
@@ -69,6 +70,50 @@ const TweetPanelTweet = (props) => {
     retweeted === "retweet" ? setRetweeted("retweetOn") : setRetweeted("retweet")
   }
 
+  useEffect(() => {
+    const getHeartedCount = async () => {
+      if (props.props.id === undefined) return
+      const response = await fetch(`${API_URL}/likes/${props.props.id}`, {
+        method: "GET",
+        mode: "cors",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
+      })
+      if (!response.ok) {
+        console.log("getHeartedCount response failed")
+      } else {
+        const json = await response.json();
+        setHeartCount(json.count)
+      }
+    }
+    const getUserHearted = async () => {
+      if (props.props.id === undefined) return
+      const response = await fetch(
+
+        `${API_URL}/likes/${props.user.id}/${props.props.id}`, {
+        method: "GET",
+        mode: "cors",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
+      }
+      )
+      if (!response.ok) {
+        console.log("getUserHearted response failed")
+      } else {
+        const json = await response.json();
+        console.log("Here's Jason --> ", json)
+        if (json.like !== null) {
+          console.log("JASON! --> ", json.like)
+          setHearted("heartOn")
+        }
+      }
+    }
+    getHeartedCount();
+    // getUserHearted(); -- commented out for dev
+  }, [])
+
 
   return (
     <div className={"tweet-c"}>
@@ -98,8 +143,12 @@ const TweetPanelTweet = (props) => {
         <div onClick={handleRetweetClick}>
           <RetweetTweet retweeted={retweeted} />
         </div>
-          <HeartTweet handleHeartClick={handleHeartClick}  hearted={hearted} />
-            {heartCount > 0 ? <span>{heartCount}</span> : <span></span>}
+        <div
+          className="tweet-panel-tweet-like--container"
+          onClick={handleHeartClick}>
+          <HeartTweet hearted={hearted} />
+          {heartCount > 0 ? <span>{heartCount}</span> : <span></span>}
+        </div>
           <LinkTweetTweet />
       </div>
     </div>

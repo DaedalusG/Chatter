@@ -20,8 +20,12 @@ def get_a_tweet(id):
 
   replies = []
   for reply in model_tweet.replies:
+    reply_object = []
+    print("----->", reply.users)
     # reply.user_id.to_safe_object()
-    replies.append(reply.to_dict())
+    reply_object.append(reply.to_dict())
+    reply_object.append(reply.users.to_safe_object())
+    replies.append(reply_object)
   tweet["replies"] = replies
 
   return jsonify(tweet)

@@ -172,3 +172,6 @@
   top: 5px;
   width: 15px;
 }
+.link-tweet:hover{
+  cursor: not-allowed;
+}

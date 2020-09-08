@@ -19,22 +19,27 @@ const TweetPanel = (props) => {
 
 
     const token = window.localStorage.getItem('auth_token')
-    const response =  fetch(`${API_URL}/tweets/tweet/${props.tweetIdsState}`, {
-      method: "GET",
-      mode: "cors",
-      headers: { "Authorization": `Bearer ${token}` },
-    })
-        .then(res => res.json())
-        .then(data =>  setTweetState(data))
-        .catch( e => console.log(e) )
+    const tweetReplies = async ()=>{
+      const response =  await fetch(`${API_URL}/tweets/tweet/${props.tweetIdsState}`, {
+        method: "GET",
+        mode: "cors",
+        headers: { "Authorization": `Bearer ${token}` },
+      })
 
+      if (!response) console.log("response FAIL")
+      else {
+        const json = await response.json()
+        setTweetState(json)
+      }
+    }
+    tweetReplies()
   }, [])
 
   return (
     <>
       <div id={"center-panel"}>
         <div id={"center-panel__nav"}>
-          <div className={"tweet-left-arrow-c"} onClick={props.centerPanelProfile} >
+          <div className={"tweet-left-arrow-c"} onClick={props.centerPanelHome} >
             <LeftArrow ></LeftArrow>
             <span>Tweet</span>
           </div>
@@ -43,22 +48,18 @@ const TweetPanel = (props) => {
           <div className="tweet-panel__below-nav__scroll" >
 
             <div className="all-tweets-c">
-
-              <TweetPanelTweet props={tweetState} centerPanelHome={props.centerPanelHome} ></TweetPanelTweet>
-
+          
+              <TweetPanelTweet user={props.user} props={tweetState} centerPanelHome={props.centerPanelHome} ></TweetPanelTweet>
+    
               {tweetState.replies ?
-                // tweetState.replies.map( reply => (<p>{reply.content}</p>) )
-                tweetState.replies.map( reply => ( <TweetPanelComment props={reply} /> ) )
+                tweetState.replies.map(reply => (<TweetPanelComment user={props.user}  reply={reply} /> ) )
                 : null
               }
 
-              {/* <p>{props.tweetIdsState}</p> */}
             </div>
-
           </div>
         </div>
       </div>
-
     </>
   )
 }

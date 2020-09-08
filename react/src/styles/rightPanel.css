@@ -129,6 +129,7 @@
   align-items: center;
   transition-property: background-color;
   transition-duration: .2s;
+  position: relative;
 }
 .main-c__right__suggestions-c__feed:hover{
   background-color: rgb(233, 232, 232);
@@ -163,8 +164,8 @@
   align-items: center;
   transition-property: background-color;
   transition-duration: .2s;
-  position: relative;
-  margin-left: 100px;
+  position: absolute;
+  margin-left: 70%;
   transition-property: background-color;
   transition-duration: .2s;
 }
@@ -199,8 +200,19 @@
   color: rgb(155, 155, 155);
 }
 .suggestions-feed__name{
-
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+  font-weight: 700;
+  margin-left: -10px;
 }
 .suggestions-feed__atname{
-  
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+  color: grey;
+  margin-top: -16px;
+  margin-left: -10px;
+}
+.follow-button-suggestions:hover,
+.main-c__right__event-c__news:hover,
+#main-c__right__search-bar:hover,
+#search-input:hover{
+  cursor: not-allowed;
 }

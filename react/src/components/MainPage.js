@@ -9,7 +9,6 @@ const MainPage = () => {
   const [user, setUser] = useState({})
   const [targetUser, setTargetUser] = useState(1);
 
-
   useEffect(() => {
     const getCurrentUser = async () => {
       const token = window.localStorage.getItem('auth_token')
@@ -41,7 +40,6 @@ const MainPage = () => {
 
     return (
       <div id={"main-c"}>
-
         <LeftPanel
           centerPanelHome={centerPanelHome}
           user={user} />
