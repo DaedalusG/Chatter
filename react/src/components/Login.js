@@ -183,8 +183,12 @@ const Login = () => {
                         <a href="https://github.com/caseyriley">
                             <GithubIcon/>
                         </a>
-                        {/* <img src="https://img.icons8.com/fluent/48/000000/linkedin.png"/>
-                        <img src="https://img.icons8.com/color/48/000000/angelist.png"/> */}
+                        <a href="https://www.linkedin.com/in/casey-riley-3396231a1/">
+                            <img src="https://img.icons8.com/fluent/48/000000/linkedin.png"/>
+                        </a>
+                        <a href="https://angel.co/u/casey-riley-1">
+                            <img src="https://img.icons8.com/color/48/000000/angelist.png"/>
+                        </a>
                     </div>
                 </div>
                 <div className="login-footer__creditBox">
