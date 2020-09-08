@@ -43,7 +43,9 @@ const CenterPanel = (props) => {
 
     fetch(`${API_URL}/tweets/post`, options)
       .then(res => res.text())
-      .then(data => console.log(data))
+      .then(data => {
+        document.getElementsByName("tweet-textarea")[0].innerHTML=""
+        console.log(data)})
       .catch(e => console.log('error posting your tweet', e))
 
   }
