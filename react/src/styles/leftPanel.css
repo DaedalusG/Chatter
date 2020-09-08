@@ -28,7 +28,7 @@
   padding: 5px;
   color: rgba(29,161,242,1.00);
   margin: 0px 0px 5px 0px;
-  
+
 }
 .main-c__left__bird:hover {
   background-color: rgb(238, 247, 253);
@@ -71,7 +71,7 @@
 }
 #hash-c{
   width:140px;
-  
+
 }
 .hash{
   height: 30px;
@@ -211,7 +211,7 @@
   line-height: 1;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
   color: rgb(255, 255, 255);
-  
+
 }
 #tweet-button:hover{
   background-color:  rgb(26, 145, 219);
@@ -272,7 +272,7 @@
   bottom: 70px;
   border-radius: 15px;
   box-shadow: 1px 4px 3px 1px rgb(169, 171, 173, .2);
- 
+
 }
 #left-logout-modal__top{
   width: 100%;
@@ -321,6 +321,9 @@
   justify-content: flex-start;
   align-items: center;
 }
+.left-logout-modal__bottom--button {
+  cursor: pointer;
+}
 .left-logout-modal__logout-span{
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
   margin-left: 20px;
@@ -328,6 +331,7 @@
 .left-logout-modal-invisible{
   display: none;
 }
+
 #envelope-c:hover,
 #tweet-button:hover,
 #circles-more-c:hover,
@@ -338,3 +342,4 @@
 #hash-c:hover{
   cursor: not-allowed;
 }
+

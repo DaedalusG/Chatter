@@ -13,7 +13,6 @@ import TweetPanelComment from './TweetPanelComment';
 
 
 const TweetPanel = (props) => {
-  // console.log("tp",props)
   const [tweetState, setTweetState] = useState([])
 
   useEffect(() => {
@@ -31,16 +30,9 @@ const TweetPanel = (props) => {
       else {
         const json = await response.json()
         setTweetState(json)
-        console.log("tweeeeeeet", json)
       }
     }
     tweetReplies()
-        // .then(res => res.json())
-        // .then(data =>  {
-        //   setTweetState(data)
-        // })
-        // .catch( e => console.log(e) )
-        // console.log("$$$$$$$$$$$$$$$$$$$$$$$",tweetState)
   }, [])
 
   return (
@@ -54,24 +46,20 @@ const TweetPanel = (props) => {
         </div>
         <div id={"tweet-panel__below-nav"} >
           <div className="tweet-panel__below-nav__scroll" >
-          
+
             <div className="all-tweets-c">
           
               <TweetPanelTweet user={props.user} props={tweetState} centerPanelHome={props.centerPanelHome} ></TweetPanelTweet>
     
               {tweetState.replies ?
-                // tweetState.replies.map( reply => (<p>{reply.content}</p>) )
                 tweetState.replies.map(reply => (<TweetPanelComment user={props.user}  reply={reply} /> ) )
                 : null
               }
-  
-              {/* <p>{props.tweetIdsState}</p> */}
-            </div>
 
+            </div>
           </div>
         </div>
       </div>
-
     </>
   )
 }

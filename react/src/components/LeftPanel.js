@@ -34,8 +34,12 @@ const LeftPanel = (props) => {
           </div>
           <CheckMark></CheckMark>
         </div  >
-        <div id={"left-logout-modal__bottom"} >
-          <span onClick={ () => {localStorage.removeItem("auth_token"); window.location.href = 'http://localhost:3000'}} className={"left-logout-modal__logout-span"}>Log out</span>
+        <div id={"left-logout-modal__bottom"}>
+          <div className="left-logout-modal__bottom--button">
+            <span
+              onClick={ () => {localStorage.removeItem("auth_token"); window.location.href = 'http://localhost:3000'}} className={"left-logout-modal__logout-span"}>
+            Log out</span>
+          </div>
         </div>
       </div>
       <div>
@@ -96,7 +100,7 @@ const LeftPanel = (props) => {
           <span>Tweet</span>
           <Feather></Feather>
         </div>
-        <div id={"main-c__left__login"} onClick={toggleLogoutModal}>   
+        <div id={"main-c__left__login"} onClick={toggleLogoutModal}>
             <img className={"profile-bubble"} alt={""} src={props.user.profile_pic} ></img>
           <div className={"user-names"} >
             <div className={"logout-modal__user-names__first-last"}>
