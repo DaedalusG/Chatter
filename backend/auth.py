@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify
 from flask_jwt_extended import JWTManager, create_access_token
 import bcrypt
 
-from models import db, User
+from backend.models import db, User
 
 auth = Blueprint('auth', __name__)
 
@@ -24,7 +24,7 @@ def verify_password(password, hashed_password):
 @auth.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
-    
+
     try:
         email = data['email']
         password = data['password']

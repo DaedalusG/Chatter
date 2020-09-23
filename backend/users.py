@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
 
-from models import db, User
+from backend.models import db, User
 
 
 user = Blueprint('users', __name__,)
@@ -25,6 +25,8 @@ def user_by_id(id):
     return jsonify(user.to_safe_object())
 
 # get current user from access token
+
+
 @user.route('/token', methods=['GET'])
 @jwt_required
 def api():

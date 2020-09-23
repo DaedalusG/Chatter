@@ -9,17 +9,17 @@ from flask_jwt_extended import (
 from flask_cors import CORS
 
 
-from config import Config
-from models import db
-from users import user
-from seed import seed
-from tweets import tweets
-from likes import likes
-from auth import auth
-from replies import replies
+from backend.config import Config
+from backend.models import db
+from backend.users import user
+from backend.seed import seed
+from backend.tweets import tweets
+from backend.likes import likes
+from backend.auth import auth
+from backend.replies import replies
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='')
 app.config.from_object(Config)
 CORS(app)
 
@@ -34,11 +34,7 @@ db.init_app(app)
 jwt = JWTManager(app)
 
 
-@app.route('/')
-def slash():
-    return jsonify(Notice='Please use /api route to access the api'), 200
-
-
-@app.route('/api', methods=['GET'])
-def api():
-    return jsonify(message='Successful API ping'), 200
+@app.route('/', defaults={'path': ''})
+@app.route('/<path>')
+def react_root(path):
+    return app.send_static_file('index.html')

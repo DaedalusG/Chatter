@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
 
-from models import db, Like
+from backend.models import db, Like
 
 
 likes = Blueprint('likes', __name__)
@@ -26,8 +26,8 @@ def like_behavior():
             return jsonify(message="like creation failed"), 410
     elif request.method == "DELETE":
         try:
-            like = Like.query.filter(Like.user_id==int(data['userId']), \
-                Like.tweet_id==int(data['tweetId'])).first()
+            like = Like.query.filter(Like.user_id == int(data['userId']),
+                                     Like.tweet_id == int(data['tweetId'])).first()
             db.session.delete(like)
             db.session.commit()
             return jsonify(message="like destruction success"), 209
@@ -39,7 +39,7 @@ def like_behavior():
 @likes.route('/<id>')
 @jwt_required
 def likes_by_id(id):
-    likes = Like.query.filter(Like.tweet_id==id).count()
+    likes = Like.query.filter(Like.tweet_id == id).count()
     return jsonify(count=likes)
 
 
@@ -48,8 +48,7 @@ def likes_by_id(id):
 @jwt_required
 def likes_of_user(user, tweet):
     print(f'user id: {user}, tweet id: {tweet}')
-    like = Like.query.filter(Like.user_id==user, \
-        Like.tweet_id==tweet).first()
+    like = Like.query.filter(Like.user_id == user,
+                             Like.tweet_id == tweet).first()
     print(f'Like ---> {like}')
     return jsonify(like=like), 220
-

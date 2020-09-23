@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from models import db
+from backend.models import db
 import requests
 from faker import Faker
 
