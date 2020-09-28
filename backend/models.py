@@ -86,7 +86,6 @@ class Retweet(db.Model):
     tweet_id = db.Column(db.Integer, db.ForeignKey('tweets.id'))
 
     likes = db.relationship('Like', backref='retweet')
-    
 
 
 class Reply(db.Model):
@@ -101,12 +100,12 @@ class Reply(db.Model):
     users = db.relationship('User', backref='reply')
 
     def to_dict(self):
-      return {
-          "id": self.id,
-          "user_id": self.user_id,
-          "tweet_id": self.tweet_id,
-          "content": self.content,
-      }
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "tweet_id": self.tweet_id,
+            "content": self.content,
+        }
 
 
 class Like(db.Model):

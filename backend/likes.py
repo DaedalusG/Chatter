@@ -27,7 +27,7 @@ def like_behavior():
     elif request.method == "DELETE":
         try:
             like = Like.query.filter(Like.user_id == int(data['userId']),
-                                     Like.tweet_id == int(data['tweetId'])).first()
+                                     Like.tweet_id == int(data['tweetId'])).first()  # noqa
             db.session.delete(like)
             db.session.commit()
             return jsonify(message="like destruction success"), 209
