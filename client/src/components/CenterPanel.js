@@ -23,10 +23,10 @@ const CenterPanel = (props) => {
     fetch(`${API_URL}/tweets/`)
       .then(res => res.json())
       .then(data => {
-        setTweetState(data)
+        setTweetState(data.reverse())
       }
-    )
-  },[])
+      )
+  }, [])
 
 
   const postFunction = async () => {
@@ -44,8 +44,9 @@ const CenterPanel = (props) => {
     fetch(`${API_URL}/tweets/post`, options)
       .then(res => res.text())
       .then(data => {
-        document.getElementsByName("tweet-textarea")[0].innerHTML=""
-        console.log(data)})
+        document.getElementsByName("tweet-textarea")[0].innerHTML = ""
+        console.log(data)
+      })
       .catch(e => console.log('error posting your tweet', e))
 
   }
@@ -61,8 +62,8 @@ const CenterPanel = (props) => {
         <div id={"center-panel__below-nav"} >
           <div className="center-panel__below-nav__scroll" >
             <div className={"below-nav-section"} >
-              <img id={"profile-bubble-2"} alt={""} src={props.user.profile_pic} onClick={()=> props.centerPanelProfile(props.user)}></img>
-                <div className={"profile-bubble-2"} ></div>
+              <img id={"profile-bubble-2"} alt={""} src={props.user.profile_pic} onClick={() => props.centerPanelProfile(props.user)}></img>
+              <div className={"profile-bubble-2"} ></div>
               {/* </div> */}
               <span name="tweet-textarea" className="textarea" role="textbox" resize="none" contentEditable=""></span>
             </div>
@@ -80,13 +81,13 @@ const CenterPanel = (props) => {
 
               {tweetState ?
                 tweetState.map((tweet) => (
-                  <Tweet 
-                    props={tweet} 
+                  <Tweet
+                    props={tweet}
                     centerPanelProfile={props.centerPanelProfile}
-                    tweetInfoFunc={props.tweetInfoFunc}  
+                    tweetInfoFunc={props.tweetInfoFunc}
                     user={props.user}
-                    setTweetIdsState={props.setTweetIdsState} 
-                    centerPanelTweetPanel={props.centerPanelTweetPanel} 
+                    setTweetIdsState={props.setTweetIdsState}
+                    centerPanelTweetPanel={props.centerPanelTweetPanel}
                   />)
                 )
 
