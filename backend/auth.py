@@ -29,21 +29,26 @@ def login():
         email = data['email']
         password = data['password']
         if not email:
+            print('no email')
             return jsonify(message='Email Required'), 400
         elif not password:
+            print('no passowrd')
             return jsonify(message='Password Required'), 400
 
         user = User.query.filter_by(email=email).first()
         if not user:
+            print('email required')
             return jsonify(message='Email Required'), 400
 
         verified = verify_password(password, user.hashed_password)
 
         if not verified:
             # Error needs handling decision
+            print('password failed')
             return jsonify(message='Password verify failed'), 403
         else:
             auth_token = create_access_token(identity={"email": user.email})
+            print('password success', auth_token)
         return jsonify(auth_token=auth_token), 200
 
     except Exception:

@@ -70,6 +70,8 @@ def post_tweet():
         user_id=data["user_id"],
         content=data["content"],
     )
+    if tweet.content == "":
+        return jsonify(empty='A tweet cannot be empty')
     db.session.add(tweet)
     db.session.commit()
 
