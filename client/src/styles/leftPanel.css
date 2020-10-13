@@ -204,6 +204,7 @@
   align-items: center;
   transition-property: background-color;
   transition-duration: .2s;
+  cursor: pointer;
 }
 #tweet-button span{
   font-size: 15px;
