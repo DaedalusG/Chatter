@@ -9,7 +9,7 @@ auth = Blueprint('auth', __name__)
 
 def set_password(password):
     hashed_password = bcrypt.hashpw(
-        password.encode('utf-8'), bcrypt.gensalt())
+    password.encode('utf-8'), bcrypt.gensalt())
     return hashed_password
 
 

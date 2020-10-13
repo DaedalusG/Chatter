@@ -229,7 +229,7 @@
 }
 
 .tweet-pic {
-  z-index: -1;
+  /* z-index: -1; */
 }
 
 .tweet-c__comment {

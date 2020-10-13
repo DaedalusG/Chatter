@@ -9,7 +9,7 @@
 
 ## Flask:
 * PRODUCTION: app will built/run using using python-alpine image.
-* DEVELOPMENT: pipenv run flask run. if you read this warren i'll get you a burrito.
+* DEVELOPMENT: pipenv run flask run. 
 
 
 ## Deployment Plan:
