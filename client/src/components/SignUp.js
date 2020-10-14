@@ -64,98 +64,101 @@ const SignUp = props => {
 
 
   return (
-    <div className="signup-pop--container">
-      <div className="signup-head--container">
-        <div className="signup-head--topElements">
-          <div className="signup-head__logo">
-            <Bird />
+    <>
+      <div className="signup-pop--container">
+        <div className="signup-head--container">
+          <div className="signup-head--topElements">
+            <div className="signup-head__logo">
+              <Bird />
+            </div>
+            <div
+              className="signup__closeButton--container"
+              onClick={props.handleClose}>
+              <div className="signup__closeButton">
+                <CloseButton/>
+              </div>
+            </div>
+          </div>
+          <div className="signup-head__text">
+            <p>Create your account</p>
+          </div>
+        </div>
+        <div className="signup-form--container">
+          <div className="signup-form__account-fields">
+            <input
+              className="signup-form__username"
+              name="username"
+              value={username}
+              onChange={updateUsername}
+              placeholder="User Name"
+            />
+            <input
+              className="signup-form__email"
+              name="email"
+              value={email}
+              onChange={updateEmail}
+              placeholder="Email"
+              type="email"
+            />
+          </div>
+          <div className="signup-form__text">
+            <p>Please provide a password</p>
+          </div>
+          <div className="signup-form__password-fields">
+            <input
+              className="signup-form__password"
+              name="password"
+              value={password}
+              onChange={updatePassword}
+              placeholder="Password"
+              type="password"
+            />
+            <input
+              className="signup-from__password-confirm"
+              name="password-confirm"
+              value={passwordConfirm}
+              onChange={updatePasswordConfirm}
+              placeholder="Confirm Password"
+              type="password"
+            />
+          </div>
+          <div className="signup-form__text">
+            <p>Please provide your information</p>
+          </div>
+          <div className="signup-form__info-fields">
+            <input
+              className="signup-form__firstname"
+              name="firstname"
+              value={firstname}
+              onChange={updateFirstname}
+              placeholder="First Name"
+            />
+            <input
+              className="signup-form__lastname"
+              name="lastname"
+              value={lastname}
+              onChange={updateLastname}
+              placeholder="Last Name"
+            />
+            <input
+              className="signup-form__zipcode"
+              name="zipcode"
+              value={zipcode}
+              onChange={updateZipcode}
+              placeholder="Zip Code"
+            />
           </div>
           <div
-            className="signup__closeButton--container"
-            onClick={props.handleClose}>
-            <div className="signup__closeButton">
-              <CloseButton/>
+            className="signup-form__submitButton--container"
+            onClick={createUser}>
+            <div className="signup-form__submitButton">
+              <span>Submit</span>
             </div>
           </div>
         </div>
-        <div className="signup-head__text">
-          <p>Create your account</p>
-        </div>
       </div>
-      <div className="signup-form--container">
-        <div className="signup-form__account-fields">
-          <input
-            className="signup-form__username"
-            name="username"
-            value={username}
-            onChange={updateUsername}
-            placeholder="User Name"
-          />
-          <input
-            className="signup-form__email"
-            name="email"
-            value={email}
-            onChange={updateEmail}
-            placeholder="Email"
-            type="email"
-          />
-        </div>
-        <div className="signup-form__text">
-          <p>Please provide a password</p>
-        </div>
-        <div className="signup-form__password-fields">
-          <input
-            className="signup-form__password"
-            name="password"
-            value={password}
-            onChange={updatePassword}
-            placeholder="Password"
-            type="password"
-          />
-          <input
-            className="signup-from__password-confirm"
-            name="password-confirm"
-            value={passwordConfirm}
-            onChange={updatePasswordConfirm}
-            placeholder="Confirm Password"
-            type="password"
-          />
-        </div>
-        <div className="signup-form__text">
-          <p>Please provide your information</p>
-        </div>
-        <div className="signup-form__info-fields">
-          <input
-            className="signup-form__firstname"
-            name="firstname"
-            value={firstname}
-            onChange={updateFirstname}
-            placeholder="First Name"
-          />
-          <input
-            className="signup-form__lastname"
-            name="lastname"
-            value={lastname}
-            onChange={updateLastname}
-            placeholder="Last Name"
-          />
-          <input
-            className="signup-form__zipcode"
-            name="zipcode"
-            value={zipcode}
-            onChange={updateZipcode}
-            placeholder="Zip Code"
-          />
-        </div>
-        <div
-          className="signup-form__submitButton--container"
-          onClick={createUser}>
-          <div className="signup-form__submitButton">
-            <span>Submit</span>
-          </div>
-        </div>
-      </div>
-    </div>
+      <div className={"login-modal-background"} onClick={props.handleClose}></div>
+    </>
   );
 };
 

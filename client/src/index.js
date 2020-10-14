@@ -16,6 +16,9 @@ import './styles/mScreen1265.css';
 import './styles/mScreen1077.css';
 import './styles/mScreen1010.css';
 import './styles/mScreen988.css';
+import './styles/mSceen1000.css';
+import './styles/mScreenH700.css';
+import './styles/mScreenH560px.css';
 
 
 import App from './App';

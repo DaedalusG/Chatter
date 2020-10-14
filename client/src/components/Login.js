@@ -89,9 +89,9 @@ const Login = () => {
 
 
     return (
-        <div className='login-container'>
+        <div className='login-container' >
             <div className="login-main--container">
-                <div className="login-main__left">
+                <div className="login-main__left" onClick={hideSignUpModal}>
                     <div className="login-birdSVG--background">
                         <Bird/>
                     </div>
@@ -110,17 +110,17 @@ const Login = () => {
                         </div>
                     </div>
                 </div>
-                <div className="login-main__right">
+                <div className="login-main__right" >
                     <div className="login-bar">
                         <div className="login-bar__form">
                             <input
-                                className="login-input-field"
+                                className="login-input-field-1"
                                 type="text"
                                 placeholder="Email"
                                 value={email}
                                 onChange={updateEmail} />
                             <input
-                                className="login-input-field"
+                                className="login-input-field-2"
                                 type="password"
                                 placeholder="Password"
                                 value={password}
@@ -140,40 +140,42 @@ const Login = () => {
                     <div className="login-subBar__span--container">
                         {/* <span>Forgot password?</span> */}
                     </div>
-                    <div
-                        className={antiModal}>
-                        <div className="login-block__logo">
-                            <Bird/>
-                        </div>
-                        <div className="login-block__h2">
-                            <span>See what's happing in the world right now</span>
-                        </div>
-                        <div className="login-block__h5">
-                            <span>Join Chatter today.</span>
-                        </div>
+                    <div id={"login-block-c"}>
                         <div
-                            className="login-block__signup--container"
-                            onClick={showSignUpModal}>
-                            <div
-                                className="login-block__signup--button">
-                                <span>Sign up</span>
+                            className={antiModal}>
+                            <div className="login-block__logo">
+                                <Bird/>
                             </div>
-                        </div>
-                        <div
-                            className="login-block__demo--container"
-                            onClick={loginDemoUser}>
-                            <div className="login-block__demo--button">
-                                <span>Log in as Demo User</span>
+                            <div className="login-block__h2">
+                                <span>See what's happing in the world right now</span>
+                            </div>
+                            <div className="login-block__h5">
+                                <span>Join Chatter today.</span>
+                            </div>
+                            <div
+                                className="login-block__signup--container"
+                                onClick={showSignUpModal}>
+                                <div
+                                    className="login-block__signup--button">
+                                    <span>Sign up</span>
+                                </div>
+                            </div>
+                            <div
+                                className="login-block__demo--container"
+                                onClick={loginDemoUser}>
+                                <div className="login-block__demo--button">
+                                    <span>Log in as Demo User</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div className="login-footer">
-                <div className="login-footer__text">
+                {/* <div className="login-footer__text">
                     <span>This Twitter Clone was made by the development team:</span>
                     <span></span>
-                </div>
+                </div> */}
                 <div className="login-footer__creditBox">
                     <span>Casey Riley</span>
                     <div className="login-footer__creditBox--links">
@@ -209,8 +211,9 @@ const Login = () => {
                     </div>
                 </div>
                 <div className="login-footer__creditBox">
-
-                    <span>Deepak Ponnuswamy</span>
+                    <div id={"deepak"}>
+                        <span>Deepak</span><span> Ponnuswamy</span>
+                    </div>
                     <div className="login-footer__creditBox--links">
                         <a href="mailto:deepak.ponnuswamy@gmail.com">
                             <img src="https://img.icons8.com/doodle/48/000000/new-post.png"/>

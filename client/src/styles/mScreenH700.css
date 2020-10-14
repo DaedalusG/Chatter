@@ -1,0 +1,35 @@
+@media screen and (max-height: 780px){
+  .modal-content input {
+    outline: none;
+  }
+  .signup-head--container {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-content: center;
+  display: none;
+}
+.signup-head--topElements{
+  opacity: 0;
+  position: absolute;
+  z-index: -2;
+}
+.signup-form__text{
+  /* margin: 0px !important; */
+  
+}
+.signup-head__text p {
+  margin: 15px 0px 0px 0px;
+}
+.signup-form__account-fields {
+  outline: none;
+}
+.signup-form__text{
+  /* margin: 0px !important; */
+}
+.signup-form__text p{
+  opacity: 0;
+  position: absolute;
+  z-index: -2;
+}
+}

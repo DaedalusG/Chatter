@@ -1,0 +1,9 @@
+@media screen and (max-height: 560px){
+   .login-footer__creditBox {
+     opacity: 0;
+   }
+   .login-birdSVG--background {
+    height: 100% !important;
+   }
+
+}

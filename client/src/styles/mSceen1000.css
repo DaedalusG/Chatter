@@ -1,0 +1,19 @@
+@media screen and (max-width: 1000px){
+.login-main__left {
+  display: none;
+  width: 0px;
+  opacity: 0;
+  position: absolute !important;
+}
+.login-main__right {
+    width: 600px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#deepak span:nth-child(2){
+    margin: 1px ;
+    display: none;
+}
+}

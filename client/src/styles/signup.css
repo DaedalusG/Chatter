@@ -8,7 +8,8 @@
   width: 600px;
   position: fixed;
   top: 0px;
-  left: 25vw;
+  left: calc(50vw - 310px);
+  z-index: 2;
 }
 .signup-head--container {
   display: flex;
@@ -64,4 +65,14 @@
 }
 .modal-hiding {
   display: none;
+}
+.login-modal-background {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(28, 28, 28, .8);
+  z-index: 1;
+
 }
