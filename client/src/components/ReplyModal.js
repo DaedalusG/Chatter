@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReactDom from 'react-dom';
 import CloseButton from '../images/CloseButton.js'
 import GifBox from '../images/GifBox.js'
 import LandscapeReply from '../images/LandscapeReply.js'
@@ -33,7 +34,7 @@ const ReplyModal = (props) => {
         }
     }
 
-    return (
+    return ReactDom.createPortal(
         <div className={`reply-modal-c ${props.replyModal ? "visible" : "hidden"}`}>
             <div className={"reply-modal-background"} ></div>
             <div className={"reply-form-background"}>
@@ -75,7 +76,8 @@ const ReplyModal = (props) => {
                     </div>
                 </div>
             </div>
-        </div >
+        </div >,
+        document.getElementById("replyFormModal")
     )
 }
 export default ReplyModal
