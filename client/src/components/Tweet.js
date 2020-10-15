@@ -127,18 +127,18 @@ const Tweet = (props) => {
       <ReplyModal tweet_id={props.props.id} replyModal={replyModal} user={props.user} tweet={props.props} handleReplyClick={handleReplyClick} />
       {/* <span className={"tweet-c__name"}>{props.props.name}</span> */}
       <div className={"tweet-c__top"} >
-        <img className={"user__profile-pic"} alt={""} src={props.props.user.profile_pic} onClick={()=>props.centerPanelProfile(props.props.user)}></img>
+        <img className={"user__profile-pic"} alt={""} src={props.props.user.profile_pic} onClick={() => props.centerPanelProfile(props.props.user)}></img>
         <div className={"tweet-c__user-name"} >
 
-            <p className={"tweet-c__user-name__names__top"}>{`${props.props.user ? props.props.user.firstname : ""} ${props.props.user ? props.props.user.lastname : ""}`}</p>
-            <p className={"tweet-c__user-name__names__bottom"}>@{props.props.user ? props.props.user.username : ""}</p>
+          <p className={"tweet-c__user-name__names__top"}>{`${props.props.user ? props.props.user.firstname : ""} ${props.props.user ? props.props.user.lastname : ""}`}</p>
+          <p className={"tweet-c__user-name__names__bottom"}>@{props.props.user ? props.props.user.username : ""}</p>
 
           <div className={"down-carrot-c"}>
             <DownCarrot />
           </div>
         </div>
       </div>
-      <div className="tweet-c__comment" onClick={() => {props.tweetInfoFunc(props.props.id); props.centerPanelTweetPanel()}}>
+      <div className="tweet-c__comment" onClick={() => { props.tweetInfoFunc(props.props.id); props.centerPanelTweetPanel() }}>
         <p>{props.props.content}</p>
       </div>
       <img className={"tweet-pic"} alt={""} src={props.props.media} onClick={() => { props.tweetInfoFunc(props.props.id); props.centerPanelTweetPanel() }}></img>
@@ -153,10 +153,10 @@ const Tweet = (props) => {
         <div
           className="tweet-like--container"
           onClick={handleHeartClick}>
-          <Heart hearted={hearted}/>
-            { heartCount > 0 ? <span>{heartCount}</span> : <span></span> }
+          <Heart hearted={hearted} />
+          {heartCount > 0 ? <span>{heartCount}</span> : <span></span>}
         </div>
-        <LinkTweet/>
+        <LinkTweet />
 
       </div>
     </div>
