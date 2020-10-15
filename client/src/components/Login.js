@@ -97,7 +97,6 @@ const Login = () => {
                         <Bird/>
                     </div>
                     <div className="login-main__left--text">
-                        <Uploading/>
                         <div>
                             <MagnifyingGlass/>
                             <span>Follow your interests.</span>
