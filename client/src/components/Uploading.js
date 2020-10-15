@@ -9,8 +9,8 @@ const Uploading = () => {
     // bucketName: 'chatter-bucket-2',
     bucketName: process.env.REACT_APP_BUCKETNAME,
     region: 'us-west-2',
-    accessKeyId: 'AKIAJHQFWHLDOTSMAGJQ',
-    secretAccessKey: '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'
+    accessKeyId: process.env.REACT_APP_ACCESSKEYID,
+    secretAccessKey: process.env.REACT_APP_SECRETACCESSKEY
   }
 
   const upload = (e) => {
