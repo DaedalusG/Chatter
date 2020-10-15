@@ -123,6 +123,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .close-button{
@@ -131,6 +132,7 @@
   fill:  rgba(29,161,242,1.00);
   padding: 7px;
   border-radius: 999px;
+  cursor: pointer;
 }
 
 .reply-form-userlink{
@@ -209,6 +211,7 @@
   position: relative;
   z-index: 1;
   outline: none;
+  cursor: pointer;
   /* right: 30vw; */
 }
 
