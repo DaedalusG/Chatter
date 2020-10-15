@@ -37,6 +37,7 @@
   height: 50px;
   border-radius: 100%;
   margin: 15px 0px 0px 15px;
+  cursor: pointer;
 }
 
 .tweet-c__user-name{

@@ -28,7 +28,7 @@
   padding: 5px;
   color: rgba(29,161,242,1.00);
   margin: 0px 0px 5px 0px;
-
+  cursor: pointer;
 }
 .main-c__left__bird:hover {
   background-color: rgb(238, 247, 253);

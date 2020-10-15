@@ -18,6 +18,7 @@
   height: 25px;
   fill:  rgba(29,161,242,1.00);
   margin-left: 25px;
+  cursor: pointer;
 }
 #profile-banner{
   width: 100%;
