@@ -3,6 +3,9 @@ import Tweet from './Tweet';
 import LeftArrow from '../images/LeftArrow';
 import ProfileFullScreen from './ProfileFullScreen';
 import {API_URL} from '../config';
+import Camera from '../images/Camera';
+import Uploading from './Uploading';
+import UploadingProfile from './UploadingProfile';
 
 const token = window.localStorage.getItem("auth_token");
 
@@ -42,8 +45,38 @@ const ProfilePage = (props) => {
     setProfileFullScreenState(toggleFullScreen)
   }
 
+  const [profileUploadModalState, setProfileUploadModalState] = useState(false);
+  function openProfileUploadModal() {
+    setProfileUploadModalState(true)
+  }
+  function closeProfileUploadModal() {
+    setProfileUploadModalState(false)
+  }
+
   return (
     <>
+      {profileUploadModalState === true ?
+        <>
+        <div id={"profile-pic-upload-modal"}>
+            <div id={"profile-pic-upload-modal__top"}></div>
+            <img id={"profile-banner"} alt={""} src={props.targetUser.banner_pic} ></img>
+            <div id={"camera-1"}>
+              <Camera />
+              <Uploading/>
+            </div>     
+            <div id={"profile-panel__below-nav__profile-bublle-c"} onClick={fullscreenPic}>
+              <img className={"profile-bubble-5"} alt={""} src={props.targetUser.profile_pic} ></img>
+            </div>
+            <div id={"camera-2"}>
+              <Camera />
+              <UploadingProfile />
+            </div>
+        </div>
+          <div id={"profile-pic-upload-modal-background"} onClick={closeProfileUploadModal}></div>
+      </>
+      :
+      ""
+      }
       <ProfileFullScreen user={props.user} fullscreenPic={fullscreenPic} profileFullScreenState={profileFullScreenState} />
       <div id={"center-panel"}>
         <div id={"center-panel-tweet__nav"}>
@@ -64,7 +97,7 @@ const ProfilePage = (props) => {
               <span name="tweet-textarea" className="textarea-hide" role="textbox" resize="none" contentEditable=""></span>
             </div>
             <div className={"below-tweet-nav-section-2"} >
-              <div id={"edit-profile-button"}>
+              <div id={"edit-profile-button"} onClick={openProfileUploadModal}>
                 <span>Edit Profile</span>
               </div>
               <span className={"profile-user-name"} >{props.targetUser.firstname}</span><span className={"profile-user-name"}>{props.targetUser.lastname}</span>
