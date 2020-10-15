@@ -48,8 +48,9 @@ const CenterPanel = (props) => {
         console.log(data)
       })
       .catch(e => console.log('error posting your tweet', e))
+      .then(window.location.reload())
 
-    window.location.reload();
+
   }
   const profileBubbleAlt = skelator;
 
