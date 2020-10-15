@@ -4,6 +4,8 @@ import LeftArrow from '../images/LeftArrow';
 import ProfileFullScreen from './ProfileFullScreen';
 import {API_URL} from '../config';
 import Camera from '../images/Camera';
+import Uploading from './Uploading';
+import UploadingProfile from './UploadingProfile';
 
 const token = window.localStorage.getItem("auth_token");
 
@@ -60,12 +62,14 @@ const ProfilePage = (props) => {
             <img id={"profile-banner"} alt={""} src={props.targetUser.banner_pic} ></img>
             <div id={"camera-1"}>
               <Camera />
+              <Uploading/>
             </div>     
             <div id={"profile-panel__below-nav__profile-bublle-c"} onClick={fullscreenPic}>
               <img className={"profile-bubble-5"} alt={""} src={props.targetUser.profile_pic} ></img>
             </div>
             <div id={"camera-2"}>
               <Camera />
+              <UploadingProfile />
             </div>
         </div>
           <div id={"profile-pic-upload-modal-background"} onClick={closeProfileUploadModal}></div>

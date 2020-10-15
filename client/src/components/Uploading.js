@@ -1,14 +1,16 @@
 import React from 'react';
 import S3FileUpload from 'react-s3';
+// import { REACT_APP_BUCKETNAME } from '../config'
 
 const Uploading = () => {
+  console.log("env", process.env.REACT_APP_BUCKETNAME)
 
   const config = {
-    bucketName: 'chatter-bucket-2',
-    // dirName: '',
+    // bucketName: 'chatter-bucket-2',
+    bucketName: process.env.REACT_APP_BUCKETNAME,
     region: 'us-west-2',
-    accessKeyId: 'AKIAIGJFVKHRRGFI5NIQ',
-    secretAccessKey: '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'
+    accessKeyId: 'AKIAJHQFWHLDOTSMAGJQ',
+    secretAccessKey: 'fPUf98Mi/1jmMfX4la1goY7rAeIUr+iHaOqnh970'
   }
 
   const upload = (e) => {
@@ -22,9 +24,8 @@ const Uploading = () => {
   }
 
   return (
-    <>
-      <h3>Upload your own Images</h3>
-      <input type="file" onChange={upload} />
+    <> 
+      <input className={"uploading"} type="file" onChange={upload} />
     </>
 
   )

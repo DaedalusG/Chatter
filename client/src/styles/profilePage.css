@@ -16,21 +16,6 @@
   background-image: url(../images/ProfileImages/p7.jpg);
   background-size: cover;
 }
-.camera {
-  height: 20px;
-  filter: invert();
-}
-#camera-1 {
-  position: fixed;
-  left: calc(50% - 12px);
-  top: 170px;
-  
-}
-#camera-2 {
-  position: fixed;
-  top: 283px;
-  left: calc(50% - 185px);
-}
 #profile-pic-upload-modal {
   position: fixed;
   top: 30px;
@@ -49,7 +34,47 @@
   background-color: rgb(0, 0, 0, .8);
   z-index: 1;
 }
-
+.camera {
+  height: 20px;
+  filter: invert();
+}
+#camera-1 {
+  position: fixed;
+  left: calc(50% - 12px);
+  top: 170px;
+  
+}
+#camera-2 {
+  position: fixed;
+  top: 283px;
+  left: calc(50% - 185px);
+}
+.uploading {
+  height: 30px;
+  width: 30px;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  outline: none;
+  color: white;
+  opacity: .0;
+  position: fixed;
+  left: calc(50% - 17px);
+  top: 165px;
+  border-radius: 999px;
+}
+.uploading-profile {
+  height: 30px;
+  width: 30px;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  outline: none;
+  color: white;
+  opacity: .0;
+  position: fixed;
+  top: 280px;
+  left: calc(50% - 190px);
+  border-radius: 999px;
+}
 #center-panel-tweet__nav{
   width: 100%;
   height: 50px;
