@@ -1,3 +1,55 @@
+#profile-pic-upload-modal__top{
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.profile-bubble-5{
+  position: relative;
+  top: 80px;
+  width: 115px;
+  height: 115px;
+  border-radius: 100%;
+  margin: 13px 0px 0px 15px;
+  border: 4px solid white;
+  background-image: url(../images/ProfileImages/p7.jpg);
+  background-size: cover;
+}
+.camera {
+  height: 20px;
+  filter: invert();
+}
+#camera-1 {
+  position: fixed;
+  left: calc(50% - 12px);
+  top: 170px;
+  
+}
+#camera-2 {
+  position: fixed;
+  top: 283px;
+  left: calc(50% - 185px);
+}
+#profile-pic-upload-modal {
+  position: fixed;
+  top: 30px;
+  height: 500px;
+  width: 500px;
+  background-color: white;
+  border-radius: 20px;
+  z-index: 2;
+}
+#profile-pic-upload-modal-background{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(0, 0, 0, .8);
+  z-index: 1;
+}
+
 #center-panel-tweet__nav{
   width: 100%;
   height: 50px;

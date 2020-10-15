@@ -7,6 +7,7 @@ import People from '../images/People';
 import LoginBubble from '../images/LoginBubble';
 import GithubIcon from '../images/GithubIcon';
 import '../styles/login.css'
+import Uploading from "./Uploading";
 
 
 const Login = () => {
@@ -96,6 +97,7 @@ const Login = () => {
                         <Bird/>
                     </div>
                     <div className="login-main__left--text">
+                        <Uploading/>
                         <div>
                             <MagnifyingGlass/>
                             <span>Follow your interests.</span>
