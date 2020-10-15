@@ -96,6 +96,7 @@
   padding: 7px;
   border-radius: 100%;
   fill: rgb(101, 119, 134);
+  cursor: pointer;
 }
 .retweet{
   height: 18px;
