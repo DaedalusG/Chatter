@@ -101,9 +101,12 @@ const ProfilePage = (props) => {
               <span name="tweet-textarea" className="textarea-hide" role="textbox" resize="none" contentEditable=""></span>
             </div>
             <div className={"below-tweet-nav-section-2"} >
+              {props.editProfileState === true ? 
               <div id={"edit-profile-button"} onClick={openProfileUploadModal}>
                 <span>Edit Profile</span>
               </div>
+              : <></>
+              }
               <span className={"profile-user-name"} >{props.targetUser.firstname}</span><span className={"profile-user-name"}>{props.targetUser.lastname}</span>
               <span className={"profile-chatter-name"} >@</span><span className={"profile-chatter-name"} > {props.targetUser.username}</span>
               <span className={"profile-bio"} >{props.targetUser.about}</span>

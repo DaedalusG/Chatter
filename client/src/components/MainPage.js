@@ -8,6 +8,7 @@ const MainPage = () => {
   const [centerPanelState, setPanelState] = useState("Home");
   const [user, setUser] = useState({})
   const [targetUser, setTargetUser] = useState(1);
+  const [editProfileState, setEditPofileState] = useState(false);
 
   useEffect(() => {
     const getCurrentUser = async () => {
@@ -31,6 +32,11 @@ const MainPage = () => {
     setPanelState("Home")
   }
   const centerPanelProfile = (id) => {
+    if (id === user){
+      setEditPofileState(true)
+    } else {
+      setEditPofileState(false)
+    }
     setTargetUser(id);
     setPanelState("Profile");
   }
@@ -44,6 +50,7 @@ const MainPage = () => {
           centerPanelHome={centerPanelHome}
           user={user} />
         <CenterPanelSwitch
+          editProfileState={editProfileState}
           targetUser={targetUser}
           centerPanelState={centerPanelState}
           setPanelState={setPanelState}
