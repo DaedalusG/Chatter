@@ -176,6 +176,7 @@
   width: 15px;
   z-index: 1 !important;
 }
+
 .tweet-c__modal {
   position: absolute;
   right: 40px;
@@ -194,6 +195,23 @@
   margin-left: 5px;
 }
 .tweet-c__modal span {
+  margin-left: 7px;
+  font-family: 'Commissioner', sans-serif;
+}
+.tweet-tweet-c__modal {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 3px 6px 1px rgb(0, 0, 0, .3);
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.tweet-tweet-c__modal span {
   margin-left: 7px;
   font-family: 'Commissioner', sans-serif;
 }
