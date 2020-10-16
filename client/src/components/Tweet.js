@@ -121,6 +121,28 @@ const Tweet = (props) => {
     setReplyModal(toggleReply)
   }
 
+  // const destroyTweet = async () => {
+  //   const response = await fetch(`${API_URL}/delete/`, {
+  //     method: "DELETE",
+  //     mode: "cors",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       // "Authorization": `Bearer ${token}`
+  //     },
+  //     body: JSON.stringify({
+  //       userId: `${props.user.id}`,
+  //       tweetId: `${props.props.id}`
+  //     }),
+  //   });
+  //   if (!response.ok) {
+  //     console.log("destroyTweet response failure");
+  //   } else {
+  //     console.log("destroyTweet response success");
+  //   }
+  // }
+  
+
+
 
   return (
     <div className={"tweet-c"}>

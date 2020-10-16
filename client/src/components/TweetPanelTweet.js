@@ -121,10 +121,30 @@ const TweetPanelTweet = (props) => {
     setDeleteModalState(!deleteModalState)
   }
 
+  const destroyTweet = async () => {
+    const response = await fetch(`${API_URL}/tweets/delete`, {
+      method: "DELETE",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        userId: `${props.user.id}`,
+        tweetId: `${props.props.id}`
+      }),
+    });
+    if (!response.ok) {
+      console.log("destroyTweet response failure");
+    } else {
+      console.log("destroyTweet response success");
+    }
+  }
+
   return (
     <div className={"tweet-c"}>
 
-      {deleteModalState === true ?  <div className={"tweet-c__modal"}>
+      {deleteModalState === true ?  <div className={"tweet-c__modal"} onClick={destroyTweet}>
         <TrashCan/>
         <span>delete</span>
       </div>
