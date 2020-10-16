@@ -6,6 +6,7 @@ import HeartTweet from '../images/HeartTweet';
 import Heart from '../images/Heart';
 import LinkTweetTweet from '../images/LinkTweetTweet';
 import DownCarrot from '../images/DownCarrot';
+import TrashCan from '../images/TrashCan';
 
 const token = window.localStorage.getItem('auth_token')
 
@@ -114,9 +115,21 @@ const TweetPanelTweet = (props) => {
     // getUserHearted(); -- commented out for dev
   }, [])
 
+  const [deleteModalState, setDeleteModalState] = useState(false);
+
+  function toggleModal(){
+    setDeleteModalState(!deleteModalState)
+  }
 
   return (
     <div className={"tweet-c"}>
+
+      {deleteModalState === true ?  <div className={"tweet-c__modal"}>
+        <TrashCan/>
+        <span>delete</span>
+      </div>
+      : <></>
+      }
       {/* <span className={"tweet-c__name"}>{props}</span> */}
       <div className={"tweet-c__top"}>
         <img className={"user__profile-pic"} alt={""} src={props.props.user ? props.props.user.profile_pic : ""} ></img>
@@ -125,7 +138,7 @@ const TweetPanelTweet = (props) => {
             <p className={"tweet-p-t-c__user-name__names__top"}>{`${props.props.user ? props.props.user.firstname : ""} ${props.props.user ? props.props.user.lastname : ""}`}</p>
             <p className={"tweet-p-t-c__user-name__names__bottom"}>@{props.props.user ? props.props.user.username : ""}</p>
           </div>
-          <div className={"down-carrot-c"}>
+          <div className={"down-carrot-c"} onClick={toggleModal}>
             <DownCarrot />
           </div>
         </div>
