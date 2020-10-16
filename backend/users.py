@@ -46,3 +46,15 @@ def change_banner():
     print("uuuuuseeeeer.baaannnerrrr_piiiic", user.banner_pic)
     db.session.commit()
     return jsonify(message="banner pic changed"), 200
+
+@user.route('/profile', methods=['POST'])
+def change_profile():
+    href = request.args.get('href')
+    user_id = request.args.get('user_id')
+    print("uuuuuuuuuseeeeeer iiiiiddddddd",user_id)
+    user = User.query.get(user_id)
+    print("uuuuuuuuuseeeeeer", user)
+    user.profile_pic = href
+    print("uuuuuseeeeer.baaannnerrrr_piiiic", user.profile_pic)
+    db.session.commit()
+    return jsonify(message="banner pic changed"), 200

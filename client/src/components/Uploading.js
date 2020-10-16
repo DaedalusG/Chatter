@@ -12,7 +12,6 @@ const Uploading = () => {
     secretAccessKey: process.env.REACT_APP_SECRETACCESSKEY
   }
 
-  const [bannerHrefState, setBannerHrefState] = useState();
 
   const [user, setUser] = useState({});
 
@@ -25,11 +24,10 @@ const Uploading = () => {
         headers: { "Authorization": `Bearer ${token}` },
       })
       if (!response.ok) {
-        console.log("this will never happen. you can quote me");
+        console.log("getCurrent user response failed in Uploading.js");
       } else {
         const json = await response.json();
         setUser(json);
-        console.log("user is", json)
       }
     }
     getCurrentUser();
@@ -43,12 +41,12 @@ const Uploading = () => {
       }
       fetch(`${API_URL}/users/banner?user_id=${user.id}&href=${uploadLocation}`, options)
     }
+    
 
 
     S3FileUpload.uploadFile(e.target.files[0], config)
     .then((data) => {
       console.log(data.location)
-      setBannerHrefState(data.location)
       changeBanner(data.location)
     })
     .catch((err) => {
@@ -56,16 +54,6 @@ const Uploading = () => {
     })
     
   }
-
-  // const changeBanner = async () => {
-  //   const options = {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json'},
-  //   }
-  //   fetch(`https://chatter-bucket-2.s3.amazonaws.com/${bannerHrefState}`, options)
-  // }
-
-
   return (
     <> 
       <input className={"uploading"} type="file" onChange={upload} />
