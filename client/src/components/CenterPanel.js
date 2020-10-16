@@ -8,11 +8,14 @@ import Calendar from '../images/Calendar'
 import Tweet from './Tweet';
 import skelator from '../images/skelator.png';
 import { API_URL } from '../config';
+import S3FileUpload from 'react-s3';
+
 
 
 
 const CenterPanel = (props) => {
 
+  const [tweetImgState, setTweetImgState] = useState();
 
   const [tweetState, setTweetState] = useState([]);
 
@@ -30,9 +33,8 @@ const CenterPanel = (props) => {
 
 
   const postFunction = async () => {
-
     const tweetContent = document.getElementsByName("tweet-textarea")[0].innerText
-    const tweetData = { content: tweetContent, user_id: 1 }
+    const tweetData = { content: tweetContent, user_id: 1, media: `${tweetImgState ? tweetImgState : "not making it" }` }
 
     const options = {
       method: 'POST',
@@ -54,6 +56,30 @@ const CenterPanel = (props) => {
   }
   const profileBubbleAlt = skelator;
 
+  // ----------------upload-tweet-image--------------
+  const config = {
+    bucketName: process.env.REACT_APP_BUCKETNAME,
+    region: 'us-west-2',
+    accessKeyId: process.env.REACT_APP_ACCESSKEYID,
+    secretAccessKey: process.env.REACT_APP_SECRETACCESSKEY
+  }
+
+  const uploadTweetImage = (e) => {
+
+    S3FileUpload.uploadFile(e.target.files[0], config)
+      .then((data) => {
+        const tweetSpan = document.getElementsByName('tweet-textarea') 
+        tweetSpan[0].innerHTML = `${data.location}`;
+        setTweetImgState(data.location);
+        console.log("tweetSpan", tweetSpan)
+      })
+      .catch((err) => {
+        alert(err)
+      })
+
+  }
+  // ------------------------------------------------
+
   return (
     <>
       <div id={"center-panel"}>
@@ -71,6 +97,7 @@ const CenterPanel = (props) => {
             </div>
             <div className={"below-nav-section-2"} >
               <Landcape></Landcape>
+              <input className={"uploadingTweet"} type="file" onChange={uploadTweetImage} />
               <GifBox></GifBox>
               <PollBox></PollBox>
               <SmileyFace></SmileyFace>
