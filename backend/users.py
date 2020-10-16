@@ -34,3 +34,15 @@ def api():
     current_user = User.query.filter_by(email=user['email']).first()
     safe_user = current_user.to_safe_object()
     return jsonify(safe_user), 200
+
+@user.route('/banner', methods=['POST'])
+def change_banner():
+    href = request.args.get('href')
+    user_id = request.args.get('user_id')
+    print("uuuuuuuuuseeeeeer iiiiiddddddd",user_id)
+    user = User.query.get(user_id)
+    print("uuuuuuuuuseeeeeer", user)
+    user.banner_pic = href
+    print("uuuuuseeeeer.baaannnerrrr_piiiic", user.banner_pic)
+    db.session.commit()
+    return jsonify(message="banner pic changed"), 200
