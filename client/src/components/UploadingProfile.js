@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import S3FileUpload from 'react-s3';
-import { API_URL } from '../config'
+import { API_URL } from '../config';
 
 const UploadingProfile = () => {
 
@@ -44,7 +44,6 @@ const UploadingProfile = () => {
 
     S3FileUpload.uploadFile(e.target.files[0], config)
       .then((data) => {
-        console.log(data.location)
         changeProfile(data.location)
       })
       .catch((err) => {

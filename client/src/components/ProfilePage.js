@@ -91,7 +91,7 @@ const ProfilePage = (props) => {
           <div className="center-panel__below-nav__scroll" >
             <div className={"below-nav-section"} >
               <div className={"profile-banner"}>
-                <img id={"profile-banner"} alt={""} src={props.targetUser.banner_pic} ></img>
+                <img className={"profile-banner__img"} alt={""} src={props.targetUser.banner_pic} ></img>
               </div>
               {/* <div id={"profile-banner"} ></div> */}
               <div id={"profile-panel__below-nav__profile-bublle-c"} onClick={fullscreenPic}>

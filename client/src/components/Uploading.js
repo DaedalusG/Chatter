@@ -46,7 +46,6 @@ const Uploading = () => {
 
     S3FileUpload.uploadFile(e.target.files[0], config)
     .then((data) => {
-      console.log(data.location)
       changeBanner(data.location)
     })
     .catch((err) => {
