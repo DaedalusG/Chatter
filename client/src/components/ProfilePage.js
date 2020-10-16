@@ -11,10 +11,9 @@ const token = window.localStorage.getItem("auth_token");
 
 const ProfilePage = (props) => {
 
-
   const [tweetState, setTweetState] = useState([])
-
   const [profileUser, setProfileUser] = useState(2);
+
   useEffect(() => {
     // if (props.user.id === profileUser){
     setProfileUser(props.targetUser.id);
@@ -28,15 +27,11 @@ const ProfilePage = (props) => {
       if (!response.ok) { console.log("error in getUserTweets") }
       else {
         const json = await response.json();
-        setTweetState(json);
+        setTweetState(json.reverse());
       }
-
     }
-
     getUserTweets();
     // }
-
-
   }, [props])
 
   const [profileFullScreenState, setProfileFullScreenState] = useState(false);
@@ -101,11 +96,11 @@ const ProfilePage = (props) => {
               <span name="tweet-textarea" className="textarea-hide" role="textbox" resize="none" contentEditable=""></span>
             </div>
             <div className={"below-tweet-nav-section-2"} >
-              {props.editProfileState === true ? 
-              <div id={"edit-profile-button"} onClick={openProfileUploadModal}>
-                <span>Edit Profile</span>
-              </div>
-              : <></>
+              {props.editProfileState === true ?
+                <div id={"edit-profile-button"} onClick={openProfileUploadModal}>
+                  <span>Edit Profile</span>
+                </div>
+                : <></>
               }
               <span className={"profile-user-name"} >{props.targetUser.firstname}</span><span className={"profile-user-name"}>{props.targetUser.lastname}</span>
               <span className={"profile-chatter-name"} >@</span><span className={"profile-chatter-name"} > {props.targetUser.username}</span>
