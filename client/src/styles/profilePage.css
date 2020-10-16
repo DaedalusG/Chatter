@@ -97,11 +97,20 @@
   margin-left: 25px;
   cursor: pointer;
 }
-#profile-banner{
+.profile-banner{
   width: 100%;
   height: 200px;
   /* background-image: url(../images/skeletorBattle.jpg); */
-  background-image: url(../images/defaultBackground.jpg);
+  /* background-image: url(../images/defaultBackground.jpg); */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.profile-banner__img{
+  width: 100%;
+  height: auto !important;
 }
 #profile-panel__below-nav__profile-bublle-c{
   width: 90px;

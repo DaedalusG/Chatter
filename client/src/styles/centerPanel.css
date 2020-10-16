@@ -209,6 +209,15 @@
 .calendar:hover{
   cursor: not-allowed;
 }
+.uploadingTweet {
+  position: absolute;
+  left: 72px;
+  top: 85px;
+  height: 30px;
+  width: 30px;
+  border-radius: 999px;
+  opacity: 0;
+}
 
 
 

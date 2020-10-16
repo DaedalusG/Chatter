@@ -59,7 +59,9 @@ const ProfilePage = (props) => {
         <>
           <div id={"profile-pic-upload-modal"}>
             <div id={"profile-pic-upload-modal__top"}></div>
-            <img id={"profile-banner"} alt={""} src={props.targetUser.banner_pic} ></img>
+            <div className={"profile-banner"}>
+              <img className={"profile-banner__img"} alt={""} src={props.targetUser.banner_pic} ></img>
+            </div>
             <div id={"camera-1"}>
               <Camera />
               <Uploading />
@@ -88,7 +90,9 @@ const ProfilePage = (props) => {
         <div id={"center-panel__below-nav"} >
           <div className="center-panel__below-nav__scroll" >
             <div className={"below-nav-section"} >
-              <img id={"profile-banner"} alt={""} src={props.targetUser.banner_pic} ></img>
+              <div className={"profile-banner"}>
+                <img className={"profile-banner__img"} alt={""} src={props.targetUser.banner_pic} ></img>
+              </div>
               {/* <div id={"profile-banner"} ></div> */}
               <div id={"profile-panel__below-nav__profile-bublle-c"} onClick={fullscreenPic}>
                 <img className={"profile-bubble-4"} alt={""} src={props.targetUser.profile_pic} ></img>
@@ -97,9 +101,12 @@ const ProfilePage = (props) => {
               <span name="tweet-textarea" className="textarea-hide" role="textbox" resize="none" contentEditable=""></span>
             </div>
             <div className={"below-tweet-nav-section-2"} >
+              {props.editProfileState === true ? 
               <div id={"edit-profile-button"} onClick={openProfileUploadModal}>
                 <span>Edit Profile</span>
               </div>
+              : <></>
+              }
               <span className={"profile-user-name"} >{props.targetUser.firstname}</span><span className={"profile-user-name"}>{props.targetUser.lastname}</span>
               <span className={"profile-chatter-name"} >@</span><span className={"profile-chatter-name"} > {props.targetUser.username}</span>
               <span className={"profile-bio"} >{props.targetUser.about}</span>

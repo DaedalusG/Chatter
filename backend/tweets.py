@@ -69,6 +69,7 @@ def post_tweet():
     tweet = Tweet(
         user_id=data["user_id"],
         content=data["content"],
+        media=data["media"],
     )
     if tweet.content == "":
         return jsonify(empty='A tweet cannot be empty')

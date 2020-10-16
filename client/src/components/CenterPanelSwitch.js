@@ -31,8 +31,7 @@ const CenterPanelSwitch = (props) => {
           case 'Home':
             return <CenterPanel user={props.user} targetUser={targetUser} tweetInfoFunc={tweetInfoFunc} centerPanelProfile={props.centerPanelProfile} centerPanelTweetPanel={props.centerPanelTweetPanel} />
           case 'Profile':
-            return <ProfilePage user={props.user} targetUser={targetUser} tweetInfoFunc={tweetInfoFunc} centerPanelProfile={props.centerPanelProfile} centerPanelTweetPanel={props.centerPanelTweetPanel} />
-            // return <ProfilePage  user={targetUser}   centerPanelProfile={props.centerPanelProfile} centerPanelTweetPanel={props.centerPanelTweetPanel} centerPanelHome={props.centerPanelHome} />
+            return <ProfilePage editProfileState={props.editProfileState} user={props.user} targetUser={targetUser} tweetInfoFunc={tweetInfoFunc} centerPanelProfile={props.centerPanelProfile} centerPanelTweetPanel={props.centerPanelTweetPanel} />
           case 'TweetPanel':
             return <TweetPanel user={props.user} tweetInfoFunc={tweetInfoFunc}  centerPanelHome={props.centerPanelHome} centerPanelProfile={props.centerPanelProfile} tweetIdsState={tweetIdsState} />
           default:
