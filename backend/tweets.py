@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
+import asyncio
 from sqlalchemy.orm import subqueryload, joinedload
-from backend.models import db, Tweet, Reply
+from backend.models import db, Tweet, Reply, Like
 import requests
 import json
 from flask_jwt_extended import jwt_required
@@ -78,53 +79,51 @@ def post_tweet():
     return jsonify(Goodjob='you posted to db')
 
 # Create a tweet
+# @tweets.route("/delete", methods=["GET", "POST", "DELETE"])
+# @jwt_required
+# def delete_tweet():
+#     try:
+#         data = request.get_json()
+#         print('data===============>',data)
+#         tweet = Tweet.query.filter(Tweet.id == int(data['tweetId'])).first()
+#         replies = Reply.query.filter(Reply.tweet_id == int(data['tweetId'])).all()
+#         likes = Like.query.filter(Like.tweet_id == int(data['tweetId'])).all()
+#         print("made it to maps====================>")
+#         try:
+#             for reply in replies:
+#                 db.session.delete(reply)
+#         except:
+#             return jsonify(Goodjob='failed at replies')
+#         try: 
+#             for like in likes:
+#                 db.session.delete(like)
+#         except:
+#             return jsonify(Goodjob='failed at likes')
+#         try:
+#             db.session.delete(tweet)
+#             db.session.commit()
+#         except:
+#             return jsonify(Goodjob='failed at tweets')
+#         return jsonify(Goodjob='you deleted a tweet')
+#     except Exception: 
+#         return jsonify(message='failed to delete tweet')
+#     return jsonify(Goodjob='you deleted a tweet')
+
+
 @tweets.route("/delete", methods=["GET", "POST", "DELETE"])
 @jwt_required
 def delete_tweet():
     try:
         data = request.get_json()
         print('data===============>',data)
-        # model_tweet = Tweet.query.filter(Tweet.id == id).first()
         tweet = Tweet.query.filter(Tweet.id == int(data['tweetId'])).first()
-        replies = Reply.query.filter(Reply.tweet_id == int(data['tweetId'])).all()
-        # model_gallery = Gallery.query.filter(Gallery.user_id==data['id']).all()
-        # print('===============>tweet delete hit', Replies)
-        for reply in replies:
-            db.session.delete(reply)
         db.session.delete(tweet)
         db.session.commit()
-        return jsonify(Goodjob='you deleted a tweet')
     except Exception: 
         return jsonify(message='failed to delete tweet')
     return jsonify(Goodjob='you deleted a tweet')
-
-    
     
 
 
 
 
-# @likes.route('/', methods=["POST", "DELETE"])
-# @jwt_required
-# def like_behavior():
-#     data = request.get_json()
-#     if request.method == "POST":
-#         try:
-#             like = Like(
-#                 user_id=data['userId'],
-#                 tweet_id=data['tweetId']
-#             )
-#             db.session.add(like)
-#             db.session.commit()
-#             return jsonify(message="like creation success"), 208
-#         except Exception:
-#             return jsonify(message="like creation failed"), 410
-#     elif request.method == "DELETE":
-#         try:
-#             like = Like.query.filter(Like.user_id == int(data['userId']),
-#                                      Like.tweet_id == int(data['tweetId'])).first()  # noqa
-#             db.session.delete(like)
-#             db.session.commit()
-#             return jsonify(message="like destruction success"), 209
-#         except Exception:
-#             return jsonify(message="like destruction failed"), 411
