@@ -78,37 +78,6 @@ def post_tweet():
     db.session.commit()
     return jsonify(Goodjob='you posted to db')
 
-# Create a tweet
-# @tweets.route("/delete", methods=["GET", "POST", "DELETE"])
-# @jwt_required
-# def delete_tweet():
-#     try:
-#         data = request.get_json()
-#         print('data===============>',data)
-#         tweet = Tweet.query.filter(Tweet.id == int(data['tweetId'])).first()
-#         replies = Reply.query.filter(Reply.tweet_id == int(data['tweetId'])).all()
-#         likes = Like.query.filter(Like.tweet_id == int(data['tweetId'])).all()
-#         print("made it to maps====================>")
-#         try:
-#             for reply in replies:
-#                 db.session.delete(reply)
-#         except:
-#             return jsonify(Goodjob='failed at replies')
-#         try: 
-#             for like in likes:
-#                 db.session.delete(like)
-#         except:
-#             return jsonify(Goodjob='failed at likes')
-#         try:
-#             db.session.delete(tweet)
-#             db.session.commit()
-#         except:
-#             return jsonify(Goodjob='failed at tweets')
-#         return jsonify(Goodjob='you deleted a tweet')
-#     except Exception: 
-#         return jsonify(message='failed to delete tweet')
-#     return jsonify(Goodjob='you deleted a tweet')
-
 
 @tweets.route("/delete", methods=["GET", "POST", "DELETE"])
 @jwt_required

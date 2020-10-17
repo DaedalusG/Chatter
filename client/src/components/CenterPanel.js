@@ -33,10 +33,10 @@ const CenterPanel = (props) => {
       )
   }, [])
 
-
+  console.log("props.user================>", props.user.id)
   const postFunction = async () => {
     const tweetContent = document.getElementsByName("tweet-textarea")[0].innerText
-    const tweetData = { content: tweetContent, user_id: 1, media: `${tweetImgState ? tweetImgState : "not making it" }` }
+    const tweetData = { content: tweetContent, user_id: props.user.id, media: `${tweetImgState ? tweetImgState : "not making it" }` }
 
     const options = {
       method: 'POST',
