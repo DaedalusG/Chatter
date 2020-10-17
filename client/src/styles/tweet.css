@@ -222,3 +222,7 @@
 .tweet-text {
   cursor: pointer;
 }
+.tweet-bottom-space{
+  height: 300px;
+  width: 100%;
+}

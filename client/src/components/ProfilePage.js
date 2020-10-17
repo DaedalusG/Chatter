@@ -124,6 +124,7 @@ const ProfilePage = (props) => {
 
                 : null
               }
+              <div className={"tweet-bottom-space"}></div>
             </div>
           </div>
         </div>
