@@ -19,7 +19,7 @@
   font-size: 20px;
   margin-left: 15px;
 }
-.sparkles{
+/* .sparkles{
   width: 25px;
   height: 25px;
   fill: rgba(29,161,242,1.00);
@@ -31,7 +31,7 @@
 }
 .sparkles:hover{
   background-color:  rgb(226, 242, 253);
-}
+} */
 #center-panel__below-nav{
   width: 100%;
   display: flex;
@@ -135,17 +135,31 @@
   border-bottom: 10px solid rgb(229, 236, 238);
   z-index: 1;
 }
-.landscape{
-  height: 23px;
-  fill: rgba(29,161,242,1.00);
-  margin: -10px 0px 10px 70px;
-  padding: 7px;
+.landscape-c {
+  height: 30px;
+  width: 30px;
   border-radius: 999px;
+  margin: -10px 0px 10px 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: background-color;
   transition-duration: .2s;
+ 
+
 }
-.landscape:hover{
+.landscape{
+  position: absolute;
+  height: 23px;
+  margin-left: -1px;
+  fill: rgba(29,161,242,1.00);
+  padding: 7px;
+  border-radius: 999px;
+
+}
+.landscape-c:hover{
   background-color: rgb(226, 242, 253);
+  pointer-events: all;
 }
 .gifbox{
   height: 23px;
@@ -203,7 +217,6 @@
 } */
 .sparkles:hover,
 .smiley-face:hover,
-.landscape:hover,
 .gifbox:hover,
 .pollbox:hover,
 .calendar:hover{
@@ -211,8 +224,8 @@
 }
 .uploadingTweet {
   position: absolute;
-  left: 72px;
-  top: 85px;
+  left: 70px;
+  top: 80px;
   height: 30px;
   width: 30px;
   border-radius: 999px;

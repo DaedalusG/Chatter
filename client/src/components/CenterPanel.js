@@ -100,12 +100,15 @@ const CenterPanel = (props) => {
               <span name="tweet-textarea" className="textarea" role="textbox" resize="none" contentEditable=""></span>
             </div>
             <div className={"below-nav-section-2"} >
-              <Landcape></Landcape>
-              <input className={"uploadingTweet"} type="file" onChange={uploadTweetImage} />
-              <GifBox></GifBox>
+              <div className={"landscape-c"}>
+                <Landcape></Landcape>
+                <input className={"uploadingTweet"} type="file" onChange={uploadTweetImage} />
+              </div>
+              
+              {/* <GifBox></GifBox>
               <PollBox></PollBox>
               <SmileyFace></SmileyFace>
-              <Calendar></Calendar>
+              <Calendar></Calendar> */}
               <div onClick={postFunction} id={"tweet-button-2"}>
                 <span>Tweet</span>
               </div>

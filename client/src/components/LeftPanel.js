@@ -53,48 +53,48 @@ const LeftPanel = (props) => {
           <span>HOME</span>
         </div>
       </div>
-      <div className={"main-c__left-c"} >
+      {/* <div className={"main-c__left-c"} >
         <div id={"hash-c"} className={"main-c__left-c__link-black"}>
           <Hash></Hash>
           <span>Explore</span>
         </div>
-      </div>
-      <div className={"main-c__left-c"}>
+      </div> */}
+      {/* <div className={"main-c__left-c"}>
         <div id={"bell-c"} className={"main-c__left-c__link-black"}>
           <Bell></Bell>
           <span>Notifications</span>
         </div>
-      </div>
-      <div className={"main-c__left-c"}>
+      </div> */}
+      {/* <div className={"main-c__left-c"}>
         <div id={"envelope-c"} className={"main-c__left-c__link-black"}>
           <Envelope></Envelope>
           <span>Messages</span>
         </div>
-      </div>
-      <div className={"main-c__left-c"}>
+      </div> */}
+      {/* <div className={"main-c__left-c"}>
         <div id={"bookmark-c"} className={"main-c__left-c__link-black"}>
           <Bookmark></Bookmark>
           <span>Bookmarks</span>
         </div>
-      </div>
-      <div className={"main-c__left-c"}>
+      </div> */}
+      {/* <div className={"main-c__left-c"}>
         <div id={"paper-c"} className={"main-c__left-c__link-black"}>
           <Paper></Paper>
           <span>Lists</span>
         </div>
-      </div>
-      <div className={"main-c__left-c"}>
+      </div> */}
+      {/* <div className={"main-c__left-c"}>
         <div id={"person-c"} className={"main-c__left-c__link-black"}>
           <Person></Person>
           <span>Profile</span>
         </div>
-      </div>
-      <div className={"main-c__left-c"}>
+      </div> */}
+      {/* <div className={"main-c__left-c"}>
         <div id={"circles-more-c"} className={"main-c__left-c__link-black"}>
           <CirclesMore></CirclesMore>
           <span>More</span>
         </div>
-      </div>
+      </div> */}
       <div id={"main-c__left__bottom-c"} >
         <div id={"tweet-button"}>
           <span>Tweet</span>

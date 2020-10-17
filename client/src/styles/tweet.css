@@ -1,5 +1,5 @@
 #tweet-button-2{
-  background-color:  rgba(29,161,242,1.00);
+  background-color:  rgb(125, 202, 250);
   width: 75px;
   height: 40px;
   border-radius: 999px;
@@ -10,7 +10,7 @@
   transition-duration: .2s;
   position: relative;
   top: -8px;
-  left: 240px;
+  left: 410px;
 
 }
 #tweet-button-2 span{
@@ -20,6 +20,9 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
   color: rgb(255, 255, 255);
   cursor: pointer;
+}
+#tweet-button-2:hover{
+   background-color:  rgba(29,161,242,1.00);
 }
 .tweet-c{
   width: 100%;
