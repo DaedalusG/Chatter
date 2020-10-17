@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Tweet from './Tweet';
 import LeftArrow from '../images/LeftArrow';
 import ProfileFullScreen from './ProfileFullScreen';
-import {API_URL} from '../config';
+import { API_URL } from '../config';
 import Camera from '../images/Camera';
 import Uploading from './Uploading';
 import UploadingProfile from './UploadingProfile';
@@ -11,32 +11,27 @@ const token = window.localStorage.getItem("auth_token");
 
 const ProfilePage = (props) => {
 
-
   const [tweetState, setTweetState] = useState([])
-
   const [profileUser, setProfileUser] = useState(2);
+
   useEffect(() => {
     // if (props.user.id === profileUser){
     setProfileUser(props.targetUser.id);
-      const getUserTweets = async()=>{
+    const getUserTweets = async () => {
 
-        const response = await fetch(`${API_URL}/tweets/user/${profileUser}`,{
-          method: "GET", 
-          mode: "cors",
-          headers: {"Authorizaion": `Bearer ${token}`}
-        })
-        if (!response.ok) {console.log("error in getUserTweets")}
-        else{
-          const json = await response.json();
-          setTweetState(json);
-        }
-        
+      const response = await fetch(`${API_URL}/tweets/user/${profileUser}`, {
+        method: "GET",
+        mode: "cors",
+        headers: { "Authorizaion": `Bearer ${token}` }
+      })
+      if (!response.ok) { console.log("error in getUserTweets") }
+      else {
+        const json = await response.json();
+        setTweetState(json.reverse());
       }
-    
-      getUserTweets();
+    }
+    getUserTweets();
     // }
-    
-    
   }, [props])
 
   const [profileFullScreenState, setProfileFullScreenState] = useState(false);
@@ -57,15 +52,15 @@ const ProfilePage = (props) => {
     <>
       {profileUploadModalState === true ?
         <>
-        <div id={"profile-pic-upload-modal"}>
+          <div id={"profile-pic-upload-modal"}>
             <div id={"profile-pic-upload-modal__top"}></div>
             <div className={"profile-banner"}>
               <img className={"profile-banner__img"} alt={""} src={props.targetUser.banner_pic} ></img>
             </div>
             <div id={"camera-1"}>
               <Camera />
-              <Uploading/>
-            </div>     
+              <Uploading />
+            </div>
             <div id={"profile-panel__below-nav__profile-bublle-c"} onClick={fullscreenPic}>
               <img className={"profile-bubble-5"} alt={""} src={props.targetUser.profile_pic} ></img>
             </div>
@@ -73,16 +68,16 @@ const ProfilePage = (props) => {
               <Camera />
               <UploadingProfile />
             </div>
-        </div>
+          </div>
           <div id={"profile-pic-upload-modal-background"} onClick={closeProfileUploadModal}></div>
-      </>
-      :
-      ""
+        </>
+        :
+        ""
       }
       <ProfileFullScreen user={props.user} fullscreenPic={fullscreenPic} profileFullScreenState={profileFullScreenState} />
       <div id={"center-panel"}>
         <div id={"center-panel-tweet__nav"}>
-          <div onClick={props.centerPanelHome} >
+          <div className={"test-class"} onClick={props.centerPanelHome} >
             <LeftArrow></LeftArrow>
           </div>
           <span>{props.targetUser.firstname}</span><span>{props.targetUser.lastname}</span>
@@ -101,11 +96,11 @@ const ProfilePage = (props) => {
               <span name="tweet-textarea" className="textarea-hide" role="textbox" resize="none" contentEditable=""></span>
             </div>
             <div className={"below-tweet-nav-section-2"} >
-              {props.editProfileState === true ? 
-              <div id={"edit-profile-button"} onClick={openProfileUploadModal}>
-                <span>Edit Profile</span>
-              </div>
-              : <></>
+              {props.editProfileState === true ?
+                <div id={"edit-profile-button"} onClick={openProfileUploadModal}>
+                  <span>Edit Profile</span>
+                </div>
+                : <></>
               }
               <span className={"profile-user-name"} >{props.targetUser.firstname}</span><span className={"profile-user-name"}>{props.targetUser.lastname}</span>
               <span className={"profile-chatter-name"} >@</span><span className={"profile-chatter-name"} > {props.targetUser.username}</span>

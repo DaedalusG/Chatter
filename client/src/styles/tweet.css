@@ -200,3 +200,7 @@
 .link-tweet:hover{
   cursor: not-allowed;
 }
+
+.tweet-text {
+  cursor: pointer;
+}

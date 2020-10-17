@@ -161,7 +161,7 @@ const Tweet = (props) => {
         </div>
       </div>
       <div className="tweet-c__comment" onClick={() => { props.tweetInfoFunc(props.props.id); props.centerPanelTweetPanel() }}>
-        <p>{props.props.content}</p>
+        <p className="tweet-text">{props.props.content}</p>
       </div>
       <img className={"tweet-pic"} alt={""} src={props.props.media} onClick={() => { props.tweetInfoFunc(props.props.id); props.centerPanelTweetPanel() }}></img>
       <div className={"tweet-c__svg-c"} >
