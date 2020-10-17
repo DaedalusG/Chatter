@@ -64,8 +64,8 @@ class Tweet(db.Model):
     media = db.Column(db.Text)
     retweet_id = db.Column(db.Integer, db.ForeignKey('tweets.id'))
 
-    # likes = db.relationship('Like', backref='tweet')
-    replies = db.relationship('Reply', backref='tweet')
+    likes = db.relationship('Like', cascade="all,delete", backref='tweet')
+    replies = db.relationship('Reply', cascade="all,delete", backref='tweet')
     # retweets = db.relationship('Retweet', backref='tweet')
     # user = db.relationship('User', back_populates="tweets")
 

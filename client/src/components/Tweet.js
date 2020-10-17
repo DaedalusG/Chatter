@@ -6,6 +6,7 @@ import Heart from '../images/Heart';
 import LinkTweet from '../images/LinkTweet';
 import DownCarrot from '../images/DownCarrot';
 import ReplyModal from './ReplyModal';
+import TrashCan from '../images/TrashCan';
 
 const token = window.localStorage.getItem('auth_token')
 
@@ -14,6 +15,7 @@ const Tweet = (props) => {
   const [heartCount, setHeartCount] = useState(0);
   const [retweeted, setRetweeted] = useState("retweet");
   const [replyModal, setReplyModal] = useState(false)
+  const [deleteModalState, setDeleteModalState] = useState(false);
   // const [retweetCount, setRetweetCount] = useState(0);
 
   const handleHeartClick = () => {
@@ -121,25 +123,29 @@ const Tweet = (props) => {
     setReplyModal(toggleReply)
   }
 
-  // const destroyTweet = async () => {
-  //   const response = await fetch(`${API_URL}/delete/`, {
-  //     method: "DELETE",
-  //     mode: "cors",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       // "Authorization": `Bearer ${token}`
-  //     },
-  //     body: JSON.stringify({
-  //       userId: `${props.user.id}`,
-  //       tweetId: `${props.props.id}`
-  //     }),
-  //   });
-  //   if (!response.ok) {
-  //     console.log("destroyTweet response failure");
-  //   } else {
-  //     console.log("destroyTweet response success");
-  //   }
-  // }
+  const destroyTweet = async () => {
+    const response = await fetch(`${API_URL}/tweets/delete`, {
+      method: "DELETE",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        userId: `${props.user.id}`,
+        tweetId: `${props.props.id}`
+      }),
+    });
+    if (!response.ok) {
+      console.log("destroyTweet response failure");
+    } else {
+      console.log("destroyTweet response success");
+    }
+  }
+
+  function toggleModal() {
+    setDeleteModalState(!deleteModalState)
+  }
   
 
 
@@ -155,7 +161,13 @@ const Tweet = (props) => {
           <p className={"tweet-c__user-name__names__top"}>{`${props.props.user ? props.props.user.firstname : ""} ${props.props.user ? props.props.user.lastname : ""}`}</p>
           <p className={"tweet-c__user-name__names__bottom"}>@{props.props.user ? props.props.user.username : ""}</p>
 
-          <div className={"down-carrot-c"}>
+          <div className={"down-carrot-c"} onClick={toggleModal}>
+            {deleteModalState === true ? <div className={"tweet-tweet-c__modal"} onClick={destroyTweet}>
+              <TrashCan />
+              <span>delete</span>
+            </div>
+              : <></>
+            }
             <DownCarrot />
           </div>
         </div>
