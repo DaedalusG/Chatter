@@ -74,7 +74,7 @@ const ProfilePage = (props) => {
         :
         ""
       }
-      <ProfileFullScreen user={props.user} fullscreenPic={fullscreenPic} profileFullScreenState={profileFullScreenState} />
+      <ProfileFullScreen targetUser={props.targetUser} user={props.user} fullscreenPic={fullscreenPic} profileFullScreenState={profileFullScreenState} />
       <div id={"center-panel"}>
         <div id={"center-panel-tweet__nav"}>
           <div className={"test-class"} onClick={props.centerPanelHome} >
