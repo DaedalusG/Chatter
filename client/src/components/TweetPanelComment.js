@@ -128,40 +128,42 @@ const TweetPanelComment = (props) => {
 
   return (
     <div className={"tweet-c"}>
-      <div className={"tweet-c__top"}>
-        <img className={"user__profile-pic"} alt={""} src={props.reply[1].profile_pic} ></img>
-        <div className={"tweet-c__user-name"} >
-          <p className={"tweet-c__user-name__names__top"}>{`${props.reply[1].firstname} ${props.reply[1].lastname}`}</p>
-          <p className={"tweet-c__user-name__names__bottom"}>@{props.reply[1].username}</p>
-          <div className={"down-carrot-c"}>
-            <DownCarrot />
+      <div className={"tweet-c__indent"} >
+        <div className={"tweet-c__top"}>
+          <img className={"user__profile-pic"} alt={""} src={props.reply[1].profile_pic} ></img>
+          <div className={"tweet-c__user-name"} >
+            <p className={"tweet-c__user-name__names__top"}>{`${props.reply[1].firstname} ${props.reply[1].lastname}`}</p>
+            <p className={"tweet-c__user-name__names__bottom"}>@{props.reply[1].username}</p>
+            <div className={"down-carrot-c"}>
+              <DownCarrot />
+            </div>
           </div>
         </div>
-      </div>
-      <div className="tweet-c__comment" onClick={() => {
-        // props.tweetInfoFunc(props.reply.id)
-        // props.centerPanelTweetPanel()
-      }}
-      >
-        <p>{props.reply[0].content}</p>
-      </div>
-      <img className={"tweet-pic"} alt={""} src={props.reply[0].media} ></img>
-      <div className={"tweet-c__svg-c"} >
-        <CommentBubble />
-        <div onClick={handleRetweetClick}>
-          <Retweet retweeted={retweeted} />
+        <div className="tweet-c__comment" onClick={() => {
+          // props.tweetInfoFunc(props.reply.id)
+          // props.centerPanelTweetPanel()
+        }}
+        >
+          <p>{props.reply[0].content}</p>
         </div>
-        <div
-          onClick={handleHeartClick}
-          className="tweet-panel-comment-like--container">
-          <Heart hearted={hearted} />
-          <div >
-            {heartCount > 0 ? <span>{heartCount}</span> : <span></span>}
+        <img className={"tweet-pic"} alt={""} src={props.reply[0].media} ></img>
+        <div className={"tweet-c__svg-c"} >
+          <CommentBubble />
+          <div onClick={handleRetweetClick}>
+            <Retweet retweeted={retweeted} />
           </div>
+          <div
+            onClick={handleHeartClick}
+            className="tweet-panel-comment-like--container">
+            <Heart hearted={hearted} />
+            <div >
+              {heartCount > 0 ? <span>{heartCount}</span> : <span></span>}
+            </div>
+          </div>
+          <LinkTweet />
+
+
         </div>
-        <LinkTweet />
-
-
       </div>
     </div>
   )

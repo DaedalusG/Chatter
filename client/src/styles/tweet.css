@@ -228,7 +228,13 @@
 }
 .tweet-comment-c{
   width: 100%;
-  min-height: 100px;
+  min-height: 0px;
+  max-height: 170px;
   height: auto;
-  border: 1px solid blue;
+  overflow-y: scroll;
+}
+.tweet-c__indent {
+ width: 98%;
+ margin-left: 2%;
+ /* border: 1px solid blue; */
 }
