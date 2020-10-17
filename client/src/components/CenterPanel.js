@@ -9,6 +9,7 @@ import Tweet from './Tweet';
 import skelator from '../images/skelator.png';
 import { API_URL } from '../config';
 import S3FileUpload from 'react-s3';
+import TweetPanelComment from './TweetPanelComment';
 
 
 
@@ -24,7 +25,6 @@ const CenterPanel = (props) => {
   useEffect(() => {
 
     //TODO fix backend route to get tweets from following
-
     fetch(`${API_URL}/tweets/`)
       .then(res => res.json())
       .then(data => {
@@ -82,7 +82,7 @@ const CenterPanel = (props) => {
   }
   // ------------------------------------------------
 
-  
+    
 
   return (
     <>
@@ -116,6 +116,10 @@ const CenterPanel = (props) => {
               {tweetState ?
                 tweetState.map((tweet) => (
                   <Tweet
+                    tweetIdsState={props.tweetIdsState}
+                    // tweetCommentState={tweetCommentState}
+                    reply={props.reply}
+                    tweetState={tweetState}
                     props={tweet}
                     centerPanelProfile={props.centerPanelProfile}
                     tweetInfoFunc={props.tweetInfoFunc}
@@ -127,6 +131,7 @@ const CenterPanel = (props) => {
 
                 : null
               }
+              <div className={"tweet-bottom-space"}></div>
             </div>
           </div>
         </div>

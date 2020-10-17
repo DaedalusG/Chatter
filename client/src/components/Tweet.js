@@ -7,6 +7,7 @@ import LinkTweet from '../images/LinkTweet';
 import DownCarrot from '../images/DownCarrot';
 import ReplyModal from './ReplyModal';
 import TrashCan from '../images/TrashCan';
+import CenterPanelComment from './CenterPanelComment';
 
 const token = window.localStorage.getItem('auth_token')
 
@@ -146,9 +147,29 @@ const Tweet = (props) => {
   function toggleModal() {
     setDeleteModalState(!deleteModalState)
   }
-  
+  // -------------------------------------------------------
+  const [tweetCommentState, setTweetCommentState] = useState([])
 
+  useEffect(() => {
 
+    const token = window.localStorage.getItem('auth_token')
+    const tweetReplies = async () => {
+      const response = await fetch(`${API_URL}/tweets/tweet/${props.props.id}`, {
+        method: "GET",
+        mode: "cors",
+        headers: { "Authorization": `Bearer ${token}` },
+      })
+      if (!response) console.log("response FAIL")
+      else {
+        const json = await response.json()
+        setTweetCommentState(json)
+        console.log("jssssssoooooon", json)
+      }
+    }
+    tweetReplies()
+  }, [])
+
+  console.log("tweeeetCommentState", tweetCommentState)
 
   return (
     <div className={"tweet-c"}>
@@ -192,6 +213,12 @@ const Tweet = (props) => {
         </div>
         <LinkTweet />
 
+      </div>
+      <div className={"tweet-comment-c"} >
+        {tweetCommentState.replies ?
+          tweetCommentState.replies.map(replyContent => (<CenterPanelComment user={props.user} reply={replyContent} />))
+          : null
+        }
       </div>
     </div>
   )

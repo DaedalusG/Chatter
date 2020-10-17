@@ -17,7 +17,6 @@ const TweetPanel = (props) => {
 
   useEffect(() => {
 
-
     const token = window.localStorage.getItem('auth_token')
     const tweetReplies = async ()=>{
       const response =  await fetch(`${API_URL}/tweets/tweet/${props.tweetIdsState}`, {
@@ -25,7 +24,6 @@ const TweetPanel = (props) => {
         mode: "cors",
         headers: { "Authorization": `Bearer ${token}` },
       })
-
       if (!response) console.log("response FAIL")
       else {
         const json = await response.json()

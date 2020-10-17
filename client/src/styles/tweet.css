@@ -226,3 +226,9 @@
   height: 300px;
   width: 100%;
 }
+.tweet-comment-c{
+  width: 100%;
+  min-height: 100px;
+  height: auto;
+  border: 1px solid blue;
+}
