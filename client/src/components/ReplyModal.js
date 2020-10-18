@@ -16,8 +16,9 @@ const token = window.localStorage.getItem('auth_token')
 
 const ReplyModal = (props) => {
     const [replyInput, setReplyInput] = useState("");
+    const [tweetReplyImgState, setTweetReplyImgState] = useState();
+
     const updateReplyInput = (e) => setReplyInput(e.target.value)
-    const [tweetImgState, setTweetImgState] = useState();
 
     const handleReplySubmit = async (e) => {
         e.preventDefault();
@@ -29,7 +30,7 @@ const ReplyModal = (props) => {
                 "Authorization": `Bearer ${token}`,
             },
             
-            body: JSON.stringify({ user_id: props.user.id, tweet_id: props.tweet_id, reply: replyInput, media: `${tweetImgState ? tweetImgState : "tweetImgState not making it"}`})
+            body: JSON.stringify({ user_id: props.user.id, tweet_id: props.tweet_id, reply: replyInput, media: `${tweetReplyImgState ? tweetReplyImgState : "tweetImgState not making it"}`})
         })
         if (response.ok) {
             window.location.reload()
@@ -50,9 +51,15 @@ const ReplyModal = (props) => {
 
         S3FileUpload.uploadFile(e.target.files[0], config)
             .then((data) => {
-                const tweetSpan = document.getElementsByName('tweet-textarea')
-                tweetSpan[0].innerHTML = `${data.location}`;
-                setTweetImgState(data.location);
+                // updateReplyInput(data.location)
+                // setTweetReplyImgState(data.location);
+                // console.log("reply data============>", data)
+
+                document.getElementsByName('reply-form-textarea').value = `${data.location}`;
+                // console.log("replyTextArea========>",replyTextArea)
+                // replyTextArea[0].value = `${data.location}`;
+                // setTweetReplyImgState(data.location);
+                setReplyInput(data.location)
             })
             .catch((err) => {
                 alert(err)
@@ -97,7 +104,8 @@ const ReplyModal = (props) => {
                         <div className={"reply-form-response__side-spacer"}></div>
                     </div>
                     <div className="reply-form-response__content">
-                        <textarea value={replyInput} className={"reply-form-textarea"} placeholder={"Tweet your reply"} onChange={updateReplyInput}></textarea>
+                        <textarea name={"reply-form-textarea"} value={replyInput} className={"reply-form-textarea"} placeholder={"Tweet your reply"} onChange={updateReplyInput}>here</textarea>
+                        {/* <img className={"tweet-reply-pic"} src={`${tweetReplyImgState}`} alt={""}/> */}
                         <div className="reply-form-response__footer">
                             <div>
                                 {/* <GifBox /> */}

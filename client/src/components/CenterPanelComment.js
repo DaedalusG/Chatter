@@ -122,6 +122,8 @@ const CenterPanelComment = (props) => {
     // getUserHearted(); -- commented out for dev
   }, [])
 
+  console.log("reply=================>", props.reply)
+
 
   return (
     <div className={"tweet-c"}>

@@ -194,11 +194,17 @@ const Tweet = (props) => {
     
   }, [])
 // ---------------------------------------------------
-
+// ----------------add-to-text-area-------------------
+  const tweetText = document.getElementsByClassName('tweet-text')
+  function addToText(text){
+    
+    tweetText[0].innerHTML = `${text}`;
+  }
+// ---------------------------------------------------
 
   return (
     <div className={"tweet-c"}>
-      <ReplyModal tweet_id={props.props.id} replyModal={replyModal} user={props.user} tweet={props.props} handleReplyClick={handleReplyClick} />
+      <ReplyModal addToText={addToText} tweet_id={props.props.id} replyModal={replyModal} user={props.user} tweet={props.props} handleReplyClick={handleReplyClick} />
       {/* <span className={"tweet-c__name"}>{props.props.name}</span> */}
       <div className={"tweet-c__top"} >
         <img className={"user__profile-pic"} alt={""} src={props.props.user.profile_pic} onClick={() => props.centerPanelProfile(props.props.user)}></img>

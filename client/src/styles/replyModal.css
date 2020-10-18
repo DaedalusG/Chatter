@@ -181,7 +181,8 @@
     color: black;
     font: 18px "Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif;
     width: 45vw;
-    height: 70%;
+    min-height: 20px;
+    max-height: 70%;
     padding: 7px;
     z-index: 1;
     border: none;
@@ -298,4 +299,12 @@
   border-radius: 999px;
   opacity: 0;
   cursor: pointer;
+}
+.tweet-reply-pic {
+  min-width: 100px;
+  max-width: 200px;
+  border-radius: 20px;
+  margin: 0px 0px 0px 75px;
+  position: relative;
+  top: 10px;
 }
