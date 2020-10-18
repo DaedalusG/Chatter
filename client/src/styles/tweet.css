@@ -124,7 +124,6 @@
   width: 18px;
   margin-top: 1px;
   margin-bottom: 10px;
-  margin-left: 120px;
   padding: 7px;
   border-radius: 100%;
   fill: rgb(101, 119, 134);
@@ -139,7 +138,6 @@
   width: 18px;
   margin-top: 1px;
   margin-bottom: 10px;
-  margin-left: 120px;
   padding: 7px;
   border-radius: 100%;
  
@@ -148,6 +146,8 @@
 }
 .tweet-like--container{
   position: relative;
+
+  margin-left: 120px;
 }
 .tweet-like--container span{
   position: absolute;

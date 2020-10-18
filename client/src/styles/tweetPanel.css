@@ -23,6 +23,9 @@
   width: 100%;
   position: relative;
 }
+.tweet-panel-comment-like--container {
+  margin: 0px 0px 0px 120px;
+}
 .tweet-panel-comment-like--container div{
   position: absolute;
   left: 410px;

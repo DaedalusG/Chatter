@@ -232,8 +232,7 @@ const Tweet = (props) => {
         </div> */}
 
         <div
-          className="tweet-like--container"
-          onClick={handleHeartClick}>
+          className="tweet-like--container" onClick={handleHeartClick}>
           <Heart hearted={hearted} />
           {heartCount > 0 ? <span>{heartCount}</span> : <span></span>}
         </div>
