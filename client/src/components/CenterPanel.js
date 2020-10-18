@@ -22,6 +22,8 @@ const CenterPanel = (props) => {
 
   const [tweetState, setTweetState] = useState([]);
 
+  const [updateState, setUpdateState] = useState(1);
+
   useEffect(() => {
 
     //TODO fix backend route to get tweets from following
@@ -31,7 +33,7 @@ const CenterPanel = (props) => {
         setTweetState(data.reverse())
       }
       )
-  }, [])
+  }, [updateState])
 
   console.log("props.user================>", props.user.id)
   const postFunction = async () => {
@@ -119,6 +121,8 @@ const CenterPanel = (props) => {
               {tweetState ?
                 tweetState.map((tweet) => (
                   <Tweet
+                    updateState={updateState}
+                    setUpdateState={setUpdateState}
                     tweetIdsState={props.tweetIdsState}
                     // tweetCommentState={tweetCommentState}
                     reply={props.reply}

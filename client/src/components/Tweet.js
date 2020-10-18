@@ -17,6 +17,8 @@ const Tweet = (props) => {
   const [retweeted, setRetweeted] = useState("retweet");
   const [replyModal, setReplyModal] = useState(false)
   const [deleteModalState, setDeleteModalState] = useState(false);
+  
+  
   // const [retweetCount, setRetweetCount] = useState(0);
 
   const handleHeartClick = () => {
@@ -141,6 +143,7 @@ const Tweet = (props) => {
       console.log("destroyTweet response failure");
     } else {
       console.log("destroyTweet response success");
+      props.setUpdateState(props.updateState + 1)
     }
   }
 
