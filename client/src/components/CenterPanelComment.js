@@ -159,7 +159,7 @@ const CenterPanelComment = (props) => {
               {heartCount > 0 ? <span>{heartCount}</span> : <span></span>}
             </div>
           </div>
-          <LinkTweet />
+          {/* <LinkTweet /> */}
         </div>
       </div>
     </div>

@@ -6,6 +6,8 @@ import { API_URL } from '../config';
 import Camera from '../images/Camera';
 import Uploading from './Uploading';
 import UploadingProfile from './UploadingProfile';
+import CloseButton from '../images/CloseButton';
+import EditCloseButton from '../images/EditCloseButton';
 
 const token = window.localStorage.getItem("auth_token");
 
@@ -53,7 +55,10 @@ const ProfilePage = (props) => {
       {profileUploadModalState === true ?
         <>
           <div id={"profile-pic-upload-modal"}>
-            <div id={"profile-pic-upload-modal__top"}></div>
+            <div id={"profile-pic-upload-modal__top"}>
+              <EditCloseButton closeProfileUploadModal={closeProfileUploadModal} />
+              <span>Edit profile</span>
+            </div>
             <div className={"profile-banner"}>
               <img className={"profile-banner__img"} alt={""} src={props.targetUser.banner_pic} ></img>
             </div>
