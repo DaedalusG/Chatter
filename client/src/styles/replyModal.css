@@ -28,6 +28,7 @@
     position: relative;
     margin: auto;
     top: 50px;
+    min-height: 400px;
     height: 60vh;
     width: 60vw;
     border-radius: 20px;
@@ -76,9 +77,9 @@
   border-radius: 100%;
   /* margin: auto; */
   /* padding: 3px; */
-  margin: 0px 0px 0px 3px;
+  margin: 0px 0px 0px 10px;
   position: relative;
-  top: -0px;
+  top: 10px;
   background-image: url(../images/ProfileImages/p7.jpg);
   background-size: cover;
  
@@ -152,13 +153,13 @@
   flex-flow: row;
 }
 
-.reply-form-response__side {
+/* .reply-form-response__side {
   display: flex;
   flex-flow: column;
   align-items: center;
   padding-right: 7px;
   padding-left: 7px;
-}
+} */
 
 .reply-form-response__content {
   display: flex;
@@ -174,15 +175,17 @@
 
 .reply-form-textarea {
     position: relative;
+    top: 10px;
     font-weight: 400;
     background-color: white;
     color: black;
     font: 18px "Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif;
     width: 45vw;
-    height: 100%;
+    height: 70%;
     padding: 7px;
     z-index: 1;
     border: none;
+    border: 1px solid pink;
     outline: none;
     resize: none;
 }
@@ -270,4 +273,29 @@
 }
 .smiley:hover{
   background-color: rgb(226, 242, 253);
+}
+.landscape-reply-c {
+  height: 30px;
+  width: 30px;
+  border-radius: 999px;
+  margin: -10px 0px 10px 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color;
+  transition-duration: .2s;
+}
+.landscape-reply-c:hover{
+  background-color: rgb(226, 242, 253);
+  pointer-events: all;
+}
+.uploading-reply-tweet {
+  position: absolute;
+  left: 133px;
+  /* top: 80px; */
+  height: 30px;
+  width: 30px;
+  border-radius: 999px;
+  opacity: 0;
+  cursor: pointer;
 }

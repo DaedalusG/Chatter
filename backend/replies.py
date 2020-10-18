@@ -16,6 +16,7 @@ def post_reply():
         user_id=data["user_id"],
         tweet_id=data["tweet_id"],
         content=data["reply"],
+        media=data["media"],
     )
     db.session.add(reply)
     db.session.commit()

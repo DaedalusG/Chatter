@@ -7,6 +7,8 @@ import PollBox from '../images/PollBox.js'
 import Calendar from '../images/Calendar.js'
 import Smiley from '../images/Smiley.js'
 import { API_URL } from '../config.js'
+import Landscape from '../images/Landscape.js';
+import S3FileUpload from 'react-s3';
 
 const token = window.localStorage.getItem('auth_token')
 
@@ -15,6 +17,7 @@ const token = window.localStorage.getItem('auth_token')
 const ReplyModal = (props) => {
     const [replyInput, setReplyInput] = useState("");
     const updateReplyInput = (e) => setReplyInput(e.target.value)
+    const [tweetImgState, setTweetImgState] = useState();
 
     const handleReplySubmit = async (e) => {
         e.preventDefault();
@@ -25,7 +28,8 @@ const ReplyModal = (props) => {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`,
             },
-            body: JSON.stringify({ user_id: props.user.id, tweet_id: props.tweet_id, reply: replyInput })
+            
+            body: JSON.stringify({ user_id: props.user.id, tweet_id: props.tweet_id, reply: replyInput, media: `${tweetImgState ? tweetImgState : "tweetImgState not making it"}`})
         })
         if (response.ok) {
             window.location.reload()
@@ -34,6 +38,31 @@ const ReplyModal = (props) => {
         }
     }
 
+    // ----------------upload-tweet-image--------------
+    const config = {
+        bucketName: process.env.REACT_APP_BUCKETNAME,
+        region: 'us-west-2',
+        accessKeyId: process.env.REACT_APP_ACCESSKEYID,
+        secretAccessKey: process.env.REACT_APP_SECRETACCESSKEY
+    }
+
+    const uploadTweetImage = (e) => {
+
+        S3FileUpload.uploadFile(e.target.files[0], config)
+            .then((data) => {
+                const tweetSpan = document.getElementsByName('tweet-textarea')
+                tweetSpan[0].innerHTML = `${data.location}`;
+                setTweetImgState(data.location);
+            })
+            .catch((err) => {
+                alert(err)
+            })
+
+    }
+  // ------------------------------------------------
+
+
+    
     return ReactDom.createPortal(
         <div className={`reply-modal-c ${props.replyModal ? "visible" : "hidden"}`}>
             <div className={"reply-modal-background"} ></div>
@@ -70,7 +99,16 @@ const ReplyModal = (props) => {
                     <div className="reply-form-response__content">
                         <textarea value={replyInput} className={"reply-form-textarea"} placeholder={"Tweet your reply"} onChange={updateReplyInput}></textarea>
                         <div className="reply-form-response__footer">
-                            <div><GifBox /><LandscapeReply /><PollBox /><Calendar />< Smiley /></div>
+                            <div>
+                                {/* <GifBox /> */}
+                                <div className={"landscape-reply-c"}>
+                                    <Landscape></Landscape>
+                                    <input className={"uploading-reply-tweet"} type="file" onChange={uploadTweetImage} />
+                                </div>
+                                {/* <PollBox />
+                                <Calendar />
+                                < Smiley /> */}
+                            </div>
                             <button className={"reply-form-submit"} onClick={handleReplySubmit}>Reply</button>
                         </div>
                     </div>

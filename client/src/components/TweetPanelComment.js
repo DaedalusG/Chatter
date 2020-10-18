@@ -160,8 +160,6 @@ const TweetPanelComment = (props) => {
             </div>
           </div>
           {/* <LinkTweet /> */}
-
-
         </div>
       </div>
     </div>

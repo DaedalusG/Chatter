@@ -37,6 +37,7 @@ CREATE TABLE replies (
   user_id INTEGER NOT NULL,
   tweet_id INTEGER NOT NULL,
   content VARCHAR(240) NOT NULL,
+  media VARCHAR(500),
   FOREIGN KEY (user_id) REFERENCES users(id),
   FOREIGN KEY (tweet_id) REFERENCES tweets(id),
   created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP

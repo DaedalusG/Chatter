@@ -95,6 +95,7 @@ class Reply(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)  # noqa
     tweet_id = db.Column(db.Integer, db.ForeignKey("tweets.id"), nullable=False)  # noqa
     content = db.Column(db.Text, nullable=False)
+    media = db.Column(db.Text)
 
     likes = db.relationship('Like', backref='reply')
     users = db.relationship('User', backref='reply')
@@ -105,6 +106,7 @@ class Reply(db.Model):
             "user_id": self.user_id,
             "tweet_id": self.tweet_id,
             "content": self.content,
+            "media": self.content,
         }
 
 
