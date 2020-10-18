@@ -11,6 +11,7 @@ import TrashCan from '../images/TrashCan';
 const token = window.localStorage.getItem('auth_token')
 
 const TweetPanelTweet = (props) => {
+  console.log('tweetState=============>', props.tweetState)
   const [hearted, setHearted] = useState("heart");
   const [heartCount, setHeartCount] = useState(0);
   const [retweeted, setRetweeted] = useState("retweet");
@@ -28,7 +29,7 @@ const TweetPanelTweet = (props) => {
           },
           body: JSON.stringify({
             userId: `${props.user.id}`,
-            tweetId: `${props.props.id}`
+            tweetId: `${props.tweetState.id}`
           }),
         });
         if (!response.ok) {
@@ -52,7 +53,7 @@ const TweetPanelTweet = (props) => {
           },
           body: JSON.stringify({
             userId: `${props.user.id}`,
-            tweetId: `${props.props.id}`
+            tweetId: `${props.tweetState.id}`
           }),
         });
         if (!response.ok) {
@@ -73,8 +74,8 @@ const TweetPanelTweet = (props) => {
 
   useEffect(() => {
     const getHeartedCount = async () => {
-      if (props.props.id === undefined) return
-      const response = await fetch(`${API_URL}/likes/${props.props.id}`, {
+      if (props.tweetState.id === undefined) return
+      const response = await fetch(`${API_URL}/likes/${props.tweetState.id}`, {
         method: "GET",
         mode: "cors",
         headers: {
@@ -92,7 +93,7 @@ const TweetPanelTweet = (props) => {
       if (props.props.id === undefined) return
       const response = await fetch(
 
-        `${API_URL}/likes/${props.user.id}/${props.props.id}`, {
+        `${API_URL}/likes/${props.user.id}/${props.tweetState.id}`, {
         method: "GET",
         mode: "cors",
         headers: {
@@ -131,7 +132,7 @@ const TweetPanelTweet = (props) => {
       },
       body: JSON.stringify({
         userId: `${props.user.id}`,
-        tweetId: `${props.props.id}`
+        tweetId: `${props.tweetState.id}`
       }),
     });
     if (!response.ok) {
@@ -141,6 +142,35 @@ const TweetPanelTweet = (props) => {
       props.centerPanelHome();
     }
   }
+
+  // -----------------Get-Comment-Count---------------------------
+  const [commentCount, setCommentCount] = useState("commentCount");
+  useEffect(() => {
+    const getCommentCount = () => {
+      if (props.tweetState.id === undefined) return
+      fetch(`${API_URL}/replies/${props.tweetState.id}`, {
+        method: "GET",
+        mode: "cors",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
+      })
+      .then(res => res.json())
+      .then(data => {
+        setCommentCount(data.count)
+      })
+      .then(() => {
+        console.log("TPTcommentCount==================>", commentCount);
+      })
+        
+        
+    }
+  
+    getCommentCount();
+    console.log("tptgetCommentCountJustHappend")
+
+  }, [])
+// ---------------------------------------------------
 
   return (
     <div className={"tweet-c"}>
@@ -153,11 +183,11 @@ const TweetPanelTweet = (props) => {
       }
       {/* <span className={"tweet-c__name"}>{props}</span> */}
       <div className={"tweet-c__top"}>
-        <img className={"user__profile-pic"} alt={""} src={props.props.user ? props.props.user.profile_pic : ""} ></img>
+        <img className={"user__profile-pic"} alt={""} src={props.tweetState.user ? props.tweetState.user.profile_pic : ""} ></img>
         <div className={"tweet-c__user-name"} >
           <div className={"tweet-p-t-c__user-name__names"} >
-            <p className={"tweet-p-t-c__user-name__names__top"}>{`${props.props.user ? props.props.user.firstname : ""} ${props.props.user ? props.props.user.lastname : ""}`}</p>
-            <p className={"tweet-p-t-c__user-name__names__bottom"}>@{props.props.user ? props.props.user.username : ""}</p>
+            <p className={"tweet-p-t-c__user-name__names__top"}>{`${props.tweetState.user ? props.tweetState.user.firstname : ""} ${props.tweetState.user ? props.tweetState.user.lastname : ""}`}</p>
+            <p className={"tweet-p-t-c__user-name__names__bottom"}>@{props.tweetState.user ? props.tweetState.user.username : ""}</p>
           </div>
           <div className={"down-carrot-c"} onClick={toggleModal}>
             <DownCarrot />
@@ -169,11 +199,13 @@ const TweetPanelTweet = (props) => {
         // props.centerPanelTweetPanel()
       }}
       >
-        <p className={"tweet-p-t__comment"}>{props.props.content}</p>
+        <p className={"tweet-p-t__comment"}>{props.tweetState.content}</p>
       </div>
-      <img className={"tweet-pic"} alt={""} src={props.props.media} ></img>
+      <img className={"tweet-pic"} alt={""} src={props.tweetState.media} ></img>
       <div className={"tweet-c__svg-c"} >
         <CommentBubbleTweet />
+        {props.tweetState.replies ? <span className={"tweet-panel-tweet-comment-count"}>{props.tweetState.replies.length}</span> : <span></span>}
+        {/* {commentCount > 0 ? <span className={"comment-count"}>{commentCount}</span> : <span></span>} */}
         {/* <div onClick={handleRetweetClick}>
           <RetweetTweet retweeted={retweeted} />
         </div> */}

@@ -46,7 +46,7 @@ const TweetPanel = (props) => {
           <div className="tweet-panel__below-nav__scroll" >
 
             <div className="all-tweets-c">
-              <TweetPanelTweet user={props.user} props={tweetState} centerPanelHome={props.centerPanelHome} ></TweetPanelTweet>
+              <TweetPanelTweet user={props.user} tweetState={tweetState} centerPanelHome={props.centerPanelHome} ></TweetPanelTweet>
     
               {tweetState.replies ?
                 tweetState.replies.map(reply => (<TweetPanelComment user={props.user}  reply={reply} /> ) )

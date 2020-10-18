@@ -50,4 +50,10 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
   color: rgb(101, 119, 134);
 }
-
+.tweet-panel-tweet-comment-count {
+  position: relative;
+  top: 3px;
+  font-size: 15px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+  color: rgb(101, 119, 134);
+}
