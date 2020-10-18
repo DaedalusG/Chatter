@@ -45,8 +45,9 @@
 }
 .tweet-panel-tweet-like--container span{
   position: relative;
-  top: -10px;
+  top: -12px;
   font-size: 15px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
   color: rgb(101, 119, 134);
 }
+

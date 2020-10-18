@@ -157,7 +157,7 @@ const TweetPanelComment = (props) => {
             className="tweet-panel-comment-like--container">
             <Heart hearted={hearted} />
             <div >
-              {heartCount > 0 ? <span>{heartCount}</span> : <span></span>}
+              {heartCount > 0 ? <span className={"tweet-panel-comment__heart-count"}>{heartCount}</span> : <span></span>}
             </div>
           </div>
           {/* <LinkTweet /> */}
