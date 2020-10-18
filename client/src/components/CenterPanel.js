@@ -53,11 +53,10 @@ const CenterPanel = (props) => {
         document.getElementsByName("tweet-textarea")[0].innerHTML = ""
       })
       .catch(e => console.log('error posting your tweet', e))
-      .then(window.location.reload())
-
-
+      .then(setUpdateState(updateState + 1))
+      // .then(window.location.reload())
   }
-  const profileBubbleAlt = skelator;
+
 
   // ----------------upload-tweet-image--------------
   const config = {

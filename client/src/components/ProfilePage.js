@@ -15,6 +15,8 @@ const ProfilePage = (props) => {
 
   const [tweetState, setTweetState] = useState([])
   const [profileUser, setProfileUser] = useState(2);
+  const [updateState, setUpdateState] = useState(1);
+  
 
   useEffect(() => {
     // if (props.user.id === profileUser){

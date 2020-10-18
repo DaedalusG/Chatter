@@ -143,7 +143,7 @@ const Tweet = (props) => {
       // console.log("destroyTweet response failure");
     } else {
       // console.log("destroyTweet response success");
-      props.setUpdateState(props.updateState + 1)
+      window.location.reload()
     }
   }
 

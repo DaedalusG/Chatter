@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import S3FileUpload from 'react-s3';
 import { API_URL } from '../config';
 
-const UploadingProfile = () => {
+const UploadingProfile = (props) => {
+  
 
   const config = {
     bucketName: process.env.REACT_APP_BUCKETNAME,
@@ -38,17 +39,19 @@ const UploadingProfile = () => {
         headers: { 'Content-Type': 'application/json' },
       }
       fetch(`${API_URL}/users/profile?user_id=${user.id}&href=${uploadLocation}`, options)
+
     }
   
 
 
     S3FileUpload.uploadFile(e.target.files[0], config)
       .then((data) => {
-        changeProfile(data.location)
-      })
+        changeProfile(data.location) 
+      }).then(() => window.location.reload())
       .catch((err) => {
         alert(err)
       })
+       
   }
   return (
     <>
