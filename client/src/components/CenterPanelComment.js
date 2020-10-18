@@ -155,9 +155,9 @@ const CenterPanelComment = (props) => {
             onClick={handleHeartClick}
             className="tweet-panel-comment-like--container">
             <Heart hearted={hearted} />
-            <div >
-              {heartCount > 0 ? <span>{heartCount}</span> : <span></span>}
-            </div>
+         
+            {heartCount > 0 ? <span className={"center-panel__heart-count"}>{heartCount}</span> : <span></span>}
+      
           </div>
           {/* <LinkTweet /> */}
         </div>
