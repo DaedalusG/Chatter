@@ -11,7 +11,7 @@ import TrashCan from '../images/TrashCan';
 const token = window.localStorage.getItem('auth_token')
 
 const TweetPanelTweet = (props) => {
-  console.log('tweetState=============>', props.tweetState)
+  
   const [hearted, setHearted] = useState("heart");
   const [heartCount, setHeartCount] = useState(0);
   const [retweeted, setRetweeted] = useState("retweet");
@@ -143,34 +143,6 @@ const TweetPanelTweet = (props) => {
     }
   }
 
-  // -----------------Get-Comment-Count---------------------------
-  const [commentCount, setCommentCount] = useState("commentCount");
-  useEffect(() => {
-    const getCommentCount = () => {
-      if (props.tweetState.id === undefined) return
-      fetch(`${API_URL}/replies/${props.tweetState.id}`, {
-        method: "GET",
-        mode: "cors",
-        headers: {
-          "Authorization": `Bearer ${token}`,
-        },
-      })
-      .then(res => res.json())
-      .then(data => {
-        setCommentCount(data.count)
-      })
-      .then(() => {
-        console.log("TPTcommentCount==================>", commentCount);
-      })
-        
-        
-    }
-  
-    getCommentCount();
-    console.log("tptgetCommentCountJustHappend")
-
-  }, [])
-// ---------------------------------------------------
 
   return (
     <div className={"tweet-c"}>
