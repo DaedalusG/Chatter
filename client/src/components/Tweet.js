@@ -170,7 +170,30 @@ const Tweet = (props) => {
     }
     tweetReplies()
   }, [])
-
+  // -----------------Get-Comment-Count---------------------------
+  const [commentCount, setCommentCount] = useState("commentCount");
+  useEffect(() => {
+    const getCommentCount = async () => {
+      if (props.props.id === undefined) return
+      const response = await fetch(`${API_URL}/replies/${props.props.id}`, {
+        method: "GET",
+        mode: "cors",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
+      })
+      if (!response.ok) {
+        // console.log("getCommentCount response failed")
+      } else {
+        const json = await response.json();
+        setCommentCount(json.count)
+        console.log("commentCount==================>", commentCount);
+      }
+    }
+    getCommentCount();
+    
+  }, [])
+// ---------------------------------------------------
 
 
   return (
@@ -202,6 +225,7 @@ const Tweet = (props) => {
       <div className={"tweet-c__svg-c"} >
         <div onClick={handleReplyClick}>
           <CommentBubble />
+          {commentCount > 0 ? <span className={"comment-count"}>{commentCount}</span> : <span></span>}
         </div>
         {/* <div onClick={handleRetweetClick}>
           <Retweet retweeted={retweeted} />
@@ -221,7 +245,9 @@ const Tweet = (props) => {
           tweetCommentState.replies.map(replyContent => (<CenterPanelComment user={props.user} reply={replyContent} />))
           : null
         }
+        
       </div>
+      
     </div>
   )
 }

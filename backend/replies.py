@@ -21,3 +21,12 @@ def post_reply():
     db.session.commit()
 
     return jsonify(Confirm='Reply submitted')
+
+
+# get count of all replies for one tweet
+@replies.route('/<id>')
+@jwt_required
+def replies_by_id(id):
+    replies = Reply.query.filter(Reply.tweet_id == id).count()
+    print("replies=====================>", jsonify(count=replies))
+    return jsonify(count=replies)

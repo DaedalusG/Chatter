@@ -87,7 +87,7 @@ const ProfilePage = (props) => {
           <div className={"test-class"} onClick={props.centerPanelHome} >
             <LeftArrow></LeftArrow>
           </div>
-          <span>{props.targetUser.firstname}</span><span>{props.targetUser.lastname}</span>
+          <span className={"profile-page-username"}>{props.targetUser.firstname}</span><span className={"profile-page-username"}>{props.targetUser.lastname}</span>
         </div>
         <div id={"center-panel__below-nav"} >
           <div className="center-panel__below-nav__scroll" >

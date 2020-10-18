@@ -9,6 +9,9 @@
   overflow-y: scroll;
   /* border: 1px solid red; */
 }
+#main-c__right:hover {
+  cursor: not-allowed;
+}
 #main-c__right__search-bar{
   width: 350px;
   height: 42px;

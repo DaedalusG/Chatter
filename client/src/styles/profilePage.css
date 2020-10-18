@@ -207,3 +207,7 @@
 .edit-close-button:hover {
   background-color:  rgb(226, 242, 253);
 }
+.profile-page-username {
+  position: relative;
+  top: -2px;
+}
