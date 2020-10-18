@@ -201,9 +201,9 @@ const Tweet = (props) => {
         <div onClick={handleReplyClick}>
           <CommentBubble />
         </div>
-        <div onClick={handleRetweetClick}>
+        {/* <div onClick={handleRetweetClick}>
           <Retweet retweeted={retweeted} />
-        </div>
+        </div> */}
 
         <div
           className="tweet-like--container"

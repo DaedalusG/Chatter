@@ -173,9 +173,9 @@ const TweetPanelTweet = (props) => {
       <img className={"tweet-pic"} alt={""} src={props.props.media} ></img>
       <div className={"tweet-c__svg-c"} >
         <CommentBubbleTweet />
-        <div onClick={handleRetweetClick}>
+        {/* <div onClick={handleRetweetClick}>
           <RetweetTweet retweeted={retweeted} />
-        </div>
+        </div> */}
         <div
           className="tweet-panel-tweet-like--container"
           onClick={handleHeartClick}>

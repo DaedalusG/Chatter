@@ -150,7 +150,7 @@ const TweetPanelComment = (props) => {
         <div className={"tweet-c__svg-c"} >
           <CommentBubble />
           <div onClick={handleRetweetClick}>
-            <Retweet retweeted={retweeted} />
+            {/* <Retweet retweeted={retweeted} /> */}
           </div>
           <div
             onClick={handleHeartClick}

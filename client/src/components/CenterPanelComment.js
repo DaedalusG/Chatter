@@ -148,9 +148,9 @@ const CenterPanelComment = (props) => {
         <img className={"tweet-pic"} alt={""} src={props.reply[0].media} ></img>
         <div className={"tweet-c__svg-c"} >
           <CommentBubble />
-          <div onClick={handleRetweetClick}>
+          {/* <div onClick={handleRetweetClick}>
             <Retweet retweeted={retweeted} />
-          </div>
+          </div> */}
           <div
             onClick={handleHeartClick}
             className="tweet-panel-comment-like--container">
