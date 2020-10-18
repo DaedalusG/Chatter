@@ -51,14 +51,7 @@ const ReplyModal = (props) => {
 
         S3FileUpload.uploadFile(e.target.files[0], config)
             .then((data) => {
-                // updateReplyInput(data.location)
-                // setTweetReplyImgState(data.location);
-                // console.log("reply data============>", data)
 
-                document.getElementsByName('reply-form-textarea').value = `${data.location}`;
-                // console.log("replyTextArea========>",replyTextArea)
-                // replyTextArea[0].value = `${data.location}`;
-                // setTweetReplyImgState(data.location);
                 setReplyInput(data.location)
             })
             .catch((err) => {
