@@ -1,7 +1,7 @@
 @media screen and (max-height: 640px){
-#main-c__left__login{
+/* #main-c__left__login{
   position: static;
-}
+} */
 #logout-modal{
   height: 150px;
   width: 200px;

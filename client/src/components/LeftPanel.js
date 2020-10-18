@@ -96,10 +96,10 @@ const LeftPanel = (props) => {
         </div>
       </div> */}
       <div id={"main-c__left__bottom-c"} >
-        <div id={"tweet-button"}>
+        {/* <div id={"tweet-button"}>
           <span>Tweet</span>
           <Feather></Feather>
-        </div>
+        </div> */}
         <div id={"main-c__left__login"} onClick={toggleLogoutModal}>
             <img className={"profile-bubble"} alt={""} src={props.user.profile_pic} ></img>
           <div className={"user-names"} >

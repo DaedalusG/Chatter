@@ -53,7 +53,7 @@ const TweetPanel = (props) => {
                 tweetState.replies.map(reply => (<TweetPanelComment user={props.user}  reply={reply} /> ) )
                 : null
               }
-
+              <div className={"tweet-bottom-space"}></div>
             </div>
           </div>
         </div>
