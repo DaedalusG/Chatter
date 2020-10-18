@@ -37,9 +37,9 @@ const Login = () => {
         });
 
         if (response.ok) {
-            console.log("inside tryLogin: Success");
+            // console.log("inside tryLogin: Success");
         } else {
-            console.log("inside tryLogin: Response failure");
+            // console.log("inside tryLogin: Response failure");
         }
         const res = await response.json()
         if (res.auth_token != undefined) {

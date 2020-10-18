@@ -22,7 +22,7 @@ const UploadingProfile = () => {
         headers: { "Authorization": `Bearer ${token}` },
       })
       if (!response.ok) {
-        console.log("getCurrent user response failed in Uploading.js");
+        // console.log("getCurrent user response failed in Uploading.js");
       } else {
         const json = await response.json();
         setUser(json);

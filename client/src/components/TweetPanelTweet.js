@@ -32,9 +32,9 @@ const TweetPanelTweet = (props) => {
           }),
         });
         if (!response.ok) {
-          console.log("createLike response failure");
+          // console.log("createLike response failure");
         } else {
-          console.log("createLike response success");
+          // console.log("createLike response success");
         }
       }
       createLike();
@@ -56,9 +56,9 @@ const TweetPanelTweet = (props) => {
           }),
         });
         if (!response.ok) {
-          console.log("destroyLike response failure");
+          // console.log("destroyLike response failure");
         } else {
-          console.log("destroyLike response success");
+          // console.log("destroyLike response success");
         }
       }
       destroyLike();
@@ -82,7 +82,7 @@ const TweetPanelTweet = (props) => {
         },
       })
       if (!response.ok) {
-        console.log("getHeartedCount response failed")
+        // console.log("getHeartedCount response failed")
       } else {
         const json = await response.json();
         setHeartCount(json.count)
@@ -101,12 +101,12 @@ const TweetPanelTweet = (props) => {
       }
       )
       if (!response.ok) {
-        console.log("getUserHearted response failed")
+        // console.log("getUserHearted response failed")
       } else {
         const json = await response.json();
-        console.log("Here's Jason --> ", json)
+        // console.log("Here's Jason --> ", json)
         if (json.like !== null) {
-          console.log("JASON! --> ", json.like)
+          // console.log("JASON! --> ", json.like)
           setHearted("heartOn")
         }
       }
@@ -138,6 +138,7 @@ const TweetPanelTweet = (props) => {
       console.log("destroyTweet response failure");
     } else {
       console.log("destroyTweet response success");
+      props.centerPanelHome();
     }
   }
 

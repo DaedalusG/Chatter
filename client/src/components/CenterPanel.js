@@ -24,6 +24,7 @@ const CenterPanel = (props) => {
 
   const [updateState, setUpdateState] = useState(1);
 
+
   useEffect(() => {
 
     //TODO fix backend route to get tweets from following
@@ -35,7 +36,6 @@ const CenterPanel = (props) => {
       )
   }, [updateState])
 
-  console.log("props.user================>", props.user.id)
   const postFunction = async () => {
     const tweetContent = document.getElementsByName("tweet-textarea")[0].innerText
     const tweetData = { content: tweetContent, user_id: props.user.id, media: `${tweetImgState ? tweetImgState : "not making it" }` }
@@ -51,7 +51,6 @@ const CenterPanel = (props) => {
       .then(res => res.text())
       .then(data => {
         document.getElementsByName("tweet-textarea")[0].innerHTML = ""
-        console.log(data)
       })
       .catch(e => console.log('error posting your tweet', e))
       .then(window.location.reload())
@@ -75,7 +74,6 @@ const CenterPanel = (props) => {
         const tweetSpan = document.getElementsByName('tweet-textarea') 
         tweetSpan[0].innerHTML = `${data.location}`;
         setTweetImgState(data.location);
-        console.log("tweetSpan", tweetSpan)
       })
       .catch((err) => {
         alert(err)

@@ -19,7 +19,7 @@ const MainPage = () => {
         headers: { "Authorization": `Bearer ${token}` },
       })
       if (!response.ok) {
-        console.log("this will never happen. you can quote me")
+        // console.log("this will never happen. you can quote me")
       } else {
         const json = await response.json();
         setUser(json);

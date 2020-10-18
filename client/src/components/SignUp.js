@@ -25,7 +25,7 @@ const SignUp = props => {
   const createUser = async (e) => {
     e.preventDefault();
     if (password !== passwordConfirm) {
-      console.log('Passwords must match')
+      // console.log('Passwords must match')
       return
     }
 
@@ -46,11 +46,11 @@ const SignUp = props => {
       body: JSON.stringify(user),
     });
     if (response.ok) {
-      console.log("Response Success");
+      // console.log("Response Success");
       const res = await response.json();
       if (res.auth_token === undefined) {
         // Need to handle this error with browser message to user
-        console.log("Bad Auth Token Generated");
+        // console.log("Bad Auth Token Generated");
         return;
       } else {
         window.localStorage.setItem("auth_token", res.auth_token);
@@ -58,7 +58,7 @@ const SignUp = props => {
         // Add redirect here
       }
     } else {
-      console.log("Response Failure");
+      // console.log("Response Failure");
     }
   };
 

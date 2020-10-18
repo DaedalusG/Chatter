@@ -14,7 +14,6 @@ const TweetPanelComment = (props) => {
   const [retweeted, setRetweeted] = useState("retweet");
   const [retweetCount, setRetweetCount] = useState(0);
 
-  console.log('TweeetDaaata', props.reply[1])
 
 
 
@@ -36,9 +35,9 @@ const TweetPanelComment = (props) => {
           }),
         });
         if (!response.ok) {
-          console.log("createLike response failure");
+          // console.log("createLike response failure");
         } else {
-          console.log("createLike response success");
+          // console.log("createLike response success");
         }
       }
       createLike();
@@ -62,9 +61,9 @@ const TweetPanelComment = (props) => {
           }),
         });
         if (!response.ok) {
-          console.log("destroyLike response failure");
+          // console.log("destroyLike response failure");
         } else {
-          console.log("destroyLike response success");
+          // console.log("destroyLike response success");
         }
       }
       destroyLike();
@@ -91,7 +90,7 @@ const TweetPanelComment = (props) => {
         },
       })
       if (!response.ok) {
-        console.log("getHeartedCount response failed")
+        // console.log("getHeartedCount response failed")
       } else {
         const json = await response.json();
         setHeartCount(json.count)
@@ -111,12 +110,12 @@ const TweetPanelComment = (props) => {
       }
       )
       if (!response.ok) {
-        console.log("getUserHearted response failed")
+        // console.log("getUserHearted response failed")
       } else {
         const json = await response.json();
-        console.log("Here's Jason --> ", json)
+        // console.log("Here's Jason --> ", json)
         if (json.like !== null) {
-          console.log("JASON! --> ", json.like)
+          // console.log("JASON! --> ", json.like)
           setHearted("heartOn")
         }
       }

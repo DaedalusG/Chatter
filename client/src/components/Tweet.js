@@ -37,9 +37,9 @@ const Tweet = (props) => {
           }),
         });
         if (!response.ok) {
-          console.log("createLike response failure");
+          // console.log("createLike response failure");
         } else {
-          console.log("createLike response success");
+          // console.log("createLike response success");
         }
       }
       createLike();
@@ -61,9 +61,9 @@ const Tweet = (props) => {
           }),
         });
         if (!response.ok) {
-          console.log("destroyLike response failure");
+          // console.log("destroyLike response failure");
         } else {
-          console.log("destroyLike response success");
+          // console.log("destroyLike response success");
         }
       }
       destroyLike();
@@ -88,7 +88,7 @@ const Tweet = (props) => {
         },
       })
       if (!response.ok) {
-        console.log("getHeartedCount response failed")
+        // console.log("getHeartedCount response failed")
       } else {
         const json = await response.json();
         setHeartCount(json.count)
@@ -107,12 +107,12 @@ const Tweet = (props) => {
       }
       )
       if (!response.ok) {
-        console.log("getUserHearted response failed")
+        // console.log("getUserHearted response failed")
       } else {
         const json = await response.json();
-        console.log("Here's Jason --> ", json)
+        // console.log("Here's Jason --> ", json)
         if (json.like !== null) {
-          console.log("JASON! --> ", json.like)
+          // console.log("JASON! --> ", json.like)
           setHearted("heartOn")
         }
       }
@@ -140,9 +140,9 @@ const Tweet = (props) => {
       }),
     });
     if (!response.ok) {
-      console.log("destroyTweet response failure");
+      // console.log("destroyTweet response failure");
     } else {
-      console.log("destroyTweet response success");
+      // console.log("destroyTweet response success");
       props.setUpdateState(props.updateState + 1)
     }
   }
@@ -166,13 +166,12 @@ const Tweet = (props) => {
       else {
         const json = await response.json()
         setTweetCommentState(json)
-        console.log("jssssssoooooon", json)
       }
     }
     tweetReplies()
   }, [])
 
-  console.log("tweeeetCommentState", tweetCommentState)
+
 
   return (
     <div className={"tweet-c"}>

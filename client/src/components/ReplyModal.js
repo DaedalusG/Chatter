@@ -30,7 +30,7 @@ const ReplyModal = (props) => {
         if (response.ok) {
             window.location.reload()
         } else {
-            console.log("-------Reply Failed---------");
+            // console.log("-------Reply Failed---------");
         }
     }
 
