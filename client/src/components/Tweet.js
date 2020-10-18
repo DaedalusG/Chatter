@@ -211,7 +211,7 @@ const Tweet = (props) => {
           <Heart hearted={hearted} />
           {heartCount > 0 ? <span>{heartCount}</span> : <span></span>}
         </div>
-        <LinkTweet />
+        {/* <LinkTweet /> */}
 
       </div>
       <div className={"tweet-comment-c"} >

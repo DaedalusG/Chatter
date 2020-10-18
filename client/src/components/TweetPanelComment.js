@@ -160,7 +160,7 @@ const TweetPanelComment = (props) => {
               {heartCount > 0 ? <span>{heartCount}</span> : <span></span>}
             </div>
           </div>
-          <LinkTweet />
+          {/* <LinkTweet /> */}
 
 
         </div>

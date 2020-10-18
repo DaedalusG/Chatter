@@ -182,7 +182,7 @@ const TweetPanelTweet = (props) => {
           <HeartTweet hearted={hearted} />
           {heartCount > 0 ? <span>{heartCount}</span> : <span></span>}
         </div>
-          <LinkTweetTweet />
+          {/* <LinkTweetTweet /> */}
       </div>
     </div>
   )
