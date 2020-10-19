@@ -194,8 +194,8 @@ const Tweet = (props) => {
     
   }, [])
 // ---------------------------------------------------
-  console.log("props.TweetUserId  ", props.TweetUserId, "  props.user  ", props.user.id)
-  // console.log(`props.props.tweetState.id${props.props.tweetState.id} === props.props.id${props.props.id}`)
+  
+  
 
   return (
     <div className={"tweet-c"}>
