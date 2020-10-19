@@ -136,9 +136,9 @@ const TweetPanelTweet = (props) => {
       }),
     });
     if (!response.ok) {
-      console.log("destroyTweet response failure");
+      // console.log("destroyTweet response failure");
     } else {
-      console.log("destroyTweet response success");
+      // console.log("destroyTweet response success");
       props.centerPanelHome();
     }
   }

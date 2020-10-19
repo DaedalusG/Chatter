@@ -122,8 +122,7 @@ const CenterPanelComment = (props) => {
     // getUserHearted(); -- commented out for dev
   }, [])
 
-  console.log("reply=================>", props.reply)
-
+  console.log("props.TweetUserId ", props.TweetUserId, " props.user.id ", props.user.id)
 
   return (
     <div className={"tweet-c"}>
@@ -133,9 +132,14 @@ const CenterPanelComment = (props) => {
           <div className={"tweet-c__user-name"} >
             <p className={"tweet-c__user-name__names__top"}>{`${props.reply[1].firstname} ${props.reply[1].lastname}`}</p>
             <p className={"tweet-c__user-name__names__bottom"}>@{props.reply[1].username}</p>
-            <div className={"down-carrot-c"}>
+            {props.TweetUserId === props.user.id ?
+              <div className={"down-carrot-c"}>
+                <DownCarrot />
+              </div>
+             : null}
+            {/* <div className={"down-carrot-c"}>
               <DownCarrot />
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="tweet-c__comment" onClick={() => {
