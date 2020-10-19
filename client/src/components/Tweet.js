@@ -194,7 +194,8 @@ const Tweet = (props) => {
     
   }, [])
 // ---------------------------------------------------
-  console.log(`props.targetUser${props.targetUser} === props.props.id${props.props.id}`)
+  console.log("props.TweetUserId  ", props.TweetUserId, "  props.user  ", props.user.id)
+  // console.log(`props.props.tweetState.id${props.props.tweetState.id} === props.props.id${props.props.id}`)
 
   return (
     <div className={"tweet-c"}>
@@ -214,7 +215,7 @@ const Tweet = (props) => {
             </div>
               : <></>
             }
-            {props.targetUser === props.user.id ? <DownCarrot /> : null}
+            {props.TweetUserId === props.user.id ? <DownCarrot /> : null}
             {/* <DownCarrot /> */}
           </div>
         </div>
