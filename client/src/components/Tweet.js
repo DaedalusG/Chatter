@@ -216,7 +216,6 @@ const Tweet = (props) => {
               : <></>
             }
             {props.TweetUserId === props.user.id ? <DownCarrot /> : null}
-            {/* <DownCarrot /> */}
           </div>
         </div>
       </div>

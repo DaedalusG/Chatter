@@ -161,6 +161,7 @@ const TweetPanelTweet = (props) => {
             <p className={"tweet-p-t-c__user-name__names__top"}>{`${props.tweetState.user ? props.tweetState.user.firstname : ""} ${props.tweetState.user ? props.tweetState.user.lastname : ""}`}</p>
             <p className={"tweet-p-t-c__user-name__names__bottom"}>@{props.tweetState.user ? props.tweetState.user.username : ""}</p>
           </div>
+          {props.TweetUserId === props.user.id ? <DownCarrot /> : null}
           <div className={"down-carrot-c"} onClick={toggleModal}>
             <DownCarrot />
           </div>

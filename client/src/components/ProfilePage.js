@@ -119,6 +119,7 @@ const ProfilePage = (props) => {
               {tweetState[0] ?
                 tweetState.map((tweet) => (
                   <Tweet
+                    TweetUserId={tweet.user_id}
                     props={tweet}
                     centerPanelProfile={props.centerPanelProfile}
                     tweetInfoFunc={props.tweetInfoFunc}
