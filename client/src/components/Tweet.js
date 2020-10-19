@@ -194,7 +194,7 @@ const Tweet = (props) => {
     
   }, [])
 // ---------------------------------------------------
-
+  console.log(`props.targetUser${props.targetUser} === props.props.id${props.props.id}`)
 
   return (
     <div className={"tweet-c"}>
@@ -214,7 +214,8 @@ const Tweet = (props) => {
             </div>
               : <></>
             }
-            <DownCarrot />
+            {props.targetUser === props.user.id ? <DownCarrot /> : null}
+            {/* <DownCarrot /> */}
           </div>
         </div>
       </div>

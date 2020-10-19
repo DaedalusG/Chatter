@@ -87,11 +87,12 @@
 }
 #tweet-textarea{
   /* height: 100%; */
-  width: 100%;
   border: none;
   font-size: 20px;
   /* text-align: center; */
   text-indent: 0px;
+  display: flex;
+  flex-wrap: wrap;
 }
 .input-wrap {
   position: relative;

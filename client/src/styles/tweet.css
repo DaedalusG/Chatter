@@ -28,12 +28,16 @@
   width: 100%;
   height: auto;
   border: 1px solid rgb(233, 232, 232);
+  display: flex;
+  flex-wrap: wrap;
   /* pointer-events: none; */
+  overflow: hidden;
 }
 .tweet-c__top{
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  flex-wrap: wrap;
 }
 .user__profile-pic{
   width: 50px;
@@ -72,6 +76,8 @@
   /* position: relative;  */
   top: 0px;
   /* border: 1px solid blue; */
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .tweet-c__comment p{
@@ -226,6 +232,9 @@
 
 .tweet-text {
   cursor: pointer;
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
 .tweet-bottom-space{
   height: 300px;

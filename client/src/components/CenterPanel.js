@@ -117,6 +117,8 @@ const CenterPanel = (props) => {
               {tweetState ?
                 tweetState.map((tweet) => (
                   <Tweet
+                    targetUser={props.targetUser}
+                    editProfileState={props.editProfileState}
                     updateState={updateState}
                     setUpdateState={setUpdateState}
                     tweetIdsState={props.tweetIdsState}

@@ -120,7 +120,6 @@ const ProfilePage = (props) => {
                 tweetState.map((tweet) => (
                   <Tweet
                     props={tweet}
-                    targetUser={props.targetUser}
                     centerPanelProfile={props.centerPanelProfile}
                     tweetInfoFunc={props.tweetInfoFunc}
                     user={props.user}
