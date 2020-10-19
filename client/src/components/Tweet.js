@@ -187,14 +187,13 @@ const Tweet = (props) => {
       } else {
         const json = await response.json();
         setCommentCount(json.count)
-        console.log("commentCount==================>", commentCount);
       }
     }
     getCommentCount();
     
   }, [])
 // ---------------------------------------------------
-  
+  console.log("tweetCommentState.replies", tweetCommentState.replies)
   
 
   return (
@@ -242,7 +241,7 @@ const Tweet = (props) => {
       </div>
       <div className={"tweet-comment-c"} >
         {tweetCommentState.replies ?
-          tweetCommentState.replies.map(replyContent => (<CenterPanelComment user={props.user} reply={replyContent} />))
+          tweetCommentState.replies.map(replyContent => (<CenterPanelComment TweetUserId={props.TweetUserId} user={props.user} reply={replyContent} />))
           : null
         }
         
