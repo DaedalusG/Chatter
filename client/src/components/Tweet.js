@@ -17,8 +17,8 @@ const Tweet = (props) => {
   const [retweeted, setRetweeted] = useState("retweet");
   const [replyModal, setReplyModal] = useState(false)
   const [deleteModalState, setDeleteModalState] = useState(false);
-  
-  
+
+
   // const [retweetCount, setRetweetCount] = useState(0);
 
   const handleHeartClick = () => {
@@ -190,15 +190,15 @@ const Tweet = (props) => {
       }
     }
     getCommentCount();
-    
+
   }, [])
-// ---------------------------------------------------
+  // ---------------------------------------------------
   console.log("tweetCommentState.replies", tweetCommentState.replies)
-  
+
 
   return (
     <div className={"tweet-c"}>
-      <ReplyModal  tweet_id={props.props.id} replyModal={replyModal} user={props.user} tweet={props.props} handleReplyClick={handleReplyClick} />
+      <ReplyModal tweet_id={props.props.id} replyModal={replyModal} user={props.user} tweet={props.props} handleReplyClick={handleReplyClick} />
       {/* <span className={"tweet-c__name"}>{props.props.name}</span> */}
       <div className={"tweet-c__top"} >
         <img className={"user__profile-pic"} alt={""} src={props.props.user.profile_pic} onClick={() => props.centerPanelProfile(props.props.user)}></img>
@@ -244,9 +244,9 @@ const Tweet = (props) => {
           tweetCommentState.replies.map(replyContent => (<CenterPanelComment TweetUserId={props.TweetUserId} user={props.user} reply={replyContent} />))
           : null
         }
-        
+
       </div>
-      
+
     </div>
   )
 }
